@@ -1,0 +1,2262 @@
+{
+  "CoastDirt|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastDirt|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadOpen|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadOpen|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastQuay|True": [
+    1,
+    1,
+    1
+  ],
+  "CoastQuay|False": [
+    1,
+    1,
+    1
+  ],
+  "CoastHarbor|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastHarbor|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastSea|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastSea|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWater|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWater|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSupportFull|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSupportFull|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastWaterCliff|True": [
+    1,
+    1,
+    3
+  ],
+  "CoastWaterCliff|False": [
+    1,
+    1,
+    3
+  ],
+  "CoastRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDirtCliff|True": [
+    1,
+    1,
+    3
+  ],
+  "CoastDirtCliff|False": [
+    1,
+    1,
+    3
+  ],
+  "CoastSeaClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastSeaClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDirtClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastDirtClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastHarborClip|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastHarborClip|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderRampMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderRampMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp1L|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp1L|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderGTCurve3Out|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitBorderGTCurve3Out|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterHole2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterHole2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderCornerOutAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderCornerOutAdvert|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSignsSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSignsSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitTransitionCliffBiSlope4UShaped|True": [
+    5,
+    5,
+    0
+  ],
+  "CoastCircuitTransitionCliffBiSlope4UShaped|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadHole2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadHole2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastRoadBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "CoastCircuitCheckpoint|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagIn|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastPineTrees3|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagIn|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastPineTrees3|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTDiag4Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTDiag4Mirror|False": [
+    2,
+    4,
+    0
+  ],
+  "CoastRoadWaterSlopeStraightSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeStraightSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCircuit|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCircuit|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderGTCurve2In|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitBorderGTCurve2In|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeEndGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeEndGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadSigns|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSigns|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp1R|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp1R|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitFinishLine|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadLoopLeft|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastRoadLoopLeft|False": [
+    2,
+    1,
+    0
+  ],
+  "CoastRoadBiSlopeEndGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadBiSlopeEndGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadBumper|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadBumper|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadBiSlopeEndGTCurve2Mirror|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadBiSlopeEndGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadGTBiSlope1Curve3Mirror|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadGTBiSlope1Curve3Mirror|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitHighGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitHighGTCurve2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCliffAir|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCliffAir|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsLMirror|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastFreeSignsLMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeEndGTCurve2Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeEndGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadRamp2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastVillage1|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastVillage1|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitRoadRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRenderCube|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRenderCube|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionSmallRight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionSmallRight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagOutFull|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagOutFull|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighCheckpoint|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitHighCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterCheckpointSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterCheckpointSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadHole|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadHole|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadBiSlopeStartGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadBiSlopeStartGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadWaterFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsT|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsT|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp1R|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp1R|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitBorderCornerOut|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp1L|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp1L|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadGTBiSlope1Curve3|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadGTBiSlope1Curve3|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastWaterCircuitLamp|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastWaterCircuitLamp|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTurboSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTurboSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "CoastWaterCircuitLampPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastWaterCircuitLampPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastPineTrees|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastPineTrees|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurboSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurboSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelSlope4|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelSlope4|False": [
+    1,
+    4,
+    0
+  ],
+  "CoastCircuitHighBiSlope4GTCurve4Mirror|True": [
+    4,
+    4,
+    0
+  ],
+  "CoastCircuitHighBiSlope4GTCurve4Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadGTDiag4Mirror|True": [
+    2,
+    4,
+    0
+  ],
+  "CoastRoadGTDiag4Mirror|False": [
+    2,
+    4,
+    0
+  ],
+  "CoastRoadWaterPillarStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterPillarStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTBiSlope1Curve3Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTBiSlope1Curve3Mirror|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadWaterGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastFreeSignsL|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastFreeSignsL|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitStartLine|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadCheckpointSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadCheckpointSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignWaterPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignWaterPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighBiSlope2GTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitHighBiSlope2GTCurve2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighBiSlope2|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitHighBiSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastRoadBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "CoastCircuitHighStraight|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitHighStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelEntryAir|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelEntryAir|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeStartGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeStartGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitLamp|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitLamp|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadWaterTransitionCliffGround|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTransitionCliffGround|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighBiSlope2GTCurve2Mirror|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitHighBiSlope2GTCurve2Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitStartFinishLine|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCliffSlope3|True": [
+    1,
+    3,
+    0
+  ],
+  "CoastRoadTransitionCliffSlope3|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSlopeStraightSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSlopeStraightSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp3L|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp3L|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastVillage2B|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastVillage2B|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighBiSlope4|True": [
+    2,
+    4,
+    0
+  ],
+  "CoastCircuitHighBiSlope4|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSlopeStraightAir|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSlopeStraightAir|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadGTDiag4|True": [
+    2,
+    4,
+    0
+  ],
+  "CoastRoadGTDiag4|False": [
+    2,
+    4,
+    0
+  ],
+  "CoastTunnelEntryGround|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelEntryGround|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTBiSlope1Curve3|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTBiSlope1Curve3|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastSlopeBaseSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastSlopeBaseSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCliffGround|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTransitionCliffGround|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBumper|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBumper|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp3L|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp3L|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagOut|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagOut|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitTransitionCliffBiSlope4|True": [
+    2,
+    4,
+    0
+  ],
+  "CoastCircuitTransitionCliffBiSlope4|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTransitionCliffAir|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTransitionCliffAir|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderGTCurve2Out|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitBorderGTCurve2Out|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastPillarStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastPillarStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionSmallLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionSmallLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeBaseSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeBaseSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTDiag4|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterGTDiag4|False": [
+    2,
+    4,
+    0
+  ],
+  "CoastCircuitBorderCornerIn|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderCornerIn|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderGTCurve3In|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitBorderGTCurve3In|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderStraightAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderStraightAdvert|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderGTCurve3Full|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitBorderGTCurve3Full|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitTransitionCliffBiSlope4UShapedMirror|True": [
+    5,
+    5,
+    0
+  ],
+  "CoastCircuitTransitionCliffBiSlope4UShapedMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsWaterT|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsWaterT|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp3R|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp3R|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastPineTrees2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastPineTrees2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeStartGTCurve2Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeStartGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitBorderDiagInFull|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderDiagInFull|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSignsSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSignsSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelSlopeBase|False": [
+    1,
+    2,
+    0
+  ],
+  "CoastRoadRamp3R|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadRamp3R|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadBiSlopeStartGTCurve2Mirror|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastRoadBiSlopeStartGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitRoadStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsWaterL|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastFreeSignsWaterL|False": [
+    2,
+    1,
+    0
+  ],
+  "CoastRoadWaterHole|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterHole|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderStraightAdvertB|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderStraightAdvertB|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSigns|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSigns|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadLoopRight|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastRoadLoopRight|False": [
+    2,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitLampPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitLampPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterRamp2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionRight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTransitionRight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderGTCurve2Full|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitBorderGTCurve2Full|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "CoastVillage2A|True": [
+    2,
+    1,
+    0
+  ],
+  "CoastVillage2A|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighBiSlope4GTCurve4|True": [
+    4,
+    4,
+    0
+  ],
+  "CoastCircuitHighBiSlope4GTCurve4|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastStuntHawkRampPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastStuntHawkRampPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoMarina|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoMarina|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoSailing|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoSailing|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBridgeGT4x4|True": [
+    4,
+    4,
+    0
+  ],
+  "CoastCircuitBridgeGT4x4|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitHighCross|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCircuitHighCross|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastStuntHawkRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastStuntHawkRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastAdvertRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastAdvertRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoFishBoat|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoFishBoat|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastStuntCircuitRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastStuntCircuitRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoYacht|True": [
+    5,
+    2,
+    0
+  ],
+  "CoastDecoYacht|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBridgeGT4x4Mirror|True": [
+    4,
+    4,
+    0
+  ],
+  "CoastCircuitBridgeGT4x4Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheTransitionCorner|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheTransitionCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastDecoBoats|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastDecoBoats|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheCroisetteWall|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheCroisetteWall|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheDeadend|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheDeadend|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheCroisetteCorner|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCornicheCroisetteCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheTransitionCornerMirror|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheTransitionCornerMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheGT2|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastCornicheGT2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheTransitionSlopeMirror|True": [
+    3,
+    2,
+    0
+  ],
+  "CoastCornicheTransitionSlopeMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheDeadendBridge|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheDeadendBridge|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheTransitionSlope|True": [
+    3,
+    2,
+    0
+  ],
+  "CoastCornicheTransitionSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheCorner|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCornicheCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheCroisetteBase1|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCornicheCroisetteBase1|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheCroisette|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheCroisette|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheGT3x2Mirror|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastCornicheGT3x2Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheBase1|True": [
+    2,
+    2,
+    0
+  ],
+  "CoastCornicheBase1|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheTransitionTShaped|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheTransitionTShaped|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheGT3x2|True": [
+    3,
+    3,
+    0
+  ],
+  "CoastCornicheGT3x2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Base|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Base|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2TurboDownSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2TurboDownSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2BiSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2BiSlopeStart|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2TurboUpSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2TurboUpSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCornicheDeadendWall|True": [
+    1,
+    2,
+    0
+  ],
+  "CoastCornicheDeadendWall|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x2|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadWaterSlope2BiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2BiSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2StraightSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2StraightSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x3Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x3Mirror|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadWaterSlope2Turbo2DownSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Turbo2DownSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Straight|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Straight|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2BaseSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2BaseSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x3|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x3|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastCircuitBorderTurbo2Left|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurbo2Left|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastTunnelTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurbo2Right|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitBorderTurbo2Right|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastCircuitRoadTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Turbo2UpSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterSlope2Turbo2UpSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x2Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadWaterTwistedGT2x2Mirror|False": [
+    3,
+    3,
+    0
+  ],
+  "CoastRoadTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "CoastRoadTurbo2|False": [
+    1,
+    1,
+    0
+  ]
+}

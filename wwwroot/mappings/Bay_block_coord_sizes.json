@@ -1,0 +1,2052 @@
+{
+  "BayTunnelRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoad2Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoad2Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoad2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoad2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoadPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoadPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoadSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoadSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBoxRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBoxRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "BayAdvertBuilding1Pillar|True": [
+    2,
+    1,
+    0
+  ],
+  "BayAdvertBuilding1Pillar|False": [
+    2,
+    1,
+    0
+  ],
+  "BayFlatsRoadPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoadPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding1|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding1|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding2Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding2Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BaySea|True": [
+    1,
+    1,
+    0
+  ],
+  "BaySea|False": [
+    1,
+    1,
+    0
+  ],
+  "BayHarbor|True": [
+    1,
+    1,
+    0
+  ],
+  "BayHarbor|False": [
+    1,
+    1,
+    0
+  ],
+  "BayHarborClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayHarborClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BaySeaClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BaySeaClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoadClipPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoadClipPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocks|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocks|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayFlatsRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBoxClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBoxClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayEsplanade|True": [
+    1,
+    1,
+    4
+  ],
+  "BayEsplanade|False": [
+    1,
+    1,
+    4
+  ],
+  "BayBridgeRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopStart4|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformLoopStart4|False": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2Support|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2Support|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopStart2|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformLoopStart2|False": [
+    1,
+    2,
+    0
+  ],
+  "BayTunnelGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "BayTunnelTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelExitSlopeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelExitSlopeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding1Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBuilding1Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "BayRoadGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "BayPlatformLoopEndGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEndGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadRail|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadRail|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd4GTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd4GTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformLoopStart|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopStart|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBaseSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBaseSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisStraightB|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisStraightB|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisStraightA|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisStraightA|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2Transition|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2Transition|False": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopStartGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformLoopStartGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionGTCurve2Mirror|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadSupportBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd4|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd4|False": [
+    1,
+    2,
+    0
+  ],
+  "BayTunnelBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTransitionEsplanadeAir|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTransitionEsplanadeAir|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadPillarStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadPillarStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBiSlope2Start2|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformBiSlope2Start2|False": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformLoopEnd2GTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd2GTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformLoopSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadGTCurve2Support|True": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadGTCurve2Support|False": [
+    2,
+    2,
+    0
+  ],
+  "BayTunnelSlope2Base|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelSlope2Base|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopWall|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopWall|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTransitionEsplanadeGround|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTransitionEsplanadeGround|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopWallGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopWallGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformLoopSigns|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopSigns|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTransitionToPlatform|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTransitionToPlatform|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2GTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSlope2GTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayTunnelEntry|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelEntry|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2Base|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2Base|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelExitBiSlope2End|True": [
+    1,
+    2,
+    0
+  ],
+  "BayTunnelExitBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBasePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBasePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStartGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStartGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformTurboUp|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurboUp|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadSupportSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2Corner|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2Corner|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadToll|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadToll|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSupportFree|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSupportFree|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopStart4GTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformLoopStart4GTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2TransitionMirror|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionMirror|False": [
+    1,
+    2,
+    0
+  ],
+  "BayRoadYShaped|True": [
+    3,
+    2,
+    0
+  ],
+  "BayRoadYShaped|False": [
+    3,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformCheckpointUp|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointUp|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorB|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorB|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2PillarReplace|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2PillarReplace|False": [
+    1,
+    1,
+    0
+  ],
+  "BayShopsEsplanadeDeadend|True": [
+    1,
+    1,
+    0
+  ],
+  "BayShopsEsplanadeDeadend|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadToll2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadToll2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelBiSlope2Start2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelBiSlope2Start2|False": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformFloodLight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformFloodLight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointRight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointRight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformFloodLightPillarReplace|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformFloodLightPillarReplace|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopSlopeGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopSlopeGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformBasePillarReplace|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBasePillarReplace|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadGTCurve3Support|True": [
+    3,
+    3,
+    0
+  ],
+  "BayRoadGTCurve3Support|False": [
+    3,
+    3,
+    0
+  ],
+  "BayPlatformLoopStart2GTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformLoopStart2GTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadTransitionEsplanadeAir|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTransitionEsplanadeAir|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStartMirror|True": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStartMirror|False": [
+    1,
+    2,
+    0
+  ],
+  "BayParvisRampCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisRampCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadGTCurve2Pillar|True": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadGTCurve2Pillar|False": [
+    2,
+    2,
+    0
+  ],
+  "BayParvisRampCornerIn|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisRampCornerIn|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorC|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorC|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopEnd2|False": [
+    1,
+    2,
+    0
+  ],
+  "BayPlatformCheckpointLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformLoopAdvert|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorA|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorA|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelExit|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelExit|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisStraightC|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisStraightC|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointDown|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointDown|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStartGTCurve2Mirror|True": [
+    2,
+    2,
+    0
+  ],
+  "BayPlatformSlope2TransitionBiSlopeStartGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "BayRoadGTCurve3Pillar|True": [
+    3,
+    3,
+    0
+  ],
+  "BayRoadGTCurve3Pillar|False": [
+    3,
+    3,
+    0
+  ],
+  "BayRoadStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformCheckpointBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTransitionEsplanadeGround|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTransitionEsplanadeGround|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadSupportBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisRampCross|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisRampCross|False": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorD|True": [
+    1,
+    1,
+    0
+  ],
+  "BayParvisDecorD|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSuspPillar|True": [
+    1,
+    5,
+    0
+  ],
+  "BayBridgeSuspPillar|False": [
+    1,
+    5,
+    0
+  ],
+  "BayPlatformTurboDown|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurboDown|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2StartSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2StartSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBase2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBase2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2EndSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2EndSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlope2Straight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlope2Straight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeLoopLeft|True": [
+    2,
+    1,
+    0
+  ],
+  "BayBridgeLoopLeft|False": [
+    2,
+    1,
+    0
+  ],
+  "BayBridgeCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBase2Support|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBase2Support|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBaseSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBaseSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "BayBridgeGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "BayBridgeSlope2StraightSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlope2StraightSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeLoopRight|True": [
+    2,
+    1,
+    0
+  ],
+  "BayBridgeLoopRight|False": [
+    2,
+    1,
+    0
+  ],
+  "BayBridgeStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawkLoop|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawkLoop|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyStraightB|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyStraightB|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeHole|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeHole|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSusp|True": [
+    1,
+    5,
+    0
+  ],
+  "BayBridgeSusp|False": [
+    1,
+    5,
+    0
+  ],
+  "BayBridgeGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "BayBridgeGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "BayBridgeTransitionToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTransitionToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadendSlopeL|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadendSlopeL|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawkL|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawkL|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadendContainer|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadendContainer|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborHawkPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborHawkPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyRamp2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyRamp2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborBase1|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborBase1|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyStair|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyStair|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborHawk|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborHawk|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadContainer1|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadContainer1|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawk2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawk2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawkR|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawkR|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlope2L|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlope2L|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadContainer3|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadContainer3|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlopeL|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlopeL|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlopeR|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlopeR|False": [
+    1,
+    1,
+    0
+  ],
+  "BayCargo|True": [
+    4,
+    1,
+    0
+  ],
+  "BayCargo|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadendSlopeR|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadendSlopeR|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadend|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborDeadend|False": [
+    1,
+    1,
+    0
+  ],
+  "BayCargoContainer|True": [
+    4,
+    1,
+    0
+  ],
+  "BayCargoContainer|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyStraightA|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyStraightA|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlope2R|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettySlope2R|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadContainer2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksRoadContainer2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawk|True": [
+    1,
+    1,
+    0
+  ],
+  "BayDocksHarborJettyHawk|False": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayBridgeTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Right|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Right|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Down|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Down|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Up|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Up|False": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayRoadTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "BayTunnelTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Left|True": [
+    1,
+    1,
+    0
+  ],
+  "BayPlatformTurbo2Left|False": [
+    1,
+    1,
+    0
+  ]
+}

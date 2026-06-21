@@ -1,0 +1,1932 @@
+{
+  "Lake|True": [
+    1,
+    1,
+    0
+  ],
+  "Lake|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHills1|True": [
+    1,
+    1,
+    2
+  ],
+  "RallyHills1|False": [
+    1,
+    1,
+    2
+  ],
+  "RallyHills2|True": [
+    1,
+    1,
+    4
+  ],
+  "RallyHills2|False": [
+    1,
+    1,
+    4
+  ],
+  "RallyTunnelRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHills3|True": [
+    1,
+    1,
+    6
+  ],
+  "RallyHills3|False": [
+    1,
+    1,
+    6
+  ],
+  "RallyFlat|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFlat|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastleSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastleSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastlePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastlePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadSpeedUp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadSpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastle|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastle|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHigh|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHigh|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadLamp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadLamp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelRoadSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelRoadSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSlopePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSlopePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassHills|True": [
+    1,
+    1,
+    1
+  ],
+  "RallyRockyGrassHills|False": [
+    1,
+    1,
+    1
+  ],
+  "RallyFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "ForestToLake|True": [
+    1,
+    1,
+    0
+  ],
+  "ForestToLake|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastleSlopePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastleSlopePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyBridgeMedium|True": [
+    1,
+    3,
+    0
+  ],
+  "RallyBridgeMedium|False": [
+    1,
+    3,
+    0
+  ],
+  "RallyRoadWoodSupportSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodSupportSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "Hills1ToHills2|True": [
+    1,
+    1,
+    4
+  ],
+  "Hills1ToHills2|False": [
+    1,
+    1,
+    4
+  ],
+  "RallyRockyGrassCliffs|True": [
+    1,
+    1,
+    3
+  ],
+  "RallyRockyGrassCliffs|False": [
+    1,
+    1,
+    3
+  ],
+  "ForestToHills1|True": [
+    1,
+    1,
+    2
+  ],
+  "ForestToHills1|False": [
+    1,
+    1,
+    2
+  ],
+  "HillsToHills|True": [
+    1,
+    1,
+    2
+  ],
+  "HillsToHills|False": [
+    1,
+    1,
+    2
+  ],
+  "Hills2ToHills3|True": [
+    1,
+    1,
+    6
+  ],
+  "Hills2ToHills3|False": [
+    1,
+    1,
+    6
+  ],
+  "RallyFieldFenceRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementArchPillar|True": [
+    3,
+    1,
+    0
+  ],
+  "RallyCastleReplacementArchPillar|False": [
+    3,
+    1,
+    0
+  ],
+  "RallyFieldAuto|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldAuto|False": [
+    1,
+    1,
+    0
+  ],
+  "RallySquareTower|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySquareTower|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT6|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyGT6|False": [
+    3,
+    3,
+    0
+  ],
+  "RallyRoadMediumHillSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadMediumHillSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldCornerIn|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldCornerIn|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldGrassStraight3x3|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldGrassStraight3x3|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceAutoCenter|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceAutoCenter|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleHillBridgeGround|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleHillBridgeGround|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleDrawBridge|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleDrawBridge|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleStraightPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleStraightPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT3|True": [
+    2,
+    3,
+    0
+  ],
+  "RallyGT3|False": [
+    2,
+    3,
+    0
+  ],
+  "RallyTreeGround1SpeedUp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTreeGround1SpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighOverLowCrossGround|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighOverLowCrossGround|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementArch|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementArch|False": [
+    3,
+    1,
+    0
+  ],
+  "RallyHighStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCheckPoint|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCheckPoint|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementCrossPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementCrossPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceTreeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceTreeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTruncMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTruncMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighGT2|True": [
+    2,
+    2,
+    0
+  ],
+  "RallyRoadHighGT2|False": [
+    2,
+    2,
+    0
+  ],
+  "RallyFieldFenceCornerOut|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "RallySquareTowerPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySquareTowerPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHill3SpeedUp|True": [
+    6,
+    4,
+    0
+  ],
+  "RallyHill3SpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround5|True": [
+    2,
+    1,
+    0
+  ],
+  "RallyHouseGround5|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadMedium|True": [
+    2,
+    3,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadMedium|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldStraight|True": [
+    1,
+    3,
+    0
+  ],
+  "RallyFieldStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumOverLowCrossPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumOverLowCrossPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT8Pillar|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyGT8Pillar|False": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadLowToRoadHighMirror|True": [
+    3,
+    4,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadLowToRoadHighMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighFinishSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighFinishSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyGT1Pillar|True": [
+    2,
+    2,
+    0
+  ],
+  "RallyGT1Pillar|False": [
+    2,
+    2,
+    0
+  ],
+  "RallySignWarning|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySignWarning|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHill1SpeedUp|True": [
+    6,
+    4,
+    0
+  ],
+  "RallyHill1SpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGrassCheckPoint|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyGrassCheckPoint|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumCheckpointSpeedUp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumCheckpointSpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumToHigh|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumToHigh|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT8|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyGT8|False": [
+    3,
+    3,
+    0
+  ],
+  "RallyRampart|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRampart|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadMediumMirror|True": [
+    2,
+    3,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadMediumMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround2|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround2|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldGrassCornerIn|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldGrassCornerIn|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockDecor|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockDecor|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisURoadMediumMirror|True": [
+    3,
+    5,
+    0
+  ],
+  "RallyFieldTetrisURoadMediumMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT1|True": [
+    2,
+    2,
+    0
+  ],
+  "RallyGT1|False": [
+    2,
+    2,
+    0
+  ],
+  "RallyCastleDrawBridgeSpeedUp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceBushStraightAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleDrawBridgeSpeedUp|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyFieldFenceBushStraightAdvert|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighHillSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighHillSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyBridgeHigh|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyBridgeHigh|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleBridgePillar|True": [
+    1,
+    3,
+    0
+  ],
+  "RallyCastleBridgePillar|False": [
+    1,
+    3,
+    0
+  ],
+  "RallyGT4|True": [
+    3,
+    2,
+    0
+  ],
+  "RallyHighToLowCurve|True": [
+    2,
+    2,
+    0
+  ],
+  "RallyGT4|False": [
+    3,
+    2,
+    0
+  ],
+  "RallyHighToLowCurve|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisStraightRoadMedium|True": [
+    1,
+    3,
+    0
+  ],
+  "RallyFieldTetrisStraightRoadMedium|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyBridgeMediumPillar|True": [
+    1,
+    3,
+    0
+  ],
+  "RallyBridgeMediumPillar|False": [
+    1,
+    3,
+    0
+  ],
+  "RallyHighSupportCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighSupportCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleRampPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleRampPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceBushStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceBushStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceTreeCornerOut|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceTreeCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHill3|True": [
+    6,
+    4,
+    0
+  ],
+  "RallyHill3|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumCheckPoint|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumCheckPoint|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleCheckpointPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleCheckpointPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementCross|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleReplacementCross|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodToCastlePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodToCastlePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTreeGroundBig|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTreeGroundBig|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHill2SpeedUp|True": [
+    4,
+    4,
+    0
+  ],
+  "RallyHill2SpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT3Pillar|True": [
+    2,
+    3,
+    0
+  ],
+  "RallyGT3Pillar|False": [
+    2,
+    3,
+    0
+  ],
+  "RallyRoadHighCornerRockOutside|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighCornerRockOutside|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassCliffTransitionCastleToRoadWood|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassCliffTransitionCastleToRoadWood|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClips2|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClips2|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldTetrisURoadLowMirror|True": [
+    3,
+    5,
+    0
+  ],
+  "RallyFieldTetrisURoadLowMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleGrid|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleGrid|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleFinishPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleFinishPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelExit|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelExit|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHill2|True": [
+    4,
+    4,
+    0
+  ],
+  "RallyHill2|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT2Pillar|True": [
+    2,
+    3,
+    0
+  ],
+  "RallyGT2Pillar|False": [
+    2,
+    3,
+    0
+  ],
+  "RallyGTCurve2|True": [
+    2,
+    3,
+    0
+  ],
+  "RallyGTCurve2|False": [
+    2,
+    3,
+    0
+  ],
+  "RallyRoadWoodStraightPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadWoodStraightPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassCliffTunnelEntry|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassCliffTunnelEntry|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassHillTransitionRoadHighToRoadMedium|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassHillTransitionRoadHighToRoadMedium|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceBushCornerOut|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceBushCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceAutoTShaped|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceAutoTShaped|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyMultiLapPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMultiLapPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT4Pillar|True": [
+    3,
+    2,
+    0
+  ],
+  "RallyGT4Pillar|False": [
+    3,
+    2,
+    0
+  ],
+  "RallyGT5|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyGT5|False": [
+    3,
+    3,
+    0
+  ],
+  "RallyCastleBiSlopePillar|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleBiSlopePillar|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleBridge|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleBridge|False": [
+    1,
+    3,
+    0
+  ],
+  "RallyMediumOverLowCrossGround|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyMediumOverLowCrossGround|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTowerSpeedUp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTowerSpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTowerPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTowerPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTreeGround1|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTreeGround1|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleHillBridgePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleHillBridgePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadLowToRoadHigh|True": [
+    3,
+    4,
+    0
+  ],
+  "RallyFieldTetrisDiagRoadLowToRoadHigh|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisURoadLow|True": [
+    3,
+    5,
+    0
+  ],
+  "RallyFieldTetrisURoadLow|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "RallySignWrongWay|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySignWrongWay|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighSupportStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighSupportStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleHillBridgeAir|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleHillBridgeAir|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadMediumFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadMediumFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRock|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRock|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighToLowCurveMirror|True": [
+    2,
+    2,
+    0
+  ],
+  "RallyHighToLowCurveMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT6Pillar|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyGT6Pillar|False": [
+    3,
+    3,
+    0
+  ],
+  "RallySignPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySignPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyAdvertising|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyAdvertising|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleCross|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleCross|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "RallySignRightWay|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySignRightWay|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyWindmill|True": [
+    2,
+    1,
+    0
+  ],
+  "RallyWindmill|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHill1|True": [
+    6,
+    4,
+    0
+  ],
+  "RallyHill1|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceAutoCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceAutoCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyGT5Pillar|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyGT5Pillar|False": [
+    3,
+    3,
+    0
+  ],
+  "RallyCastleBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyTunnelEntry|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelEntry|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyLowToMedium|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyLowToMedium|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassHillTransitionRoadMediumtoCastle|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassHillTransitionRoadMediumtoCastle|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround3|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround3|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldGrassStraight|True": [
+    1,
+    3,
+    0
+  ],
+  "RallyFieldGrassStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleGridPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleGridPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "RallyFieldClips|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClips|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighGT1|True": [
+    2,
+    2,
+    0
+  ],
+  "RallyRoadHighGT1|False": [
+    2,
+    2,
+    0
+  ],
+  "RallyBridgeHighPillar|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyBridgeHighPillar|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyHighToLow|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighToLow|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTower|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleTower|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldTetrisURoadMedium|True": [
+    3,
+    5,
+    0
+  ],
+  "RallyFieldTetrisURoadMedium|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleStartPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleStartPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldGrassCornerOut|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldGrassCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTrunc|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTrunc|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceDiag|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldFenceDiag|False": [
+    1,
+    1,
+    0
+  ],
+  "RallySignLeftWay|True": [
+    1,
+    1,
+    0
+  ],
+  "RallySignLeftWay|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleCrossPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleCrossPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldCornerOut|True": [
+    3,
+    3,
+    0
+  ],
+  "RallyFieldCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadLowHillSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadLowHillSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFreeWheeling|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFreeWheeling|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyBridgeLow|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyBridgeLow|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleRampSpeedUp|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleRampSpeedUp|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHighCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighStraightRock|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighStraightRock|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround4|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyHouseGround4|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockDecor2|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyRockDecor2|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyCastleDrawBridgePillar|True": [
+    1,
+    2,
+    0
+  ],
+  "RallyCastleDrawBridgePillar|False": [
+    1,
+    2,
+    0
+  ],
+  "RallyRoadCastlePillarClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastlePillarClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadHighClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClip2|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyFieldClip2|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyTunnelRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrassClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastleClip|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRoadCastleClip|False": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrass|True": [
+    1,
+    1,
+    0
+  ],
+  "RallyRockyGrass|False": [
+    1,
+    1,
+    0
+  ]
+}

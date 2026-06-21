@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TMNFeditor": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:5001"
+    }
+  }
+}

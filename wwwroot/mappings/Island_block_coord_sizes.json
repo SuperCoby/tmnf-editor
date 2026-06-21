@@ -1,0 +1,2512 @@
+{
+  "IslandHighWayPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformRoadSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformRoadSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisettePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisettePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoadGrass|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoadGrass|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWay|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWay|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWay|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWay|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisette|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisette|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircular|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircular|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWaySupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWaySupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformRoadPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformRoadPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandBeach|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandBeach|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6|True": [
+    1,
+    1,
+    6
+  ],
+  "IslandHills6|False": [
+    1,
+    1,
+    6
+  ],
+  "IslandSea|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSea|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandGrass|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandGrass|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoadGrassClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoadGrassClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTunnelClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTunnelClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWaySlope|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWaySlope|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandGrassClip|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandGrassClip|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayBiSlopePillar|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandSeaWayBiSlopePillar|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandSeaWayGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandSeaWayGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayAdvertisement|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayAdvertisement|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandBeachTrees|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandBeachTrees|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4CornerEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4CornerEnd|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelSlope2Base|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelSlope2Base|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandChalutier|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandChalutier|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4CornerStart|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandPlatformLoopGT4CornerStart|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandDecorRock2|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandDecorRock2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandHotel|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHotel|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandSeaWayBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandClubBeach|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubBeach|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopWallCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopWallCorner|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandHighWayGTBranchLeft|True": [
+    2,
+    3,
+    0
+  ],
+  "IslandHighWayGTBranchLeft|False": [
+    2,
+    3,
+    0
+  ],
+  "IslandSeaWayStraightPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayStraightPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayBump3|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayBump3|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandBeachRocks|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandBeachRocks|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6HighWayBridgeGround|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6HighWayBridgeGround|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayHawkRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayHawkRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandFloodLight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandFloodLight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteStraightPilar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteStraightPilar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandSeaWayBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandPlatformGTSlope5b|True": [
+    5,
+    5,
+    0
+  ],
+  "IslandPlatformGTSlope5b|False": [
+    5,
+    5,
+    0
+  ],
+  "IslandPlatformGTSlope3|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandPlatformGTSlope3|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandSeaWayToPlatform|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayToPlatform|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4End|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4End|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayGTCurve2Pillar|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandSeaWayGTCurve2Pillar|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandSeaWayHoleRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayHoleRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayTiltCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTiltCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWaySlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWaySlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTriRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTriRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandHighWayGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandSeaWayGTCurve3Pillar|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandSeaWayGTCurve3Pillar|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayMonoRamp2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoRamp2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboDown|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboDown|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettyBeach2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettyBeach2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformGTSlope4|True": [
+    4,
+    4,
+    0
+  ],
+  "IslandPlatformGTSlope4|False": [
+    4,
+    4,
+    0
+  ],
+  "IslandSeaWayHole|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayHole|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayHoleSides|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayHoleSides|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAntenne|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAntenne|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSigns|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSigns|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformFloodLight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformFloodLight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformGTSlope2|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandPlatformGTSlope2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandSeaWayToHighWay|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayToHighWay|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandPlatformBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandPlatformGTSlope3b|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandPlatformGTSlope3b|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayTiltTransition|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayTiltTransition|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandSeaSignsAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSignsAdvert|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Support|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Support|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTiltTransitionMirror|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayTiltTransitionMirror|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandCroisetteSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlopeStart|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandPlatformBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandHotelPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHotelPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboUp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2TurboUp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettyBeachL|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettyBeachL|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlopeSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlopeSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandDecorRock1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandDecorRock1|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsLightRampPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsLightRampPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoBump|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoBump|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformCheckpointSlopeLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformCheckpointSlopeLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTiltGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayTiltGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandTunnelBiSlope2Start2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelBiSlope2Start2|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandSigns|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSigns|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayUTurnSlopeRight|True": [
+    3,
+    2,
+    0
+  ],
+  "IslandHighWayUTurnSlopeRight|False": [
+    3,
+    2,
+    0
+  ],
+  "IslandPlatformToSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformToSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4Start|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopGT4Start|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSignsLightRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSignsLightRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubKioskBeach|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubKioskBeach|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsAdvertSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformToSlope2Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsAdvertSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformToSlope2Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformCheckpointSlopeRight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformCheckpointSlopeRight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySlope|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySlope|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry3|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry3|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSignsAdvertSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSignsAdvertSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySupportPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWaySupportPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubKioskSea|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubKioskSea|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAntennePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAntennePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformGTSlope4b|True": [
+    4,
+    4,
+    0
+  ],
+  "IslandPlatformGTSlope4b|False": [
+    4,
+    4,
+    0
+  ],
+  "IslandPlatformGTSlope5|True": [
+    5,
+    5,
+    0
+  ],
+  "IslandPlatformGTSlope5|False": [
+    5,
+    5,
+    0
+  ],
+  "IslandSeaSignsLightRampPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaSignsLightRampPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayGTBranchRight|True": [
+    2,
+    3,
+    0
+  ],
+  "IslandHighWayGTBranchRight|False": [
+    2,
+    3,
+    0
+  ],
+  "IslandSeaWayGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandSeaWayGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayUTurnSlopeLeft|True": [
+    3,
+    2,
+    0
+  ],
+  "IslandHighWayUTurnSlopeLeft|False": [
+    3,
+    2,
+    0
+  ],
+  "IslandTunnelEntry1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelEntry1|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubMarina|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubMarina|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelSlope2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6DecoTree|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6DecoTree|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTiltGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandHighWayTiltGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandHighWayGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandHighWayHoleCenter|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayHoleCenter|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandDecorAdvertisement|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandDecorAdvertisement|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandDecorVegetation1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandDecorVegetation1|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6HighwaySlopeGT3|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandHills6HighwaySlopeGT3|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6HighWayBridgeAir|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6HighWayBridgeAir|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettySea|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettySea|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCommitee|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCommitee|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6DecoRock|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6DecoRock|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoBump3|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayMonoBump3|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTiltStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTiltStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsAdvert|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopWall|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformLoopWall|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsLightRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSignsLightRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteToHighway|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteToHighway|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformGTSlope2b|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandPlatformGTSlope2b|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettyBeachR|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandJettyBeachR|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayToCroisette|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayToCroisette|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelExitBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandTunnelExitBiSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelExit|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelExit|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallGTCurve1SlopeLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallGTCurve1SlopeLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandRoadWallTransitionTiltRight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallTransitionTiltRight|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelCircularTransitionToPlatform|True": [
+    1,
+    2,
+    0
+  ],
+  "IslandTunnelCircularTransitionToPlatform|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayScrew360|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayScrew360|False": [
+    3,
+    4,
+    0
+  ],
+  "IslandPylonMetal|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPylonMetal|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlalomJumpMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlalomJumpMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallGTCurve1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallGTCurve1|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandHillsDecoTree|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHillsDecoTree|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBasePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformBasePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularWallH|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularWallH|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHills6HighwaySlopeGT3Mirror|True": [
+    3,
+    3,
+    0
+  ],
+  "IslandHills6HighwaySlopeGT3Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubBeach2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandClubBeach2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayBigSlopeXCrossBase|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayBigSlopeXCrossBase|False": [
+    3,
+    4,
+    0
+  ],
+  "IslandTunnelCircularGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandCroisetteSlalomJump|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteSlalomJump|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayGTDiagMirror|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandHighWayGTDiagMirror|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandSeaWayScrew360Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayScrew360Mirror|False": [
+    3,
+    4,
+    0
+  ],
+  "IslandHighWayGTDiag|True": [
+    2,
+    2,
+    0
+  ],
+  "IslandHighWayGTDiag|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandRoadWallCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallTransitionTiltStraightLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallTransitionTiltStraightLeft|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandTunnelCircularTransition|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularTransition|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelCircularExitRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularExitRamp|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandTunnelCircularTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallTransitionTiltStraightRight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallTransitionTiltStraightRight|False": [
+    1,
+    2,
+    0
+  ],
+  "IslandHighWayGTYShaped|True": [
+    3,
+    2,
+    0
+  ],
+  "IslandHighWayGTYShaped|False": [
+    3,
+    2,
+    0
+  ],
+  "IslandRoadWallTransitionTiltLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallTransitionTiltLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelCircularGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "IslandTunnelCircularCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularWallV|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularWallV|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelSlope2HoleBase|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelSlope2HoleBase|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseGTCurve2Mirror|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseGTCurve2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseCornerMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularSlopeBaseCornerMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallGTCurve1SlopeRight|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandRoadWallGTCurve1SlopeRight|False": [
+    2,
+    2,
+    0
+  ],
+  "IslandTunnelCircularExit|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularExit|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceBuilding|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceBuilding|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceAntenne1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceAntenne1|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch1|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch1Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch1Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceAntenne2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceAntenne2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch2Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch2Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch2Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch2Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportHangar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportHangar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch1|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch1|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportTarmac|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportTarmac|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch3|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch3|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch1Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpacePlateformLaunch1Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch3Pillar|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSpaceLaunch3Pillar|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportPlane|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportPlane|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelCircularTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportTransitionToHighWay|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandAirportTransitionToHighWay|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandCroisetteTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Up|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Up|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandHighWayTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandSeaWayTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Down|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Down|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Left|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Left|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandTunnelTurbo2|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Right|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformSlope2Turbo2Right|False": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformTurbo2|True": [
+    1,
+    1,
+    0
+  ],
+  "IslandPlatformTurbo2|False": [
+    1,
+    1,
+    0
+  ]
+}

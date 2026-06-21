@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantTimezone>true</InvariantTimezone>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TMNFeditor - BackUp\**" />
+    <None Remove="TMNFeditor - BackUp\**" />
+    <Content Remove="TMNFeditor - BackUp\**" />
+    <EmbeddedResource Remove="TMNFeditor - BackUp\**" />
+    <Compile Remove="gbx-net-master\**" />
+    <None Remove="gbx-net-master\**" />
+    <Content Remove="gbx-net-master\**" />
+    <EmbeddedResource Remove="gbx-net-master\**" />
+    <Compile Remove="Aide\**" />
+    <None Remove="Aide\**" />
+    <Content Remove="Aide\**" />
+    <EmbeddedResource Remove="Aide\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GBX.NET" Version="2.4.2" />
+    <PackageReference Include="GBX.NET.LZO" Version="2.*" />
+    <PackageReference Include="GBX.NET.ZLib" Version="1.*" />
+    <PackageReference Include="NativeSharpZlib" Version="0.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.*" PrivateAssets="all" />
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>

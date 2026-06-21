@@ -1,0 +1,3082 @@
+{
+  "StadiumPlatformRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlRoadPub|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlRoadPub|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableAdvert|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableAdvert|False": [
+    2,
+    1,
+    0
+  ],
+  "StadiumTubeRoadUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMain|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMain|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadLightSystem|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadLightSystem|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirt|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlRoadGlass|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlRoadGlass|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlRoadCamera|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlRoadCamera|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadSoundSystem|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadSoundSystem|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHigh|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHigh|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadCross|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadCross|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCheckpointRingHRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCheckpointRingHRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCarterRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCarterRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableTube|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableTube|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumWater|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumWater|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumGrass|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumGrass|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableSupport|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableSupport|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPool|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPool|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatablePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatablePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtHill|True": [
+    1,
+    1,
+    2
+  ],
+  "StadiumDirtHill|False": [
+    1,
+    1,
+    2
+  ],
+  "StadiumWaterClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumWaterClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtParkClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtParkClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtBorder|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtBorder|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarCornerOut|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumGrassClip|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumGrassClip|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubePillarCap|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubePillarCap|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSlopeStartMirror|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumSculptBridgeSlopeStartMirror|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2DownLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2DownLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInRightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInRightTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeStraightSmall|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeStraightSmall|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeV8|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeV8|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricCross3x3|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricCross3x3|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgePillarMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgePillarMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2Slope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2Slope|False": [
+    2,
+    3,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInLeftBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInLeftBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeEndLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeEndLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeStart|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve4|True": [
+    4,
+    4,
+    0
+  ],
+  "StadiumRoadTiltGTCurve4|False": [
+    4,
+    4,
+    0
+  ],
+  "StadiumRoadMainTurboDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainYShapedCurve2|True": [
+    3,
+    2,
+    0
+  ],
+  "StadiumRoadMainYShapedCurve2|False": [
+    3,
+    2,
+    0
+  ],
+  "StadiumStretchTilt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumStretchTilt|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHigh2|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHigh2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition2DiagLeft|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2DiagLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtDiagonaleRight|True": [
+    2,
+    3,
+    0
+  ],
+  "StadiumRoadDirtDiagonaleRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarAir|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarAir|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtGTCurve2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumBump1Tilt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumBump1Tilt|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve3Out|True": [
+    3,
+    3,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve3Out|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadMainSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2SlopeMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2SlopeMirror|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderSlopeEndRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeEndRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInLeftTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInLeftTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderCornerIn|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderCornerIn|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2TiltMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2TiltMirror|False": [
+    2,
+    3,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2DownRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2DownRight|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumSculptBridgeSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadMainFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInLeftBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInLeftBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableCactus|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableCactus|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptA|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptA|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutRightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutRightBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeStraight|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumDirtDeadendDoor|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtDeadendDoor|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitRampSmall1x05|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitRampSmall1x05|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2Tilt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2Tilt|False": [
+    2,
+    3,
+    0
+  ],
+  "StadiumFabricStraight1x1|True": [
+    2,
+    1,
+    0
+  ],
+  "StadiumFabricStraight1x1|False": [
+    2,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillSlope2|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar2Line|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar2Line|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadTiltGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2Tilt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2Tilt|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutLeftTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutLeftTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitRampBig|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitRampBig|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainYShapedDiag2SlopeUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainYShapedDiag2SlopeUp|False": [
+    3,
+    2,
+    0
+  ],
+  "StadiumRoadMainGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumTubeV1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeV1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerDownRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerDownRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptC|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptC|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtWave_x1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtWave_x1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHighCross|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHighCross|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerLeft|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition2CurveLeft|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2CurveLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumInflatableCastleBig|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumInflatableCastleBig|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltStraight|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformBiSlope2Start|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformBiSlope2Start|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar3|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar3|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainYShapedDiag2SlopeDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainYShapedDiag2SlopeDown|False": [
+    3,
+    2,
+    0
+  ],
+  "StadiumFabricStraight1x1Air|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricStraight1x1Air|False": [
+    2,
+    1,
+    0
+  ],
+  "StadiumRoadTiltStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumBump1Slope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumBump1Slope|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillSlopeGT2|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillSlopeGT2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarCornerInAir|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumFabricPillarCornerInAir|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumControlLightBase|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlLightBase|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerOut|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InRightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InRightTop|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumHolePillar2Front|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar2Front|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar3|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar3|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition2CurveRight|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2CurveRight|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltCornerUpRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerUpRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2Mirror|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2Mirror|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumPlatformTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtFenceStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtFenceStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadDirtGTCurve3|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve3In|True": [
+    3,
+    3,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve3In|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadStretch|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadStretch|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderDiagIn|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderDiagIn|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve2Wall2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve2Wall2|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainTurboUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformToRoad2Mirror|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumPlatformToRoad2Mirror|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformLoopEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformLoopEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumAirship|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumAirship|False": [
+    1,
+    6,
+    0
+  ],
+  "StadiumTubePillarBranch|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubePillarBranch|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableSnowTree|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableSnowTree|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve2Wall4|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve2Wall4|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumDirtDeadendSpot|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtDeadendSpot|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlope2|True": [
+    1,
+    6,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlope2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBase|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBase|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformSlope2Straight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformSlope2Straight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillSlopeGT2Bis|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillSlopeGT2Bis|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutLeftBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutLeftBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricCross1x1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricCross1x1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptArchRingStart|True": [
+    4,
+    6,
+    0
+  ],
+  "StadiumSculptArchRingStart|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillarTilt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillarTilt|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeV4|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTubeV4|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerOutLeftTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerOutLeftTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtWave_x2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtWave_x2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2Mirror|True": [
+    2,
+    3,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2Mirror|False": [
+    2,
+    3,
+    0
+  ],
+  "StadiumPlatformWall2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWall2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarAirScreen|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricPillarAirScreen|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumCircuitHole|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitHole|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeUTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeUTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHoleSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHoleSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar7|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar7|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHole|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHole|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar6|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar6|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlopeEndMirror|True": [
+    1,
+    6,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlopeEndMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderCornerOut|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderCornerOut|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptB|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptB|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricCornerIn|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumFabricCornerIn|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumPlatformGTCurve2Wall1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve2Wall1|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InRightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InRightBottom|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumFabricCross3x3Screen|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumFabricCross3x3Screen|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadMainYShapedDiag2|True": [
+    3,
+    2,
+    0
+  ],
+  "StadiumRoadMainYShapedDiag2|False": [
+    3,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve2In|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve2In|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHigh|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHigh|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition1Left|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition1Left|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeBase2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeBase2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformToRoadMain|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformToRoadMain|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableCastle|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableCastle|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadDirtHighGTCurve3|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve2Out|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve2Out|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumPlatformBiSlope2End|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformBiSlope2End|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3Slope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3Slope|False": [
+    3,
+    4,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHighBridge|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoadDirtHighBridge|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar5|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar5|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerOutRightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerOutRightTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptArchRingEnd|True": [
+    4,
+    6,
+    0
+  ],
+  "StadiumSculptArchRingEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve3Wall1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve3Wall1|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlopeEnd|True": [
+    1,
+    6,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTube|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumTube|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3Mirror|True": [
+    3,
+    4,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3Mirror|False": [
+    3,
+    4,
+    0
+  ],
+  "StadiumCheckpointRingV|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCheckpointRingV|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumSculptBridgeSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillWave|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillWave|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlCameraPub|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlCameraPub|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltToRoadRight|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltToRoadRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerDownLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerDownLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutLeftBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutLeftBottom|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition1Right|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition1Right|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStartRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStartRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWall1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWall1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumLoopLeft|True": [
+    3,
+    2,
+    0
+  ],
+  "StadiumLoopLeft|False": [
+    3,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve4In|True": [
+    4,
+    4,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve4In|False": [
+    4,
+    4,
+    0
+  ],
+  "StadiumRoadMainTurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumLoopRight|True": [
+    3,
+    2,
+    0
+  ],
+  "StadiumLoopRight|False": [
+    3,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerOutRightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerOutRightBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2TiltMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2TiltMirror|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInLeftTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInLeftTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeCornerInLeftBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeCornerInLeftBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltTransition2DiagRight|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2DiagRight|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadMainBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerRight|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InLeftBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InLeftBottom|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainTurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderDiagOut|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderDiagOut|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutRightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutRightBottom|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInRightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeCornerInRightBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlLight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumControlLight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainFW|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainFW|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerUpLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltCornerUpLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutLeftTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutLeftTop|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtToRoadGrass|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtToRoadGrass|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTCurve4|True": [
+    4,
+    4,
+    0
+  ],
+  "StadiumRoadMainGTCurve4|False": [
+    4,
+    4,
+    0
+  ],
+  "StadiumRoadDirtHighFenceStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighFenceStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2Slope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag2x2Slope|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumFabricCornerOut|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumFabricCornerOut|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtFenceCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtFenceCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWallPub2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWallPub2|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillarSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHolePillarSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltToRoadLeft|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltToRoadLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2UpLeft|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2UpLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumPlatformTurboUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformTurboUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2SlopeMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2SlopeMirror|False": [
+    2,
+    3,
+    0
+  ],
+  "StadiumRoadDirtDiagonaleLeft|True": [
+    2,
+    3,
+    0
+  ],
+  "StadiumRoadDirtDiagonaleLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointRight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpointRight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWall4|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWall4|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutRightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2OutRightTop|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHighFenceCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHighFenceCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformLoopStart|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformLoopStart|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve4Out|True": [
+    4,
+    4,
+    0
+  ],
+  "StadiumCircuitBorderGTCurve4Out|False": [
+    4,
+    4,
+    0
+  ],
+  "StadiumSculptBridgeSlopeEndMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSlopeEndMirror|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteDown|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteDown|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadStretchSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadStretchSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHoleTilt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumHoleTilt|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitSlopeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InLeftTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeGTCurve2InLeftTop|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumCircuitTurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitTurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptArchRingStartMirror|True": [
+    4,
+    6,
+    0
+  ],
+  "StadiumSculptArchRingStartMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatablePalmTree|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatablePalmTree|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerIn|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadDirtHillTiltCornerIn|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformCheckpointUp|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInRightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInRightTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStartLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStartLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRampLow|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRampLow|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInRightBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagInRightBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2UpRight|True": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadTiltGTCurve2UpRight|False": [
+    2,
+    2,
+    0
+  ],
+  "StadiumRoadMainCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurboRouletteLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeUBottom|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainSlopeUBottom|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlope2Mirror|True": [
+    1,
+    6,
+    0
+  ],
+  "StadiumSculptBridgeSuspendSlope2Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve3Wall4|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve3Wall4|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumCircuitBumpUp2|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumCircuitBumpUp2|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2Right|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2Right|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadMainTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumBump1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumBump1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitRampSmall1x1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitRampSmall1x1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformToRoad2|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumPlatformToRoad2|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumGrassCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumGrassCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadMainGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadMainBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumCircuitLoopStart|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitLoopStart|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtDeadendTent1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirtDeadendTent1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTCurve5|True": [
+    5,
+    5,
+    0
+  ],
+  "StadiumRoadMainGTCurve5|False": [
+    5,
+    5,
+    0
+  ],
+  "StadiumRoadTiltTransition2Left|True": [
+    1,
+    2,
+    0
+  ],
+  "StadiumRoadTiltTransition2Left|False": [
+    1,
+    2,
+    0
+  ],
+  "StadiumPlatformGTCurve3Wall2|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformGTCurve3Wall2|False": [
+    3,
+    3,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3SlopeMirror|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3SlopeMirror|False": [
+    3,
+    4,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3|True": [
+    3,
+    4,
+    0
+  ],
+  "StadiumRoadMainGTDiag4x3|False": [
+    3,
+    4,
+    0
+  ],
+  "StadiumCircuitPillar1|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitPillar1|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBumpUp|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBumpUp|False": [
+    1,
+    1,
+    0
+  ],
+  "PylonStadium|True": [
+    1,
+    1,
+    0
+  ],
+  "PylonStadium|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2|True": [
+    2,
+    3,
+    0
+  ],
+  "StadiumRoadMainGTDiag3x2|False": [
+    2,
+    3,
+    0
+  ],
+  "StadiumPlatformWallBorder|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumPlatformWallBorder|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeStraightLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumSculptArchRingEndMirror|True": [
+    4,
+    6,
+    0
+  ],
+  "StadiumSculptArchRingEndMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutRightTop|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumCircuitBorderSlopeDiagOutRightTop|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirt|True": [
+    1,
+    1,
+    0
+  ],
+  "StadiumDirt|False": [
+    1,
+    1,
+    0
+  ],
+  "StadiumInflatableCastleDoor|True": [
+    3,
+    1,
+    0
+  ],
+  "StadiumInflatableCastleDoor|False": [
+    1,
+    1,
+    0
+  ]
+}

@@ -1,0 +1,1702 @@
+{
+  "SpeedTunnelSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageHoleSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageHoleSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPipelineRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPipelineRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "Canyon|True": [
+    1,
+    1,
+    0
+  ],
+  "Canyon|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadLamp|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadLamp|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGaragePillarRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGaragePillarRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "Desert2|True": [
+    1,
+    1,
+    3
+  ],
+  "Desert2|False": [
+    1,
+    1,
+    3
+  ],
+  "River|True": [
+    1,
+    1,
+    0
+  ],
+  "River|False": [
+    1,
+    1,
+    0
+  ],
+  "Desert3|True": [
+    1,
+    1,
+    6
+  ],
+  "Desert3|False": [
+    1,
+    1,
+    6
+  ],
+  "SpeedGarageHoleRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageHoleRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBase|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBase|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGaragePillarSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGaragePillarSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedToCanyon|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedToCanyon|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "Desert2ToDesert3|True": [
+    1,
+    1,
+    6
+  ],
+  "Desert2ToDesert3|False": [
+    1,
+    1,
+    6
+  ],
+  "SpeedClassicMountain|True": [
+    7,
+    4,
+    0
+  ],
+  "SpeedClassicMountain|False": [
+    1,
+    1,
+    0
+  ],
+  "DesertToDesert2|True": [
+    1,
+    1,
+    3
+  ],
+  "DesertToDesert2|False": [
+    1,
+    1,
+    3
+  ],
+  "SpeedBridgeTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicPeak|True": [
+    3,
+    3,
+    0
+  ],
+  "SpeedClassicPeak|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT2b|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedGarageSlopeGT2b|False": [
+    2,
+    2,
+    0
+  ],
+  "SpeedAdvertising|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedAdvertising|False": [
+    1,
+    1,
+    0
+  ],
+  "DesertToDesert|True": [
+    1,
+    1,
+    3
+  ],
+  "DesertToDesert|False": [
+    1,
+    1,
+    3
+  ],
+  "RockToRock|True": [
+    1,
+    1,
+    4
+  ],
+  "RockToRock|False": [
+    1,
+    1,
+    4
+  ],
+  "DesertToRock|True": [
+    1,
+    1,
+    2
+  ],
+  "DesertToRock|False": [
+    1,
+    1,
+    2
+  ],
+  "DesertToRiver|True": [
+    1,
+    1,
+    0
+  ],
+  "DesertToRiver|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSaguarosGround|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSaguarosGround|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRockToRockEntry3|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRockToRockEntry3|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToBridgeArch5|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToBridgeArch5|False": [
+    1,
+    5,
+    0
+  ],
+  "SpeedClassicStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockLacetsBis|True": [
+    5,
+    4,
+    0
+  ],
+  "SpeedRockToRockLacetsBis|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBiSlopeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBiSlopeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRocksRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRocksRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT5b|True": [
+    5,
+    5,
+    0
+  ],
+  "SpeedGarageSlopeGT5b|False": [
+    5,
+    5,
+    0
+  ],
+  "SpeedClassicCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4In|True": [
+    4,
+    4,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4In|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedLoopLeft|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedLoopLeft|False": [
+    2,
+    2,
+    0
+  ],
+  "SpeedBridgePillarRock8|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarRock8|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeGTCurve4|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeGTCurve4|False": [
+    4,
+    4,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpBase1|True": [
+    5,
+    5,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpBase1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelDesertToRockEntry2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelDesertToRockEntry2|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSandCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSandCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageToSlope|True": [
+    1,
+    3,
+    0
+  ],
+  "SpeedGarageToSlope|False": [
+    1,
+    3,
+    0
+  ],
+  "SpeedGarageBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedGarageBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedHumpRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedHumpRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeWheeling|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeWheeling|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageToSlopeMirror|True": [
+    1,
+    3,
+    0
+  ],
+  "SpeedGarageToSlopeMirror|False": [
+    1,
+    3,
+    0
+  ],
+  "SpeedCliffRoadAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffRoadAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicBarrels|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicBarrels|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicRocks|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicRocks|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageToRoadAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageToRoadAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarSand10|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarSand10|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignWrongWay|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignWrongWay|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedToll2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedToll2|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarRock4|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarRock4|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT3b|True": [
+    3,
+    3,
+    0
+  ],
+  "SpeedGarageSlopeGT3b|False": [
+    3,
+    3,
+    0
+  ],
+  "SpeedRiverTetrisStraightUp|True": [
+    6,
+    4,
+    0
+  ],
+  "SpeedRiverTetrisStraightUp|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadSignWarning|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadSignWarning|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4|True": [
+    4,
+    4,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedGarageBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedGarageHatSlopeTop|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedGarageHatSlopeTop|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedGarageTurboSlopeUp|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeUp|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry2_Old|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry2_Old|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedToll|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedToll|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignWarning|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignWarning|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicContainers|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicContainers|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicJump|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicJump|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSpinRight|True": [
+    4,
+    2,
+    0
+  ],
+  "SpeedSpinRight|False": [
+    4,
+    2,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpDiagRight|True": [
+    6,
+    4,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpDiagRight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRockToRockEntry1|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRockToRockEntry1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadSignThisWay|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadSignThisWay|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpDiagLeft|True": [
+    6,
+    4,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpDiagLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverTetrisBridgeDiagLeft|True": [
+    8,
+    3,
+    0
+  ],
+  "SpeedRiverTetrisBridgeDiagLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFallenContainers|True": [
+    2,
+    1,
+    0
+  ],
+  "SpeedFallenContainers|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeHole|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeHole|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToBridgeArch3|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToBridgeArch3|False": [
+    1,
+    3,
+    0
+  ],
+  "SpeedTunnelRoadEntry3_Old|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry3_Old|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry2|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGtCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "SpeedGtCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "SpeedTiltCornerAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltCornerAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRocksArch|True": [
+    3,
+    1,
+    0
+  ],
+  "SpeedRocksArch|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageHatSlopeBottom|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedGarageHatSlopeBottom|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpCorner|True": [
+    5,
+    5,
+    0
+  ],
+  "SpeedRiverTetrisStraightUpCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedSpinLeft|True": [
+    4,
+    2,
+    0
+  ],
+  "SpeedSpinLeft|False": [
+    4,
+    2,
+    0
+  ],
+  "SpeedCliffRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry1|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPlankAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPlankAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry3|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry3|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadRight2x1|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedRiverRoadToRoadRight2x1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffRoad3|True": [
+    1,
+    3,
+    0
+  ],
+  "SpeedCliffRoad3|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT3|True": [
+    3,
+    3,
+    0
+  ],
+  "SpeedGarageSlopeGT3|False": [
+    3,
+    3,
+    0
+  ],
+  "SpeedTunnelRoadGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "SpeedTunnelDesertToRockEntry1|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelDesertToRockEntry1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarSand6|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarSand6|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltTransitionRight|True": [
+    1,
+    3,
+    0
+  ],
+  "SpeedTiltTransitionRight|False": [
+    1,
+    3,
+    0
+  ],
+  "SpeedRocks2|True": [
+    2,
+    1,
+    0
+  ],
+  "SpeedRocks2|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarWater10|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarWater10|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT4b|True": [
+    4,
+    4,
+    0
+  ],
+  "SpeedGarageSlopeGT4b|False": [
+    4,
+    4,
+    0
+  ],
+  "SpeedClassicGtCurve|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedClassicGtCurve|False": [
+    2,
+    2,
+    0
+  ],
+  "SpeedTunnelExit|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelExit|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltTShaped|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltTShaped|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffRoad2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffRoad2|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedFreeSignLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicDerrick|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedClassicDerrick|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToBridge|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockToRockToBridge|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignRight|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedFreeSignRight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeRight|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeRight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadLeft4x1|True": [
+    4,
+    2,
+    0
+  ],
+  "SpeedRiverRoadToRoadLeft4x1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT2|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedGarageSlopeGT2|False": [
+    2,
+    2,
+    0
+  ],
+  "SpeedBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "SpeedRockToRockLacets|True": [
+    5,
+    4,
+    0
+  ],
+  "SpeedRockToRockLacets|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "SpeedGaragePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGaragePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedHumpRoad2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedHumpRoad2|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltStraightAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltStraightAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedJumpInRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedJumpInRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry1_Old|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRoadEntry1_Old|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeSlopeBase4|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeSlopeBase4|False": [
+    1,
+    4,
+    0
+  ],
+  "SpeedGarageSlopeGT5|True": [
+    5,
+    5,
+    0
+  ],
+  "SpeedGarageSlopeGT5|False": [
+    5,
+    5,
+    0
+  ],
+  "SpeedTunnelRockToRockEntry2|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelRockToRockEntry2|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarWater6|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgePillarWater6|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadStraightToGarage|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadStraightToGarage|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltCornerInside|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltCornerInside|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopeGT4|True": [
+    4,
+    4,
+    0
+  ],
+  "SpeedGarageSlopeGT4|False": [
+    4,
+    4,
+    0
+  ],
+  "SpeedRiverRoadStraight|True": [
+    1,
+    2,
+    0
+  ],
+  "SpeedRiverRoadStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverTetrisBridgeDiagRight|True": [
+    8,
+    3,
+    0
+  ],
+  "SpeedRiverTetrisBridgeDiagRight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffBridgeAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedCliffBridgeAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedDesertToRockToRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedDesertToRockToRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4InMirror|True": [
+    4,
+    4,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4InMirror|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4Mirror|True": [
+    4,
+    4,
+    0
+  ],
+  "SpeedRiverRoadToRoadGTCurve4Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTiltTransitionLeft|True": [
+    1,
+    3,
+    0
+  ],
+  "SpeedTiltTransitionLeft|False": [
+    1,
+    3,
+    0
+  ],
+  "SpeedRiverRoadToRoadLeft2x1|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedRiverRoadToRoadLeft2x1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicReservoir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClassicReservoir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedHoleAir|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedHoleAir|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadToRoadRight4x1|True": [
+    4,
+    2,
+    0
+  ],
+  "SpeedRiverRoadToRoadRight4x1|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeDown|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageTurboSlopeDown|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedLoopRight|True": [
+    2,
+    2,
+    0
+  ],
+  "SpeedLoopRight|False": [
+    2,
+    2,
+    0
+  ],
+  "SpeedGarageSlopePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageSlopePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadSignWrongWay|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadSignWrongWay|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBarrelJump|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBarrelJump|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadClipLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadClipLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadClipRight|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRiverRoadClipRight|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedTunnelClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRockClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPipelineRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPipelineRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedBridgeClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedGarageRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRock|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedRock|False": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPylon|True": [
+    1,
+    1,
+    0
+  ],
+  "SpeedPylon|False": [
+    1,
+    1,
+    0
+  ]
+}

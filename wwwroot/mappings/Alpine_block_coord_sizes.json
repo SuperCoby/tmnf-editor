@@ -1,0 +1,2092 @@
+{
+  "AlpineRoadTempleSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTempleSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTemple|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTemple|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTemple2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTemple2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChalet|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChalet|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoadPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoadPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelRoad|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelRoad|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadLamp|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadLamp|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformAlpineRoadWood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformAlpineRoadWood|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWood|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadMetalTube|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadMetalTube|False": [
+    1,
+    1,
+    0
+  ],
+  "SnowToIce|True": [
+    1,
+    1,
+    0
+  ],
+  "SnowToIce|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletSlopePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletSlopePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTemple2Slope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadTemple2Slope|False": [
+    1,
+    1,
+    0
+  ],
+  "SnowToSnow|True": [
+    1,
+    1,
+    3
+  ],
+  "SnowToSnow|False": [
+    1,
+    1,
+    3
+  ],
+  "Snow1|True": [
+    1,
+    1,
+    3
+  ],
+  "Snow1|False": [
+    1,
+    1,
+    3
+  ],
+  "Snow3|True": [
+    1,
+    1,
+    9
+  ],
+  "Snow3|False": [
+    1,
+    1,
+    9
+  ],
+  "Ice|True": [
+    1,
+    1,
+    0
+  ],
+  "Ice|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelRoadSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelRoadSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "Ice0ToIce|True": [
+    1,
+    1,
+    0
+  ],
+  "Ice0ToIce|False": [
+    1,
+    1,
+    0
+  ],
+  "Hills|True": [
+    1,
+    1,
+    1
+  ],
+  "Hills|False": [
+    1,
+    1,
+    1
+  ],
+  "TundraHills|True": [
+    1,
+    1,
+    1
+  ],
+  "TundraHills|False": [
+    1,
+    1,
+    1
+  ],
+  "SnowToSnow1|True": [
+    1,
+    1,
+    3
+  ],
+  "SnowToSnow1|False": [
+    1,
+    1,
+    3
+  ],
+  "Snow1ToSnow2|True": [
+    1,
+    1,
+    6
+  ],
+  "Snow1ToSnow2|False": [
+    1,
+    1,
+    6
+  ],
+  "Snow2ToSnow3|True": [
+    1,
+    1,
+    9
+  ],
+  "Snow2ToSnow3|False": [
+    1,
+    1,
+    9
+  ],
+  "Snow2|True": [
+    1,
+    1,
+    6
+  ],
+  "Snow2|False": [
+    1,
+    1,
+    6
+  ],
+  "AlpineMetalTubeClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeClip|False": [
+    1,
+    1,
+    0
+  ],
+  "Ice0|True": [
+    1,
+    1,
+    0
+  ],
+  "Ice0|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowBase|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowBase|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoadClip2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoadClip2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTundraClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTundraClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoadClipPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoadClipPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoadClip|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallRoadClip|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletClipP\uFFFDllar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadChaletClipP\uFFFDllar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerInsideGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerInsideGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTrees2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTrees2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlatformBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlatformBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraBridge|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraBridge|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineCliffRoadLeft|True": [
+    3,
+    3,
+    0
+  ],
+  "AlpineCliffRoadLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTrees3|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTrees3|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistOutGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistOutGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase6Right|True": [
+    3,
+    6,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase6Right|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelExit|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelExit|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTundraHillsTransitionSlopeDiag2x3Mirror|True": [
+    2,
+    3,
+    0
+  ],
+  "AlpineTundraHillsTransitionSlopeDiag2x3Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTrees|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTrees|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodRamp2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodRamp2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltLeftCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltLeftCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelBiSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerRightGround|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerRightGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCastlePillarCross|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCastlePillarCross|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeVertical|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeVertical|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineGreatWallCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT5b|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT5b|False": [
+    5,
+    5,
+    0
+  ],
+  "AlpineRoadPlateformGT3b|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT3b|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistOut|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistOut|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltLeftCheckpointGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltLeftCheckpointGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3Left|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3Left|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineRoadPlateformGT4b|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT4b|False": [
+    4,
+    4,
+    0
+  ],
+  "AlpineTunnelTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboRoulette|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboRoulette|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltUnSpin|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltUnSpin|False": [
+    1,
+    3,
+    0
+  ],
+  "AlpineTunnelEntry3|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelEntry3|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTemple|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTemple|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCheckpointSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCheckpointSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignWrongWay|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignWrongWay|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboDown|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboDown|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltGTCurve1Ground|True": [
+    2,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltGTCurve1Ground|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraBiSlopeStart|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase6Right|True": [
+    3,
+    6,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase6Right|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3LeftPillar|True": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3LeftPillar|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineRocks3|True": [
+    2,
+    1,
+    0
+  ],
+  "AlpineRocks3|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerRight|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerRight|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineMetalTubeVWall|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeVWall|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeCornerLeft|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeCornerLeft|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboLeftGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboLeftGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelEntry1|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelEntry1|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase2|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineToundraHillsTransitionSlope2x1|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineToundraHillsTransitionSlope2x1|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraBiSlopeStart|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "AlpineRoadGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineGreatWallGTCurve2Pillar|True": [
+    2,
+    2,
+    0
+  ],
+  "AlpineGreatWallGTCurve2Pillar|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineSignRightWay|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignRightWay|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCornerUp|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCornerUp|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTundraHillsTransitionSlopeDiag2x3|True": [
+    2,
+    3,
+    0
+  ],
+  "AlpineTundraHillsTransitionSlopeDiag2x3|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineHillsTransitionSlopeDiag2x3|True": [
+    2,
+    3,
+    0
+  ],
+  "AlpineHillsTransitionSlopeDiag2x3|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadGTCurve3|True": [
+    3,
+    3,
+    0
+  ],
+  "AlpineRoadGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineRoadWoodHawkRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodHawkRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT2|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineHillsTransitionRoadwood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineHillsTransitionRoadwood|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistIn|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistIn|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformToSlopeLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformToSlopeLeft|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadPlateformGT3|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT3|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallCastlePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCastlePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCorner|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCorner|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlatformBiSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlatformBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodCheckPoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodCheckPoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeToRoadWood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeToRoadWood|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltGTCurve1|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltGTCurve1|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineRocks2|True": [
+    2,
+    1,
+    0
+  ],
+  "AlpineRocks2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTempleCross|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTempleCross|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCornerDown|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCornerDown|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT2b|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT2b|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineRoadWoodBigSlope2x3|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodBigSlope2x3|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineLakeBridge|True": [
+    2,
+    1,
+    0
+  ],
+  "AlpineLakeBridge|False": [
+    2,
+    1,
+    0
+  ],
+  "AlpineFreeWheeling|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineFreeWheeling|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTurboSide|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboSide|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeStart|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineTunnelBiSlopeEnd|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelBiSlopeEnd|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRocks1|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRocks1|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineHillsTransitionTunnelEntry|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineHillsTransitionTunnelEntry|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase2|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurbo|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurbo|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCheckpointSlopeDown|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCheckpointSlopeDown|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineStartFinishLine|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineStartFinishLine|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboCenter|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboCenter|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCastle|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCastle|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeCornerRight|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeCornerRight|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboRightGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboRightGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelCheckPoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelCheckPoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerInside|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerInside|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase6Left|True": [
+    2,
+    6,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase6Left|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoadExit|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineIceRoadExit|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerLeftGround|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerLeftGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerOutside|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerOutside|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallGTCurve3|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallGTCurve3|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase4Left|True": [
+    2,
+    4,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase4Left|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3Right|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3Right|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallCastlePillarCrossPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallCastlePillarCrossPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerOutsideGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltCornerOutsideGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSpinGround|True": [
+    1,
+    3,
+    0
+  ],
+  "AlpineRoadWoodTiltSpinGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineToundraHillsTransitionTunnelEntry|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineToundraHillsTransitionTunnelEntry|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSlopeDownCornerLeft|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltSpin|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltSpin|False": [
+    1,
+    3,
+    0
+  ],
+  "AlpineRoadWoodTurboRampCenter|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboRampCenter|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineIceRoadGTCurve2|True": [
+    2,
+    2,
+    0
+  ],
+  "AlpineIceRoadGTCurve2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase4Right|True": [
+    2,
+    4,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase4Right|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformRamp|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformRamp|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformSlope|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistInGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTwistInGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase6Left|True": [
+    2,
+    6,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase6Left|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltRightCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltRightCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineHillsTransitionSlopeDiag2x3Mirror|True": [
+    2,
+    3,
+    0
+  ],
+  "AlpineHillsTransitionSlopeDiag2x3Mirror|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineCliffRoadAir|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineCliffRoadAir|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodBiSlopeStart|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodBiSlopeStart|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodFinish|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodFinish|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelGTCurve2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelGTCurve2|False": [
+    2,
+    2,
+    0
+  ],
+  "AlpineLakeSlope|True": [
+    3,
+    5,
+    0
+  ],
+  "AlpineLakeSlope|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraBiSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodRamp3|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodRamp3|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTemplePillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTemplePillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallToRoadWood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallToRoadWood|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3RightPillar|True": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallBiSlopeGTCurve3RightPillar|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase4Left|True": [
+    2,
+    4,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraSlopeBase4Left|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignLeftWay|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignLeftWay|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltStraightGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltStraightGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineCliffBridgeAir|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineCliffBridgeAir|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeHWall|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineMetalTubeHWall|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelEntry2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTunnelEntry2|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT5|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT5|False": [
+    5,
+    5,
+    0
+  ],
+  "AlpineSnowCheckpoint|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSnowCheckpoint|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineToundraHillsTransitionRoadwood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineToundraHillsTransitionRoadwood|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltUnSpinGround|True": [
+    1,
+    3,
+    0
+  ],
+  "AlpineRoadWoodTiltUnSpinGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallToRoadWoodPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallToRoadWoodPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallGTCurve3Pillar|True": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallGTCurve3Pillar|False": [
+    3,
+    3,
+    0
+  ],
+  "AlpineGreatWallStraightPillar2|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallStraightPillar2|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboRight|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboRight|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallSlopeStraight|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallSlopeStraight|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineHillsTransitionSlope2x1|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineHillsTransitionSlope2x1|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineCliffRoadRight|True": [
+    3,
+    3,
+    0
+  ],
+  "AlpineCliffRoadRight|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraBiSlopeEnd|True": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisToundraToToundraBiSlopeEnd|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodStartLine|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodStartLine|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltRightCheckpointGround|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltRightCheckpointGround|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignWarning|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineSignWarning|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodSlopeBase|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodSlopeBase|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboUp|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTurboUp|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodRamp1|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodRamp1|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineAdvertising|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineAdvertising|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallStraightPillar|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallStraightPillar|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboLeft|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadWoodTiltTurboLeft|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT4|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformGT4|False": [
+    4,
+    4,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase4Right|True": [
+    2,
+    4,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraSlopeBase4Right|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformToSlopeRight|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineRoadPlateformToSlopeRight|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraBridge|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallTetrisSnowToToundraBridge|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallSlopeBase2|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineGreatWallSlopeBase2|False": [
+    1,
+    2,
+    0
+  ],
+  "AlpineTundra|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpineTundra|False": [
+    1,
+    1,
+    0
+  ],
+  "AlpinePylonWood|True": [
+    1,
+    1,
+    0
+  ],
+  "AlpinePylonWood|False": [
+    1,
+    1,
+    0
+  ]
+}
