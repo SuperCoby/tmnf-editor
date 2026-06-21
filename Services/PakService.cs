@@ -1144,7 +1144,7 @@ public static class ClipGbxExporter
             {
                 allTimes.Add(kf.Time);
                 allTimes.Add(kf.EndTime);
-                if (subdivide && kf.Steps > 1)
+                if (subdivide && kf.Steps > 1 && (kf.X != 0 || kf.Y != 0 || kf.Z != 0))
                 {
                     var dur = kf.EndTime - kf.Time;
                     for (int s = 1; s < kf.Steps; s++)
