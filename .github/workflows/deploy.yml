@@ -27,6 +27,9 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Install wasm-tools workload
+        run: dotnet workload install wasm-tools-net9
+
       - name: Publish
         run: dotnet publish TMNFeditor.csproj -c Release -o release
 
