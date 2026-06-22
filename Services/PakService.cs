@@ -653,7 +653,7 @@ public void LoadBlockCoordSizes(string pakName, string json)
         var tri3dBlocks = new List<Tri3DBlock>();
         var allTracks = new List<TrackInfo>();
 
-        void ExtractFromTracks(IEnumerable<CGameCtnMediaTrack>? tracks, string clipType, string clipName)
+        void ExtractFromTracks(IEnumerable<CGameCtnMediaTrack>? tracks, string clipType, string clipName, string clipDisplayName)
         {
             if (tracks == null) return;
             foreach (var track in tracks)
@@ -675,27 +675,39 @@ public void LoadBlockCoordSizes(string pakName, string json)
                     )).ToArray();
 
                     tri3dBlocks.Add(new Tri3DBlock(clipType, clipName, trackName, verts, indices, keyframes));
-                    allTracks.Add(new TrackInfo(clipType, clipName, trackName, meshIndex));
+                    allTracks.Add(new TrackInfo(clipType, clipName, clipDisplayName, trackName, meshIndex));
                     hasTri3D = true;
                 }
                 if (!hasTri3D)
-                    allTracks.Add(new TrackInfo(clipType, clipName, trackName, -1));
+                    allTracks.Add(new TrackInfo(clipType, clipName, clipDisplayName, trackName, -1));
             }
         }
 
         try
         {
-            ExtractFromTracks(challenge.ClipIntro?.Tracks, "Intro", challenge.ClipIntro?.Name ?? "Intro");
+            var introName = challenge.ClipIntro?.Name ?? "Intro";
+            ExtractFromTracks(challenge.ClipIntro?.Tracks, "Intro", introName, introName);
 
             if (challenge.ClipGroupInGame?.Clips != null)
-                foreach (var c in challenge.ClipGroupInGame.Clips)
-                    ExtractFromTracks(c.Clip?.Tracks, "In Game", c.Clip?.Name ?? "");
+            {
+                var igClips = challenge.ClipGroupInGame.Clips;
+                var igBaseNames = igClips.Select(c => string.IsNullOrWhiteSpace(c.Clip?.Name) ? "Clip" : c.Clip.Name).ToList();
+                var igUniqueNames = MakeUniqueNames(igBaseNames);
+                for (int i = 0; i < igClips.Count; i++)
+                    ExtractFromTracks(igClips[i].Clip?.Tracks, "In Game", igUniqueNames[i], igBaseNames[i]);
+            }
 
             if (challenge.ClipGroupEndRace?.Clips != null)
-                foreach (var c in challenge.ClipGroupEndRace.Clips)
-                    ExtractFromTracks(c.Clip?.Tracks, "End Race", c.Clip?.Name ?? "");
+            {
+                var erClips = challenge.ClipGroupEndRace.Clips;
+                var erBaseNames = erClips.Select(c => string.IsNullOrWhiteSpace(c.Clip?.Name) ? "Clip" : c.Clip.Name).ToList();
+                var erUniqueNames = MakeUniqueNames(erBaseNames);
+                for (int i = 0; i < erClips.Count; i++)
+                    ExtractFromTracks(erClips[i].Clip?.Tracks, "End Race", erUniqueNames[i], erBaseNames[i]);
+            }
 
-            ExtractFromTracks(challenge.ClipGlobal?.Tracks, "Global", challenge.ClipGlobal?.Name ?? "Global");
+            var globalName = challenge.ClipGlobal?.Name ?? "Global";
+            ExtractFromTracks(challenge.ClipGlobal?.Tracks, "Global", globalName, globalName);
         }
         catch { }
 
@@ -834,6 +846,30 @@ public void LoadBlockCoordSizes(string pakName, string json)
         node["childCount"] = children.Count;
         return node;
     }
+
+    private static List<string> MakeUniqueNames(List<string> baseNames)
+    {
+        var counts = new Dictionary<string, int>();
+        foreach (var n in baseNames)
+            counts[n] = counts.TryGetValue(n, out var c) ? c + 1 : 1;
+
+        var indices = new Dictionary<string, int>();
+        var result = new List<string>(baseNames.Count);
+        foreach (var n in baseNames)
+        {
+            if (counts[n] > 1)
+            {
+                var idx = indices.TryGetValue(n, out var i) ? i + 1 : 1;
+                indices[n] = idx;
+                result.Add($"{n} {idx}");
+            }
+            else
+            {
+                result.Add(n);
+            }
+        }
+        return result;
+    }
 }
 
 public record SolidEntry(string Name, PakFile File);
@@ -842,7 +878,7 @@ public record ChallengeBlock(string Name, int X, int Y, int Z, int Dir, bool IsG
 public record Tri3DVertex(float R, float G, float B, float A);
 public record Tri3DKeyframe(float Time, float[] Positions);
 public record Tri3DBlock(string ClipType, string ClipName, string TrackName, Tri3DVertex[] Vertices, int[] Indices, Tri3DKeyframe[] Keyframes);
-public record TrackInfo(string ClipType, string ClipName, string TrackName, int Tri3DIndex);
+public record TrackInfo(string ClipType, string ClipName, string ClipDisplayName, string TrackName, int Tri3DIndex);
 public record ChallengeData(string MapName, int SizeX, int SizeZ, List<ChallengeBlock> Blocks, List<Tri3DBlock> Triangles3D, List<TrackInfo> AllTracks);
 
 public static class ClipGbxExporter
@@ -1352,33 +1388,40 @@ public static class ClipGbxExporter
     }
 
     public static byte[] ExportChallengeBytes(byte[] originalBytes,
-        List<(string clipType, string clipName, string trackName, CGameCtnMediaBlockTriangles3D block)> newBlocks)
+        List<(string clipType, string clipName, string clipDisplayName, string trackName, CGameCtnMediaBlockTriangles3D block)> newBlocks)
     {
         var gbx = Gbx.Parse(new MemoryStream(originalBytes));
         if (gbx.Node is not CGameCtnChallenge challenge) return Array.Empty<byte>();
 
-        CGameCtnMediaClip GetOrCreateClip(string clipType, string clipName)
+        var clipCache = new Dictionary<string, CGameCtnMediaClip>();
+
+        CGameCtnMediaClip GetOrCreateClip(string clipType, string clipName, string clipDisplayName)
         {
+            var key = $"{clipType}|{clipName}";
+            if (clipCache.TryGetValue(key, out var cached)) return cached;
+
+            CGameCtnMediaClip clip;
             if (clipType == "Intro")
-                return challenge.ClipIntro ??= CreateMediaClip(clipName);
-            if (clipType == "Global")
-                return challenge.ClipGlobal ??= CreateMediaClip(clipName);
+                clip = challenge.ClipIntro ??= CreateMediaClip(clipDisplayName);
+            else if (clipType == "Global")
+                clip = challenge.ClipGlobal ??= CreateMediaClip(clipDisplayName);
+            else
+            {
+                var clipGroup = clipType == "End Race"
+                    ? (challenge.ClipGroupEndRace ??= CreateMediaClipGroup())
+                    : (challenge.ClipGroupInGame ??= CreateMediaClipGroup());
 
-            var clipGroup = clipType == "End Race"
-                ? (challenge.ClipGroupEndRace ??= CreateMediaClipGroup())
-                : (challenge.ClipGroupInGame ??= CreateMediaClipGroup());
+                clip = CreateMediaClip(clipDisplayName);
+                clipGroup.Clips.Add(new() { Clip = clip });
+            }
 
-            foreach (var ct in clipGroup.Clips)
-                if (ct.Clip.Name == clipName) return ct.Clip;
-
-            var clip = CreateMediaClip(clipName);
-            clipGroup.Clips.Add(new() { Clip = clip });
+            clipCache[key] = clip;
             return clip;
         }
 
-        foreach (var (clipType, clipName, trackName, tri3dBlock) in newBlocks)
+        foreach (var (clipType, clipName, clipDisplayName, trackName, tri3dBlock) in newBlocks)
         {
-            var clip = GetOrCreateClip(clipType, clipName);
+            var clip = GetOrCreateClip(clipType, clipName, clipDisplayName);
             var track = CreateMediaTrack(trackName);
             track.Blocks.Add(tri3dBlock);
             clip.Tracks.Add(track);

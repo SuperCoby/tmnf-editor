@@ -245,12 +245,12 @@ function _pbApplyTime(t) {
                 const dur = kf.endTime - kf.time;
                 if (dur <= 0) { sx = kf.x; sy = kf.y; sz = kf.z; continue; }
                 const p = Math.min(1, (t - kf.time) / dur);
-                const prev = i > 0 ? scaleKf[i - 1] : { x: startScale.x, y: startScale.y, z: startScale.z };
+                const prev = i > 0 ? scaleKf[i - 1] : { x: 1, y: 1, z: 1 };
                 sx = prev.x + (kf.x - prev.x) * p;
                 sy = prev.y + (kf.y - prev.y) * p;
                 sz = prev.z + (kf.z - prev.z) * p;
             }
-            obj.scale.set(sx, sy, sz);
+            obj.scale.set(startScale.x * sx, startScale.y * sy, startScale.z * sz);
         }
 
         if (rotKf.length > 0 && startRot) {
@@ -265,10 +265,59 @@ function _pbApplyTime(t) {
             obj.rotation.set(startRot.x + rx, startRot.y + ry, startRot.z + rz);
         }
     }
+    _tri3dApplyTime(t);
+}
+
+function _tri3dApplyTime(t) {
+    for (const mesh of tri3dMeshes) {
+        const kfs = mesh.userData.tri3dKeyframes;
+        if (!kfs || kfs.length < 2) continue;
+        const vertCount = mesh.userData.tri3dVertCount;
+        const initPos = mesh.userData.tri3dInitPos;
+
+        let kfA = kfs[0], kfB = kfs[0];
+        for (let i = 0; i < kfs.length - 1; i++) {
+            if (t >= kfs[i].time && t <= kfs[i + 1].time) {
+                kfA = kfs[i]; kfB = kfs[i + 1]; break;
+            }
+            if (t > kfs[i + 1].time) { kfA = kfs[i + 1]; kfB = kfs[i + 1]; }
+        }
+
+        const dur = kfB.time - kfA.time;
+        const p = dur > 0 ? Math.min(1, (t - kfA.time) / dur) : 0;
+        const posAttr = mesh.geometry.getAttribute('position');
+        const posA = kfA.positions, posB = kfB.positions;
+
+        let cx = 0, cy = 0, cz = 0;
+        for (let i = 0; i < vertCount; i++) {
+            const i3 = i * 3;
+            const x = posA[i3]     + (posB[i3]     - posA[i3])     * p;
+            const y = posA[i3 + 1] + (posB[i3 + 1] - posA[i3 + 1]) * p;
+            const z = posA[i3 + 2] + (posB[i3 + 2] - posA[i3 + 2]) * p;
+            cx += x; cy += y; cz += z;
+            posAttr.setXYZ(i, x - initPos.x, y - initPos.y, z - initPos.z);
+        }
+        cx /= vertCount; cy /= vertCount; cz /= vertCount;
+        mesh.position.set(cx, cy, cz);
+        for (let i = 0; i < vertCount; i++) {
+            posAttr.setXYZ(i, posAttr.getX(i) - cx + initPos.x, posAttr.getY(i) - cy + initPos.y, posAttr.getZ(i) - cz + initPos.z);
+        }
+        posAttr.needsUpdate = true;
+        mesh.geometry.computeVertexNormals();
+    }
+}
+
+function _tri3dMaxTime() {
+    let d = 0;
+    for (const mesh of tri3dMeshes) {
+        const kfs = mesh.userData.tri3dKeyframes;
+        if (kfs && kfs.length > 0) d = Math.max(d, kfs[kfs.length - 1].time);
+    }
+    return d;
 }
 
 function _pbTotalDur() {
-    let d = 0;
+    let d = _tri3dMaxTime();
     for (const tgt of _pbTargets) {
         if (tgt.transKf.length > 0) d = Math.max(d, tgt.transKf[tgt.transKf.length - 1].endTime);
         if (tgt.scaleKf.length > 0) d = Math.max(d, tgt.scaleKf[tgt.scaleKf.length - 1].endTime);
@@ -1290,7 +1339,7 @@ window.TMNFeditorScene = {
     initImportPreview(canvasId)        { importPrev.init(canvasId); },
     initImportDropZone(zoneId, ref)    { mainDotNetRef = ref; importPrev.initDropZone(zoneId, ref); },
     initImportFileInput(inputId)       { importPrev.initFileInput(inputId); },
-    triggerFileInput(inputId)          { document.getElementById(inputId)?.click(); },
+    triggerFileInput(inputId) { document.getElementById(inputId)?.click(); },
     switchImportTab(idx) {
         activeImportIdx = idx;
         importPrev.switchTab(idx);
@@ -1720,12 +1769,6 @@ window.TMNFeditorScene = {
 
     playbackStartAll(allAnims, repeat) {
         _pbPlaying = false;
-        for (const tgt of _pbTargets) {
-            const { obj, startPos, startScale, startRot } = tgt;
-            if (startPos) obj.position.copy(startPos);
-            if (startScale) obj.scale.copy(startScale);
-            if (startRot) obj.rotation.set(startRot.x, startRot.y, startRot.z);
-        }
         _pbTargets = [];
         for (const a of (allAnims || [])) {
             const obj = importMeshGroups.get(a.idx);
@@ -1761,6 +1804,7 @@ window.TMNFeditorScene = {
                 if (tgt.startScale) tgt.obj.scale.copy(tgt.startScale);
                 if (tgt.startRot) tgt.obj.rotation.set(tgt.startRot.x, tgt.startRot.y, tgt.startRot.z);
             }
+            _tri3dApplyTime(0);
         }
         _pbApplyTime(_pbTime);
         _pbUpdateTimer(_pbTime);

@@ -211,7 +211,7 @@
                                         var idx = ci;
                                         var clip = clips[ci];
                                         <div class="tri3d-clip-row @(_selectedClipIdx == idx ? "active" : "")" @onclick="() => { _selectedClipIdx = idx; }">
-                                            <span class="tri3d-clip-label">@(ParseTmColors(clip.ClipName))</span>
+                                            <span class="tri3d-clip-label">@(ParseTmColors(clip.DisplayName))</span>
                                         </div>
                                     }
                                 </div>
@@ -1183,6 +1183,7 @@
         public string Name { get; set; } = "";
         public string ClipType { get; set; } = "";
         public string ClipName { get; set; } = "";
+        public string ClipDisplayName { get; set; } = "";
         public string TrackName { get; set; } = "";
         public int Vertices { get; set; }
         public int Triangles { get; set; }
@@ -1199,7 +1200,7 @@
     private string _selectedClipType = "In Game";
     private int _selectedClipIdx = 0;
 
-    private record ClipInfo(string ClipType, string ClipName, string Key);
+    private record ClipInfo(string ClipType, string ClipName, string DisplayName, string Key);
 
     private List<string> GetDistinctClipTypes() =>
         _tri3dEntries.Select(e => e.ClipType).Distinct().ToList();
@@ -1208,13 +1209,15 @@
     {
         var fromEntries = _tri3dEntries
             .Where(e => e.ClipType == _selectedClipType)
-            .Select(e => e.ClipName)
-            .Distinct();
+            .Select(e => new { e.ClipName, e.ClipDisplayName })
+            .GroupBy(e => e.ClipName)
+            .Select(g => new { ClipName = g.Key, DisplayName = g.First().ClipDisplayName });
         var fromCustom = _customClips
             .Where(k => k.StartsWith(_selectedClipType + "|"))
-            .Select(k => k.Substring(_selectedClipType.Length + 1));
+            .Select(k => k.Substring(_selectedClipType.Length + 1))
+            .Select(n => new { ClipName = n, DisplayName = n });
         return fromEntries.Union(fromCustom)
-            .Select(n => new ClipInfo(_selectedClipType, n, $"{_selectedClipType}|{n}"))
+            .Select(n => new ClipInfo(_selectedClipType, n.ClipName, string.IsNullOrEmpty(n.DisplayName) ? n.ClipName : n.DisplayName, $"{_selectedClipType}|{n.ClipName}"))
             .ToList();
     }
 
@@ -1280,6 +1283,7 @@
         {
             ClipType = _selectedClipType,
             ClipName = clipName,
+            ClipDisplayName = clipName,
             TrackName = $"Track {n}",
             Name = $"Track {n}",
         });
@@ -1629,7 +1633,7 @@
     {
         if (_challengeBytes == null) return;
 
-        var newBlocks = new List<(string clipType, string clipName, string trackName, GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D block)>();
+        var newBlocks = new List<(string clipType, string clipName, string clipDisplayName, string trackName, GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D block)>();
 
         foreach (var entry in _tri3dEntries)
         {
@@ -1671,13 +1675,13 @@
                     matOverrides, (float)anim.Shading,
                     rotationOrigin: rotOrigin);
 
-                newBlocks.Add((entry.ClipType, entry.ClipName, entry.Name, tri3dBlock));
+                newBlocks.Add((entry.ClipType, entry.ClipName, entry.ClipDisplayName, entry.Name, tri3dBlock));
             }
             else if (entry.HasMesh && isCustom && entry.MeshIndex >= 0 && entry.MeshIndex < _tri3dBlocks.Count)
             {
                 var block = _tri3dBlocks[entry.MeshIndex];
                 var tri3dBlock = ClipGbxExporter.BuildAnimatedTri3DBlock(block, null, null, null);
-                newBlocks.Add((entry.ClipType, entry.ClipName, entry.Name, tri3dBlock));
+                newBlocks.Add((entry.ClipType, entry.ClipName, entry.ClipDisplayName, entry.Name, tri3dBlock));
             }
         }
 
@@ -2546,6 +2550,7 @@
                     Name = string.IsNullOrWhiteSpace(t.TrackName) ? "Track" : t.TrackName,
                     ClipType = t.ClipType,
                     ClipName = t.ClipName,
+                    ClipDisplayName = t.ClipDisplayName,
                     TrackName = t.TrackName,
                     HasMesh = t.Tri3DIndex >= 0,
                 };
