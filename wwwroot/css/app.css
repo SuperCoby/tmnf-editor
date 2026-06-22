@@ -55,18 +55,18 @@ body {
 }
 
 .hdr-btn-folder {
-    background: #0e1f30;
-    color: #60b8e8;
-    border-color: #1a3d5c;
+    background: #111128;
+    color: #8899cc;
+    border-color: #252545;
 }
-.hdr-btn-folder:hover { background: #172e44; border-color: #2a5a80; }
+.hdr-btn-folder:hover { background: #1a1a38; border-color: #4a4a88; color: #aabbee; }
 
 .hdr-btn-map {
-    background: #0e2018;
-    color: #5dda80;
-    border-color: #1a4a2a;
+    background: #111128;
+    color: #8899cc;
+    border-color: #252545;
 }
-.hdr-btn-map:hover { background: #162e20; border-color: #28603a; }
+.hdr-btn-map:hover { background: #1a1a38; border-color: #4a4a88; color: #aabbee; }
 
 .hdr-btn-clear {
     padding: 5px 9px;
@@ -117,6 +117,202 @@ body {
     border-color: #6666cc;
     color: #ccd4ff;
     box-shadow: 0 0 10px rgba(80,80,220,0.25);
+}
+
+.header-nav-sep {
+    width: 1px;
+    height: 22px;
+    background: #333366;
+    margin: 0 4px;
+}
+
+.lang-toggle {
+    display: flex;
+    gap: 2px;
+    background: #111128;
+    border: 1px solid #252545;
+    border-radius: 6px;
+    padding: 1px;
+}
+.lang-btn {
+    padding: 3px 8px;
+    background: transparent;
+    color: #667;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    font-weight: 700;
+    transition: background 0.15s, color 0.15s;
+}
+.lang-btn:hover { color: #aabbee; }
+.lang-btn.active {
+    background: #2a2a5a;
+    color: #dd8833;
+}
+
+/* ── Help popup ────────────────────────────────────────────────────────── */
+.help-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.help-popup {
+    background: #141428;
+    border: 1px solid #333366;
+    border-radius: 10px;
+    width: 520px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.help-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid #252545;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ccd4ff;
+}
+.help-close-btn {
+    background: none;
+    border: none;
+    color: #667;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.help-close-btn:hover { color: #ff6666; background: #1a1a2e; }
+.help-popup-body {
+    padding: 8px 0;
+    overflow-y: auto;
+}
+.help-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 18px;
+    background: none;
+    border: none;
+    color: #aabbee;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+.help-section-title:hover { background: #1a1a38; }
+.help-chevron {
+    display: inline-block;
+    transition: transform 0.2s;
+    transform: rotate(-90deg);
+    font-size: 10px;
+}
+.help-chevron.open { transform: rotate(0deg); }
+.help-section-content {
+    padding: 6px 18px 12px 34px;
+    color: #8899aa;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ── Text 3D panel ─────────────────────────────────────────────────────── */
+.text3d-panel { padding: 8px; }
+.text3d-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+.text3d-label {
+    font-size: 11px;
+    color: #8899aa;
+    min-width: 70px;
+    flex-shrink: 0;
+}
+.text3d-input {
+    flex: 1;
+    padding: 5px 8px;
+    background: #0a0a1a;
+    color: #ccd4ff;
+    border: 1px solid #252545;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+}
+.text3d-input:focus { border-color: #6666cc; }
+.text3d-select {
+    flex: 1;
+    padding: 4px 6px;
+    background: #0a0a1a;
+    color: #ccd4ff;
+    border: 1px solid #252545;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+}
+.text3d-style-row { gap: 4px; }
+.text3d-style-btn {
+    width: 26px; height: 26px;
+    background: #0a0a1a;
+    color: #8899cc;
+    border: 1px solid #252545;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+    transition: background 0.15s, color 0.15s;
+}
+.text3d-style-btn:hover { background: #181838; color: #ccd4ff; }
+.text3d-style-btn.active { background: #3344aa; color: #fff; border-color: #5566cc; }
+.text3d-range {
+    flex: 1;
+    accent-color: #6666cc;
+}
+.text3d-val {
+    font-size: 11px;
+    color: #8899cc;
+    min-width: 32px;
+    text-align: right;
+}
+.text3d-list {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.text3d-entry {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: #0e0e22;
+    border: 1px solid #252545;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.text3d-entry:hover { background: #1a1a38; }
+.text3d-entry.selected { border-color: #6666cc; background: #1e1e48; }
+.text3d-entry-name {
+    flex: 1;
+    font-size: 11px;
+    color: #aabbcc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ── Block panel (overlay slide-in) ─────────────────────────────────────── */
@@ -275,7 +471,8 @@ body {
 
 .drop-sub { font-size: 9px; color: #2a2a44; }
 
-.import-section-content.drag-over { outline: 2px dashed #5566ff; outline-offset: -3px; }
+.import-section-content { cursor: pointer; }
+.import-section-content.drag-over { outline: 2px dashed #5566ff; outline-offset: -3px; cursor: copy; }
 
 /* ── Import model tabs ────────────────────────────────────────────────────── */
 .import-tab-bar {
@@ -933,6 +1130,21 @@ body {
 }
 .tri3d-import-btn:hover { background: #1a2a1a; border-color: #3a763a; color: #a0ffa0; }
 .tri3d-import-btn:disabled { opacity: 0.3; cursor: default; }
+.tri3d-remove-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #cc6666;
+    border: 1px solid #442a2a;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 2px;
+    flex-shrink: 0;
+}
+.tri3d-remove-btn:hover { background: #2a1a1a; border-color: #763a3a; color: #ffa0a0; }
 .export-clip-btn {
     display: flex;
     align-items: center;

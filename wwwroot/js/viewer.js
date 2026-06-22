@@ -4,6 +4,21 @@ import { TransformControls } from 'three/addons/controls/TransformControls.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 import { DDSLoader } from 'three/addons/loaders/DDSLoader.js';
+import { Font, FontLoader } from 'three/addons/loaders/FontLoader.js';
+import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+
+// ─── Suppress duplicate texture warnings from Three.js ───────────────────────
+const _warnedTextures = new Set();
+const _origWarn = console.warn.bind(console);
+console.warn = (...args) => {
+    const msg = args.join(' ');
+    if (msg.includes('404') || msg.includes('texture') || msg.includes('.dds') || msg.includes('ResponseURL')) {
+        if (_warnedTextures.has(msg)) return;
+        _warnedTextures.add(msg);
+    }
+    _origWarn(...args);
+};
 
 // ─── Scene ────────────────────────────────────────────────────────────────────
 const scene = new THREE.Scene();
@@ -40,82 +55,225 @@ let _originDotVisible = false;
 let _currentTransformMode = 'none'; // mode actif ('translate'|'rotate'|'scale'|'none')
 let importOriginOffsets = new Map(); // tabIdx → THREE.Vector3 (offset pivot courant)
 let tri3dMeshes = [];                // tableau de THREE.Mesh pour les Triangles3D MediaTracker
+const _fontLoader = new FontLoader();
+const _fontCache = new Map();
+const _text3dIndices = new Set();
 let _activeTri3DIdx = -1;            // index du tri3d sélectionné (-1 = aucun)
 let transformCtrl   = null;      // TransformControls pour Rotate/Scale de l'import
 let selectionOutline = null;
 let selectedMesh = null;
 
+const _typefaceMap = {
+    'helvetiker':          'helvetiker_regular.typeface.json',
+    'helvetiker_bold':     'helvetiker_bold.typeface.json',
+    'optimer':             'optimer_regular.typeface.json',
+    'optimer_bold':        'optimer_bold.typeface.json',
+    'gentilis':            'gentilis_regular.typeface.json',
+    'gentilis_bold':       'gentilis_bold.typeface.json',
+    'droid_sans':          'droid/droid_sans_regular.typeface.json',
+    'droid_sans_bold':     'droid/droid_sans_bold.typeface.json',
+    'droid_serif':         'droid/droid_serif_regular.typeface.json',
+    'droid_serif_bold':    'droid/droid_serif_bold.typeface.json',
+    'droid_sans_mono':     'droid/droid_sans_mono_regular.typeface.json',
+};
+const _fontsourceFonts = new Set([
+    'roboto','inter','open-sans','noto-sans','ubuntu','fira-sans','cantarell',
+    'arimo','tinos','courier-prime','comic-neue','anton',
+    'raleway','libre-franklin','eb-garamond','lora',
+    'montserrat','poppins','oswald','playfair-display','merriweather','source-code-pro'
+]);
+const _noBoldFonts = new Set(['anton','droid_sans_mono']);
+const _ttfLoader = new TTFLoader();
+
+async function _loadFont(fontName) {
+    let font = _fontCache.get(fontName);
+    if (font) return font;
+
+    const isBold = fontName.endsWith('_bold');
+    const base = isBold ? fontName.slice(0, -5) : fontName;
+    const fsKey = base.replace(/_/g, '-');
+
+    if (_typefaceMap[fontName]) {
+        const url = `https://cdn.jsdelivr.net/npm/three@0.160.0/examples/fonts/${_typefaceMap[fontName]}`;
+        font = await new Promise((res, rej) => _fontLoader.load(url, res, undefined, rej));
+    } else if (_fontsourceFonts.has(fsKey)) {
+        if (isBold && _noBoldFonts.has(base)) return _loadFont(base);
+        const weight = isBold ? 700 : 400;
+        const url = `https://cdn.jsdelivr.net/npm/@fontsource/${fsKey}/files/${fsKey}-latin-${weight}-normal.woff`;
+        const json = await new Promise((res, rej) => _ttfLoader.load(url, res, undefined, rej));
+        font = new Font(json);
+    } else if (isBold) {
+        return _loadFont(base);
+    } else {
+        const url = `https://cdn.jsdelivr.net/npm/three@0.160.0/examples/fonts/${fontName}_regular.typeface.json`;
+        font = await new Promise((res, rej) => _fontLoader.load(url, res, undefined, rej));
+    }
+
+    _fontCache.set(fontName, font);
+    return font;
+}
+
+function _buildTextGroup(text, font, thickness, letterSpacing, italic, underline, strike) {
+    const group = new THREE.Group();
+    let offsetX = 0;
+    for (const char of text) {
+        if (char === ' ') { offsetX += 3 + letterSpacing; continue; }
+        const geom = new TextGeometry(char, {
+            font,
+            size: 5,
+            depth: thickness,
+            height: thickness,
+            curveSegments: 6,
+            bevelEnabled: false,
+        });
+        geom.computeBoundingBox();
+        if (italic) {
+            const shear = new THREE.Matrix4().set(
+                1, 0.25, 0, 0,
+                0, 1,    0, 0,
+                0, 0,    1, 0,
+                0, 0,    0, 1
+            );
+            geom.applyMatrix4(shear);
+            geom.computeBoundingBox();
+        }
+        const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.1, name: char });
+        const mesh = new THREE.Mesh(geom, mat);
+        mesh.position.x = offsetX - geom.boundingBox.min.x;
+        group.add(mesh);
+        offsetX += (geom.boundingBox.max.x - geom.boundingBox.min.x) + letterSpacing;
+    }
+    if (group.children.length > 0) {
+        const box = new THREE.Box3().setFromObject(group);
+        const cx = box.getCenter(new THREE.Vector3()).x;
+        group.children.forEach(c => c.position.x -= cx);
+        const size = box.getSize(new THREE.Vector3());
+        const barThick = Math.max(0.15, size.y * 0.06);
+        const barDepth = Math.max(thickness, 0.05);
+        if (underline) {
+            const barGeom = new THREE.BoxGeometry(size.x, barThick, barDepth);
+            const barMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.1, name: '_underline' });
+            const bar = new THREE.Mesh(barGeom, barMat);
+            bar.position.set(0, box.min.y - barThick, barDepth / 2);
+            group.add(bar);
+        }
+        if (strike) {
+            const barGeom = new THREE.BoxGeometry(size.x, barThick, barDepth);
+            const barMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.1, name: '_strike' });
+            const bar = new THREE.Mesh(barGeom, barMat);
+            bar.position.set(0, box.min.y + size.y * 0.45, barDepth / 2);
+            group.add(bar);
+        }
+    }
+    return group;
+}
+
+function _groupToObjMtl(group) {
+    let obj = '', mtl = '';
+    const matNames = new Map();
+    let vOff = 1;
+    group.traverse(child => {
+        if (!child.isMesh) return;
+        const geom = child.geometry;
+        const pos = geom.attributes.position;
+        const norm = geom.attributes.normal;
+        const m = child.material;
+        let matName = matNames.get(m.uuid);
+        if (!matName) {
+            matName = 'mat_' + matNames.size;
+            matNames.set(m.uuid, matName);
+            const c = m.color;
+            mtl += `newmtl ${matName}\nKd ${c.r.toFixed(4)} ${c.g.toFixed(4)} ${c.b.toFixed(4)}\n\n`;
+        }
+        obj += `usemtl ${matName}\n`;
+        for (let i = 0; i < pos.count; i++) {
+            const x = pos.getX(i) + child.position.x;
+            const y = pos.getY(i) + child.position.y;
+            const z = pos.getZ(i) + child.position.z;
+            obj += `v ${x.toFixed(6)} ${y.toFixed(6)} ${z.toFixed(6)}\n`;
+        }
+        if (norm) {
+            for (let i = 0; i < norm.count; i++)
+                obj += `vn ${norm.getX(i).toFixed(6)} ${norm.getY(i).toFixed(6)} ${norm.getZ(i).toFixed(6)}\n`;
+        }
+        const idx = geom.index;
+        if (idx) {
+            for (let i = 0; i < idx.count; i += 3) {
+                const a = idx.getX(i) + vOff, b = idx.getX(i+1) + vOff, c2 = idx.getX(i+2) + vOff;
+                obj += norm ? `f ${a}//${a} ${b}//${b} ${c2}//${c2}\n` : `f ${a} ${b} ${c2}\n`;
+            }
+        } else {
+            for (let i = 0; i < pos.count; i += 3) {
+                const a = i + vOff, b = i+1 + vOff, c2 = i+2 + vOff;
+                obj += norm ? `f ${a}//${a} ${b}//${b} ${c2}//${c2}\n` : `f ${a} ${b} ${c2}\n`;
+            }
+        }
+        vOff += pos.count;
+    });
+    return { objText: 'mtllib text.mtl\n' + obj, mtlText: mtl };
+}
+
 // ─── Playback ────────────────────────────────────────────────────────────────
-let _pbKeyframes = [];
-let _pbScaleKf = [];
-let _pbRotKf = [];
+let _pbTargets = [];   // [{obj, transKf, scaleKf, rotKf, startPos, startScale, startRot}]
 let _pbPlaying = false;
 let _pbRepeat = false;
 let _pbTime = 0;
-let _pbStartPos = null;
-let _pbStartScale = null;
-let _pbStartRot = null;
 let _pbLastTs = 0;
 
-function _pbGetTarget() {
-    if (_activeTri3DIdx >= 0 && _activeTri3DIdx < tri3dMeshes.length)
-        return tri3dMeshes[_activeTri3DIdx];
-    return importMeshGroups.get(activeImportIdx) ?? null;
-}
-
 function _pbApplyTime(t) {
-    const obj = _pbGetTarget();
-    if (!obj || !_pbStartPos) return;
+    for (const tgt of _pbTargets) {
+        const { obj, transKf, scaleKf, rotKf, startPos, startScale, startRot } = tgt;
+        if (!obj || !startPos) continue;
 
-    if (_pbKeyframes.length > 0) {
-        let ox = 0, oy = 0, oz = 0;
-        for (const kf of _pbKeyframes) {
-            if (t < kf.time) break;
-            const dur = kf.endTime - kf.time;
-            if (dur <= 0) { ox += kf.x; oy += kf.y; oz += kf.z; continue; }
-            const p = Math.min(1, (t - kf.time) / dur);
-            ox += kf.x * p;
-            oy += kf.y * p;
-            oz += kf.z * p;
+        if (transKf.length > 0) {
+            let ox = 0, oy = 0, oz = 0;
+            for (const kf of transKf) {
+                if (t < kf.time) break;
+                const dur = kf.endTime - kf.time;
+                if (dur <= 0) { ox += kf.x; oy += kf.y; oz += kf.z; continue; }
+                const p = Math.min(1, (t - kf.time) / dur);
+                ox += kf.x * p; oy += kf.y * p; oz += kf.z * p;
+            }
+            obj.position.set(startPos.x + ox, startPos.y + oy, startPos.z + oz);
         }
-        obj.position.set(_pbStartPos.x + ox, _pbStartPos.y + oy, _pbStartPos.z + oz);
-    }
 
-    if (_pbScaleKf.length > 0 && _pbStartScale) {
-        let sx = 1, sy = 1, sz = 1;
-        for (const kf of _pbScaleKf) {
-            if (t < kf.time) break;
-            const dur = kf.endTime - kf.time;
-            if (dur <= 0) { sx = kf.x; sy = kf.y; sz = kf.z; continue; }
-            const p = Math.min(1, (t - kf.time) / dur);
-            const prev = _pbScaleKf.indexOf(kf) > 0 ? _pbScaleKf[_pbScaleKf.indexOf(kf) - 1] : { x: _pbStartScale.x, y: _pbStartScale.y, z: _pbStartScale.z };
-            sx = prev.x + (kf.x - prev.x) * p;
-            sy = prev.y + (kf.y - prev.y) * p;
-            sz = prev.z + (kf.z - prev.z) * p;
+        if (scaleKf.length > 0 && startScale) {
+            let sx = 1, sy = 1, sz = 1;
+            for (let i = 0; i < scaleKf.length; i++) {
+                const kf = scaleKf[i];
+                if (t < kf.time) break;
+                const dur = kf.endTime - kf.time;
+                if (dur <= 0) { sx = kf.x; sy = kf.y; sz = kf.z; continue; }
+                const p = Math.min(1, (t - kf.time) / dur);
+                const prev = i > 0 ? scaleKf[i - 1] : { x: startScale.x, y: startScale.y, z: startScale.z };
+                sx = prev.x + (kf.x - prev.x) * p;
+                sy = prev.y + (kf.y - prev.y) * p;
+                sz = prev.z + (kf.z - prev.z) * p;
+            }
+            obj.scale.set(sx, sy, sz);
         }
-        obj.scale.set(sx, sy, sz);
-    }
 
-    if (_pbRotKf.length > 0 && _pbStartRot) {
-        let rx = 0, ry = 0, rz = 0;
-        for (const kf of _pbRotKf) {
-            if (t < kf.time) break;
-            const dur = kf.endTime - kf.time;
-            if (dur <= 0) { rx += kf.x; ry += kf.y; rz += kf.z; continue; }
-            const p = Math.min(1, (t - kf.time) / dur);
-            rx += kf.x * p;
-            ry += kf.y * p;
-            rz += kf.z * p;
+        if (rotKf.length > 0 && startRot) {
+            let rx = 0, ry = 0, rz = 0;
+            for (const kf of rotKf) {
+                if (t < kf.time) break;
+                const dur = kf.endTime - kf.time;
+                if (dur <= 0) { rx += kf.x; ry += kf.y; rz += kf.z; continue; }
+                const p = Math.min(1, (t - kf.time) / dur);
+                rx += kf.x * p; ry += kf.y * p; rz += kf.z * p;
+            }
+            obj.rotation.set(startRot.x + rx, startRot.y + ry, startRot.z + rz);
         }
-        obj.rotation.set(_pbStartRot.x + rx, _pbStartRot.y + ry, _pbStartRot.z + rz);
     }
 }
 
 function _pbTotalDur() {
     let d = 0;
-    if (_pbKeyframes.length > 0) d = Math.max(d, _pbKeyframes[_pbKeyframes.length - 1].endTime);
-    if (_pbScaleKf.length > 0) d = Math.max(d, _pbScaleKf[_pbScaleKf.length - 1].endTime);
-    if (_pbRotKf.length > 0) d = Math.max(d, _pbRotKf[_pbRotKf.length - 1].endTime);
+    for (const tgt of _pbTargets) {
+        if (tgt.transKf.length > 0) d = Math.max(d, tgt.transKf[tgt.transKf.length - 1].endTime);
+        if (tgt.scaleKf.length > 0) d = Math.max(d, tgt.scaleKf[tgt.scaleKf.length - 1].endTime);
+        if (tgt.rotKf.length > 0) d = Math.max(d, tgt.rotKf[tgt.rotKf.length - 1].endTime);
+    }
     return d;
 }
 
@@ -177,7 +335,12 @@ let currentBlobUrlMap = {};  // filename.dds → blobUrl (mis à jour par setBlo
 const loadingManager = new THREE.LoadingManager();
 // DDSLoader doit recevoir le même loadingManager pour que le URL modifier s'applique
 loadingManager.addHandler(/\.dds$/i, new DDSLoader(loadingManager));
-loadingManager.onError = url => console.warn('[TMNFeditor] Texture manquante:', url);
+const _missingTextures = new Set();
+loadingManager.onError = url => {
+    if (_missingTextures.has(url)) return;
+    _missingTextures.add(url);
+    console.error('[TMNFeditor] Texture manquante:', url);
+};
 const objLoader = new OBJLoader();
 
 THREE.Cache.enabled = true;
@@ -470,9 +633,18 @@ const importPrev = (() => {
         dotNetRef = ref;
         const zone = document.getElementById(zoneId);
         if (!zone) return;
-        zone.addEventListener('dragover',  e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; zone.classList.add('drag-over'); });
-        zone.addEventListener('dragleave', e => { if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over'); });
-        zone.addEventListener('drop',      async e => { e.preventDefault(); zone.classList.remove('drag-over'); await handleFiles(e.dataTransfer.files); });
+        const onDragOver = e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; zone.classList.add('drag-over'); };
+        const onDragLeave = e => { if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over'); };
+        const onDrop = async e => { e.preventDefault(); zone.classList.remove('drag-over'); await handleFiles(e.dataTransfer.files); };
+        zone.addEventListener('dragover', onDragOver);
+        zone.addEventListener('dragleave', onDragLeave);
+        zone.addEventListener('drop', onDrop);
+        const canvas = zone.querySelector('canvas');
+        if (canvas) {
+            canvas.addEventListener('dragover', e => { e.stopPropagation(); onDragOver(e); });
+            canvas.addEventListener('dragleave', e => { e.stopPropagation(); onDragLeave(e); });
+            canvas.addEventListener('drop', e => { e.stopPropagation(); onDrop(e); });
+        }
     }
 
     function initFileInput(inputId) {
@@ -605,10 +777,16 @@ window.TMNFeditorScene = {
             });
 
             const allMeshes = [...targets.map(t => t.mesh), ...tri3dTargets.map(t => t.mesh)];
-            if (!allMeshes.length) return;
 
-            const hits = _ray.intersectObjects(allMeshes, false);
-            if (!hits.length) return;
+            const hits = allMeshes.length ? _ray.intersectObjects(allMeshes, false) : [];
+            if (!hits.length) {
+                activeImportIdx = -1;
+                _activeTri3DIdx = -1;
+                if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+                if (transformCtrl) transformCtrl.detach();
+                mainDotNetRef?.invokeMethodAsync('OnSceneDeselected');
+                return;
+            }
 
             const hitObj = hits[0].object;
 
@@ -619,8 +797,11 @@ window.TMNFeditorScene = {
                 activeImportIdx = foundImport.idx;
                 _setSelectionBox(importMeshGroups.get(activeImportIdx));
                 importPrev.switchTab(foundImport.idx);
-                if (transformCtrl?.object) transformCtrl.attach(importMeshGroups.get(activeImportIdx));
+                if (_currentTransformMode !== 'none' && transformCtrl) { transformCtrl.attach(importMeshGroups.get(activeImportIdx)); transformCtrl.setMode(_currentTransformMode); }
                 mainDotNetRef?.invokeMethodAsync('OnImportSelected', foundImport.idx);
+                if (_text3dIndices.has(foundImport.idx)) {
+                    mainDotNetRef?.invokeMethodAsync('OnText3DSelected', foundImport.idx);
+                }
                 window._pushImportPosition?.();
                 window._pushImportMaterials?.();
                 window._pushImportOrigin?.();
@@ -1537,20 +1718,29 @@ window.TMNFeditorScene = {
         }
     },
 
-    playbackStart(transKf, scaleKf, rotKf, repeat) {
-        const obj = _pbGetTarget();
-        if (!obj) return;
+    playbackStartAll(allAnims, repeat) {
         _pbPlaying = false;
-        if (_pbStartPos) obj.position.copy(_pbStartPos);
-        if (_pbStartScale) obj.scale.copy(_pbStartScale);
-        if (_pbStartRot) obj.rotation.set(_pbStartRot.x, _pbStartRot.y, _pbStartRot.z);
-        _pbKeyframes = transKf || [];
-        _pbScaleKf = scaleKf || [];
-        _pbRotKf = rotKf || [];
+        for (const tgt of _pbTargets) {
+            const { obj, startPos, startScale, startRot } = tgt;
+            if (startPos) obj.position.copy(startPos);
+            if (startScale) obj.scale.copy(startScale);
+            if (startRot) obj.rotation.set(startRot.x, startRot.y, startRot.z);
+        }
+        _pbTargets = [];
+        for (const a of (allAnims || [])) {
+            const obj = importMeshGroups.get(a.idx);
+            if (!obj) continue;
+            _pbTargets.push({
+                obj,
+                transKf: a.transKf || [],
+                scaleKf: a.scaleKf || [],
+                rotKf: a.rotKf || [],
+                startPos: obj.position.clone(),
+                startScale: obj.scale.clone(),
+                startRot: { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }
+            });
+        }
         _pbRepeat = repeat;
-        _pbStartPos = obj.position.clone();
-        _pbStartScale = obj.scale.clone();
-        _pbStartRot = { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z };
         _pbTime = 0;
         _pbLastTs = 0;
         _pbPlaying = true;
@@ -1563,15 +1753,118 @@ window.TMNFeditorScene = {
     },
 
     playbackSeek(time) {
-        const obj = _pbGetTarget();
-        if (!obj) return;
-        if (!_pbStartPos) _pbStartPos = obj.position.clone();
-        if (!_pbStartScale) _pbStartScale = obj.scale.clone();
-        if (!_pbStartRot) _pbStartRot = { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z };
         _pbTime = time;
         _pbPlaying = false;
+        if (time === 0) {
+            for (const tgt of _pbTargets) {
+                if (tgt.startPos) tgt.obj.position.copy(tgt.startPos);
+                if (tgt.startScale) tgt.obj.scale.copy(tgt.startScale);
+                if (tgt.startRot) tgt.obj.rotation.set(tgt.startRot.x, tgt.startRot.y, tgt.startRot.z);
+            }
+        }
         _pbApplyTime(_pbTime);
         _pbUpdateTimer(_pbTime);
+    },
+
+    async createText3D(text, fontName, thickness, letterSpacing, bold, italic, underline, strike) {
+        const actualFont = bold ? fontName + '_bold' : fontName;
+        const font = await _loadFont(actualFont);
+        const group = _buildTextGroup(text, font, thickness, letterSpacing, italic, underline, strike);
+        scene.add(group);
+
+        if (currentMesh) currentMesh.visible = false;
+        const idx = importMeshGroups.size;
+        importMeshGroups.set(idx, group);
+        activeImportIdx = idx;
+
+        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); }
+        selectionBox = new THREE.BoxHelper(group, 0x4488ff);
+        selectionBox.material.transparent = true;
+        selectionBox.material.opacity = 0.35;
+        scene.add(selectionBox);
+
+        if (_currentTransformMode !== 'none' && transformCtrl) {
+            transformCtrl.attach(group);
+            transformCtrl.setMode(_currentTransformMode);
+        }
+
+        _text3dIndices.add(idx);
+        mainDotNetRef?.invokeMethodAsync('OnModelImported', idx + 1, idx);
+        mainDotNetRef?.invokeMethodAsync('OnImportTabInScene', true);
+        window._pushImportMaterials?.();
+        return idx;
+    },
+
+    async updateText3D(idx, text, fontName, thickness, letterSpacing, bold, italic, underline, strike) {
+        const group = importMeshGroups.get(idx);
+        if (!group) return;
+        const pos = group.position.clone();
+        const rot = { x: group.rotation.x, y: group.rotation.y, z: group.rotation.z };
+        const scl = group.scale.clone();
+
+        const savedColors = new Map();
+        group.children.forEach(c => {
+            if (c.isMesh && c.material?.name) savedColors.set(c.material.name, c.material.color.getHex());
+        });
+
+        while (group.children.length > 0) {
+            const c = group.children[0];
+            if (c.geometry) c.geometry.dispose();
+            if (c.material) c.material.dispose();
+            group.remove(c);
+        }
+
+        const actualFont = bold ? fontName + '_bold' : fontName;
+        const font = await _loadFont(actualFont);
+        const temp = _buildTextGroup(text, font, thickness, letterSpacing, italic, underline, strike);
+        while (temp.children.length > 0) {
+            const c = temp.children[0];
+            temp.remove(c);
+            if (c.isMesh && c.material?.name && savedColors.has(c.material.name)) {
+                c.material.color.setHex(savedColors.get(c.material.name));
+            }
+            group.add(c);
+        }
+
+        group.position.copy(pos);
+        group.rotation.set(rot.x, rot.y, rot.z);
+        group.scale.copy(scl);
+
+        if (selectionBox) selectionBox.update();
+    },
+
+    selectText3D(idx) {
+        const group = importMeshGroups.get(idx);
+        if (!group) return;
+        activeImportIdx = idx;
+        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); }
+        selectionBox = new THREE.BoxHelper(group, 0x4488ff);
+        selectionBox.material.transparent = true;
+        selectionBox.material.opacity = 0.35;
+        scene.add(selectionBox);
+        if (_currentTransformMode !== 'none' && transformCtrl) {
+            transformCtrl.attach(group);
+            transformCtrl.setMode(_currentTransformMode);
+        }
+    },
+
+    removeText3D(idx) {
+        const group = importMeshGroups.get(idx);
+        if (!group) return;
+        group.traverse(c => {
+            if (c instanceof THREE.Mesh) {
+                c.geometry?.dispose();
+                if (Array.isArray(c.material)) c.material.forEach(m => m.dispose());
+                else c.material?.dispose();
+            }
+        });
+        scene.remove(group);
+        importMeshGroups.delete(idx);
+        _text3dIndices.delete(idx);
+        if (activeImportIdx === idx) {
+            if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+            if (transformCtrl) transformCtrl.detach();
+        }
     },
 
     // Vide le cache d'objets THREE.js (à appeler au changement de dossier de jeu)
@@ -1616,9 +1909,14 @@ window.TMNFeditorScene = {
     },
 
     getActiveImportExportData() {
-        const obj = importMeshGroups.get(activeImportIdx);
+        return this.getImportExportDataByIndex(activeImportIdx);
+    },
+
+    getImportExportDataByIndex(idx) {
+        const obj = importMeshGroups.get(idx);
         if (!obj) return null;
-        const data = importPrev.getModelData(activeImportIdx);
+        let data = importPrev.getModelData(idx);
+        if (!data?.objText && _text3dIndices.has(idx)) data = _groupToObjMtl(obj);
         if (!data?.objText) return null;
         return {
             objText: data.objText,
@@ -1631,20 +1929,21 @@ window.TMNFeditorScene = {
         };
     },
 
-    getImportExportDataByIndex(idx) {
-        const obj = importMeshGroups.get(idx);
-        if (!obj) return null;
-        const data = importPrev.getModelData(idx);
-        if (!data?.objText) return null;
-        return {
-            objText: data.objText,
-            mtlText: data.mtlText || '',
-            posX: obj.position.x - mapOffset.x,
-            posY: obj.position.y - mapOffset.y,
-            posZ: obj.position.z - mapOffset.z,
-            rotX: obj.rotation.x, rotY: obj.rotation.y, rotZ: obj.rotation.z,
-            scaleX: obj.scale.x, scaleY: obj.scale.y, scaleZ: obj.scale.z
-        };
+    getImportMaterialsByIndex(idx) {
+        const group = importMeshGroups.get(idx);
+        if (!group) return [];
+        const seen = new Set();
+        const result = [];
+        group.traverse(child => {
+            if (!child.isMesh) return;
+            const mats = Array.isArray(child.material) ? child.material : [child.material];
+            mats.forEach(m => {
+                if (!m || seen.has(m.uuid)) return;
+                seen.add(m.uuid);
+                result.push({ key: m.uuid, name: m.name || '(sans nom)', hex: '#' + (m.color?.getHexString() ?? 'ffffff') });
+            });
+        });
+        return result;
     },
 
     getTri3DTransform(index) {

@@ -1105,7 +1105,8 @@ public static class ClipGbxExporter
         Tri3DBlock block,
         List<AnimKf>? transKfs, List<AnimKf>? scaleKfs, List<AnimKf>? rotKfs,
         string? colorOverrideHex = null,
-        Vec3? origin = null)
+        Vec3? origin = null,
+        Vec3? rotationOrigin = null)
     {
         Vec4[] vertColors;
         if (!string.IsNullOrEmpty(colorOverrideHex))
@@ -1157,9 +1158,19 @@ public static class ClipGbxExporter
         CollectTimes(rotKfs, subdivide: true);
         if (allTimes.Count == 0) { allTimes.Add(0); allTimes.Add(3); }
 
-        float cx = 0, cy = 0, cz = 0;
-        foreach (var p in basePositions) { cx += p.X; cy += p.Y; cz += p.Z; }
-        cx /= basePositions.Length; cy /= basePositions.Length; cz /= basePositions.Length;
+        float cx, cy, cz;
+        if (rotationOrigin.HasValue)
+        {
+            cx = rotationOrigin.Value.X;
+            cy = rotationOrigin.Value.Y;
+            cz = rotationOrigin.Value.Z;
+        }
+        else
+        {
+            cx = 0; cy = 0; cz = 0;
+            foreach (var p in basePositions) { cx += p.X; cy += p.Y; cz += p.Z; }
+            cx /= basePositions.Length; cy /= basePositions.Length; cz /= basePositions.Length;
+        }
 
         float offX = origin?.X ?? 0, offY = origin?.Y ?? 0, offZ = origin?.Z ?? 0;
 
@@ -1209,9 +1220,9 @@ public static class ClipGbxExporter
                     rx += (float)(kf.X * p); ry += (float)(kf.Y * p); rz += (float)(kf.Z * p);
                 }
 
-            var cosA = MathF.Cos(ry); var sinA = MathF.Sin(ry);
-            var cosB = MathF.Cos(rx); var sinB = MathF.Sin(rx);
-            var cosC = MathF.Cos(rz); var sinC = MathF.Sin(rz);
+            var cosA = MathF.Cos(rz); var sinA = MathF.Sin(rz);
+            var cosB = MathF.Cos(ry); var sinB = MathF.Sin(ry);
+            var cosC = MathF.Cos(rx); var sinC = MathF.Sin(rx);
 
             for (int i = 0; i < basePositions.Length; i++)
             {
@@ -1258,7 +1269,8 @@ public static class ClipGbxExporter
         float posX, float posY, float posZ,
         List<AnimKf>? transKfs, List<AnimKf>? scaleKfs, List<AnimKf>? rotKfs,
         Dictionary<string, string>? materialColorOverrides = null,
-        float shadingIntensity = 0f)
+        float shadingIntensity = 0f,
+        Vec3? rotationOrigin = null)
     {
         var mtlColors = ParseMtlColors(mtlText);
         if (materialColorOverrides != null)
@@ -1336,7 +1348,7 @@ public static class ClipGbxExporter
             new[] { new Tri3DKeyframe(0, outVerts.Select(v => new[] { v.x, v.y, v.z }).SelectMany(a => a).ToArray()) }
         );
 
-        return BuildAnimatedTri3DBlock(tri3dBlock, transKfs, scaleKfs, rotKfs, origin: new Vec3(posX, posY, posZ));
+        return BuildAnimatedTri3DBlock(tri3dBlock, transKfs, scaleKfs, rotKfs, origin: new Vec3(posX, posY, posZ), rotationOrigin: rotationOrigin);
     }
 
     public static byte[] ExportChallengeBytes(byte[] originalBytes,
