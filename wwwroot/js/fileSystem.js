@@ -1,67 +1,135 @@
 // File System Access API — interop pour Blazor WASM
+// Fallback <input type="file"> pour Firefox / Safari
 window.TMNFeditorFS = (function () {
 
     let dirHandle = null;
+    // Fallback: stocke les fichiers indexés par chemin relatif
+    let fallbackFiles = null; // Map<relativePath, File>
+    let fallbackFolderName = null;
 
-    // Demande à l'utilisateur de sélectionner le dossier racine du jeu
-    // (le dossier qui contient Nadeo.ini, Packs\, GameData\)
+    const hasNativeFS = typeof window.showDirectoryPicker === 'function';
+
+    // ── Helpers fallback ──────────────────────────────────────────────────
+
+    function _createHiddenInput(attrs) {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.style.display = 'none';
+        for (const [k, v] of Object.entries(attrs)) input.setAttribute(k, v);
+        document.body.appendChild(input);
+        return input;
+    }
+
+    function _pickViaInput(attrs) {
+        return new Promise(resolve => {
+            const input = _createHiddenInput(attrs);
+            input.addEventListener('change', () => {
+                resolve(input.files);
+                input.remove();
+            });
+            input.addEventListener('cancel', () => { resolve(null); input.remove(); });
+            input.click();
+        });
+    }
+
+    // ── selectGameFolder ──────────────────────────────────────────────────
+
     async function selectGameFolder() {
-        try {
-            dirHandle = await window.showDirectoryPicker({ mode: 'read' });
-            return dirHandle.name;
-        } catch (e) {
-            if (e.name === 'AbortError') return null;
-            throw e;
+        if (hasNativeFS) {
+            try {
+                dirHandle = await window.showDirectoryPicker({ mode: 'read' });
+                fallbackFiles = null;
+                return dirHandle.name;
+            } catch (e) {
+                if (e.name === 'AbortError') return null;
+                throw e;
+            }
         }
+        // Fallback: <input webkitdirectory>
+        const files = await _pickViaInput({ webkitdirectory: '', multiple: '' });
+        if (!files || files.length === 0) return null;
+        fallbackFiles = new Map();
+        dirHandle = null;
+        let rootName = null;
+        for (const f of files) {
+            const rel = f.webkitRelativePath;
+            if (!rootName) rootName = rel.split('/')[0];
+            const sub = rel.substring(rootName.length + 1);
+            if (sub) fallbackFiles.set(sub.toLowerCase(), f);
+        }
+        fallbackFolderName = rootName;
+        return rootName;
     }
 
-    // Retourne le nom du dossier sélectionné (ou null)
     function getGameFolderName() {
-        return dirHandle ? dirHandle.name : null;
+        if (dirHandle) return dirHandle.name;
+        return fallbackFolderName || null;
     }
 
-    // Liste les fichiers .pak dans le sous-dossier Packs/
+    // ── listPakFiles ──────────────────────────────────────────────────────
+
     async function listPakFiles() {
-        if (!dirHandle) return [];
-        let packsDir = null;
-        for await (const [name, handle] of dirHandle.entries()) {
-            if (handle.kind === 'directory' &&
-                (name.toLowerCase() === 'packs' || name.toLowerCase() === 'pack')) {
-                packsDir = handle;
-                break;
+        if (dirHandle) {
+            let packsDir = null;
+            for await (const [name, handle] of dirHandle.entries()) {
+                if (handle.kind === 'directory' &&
+                    (name.toLowerCase() === 'packs' || name.toLowerCase() === 'pack')) {
+                    packsDir = handle;
+                    break;
+                }
             }
+            if (!packsDir) return [];
+            const paks = [];
+            for await (const [name] of packsDir.entries()) {
+                if (name.toLowerCase().endsWith('.pak'))
+                    paks.push(name.slice(0, -4));
+            }
+            return paks.sort();
         }
-        if (!packsDir) return [];
-        const paks = [];
-        for await (const [name] of packsDir.entries()) {
-            if (name.toLowerCase().endsWith('.pak'))
-                paks.push(name.slice(0, -4)); // sans extension
+        if (!fallbackFiles) return [];
+        const paks = new Set();
+        for (const path of fallbackFiles.keys()) {
+            const m = path.match(/^packs?\/([^/]+)\.pak$/i);
+            if (m) paks.add(m[1]);
         }
-        return paks.sort();
+        return [...paks].sort();
     }
 
-    // Lit un fichier .pak et retourne ses octets (Uint8Array → byte[] côté C#)
+    // ── readPakBytes ──────────────────────────────────────────────────────
+
     async function readPakBytes(pakName) {
-        if (!dirHandle) throw new Error('Aucun dossier de jeu sélectionné');
-        let packsDir = null;
-        for await (const [name, handle] of dirHandle.entries()) {
-            if (handle.kind === 'directory' &&
-                (name.toLowerCase() === 'packs' || name.toLowerCase() === 'pack')) {
-                packsDir = handle;
-                break;
+        if (dirHandle) {
+            let packsDir = null;
+            for await (const [name, handle] of dirHandle.entries()) {
+                if (handle.kind === 'directory' &&
+                    (name.toLowerCase() === 'packs' || name.toLowerCase() === 'pack')) {
+                    packsDir = handle;
+                    break;
+                }
             }
+            if (!packsDir) throw new Error('Dossier Packs introuvable');
+            const fileHandle = await packsDir.getFileHandle(pakName + '.pak');
+            const file = await fileHandle.getFile();
+            const buffer = await file.arrayBuffer();
+            return new Uint8Array(buffer);
         }
-        if (!packsDir) throw new Error('Dossier Packs introuvable');
-        const fileHandle = await packsDir.getFileHandle(pakName + '.pak');
-        const file = await fileHandle.getFile();
-        const buffer = await file.arrayBuffer();
+        if (!fallbackFiles) throw new Error('Aucun dossier de jeu sélectionné');
+        const key = `packs/${pakName}.pak`;
+        const f = _fallbackFind(key);
+        if (!f) throw new Error('Fichier .pak introuvable: ' + pakName);
+        const buffer = await f.arrayBuffer();
         return new Uint8Array(buffer);
     }
 
-    // Résout un nom de texture DDS en blob URL — cherche dans plusieurs dossiers GameData
+    function _fallbackFind(relPath) {
+        if (!fallbackFiles) return null;
+        return fallbackFiles.get(relPath.toLowerCase()) || null;
+    }
+
+    // ── Textures ──────────────────────────────────────────────────────────
+
     const blobUrlCache = new Map();
     const TEXTURE_PATHS = [
-        // pakName est inséré dynamiquement en premier
         null,
         ['GameData', 'Clouds',    'Media', 'Texture', 'Image'],
         ['GameData', 'Garage',    'Media', 'Texture', 'Image'],
@@ -69,42 +137,52 @@ window.TMNFeditorFS = (function () {
         ['GameData', 'Interface', 'Media', 'Texture', 'Image'],
         ['GameData', 'Vehicles',  'Media', 'Texture', 'Image'],
     ];
+
     async function getTextureBlobUrl(pakName, filename) {
         const cacheKey = `${pakName}/${filename}`;
         if (blobUrlCache.has(cacheKey)) return blobUrlCache.get(cacheKey);
-        if (!dirHandle) return null;
 
         const paths = [
             ['GameData', pakName, 'Media', 'Texture', 'Image'],
             ...TEXTURE_PATHS.slice(1),
         ];
 
-        for (const segments of paths) {
-            try {
-                let handle = dirHandle;
-                for (const seg of segments) handle = await handle.getDirectoryHandle(seg);
-                const fileHandle = await handle.getFileHandle(filename);
-                const file = await fileHandle.getFile();
-
-                // Vérifie le magic DDS ("DDS " = 0x20534444 little-endian)
-                const headerBuf = await file.slice(0, 4).arrayBuffer();
-                if (new Uint32Array(headerBuf)[0] !== 0x20534444) continue;
-
-                const url = URL.createObjectURL(file);
-                blobUrlCache.set(cacheKey, url);
-                return url;
-            } catch { }
+        if (dirHandle) {
+            for (const segments of paths) {
+                try {
+                    let handle = dirHandle;
+                    for (const seg of segments) handle = await handle.getDirectoryHandle(seg);
+                    const fileHandle = await handle.getFileHandle(filename);
+                    const file = await fileHandle.getFile();
+                    const headerBuf = await file.slice(0, 4).arrayBuffer();
+                    if (new Uint32Array(headerBuf)[0] !== 0x20534444) continue;
+                    const url = URL.createObjectURL(file);
+                    blobUrlCache.set(cacheKey, url);
+                    return url;
+                } catch { }
+            }
+        } else if (fallbackFiles) {
+            for (const segments of paths) {
+                const rel = segments.join('/') + '/' + filename;
+                const file = _fallbackFind(rel);
+                if (!file) continue;
+                try {
+                    const headerBuf = await file.slice(0, 4).arrayBuffer();
+                    if (new Uint32Array(headerBuf)[0] !== 0x20534444) continue;
+                    const url = URL.createObjectURL(file);
+                    blobUrlCache.set(cacheKey, url);
+                    return url;
+                } catch { }
+            }
         }
         return null;
     }
 
-    // Libère tous les blob URLs créés
     function revokeBlobUrls() {
         for (const url of blobUrlCache.values()) URL.revokeObjectURL(url);
         blobUrlCache.clear();
     }
 
-    // Construit un mapping {filename.dds → blobUrl} pour les textures référencées dans un MTL
     async function buildTextureBlobUrlMap(mtlText, pakName) {
         const filenames = [];
         const seen = new Set();
@@ -115,7 +193,6 @@ window.TMNFeditorFS = (function () {
                 if (filename && !seen.has(filename)) { seen.add(filename); filenames.push(filename); }
             }
         }
-        // Toutes les textures en parallèle au lieu de les charger une par une
         const urls = await Promise.all(filenames.map(f => getTextureBlobUrl(pakName, f)));
         const map = {};
         for (let i = 0; i < filenames.length; i++)
@@ -123,14 +200,12 @@ window.TMNFeditorFS = (function () {
         return map;
     }
 
-    // Crée des blob URLs depuis des octets bruts DDS (base64 depuis C#)
     function createTextureBlobUrlsFromBytes(textures, pakName) {
         const map = {};
         for (const [filename, data] of Object.entries(textures)) {
             try {
                 let arr;
                 if (typeof data === 'string') {
-                    // Blazor sérialise byte[] en base64
                     const raw = atob(data);
                     arr = new Uint8Array(raw.length);
                     for (let i = 0; i < raw.length; i++) arr[i] = raw.charCodeAt(i);
@@ -149,20 +224,29 @@ window.TMNFeditorFS = (function () {
         return map;
     }
 
-    // Ouvre un sélecteur de fichier pour choisir un .Challenge.Gbx
+    // ── pickChallengeFile ─────────────────────────────────────────────────
+
     async function pickChallengeFile() {
-        try {
-            const [fh] = await window.showOpenFilePicker({
-                types: [{ description: 'Carte GBX', accept: { 'application/octet-stream': ['.Gbx', '.gbx'] } }],
-                multiple: false
-            });
-            const file = await fh.getFile();
-            const buffer = await file.arrayBuffer();
-            return { name: file.name, bytes: new Uint8Array(buffer) };
-        } catch (e) {
-            if (e.name === 'AbortError') return null;
-            throw e;
+        if (hasNativeFS) {
+            try {
+                const [fh] = await window.showOpenFilePicker({
+                    types: [{ description: 'Carte GBX', accept: { 'application/octet-stream': ['.Gbx', '.gbx'] } }],
+                    multiple: false
+                });
+                const file = await fh.getFile();
+                const buffer = await file.arrayBuffer();
+                return { name: file.name, bytes: new Uint8Array(buffer) };
+            } catch (e) {
+                if (e.name === 'AbortError') return null;
+                throw e;
+            }
         }
+        // Fallback: <input accept=".gbx">
+        const files = await _pickViaInput({ accept: '.gbx,.Gbx' });
+        if (!files || files.length === 0) return null;
+        const file = files[0];
+        const buffer = await file.arrayBuffer();
+        return { name: file.name, bytes: new Uint8Array(buffer) };
     }
 
     return { selectGameFolder, getGameFolderName, listPakFiles, readPakBytes, buildTextureBlobUrlMap, createTextureBlobUrlsFromBytes, revokeBlobUrls, pickChallengeFile };
