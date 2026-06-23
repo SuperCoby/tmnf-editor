@@ -36,9 +36,9 @@
 
 <div id="app-header">
     <div id="header-left">
-        <button class="hdr-btn hdr-btn-folder" @onclick="SelectGameFolder">@(!string.IsNullOrEmpty(_gameFolderKey) ? "Nadeo.ini " + T("chargé") : T("Sélectionner le dossier du jeu"))</button>
+        <button class="hdr-btn hdr-btn-folder @(_nadeoError ? "hdr-btn-error" : "")" @onclick="SelectGameFolder">@(!string.IsNullOrEmpty(_gameFolderKey) ? "Nadeo.ini " + T("chargé") : _nadeoError ? "❌ Nadeo.ini " + T("non trouvé") : T("Sélectionner le dossier du jeu"))</button>
         <div class="hdr-sep"></div>
-        <button class="hdr-btn hdr-btn-map" @onclick="LoadChallenge">@(string.IsNullOrEmpty(_challengeFileName) ? T("Charger une carte") : _challengeFileName)</button>
+        <button class="hdr-btn hdr-btn-map" @onclick="LoadChallenge" disabled="@(string.IsNullOrEmpty(_gameFolderKey))">@(string.IsNullOrEmpty(_challengeFileName) ? T("Charger une carte") : _challengeFileName)</button>
         @if (!string.IsNullOrEmpty(_challengeFileName))
         {
             <button class="hdr-btn hdr-btn-clear" title="@T("Effacer la carte")" @onclick="ClearMap">✖</button>
@@ -50,6 +50,10 @@
             </div>
             <span style="font-size:10px;color:#5dda80">@mapStatus</span>
         }
+        else if (!string.IsNullOrEmpty(_rejectedEnv))
+        {
+            <span class="stats">❌ @T("Seul les cartes Stadium sont supportées") (@_rejectedEnv)</span>
+        }
         else if (!string.IsNullOrEmpty(mapStatus))
         {
             <span class="stats">@mapStatus</span>
@@ -59,8 +63,7 @@
         <button class="header-nav-btn" @onclick="ToggleHelp">@T("Aide")</button>
         <div class="header-nav-sep"></div>
         <button class="header-nav-btn @(showBlockPanel   ? "active" : "")" @onclick="ToggleBlockPanel">Block</button>
-        <button class="header-nav-btn @(showTriangles3D  ? "active" : "")" @onclick="ToggleTriangles3D">Triangles3D</button>
-        <button class="header-nav-btn @(showTriangles2D  ? "active" : "")" @onclick="ToggleTriangles2D">Triangles2D</button>
+        <button class="header-nav-btn @(showTriangles3D  ? "active" : "")" @onclick="ToggleTriangles3D">Triangle3D/2D</button>
         <div class="header-nav-sep"></div>
         <div class="lang-toggle">
             <button class="lang-btn @(_lang == "FR" ? "active" : "")" @onclick='() => _lang = "FR"'>FR</button>
@@ -107,14 +110,24 @@
     </div>
 </div>
 
-<div id="triangles3d-panel" class="@(showTriangles3D ? "open" : "")">
+<div id="triangles3d-panel" class="@(showTriangles3D && !_tri3dPanelCollapsed ? "open" : "")">
+    @if (showTriangles3D)
+    {
+        <button class="tri3d-toggle-btn" @onclick="() => { _tri3dPanelCollapsed = !_tri3dPanelCollapsed; }"
+                title="@(_tri3dPanelCollapsed ? "Ouvrir" : "Fermer")">
+            @(_tri3dPanelCollapsed ? ">" : "<")
+        </button>
+    }
     <div class="side-section">
         <div class="side-section-header import-header">
-            <span>Import 3D Model</span>
+            <div class="import-type-toggle">
+                <button class="import-type-btn @(_importMode == "3D" ? "active" : "")" @onclick='() => SetImportMode("3D")'>Triangles3D</button>
+                <button class="import-type-btn @(_importMode == "2D" ? "active" : "")" @onclick='() => SetImportMode("2D")'>Triangles2D</button>
+            </div>
             @if (_importTabCount > 0)
             {
                 <button class="import-icon-btn" style="margin-left:auto;margin-right:4px;color:#5d8a5d;border-color:#2a442a"
-                        @onclick="SendImportToMainScene" title="@T("Envoyer vers le rendu 3D")">
+                        @onclick="SendImportToMainScene" title="@T(_importMode == "2D" ? "Envoyer vers le rendu 2D" : "Envoyer vers le rendu 3D")">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="9 18 15 12 9 6"/>
                     </svg>
@@ -142,6 +155,10 @@
                 </div>
             }
             <canvas id="import-preview-canvas"></canvas>
+            @if (_importTabCount > 0)
+            {
+                <button class="import-delete-btn" @onclick="DeleteActiveImport" title="@T("Supprimer ce modèle")">✕</button>
+            }
             <div class="import-drop-hint" id="import-drop-hint" style="@(_importTabCount > 0 ? "display:none" : "")">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3a3a55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
@@ -165,7 +182,7 @@
                 }
             </div>
             <div class="tab-content">
-                @if (t3dAnimTab == "Triangles3D")
+                @if (t3dAnimTab == "Mediatracker")
                 {
                     @if (string.IsNullOrEmpty(_challengeFileName))
                     {
@@ -210,7 +227,7 @@
                                     {
                                         var idx = ci;
                                         var clip = clips[ci];
-                                        <div class="tri3d-clip-row @(_selectedClipIdx == idx ? "active" : "")" @onclick="() => { _selectedClipIdx = idx; }">
+                                        <div class="tri3d-clip-row @(_selectedClipIdx == idx ? "active" : "")" @onclick="async () => { _selectedClipIdx = idx; await SyncTriVisibilityToClipType(); }">
                                             <span class="tri3d-clip-label">@(ParseTmColors(clip.DisplayName))</span>
                                         </div>
                                     }
@@ -226,7 +243,7 @@
                                 @foreach (var entry in GetSelectedClipTracks())
                                 {
                                     var e = entry;
-                                    <div class="tri3d-track-row @(_selectedTri3DTrack == e ? "selected" : "")" @onclick="() => SelectTri3DTrack(e)">
+                                    <div @key="e" class="tri3d-track-row @(_selectedTri3DTrack == e ? "selected" : "")" @onclick="() => SelectTri3DTrack(e)">
                                         @if (e.HasMesh || e.IsImported)
                                         {
                                             <button class="tri3d-eye @(!e.Visible ? "hidden" : "")" @onclick="() => ToggleTri3DVisible(e)" title="@(e.Visible ? T("Cacher") : T("Afficher"))">
@@ -290,8 +307,8 @@
                                     <th>Time</th>
                                     <th>EndTime</th>
                                     <th>X</th>
-                                    <th>Y</th>
-                                    <th>Z</th>
+                                    @if (_importMode != "2D") { <th>Y</th> }
+                                    <th>@(_importMode == "2D" ? "Y" : "Z")</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -302,19 +319,22 @@
                                     var kf = _animKeyframes[row];
                                     <tr>
                                         <td><input class="anim-input" type="number" step="0.1"
-                                                   value="@kf.Time.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
                                                    @onchange="e => OnAnimChange(e, row, 't')" /></td>
                                         <td><input class="anim-input" type="number" step="0.1"
-                                                   value="@kf.EndTime.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
                                                    @onchange="e => OnAnimChange(e, row, 'e')" /></td>
                                         <td><input class="anim-input ax-x-bg" type="number" step="0.001"
-                                                   value="@kf.X.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   value="@kf.X.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
                                                    @onchange="e => OnAnimChange(e, row, 'x')" /></td>
-                                        <td><input class="anim-input ax-y-bg" type="number" step="0.001"
-                                                   value="@kf.Y.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
-                                                   @onchange="e => OnAnimChange(e, row, 'y')" /></td>
-                                        <td><input class="anim-input ax-z-bg" type="number" step="0.001"
-                                                   value="@kf.Z.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                                        @if (_importMode != "2D")
+                                        {
+                                            <td><input class="anim-input ax-y-bg" type="number" step="0.001"
+                                                       value="@kf.Y.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                                       @onchange="e => OnAnimChange(e, row, 'y')" /></td>
+                                        }
+                                        <td><input class="anim-input @(_importMode == "2D" ? "ax-y-bg" : "ax-z-bg")" type="number" step="0.001"
+                                                   value="@kf.Z.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
                                                    @onchange="e => OnAnimChange(e, row, 'z')" /></td>
                                         <td>
                                             <div class="anim-row-actions">
@@ -346,18 +366,21 @@
                     {
                     <div class="anim-table-wrap">
                         <table class="anim-table">
-                            <thead><tr><th>Time</th><th>EndTime</th><th>X</th><th>Y</th><th>Z</th><th></th></tr></thead>
+                            <thead><tr><th>Time</th><th>EndTime</th><th>X</th>@if (_importMode != "2D") { <th>Y</th> }<th>@(_importMode == "2D" ? "Y" : "Z")</th><th></th></tr></thead>
                             <tbody>
                                 @for (int i = 0; i < _scalingKeyframes.Count; i++)
                                 {
                                     int row = i;
                                     var kf = _scalingKeyframes[row];
                                     <tr>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 't')" /></td>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'e')" /></td>
-                                        <td><input class="anim-input ax-x-bg" type="number" step="0.1" value="@kf.X.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'x')" /></td>
-                                        <td><input class="anim-input ax-y-bg" type="number" step="0.1" value="@kf.Y.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'y')" /></td>
-                                        <td><input class="anim-input ax-z-bg" type="number" step="0.1" value="@kf.Z.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'z')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input ax-x-bg" type="number" step="0.1" value="@kf.X.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'x')" /></td>
+                                        @if (_importMode != "2D")
+                                        {
+                                            <td><input class="anim-input ax-y-bg" type="number" step="0.1" value="@kf.Y.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'y')" /></td>
+                                        }
+                                        <td><input class="anim-input @(_importMode == "2D" ? "ax-y-bg" : "ax-z-bg")" type="number" step="0.1" value="@kf.Z.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnScalingChange(e, row, 'z')" /></td>
                                         <td><div class="anim-row-actions">
                                             <button type="button" class="anim-row-btn anim-row-btn-add" @onclick="() => AddScalingKeyframe(row)" @onclick:stopPropagation title="@T("Ajouter")">+</button>
                                             @if (row == 0) { <button class="anim-row-btn anim-row-btn-reset" @onclick="ResetScalingKeyframes" title="Reset">R</button> }
@@ -380,18 +403,21 @@
                     {
                     <div class="anim-table-wrap">
                         <table class="anim-table">
-                            <thead><tr><th>Time</th><th>EndTime</th><th>X</th><th>Y</th><th>Z</th><th>Steps</th><th></th></tr></thead>
+                            <thead><tr><th>Time</th><th>EndTime</th><th>X</th>@if (_importMode != "2D") { <th>Y</th><th>Z</th> }<th>Steps</th><th></th></tr></thead>
                             <tbody>
                                 @for (int i = 0; i < _rotationKeyframes.Count; i++)
                                 {
                                     int row = i;
                                     var kf = _rotationKeyframes[row];
                                     <tr>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 't')" /></td>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'e')" /></td>
-                                        <td><input class="anim-input ax-x-bg" type="number" step="0.1" value="@kf.X.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'x')" /></td>
-                                        <td><input class="anim-input ax-y-bg" type="number" step="0.1" value="@kf.Y.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'y')" /></td>
-                                        <td><input class="anim-input ax-z-bg" type="number" step="0.1" value="@kf.Z.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'z')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input ax-x-bg" type="number" step="0.1" value="@kf.X.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'x')" /></td>
+                                        @if (_importMode != "2D")
+                                        {
+                                            <td><input class="anim-input ax-y-bg" type="number" step="0.1" value="@kf.Y.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'y')" /></td>
+                                            <td><input class="anim-input ax-z-bg" type="number" step="0.1" value="@kf.Z.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 'z')" /></td>
+                                        }
                                         <td><input class="anim-input" type="number" step="1" value="@kf.Steps.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnRotationChange(e, row, 's')" /></td>
                                         <td><div class="anim-row-actions">
                                             <button type="button" class="anim-row-btn anim-row-btn-add" @onclick="() => AddRotationKeyframe(row)" @onclick:stopPropagation title="@T("Ajouter")">+</button>
@@ -422,9 +448,9 @@
                                     int row = i;
                                     var kf = _orbitKeyframes[row];
                                     <tr>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 't')" /></td>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 'e')" /></td>
-                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Radius.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 'r')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Radius.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 'r')" /></td>
                                         <td><input class="anim-input" type="number" step="1" value="@kf.Steps.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 's')" /></td>
                                         <td><input class="anim-input" type="number" step="1" value="@kf.Degrees.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => OnOrbitChange(e, row, 'd')" /></td>
                                         <td><div class="anim-row-actions">
@@ -495,15 +521,18 @@
                         <div class="pos-grid">
                             <span class="pos-axis ax-x">X</span>
                             <input class="pos-input" type="number" step="1"
-                                   value="@_importOriginX.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                                   value="@_importOriginX.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
                                    @onchange="e => OnOriginChange(e, 'x')" />
-                            <span class="pos-axis ax-y">Y</span>
+                            @if (_importMode != "2D")
+                            {
+                                <span class="pos-axis ax-y">Y</span>
+                                <input class="pos-input" type="number" step="1"
+                                       value="@_importOriginY.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                       @onchange="e => OnOriginChange(e, 'y')" />
+                            }
+                            <span class="pos-axis @(_importMode == "2D" ? "ax-y" : "ax-z")">@(_importMode == "2D" ? "Y" : "Z")</span>
                             <input class="pos-input" type="number" step="1"
-                                   value="@_importOriginY.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
-                                   @onchange="e => OnOriginChange(e, 'y')" />
-                            <span class="pos-axis ax-z">Z</span>
-                            <input class="pos-input" type="number" step="1"
-                                   value="@_importOriginZ.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                                   value="@_importOriginZ.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
                                    @onchange="e => OnOriginChange(e, 'z')" />
                         </div>
                         <button class="origin-center-btn" @onclick="CenterImportOrigin">
@@ -511,7 +540,7 @@
                         </button>
                     }
                 }
-                else if (t3dAnimTab == "Text 3D")
+                else if (_isTextTab)
                 {
                     <div class="text3d-panel" @onclick="DeselectText3D">
                         <div class="text3d-row" @onclick:stopPropagation>
@@ -537,13 +566,16 @@
                             <button class="text3d-style-btn @(_text3dUnderline ? "active" : "")" title="@T("Souligné")" @onclick="OnText3DUnderlineToggle"><u>U</u></button>
                             <button class="text3d-style-btn @(_text3dStrike ? "active" : "")" title="@T("Barré")" @onclick="OnText3DStrikeToggle"><s>S</s></button>
                         </div>
-                        <div class="text3d-row" @onclick:stopPropagation>
-                            <label class="text3d-label" for="text3d-thickness">@T("Épaisseur")</label>
-                            <input id="text3d-thickness" class="text3d-range" type="range" min="0" max="20" step="0.1"
-                                   value="@_text3dThickness.ToString(System.Globalization.CultureInfo.InvariantCulture)"
-                                   @oninput="OnText3DThicknessChanged" />
-                            <span class="text3d-val">@_text3dThickness.ToString("F1")</span>
-                        </div>
+                        @if (_importMode != "2D")
+                        {
+                            <div class="text3d-row" @onclick:stopPropagation>
+                                <label class="text3d-label" for="text3d-thickness">@T("Épaisseur")</label>
+                                <input id="text3d-thickness" class="text3d-range" type="range" min="0" max="20" step="0.1"
+                                       value="@_text3dThickness.ToString(System.Globalization.CultureInfo.InvariantCulture)"
+                                       @oninput="OnText3DThicknessChanged" />
+                                <span class="text3d-val">@_text3dThickness.ToString("F1")</span>
+                            </div>
+                        }
                         <div class="text3d-row" @onclick:stopPropagation>
                             <label class="text3d-label" for="text3d-spacing">@T("Espacement")</label>
                             <input id="text3d-spacing" class="text3d-range" type="range" min="-2" max="10" step="0.1"
@@ -566,11 +598,11 @@
                         {
                             <button class="export-clip-btn" style="margin-top:8px"
                                     disabled="@(string.IsNullOrWhiteSpace(_text3dValue))"
-                                    @onclick="SendText3DToScene" @onclick:stopPropagation>
+                                    @onclick="@(_importMode == "2D" ? SendText2DToScene : SendText3DToScene)" @onclick:stopPropagation>
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="9 18 15 12 9 6"/>
                                 </svg>
-                                @T("Envoyer vers le rendu 3D")
+                                @T(_importMode == "2D" ? "Envoyer vers le rendu 2D" : "Envoyer vers le rendu 3D")
                             </button>
                         }
                         @if (_text3dEntries.Count > 0)
@@ -606,15 +638,18 @@
                         <div class="pos-grid">
                             <span class="pos-axis ax-x">X</span>
                             <input class="pos-input" type="number" step="1"
-                                   value="@((_selectedTri3DTrack is { HasMesh: true } ? _tri3dPosX : _importPosX).ToString("F1", System.Globalization.CultureInfo.InvariantCulture))"
+                                   value="@((_selectedTri3DTrack is { HasMesh: true } ? _tri3dPosX : _importPosX).ToString("F3", System.Globalization.CultureInfo.InvariantCulture))"
                                    @onchange="e => OnPosChange(e, 'x')" />
-                            <span class="pos-axis ax-y">Y</span>
+                            @if (_importMode != "2D")
+                            {
+                                <span class="pos-axis ax-y">Y</span>
+                                <input class="pos-input" type="number" step="1"
+                                       value="@((_selectedTri3DTrack is { HasMesh: true } ? _tri3dPosY : _importPosY).ToString("F3", System.Globalization.CultureInfo.InvariantCulture))"
+                                       @onchange="e => OnPosChange(e, 'y')" />
+                            }
+                            <span class="pos-axis @(_importMode == "2D" ? "ax-y" : "ax-z")">@(_importMode == "2D" ? "Y" : "Z")</span>
                             <input class="pos-input" type="number" step="1"
-                                   value="@((_selectedTri3DTrack is { HasMesh: true } ? _tri3dPosY : _importPosY).ToString("F1", System.Globalization.CultureInfo.InvariantCulture))"
-                                   @onchange="e => OnPosChange(e, 'y')" />
-                            <span class="pos-axis ax-z">Z</span>
-                            <input class="pos-input" type="number" step="1"
-                                   value="@((_selectedTri3DTrack is { HasMesh: true } ? _tri3dPosZ : _importPosZ).ToString("F1", System.Globalization.CultureInfo.InvariantCulture))"
+                                   value="@((_selectedTri3DTrack is { HasMesh: true } ? _tri3dPosZ : _importPosZ).ToString("F3", System.Globalization.CultureInfo.InvariantCulture))"
                                    @onchange="e => OnPosChange(e, 'z')" />
                         </div>
                         <button class="origin-center-btn" @onclick="ResetModelPosition">Reset</button>
@@ -659,27 +694,6 @@
     </div>
 </div>
 
-<div id="triangles2d-panel" class="@(showTriangles2D ? "open" : "")">
-    <div class="side-section">
-        <div class="side-section-header">Import 3D Model</div>
-        <div class="side-section-content"></div>
-    </div>
-    <div class="side-section-divider"></div>
-    <div class="side-section">
-        <div class="side-section-header">Animation</div>
-        <div class="side-section-content"></div>
-    </div>
-    <div class="side-section-divider"></div>
-    <div class="side-section">
-        <div class="side-section-header">Section 3</div>
-        <div class="side-section-content"></div>
-    </div>
-    <div class="side-section-divider"></div>
-    <div class="side-section">
-        <div class="side-section-header">Export</div>
-        <div class="side-section-content"></div>
-    </div>
-</div>
 
 <div id="three-container" @ref="threeContainer">
     <div class="playback-bar">
@@ -777,6 +791,7 @@
     // Cache JS interop — évite de re-transférer les gros textes OBJ/MTL pour les modèles déjà dans rawModelCache
     private readonly HashSet<string> _jsModelCacheKeys = new(StringComparer.OrdinalIgnoreCase);
     private string _gameFolderKey = "";
+    private bool _nadeoError = false;
 
     private string _lang = "FR";
     private string T(string key) => _lang == "EN" && _en.TryGetValue(key, out var v) ? v : key;
@@ -789,6 +804,7 @@
         ["Rechercher un bloc…"] = "Search a block…",
         ["Ouverture de"] = "Opening",
         ["Envoyer vers le rendu 3D"] = "Send to 3D render",
+        ["Envoyer vers le rendu 2D"] = "Send to 2D render",
         ["Importer un .obj"] = "Import a .obj",
         ["Ajouter un clip"] = "Add a clip",
         ["Supprimer le clip"] = "Remove clip",
@@ -802,6 +818,7 @@
         ["Ajouter"] = "Add",
         ["Supprimer"] = "Remove",
         ["chargé"] = "loaded",
+        ["non trouvé"] = "not found",
         ["Confirmer"] = "Confirm",
         ["Retour au début"] = "Go to start",
         ["Aller à la fin"] = "Go to end",
@@ -824,6 +841,7 @@
         ["Barré"] = "Strikethrough",
         ["Déposez un .obj ici"] = "Drop a .obj here",
         ["Carte non chargée"] = "No map loaded",
+        ["Seul les cartes Stadium sont supportées"] = "Only Stadium maps are supported",
         [".mtl optionnel"] = ".mtl optional",
         ["Aucun modèle importé"] = "No model imported",
         ["Modèle non transféré vers le rendu"] = "Model not sent to render",
@@ -878,6 +896,16 @@
     {
         if (string.IsNullOrWhiteSpace(_text3dValue)) return;
         var idx = await JS.InvokeAsync<int>("TMNFeditorScene.createText3D", _text3dValue, _text3dFont, _text3dThickness, _text3dLetterSpacing, _text3dBold, _text3dItalic, _text3dUnderline, _text3dStrike);
+        var entry = new Text3DEntry { Text = _text3dValue, Font = _text3dFont, Thickness = _text3dThickness, Spacing = _text3dLetterSpacing, Bold = _text3dBold, Italic = _text3dItalic, Underline = _text3dUnderline, Strike = _text3dStrike, SceneIdx = idx };
+        _text3dEntries.Add(entry);
+        _text3dActiveIdx = idx;
+        _text3dValue = entry.Text;
+    }
+
+    private async Task SendText2DToScene()
+    {
+        if (string.IsNullOrWhiteSpace(_text3dValue)) return;
+        var idx = await JS.InvokeAsync<int>("TMNFeditorScene.createText2D", _text3dValue, _text3dFont, _text3dThickness, _text3dLetterSpacing, _text3dBold, _text3dItalic, _text3dUnderline, _text3dStrike);
         var entry = new Text3DEntry { Text = _text3dValue, Font = _text3dFont, Thickness = _text3dThickness, Spacing = _text3dLetterSpacing, Bold = _text3dBold, Italic = _text3dItalic, Underline = _text3dUnderline, Strike = _text3dStrike, SceneIdx = idx };
         _text3dEntries.Add(entry);
         _text3dActiveIdx = idx;
@@ -1034,6 +1062,7 @@
 
     // Map mode
     private string mapStatus = "";
+    private string? _rejectedEnv;
     private bool mapIsLoading = false;
     private int mapProgress = 0;
     private byte[]? _challengeBytes;
@@ -1042,16 +1071,26 @@
     private bool showMapOffsetPanel = false;
 
     private bool showTriangles3D = false;
-    private bool showTriangles2D = false;
+    private bool _tri3dPanelCollapsed = false;
 
     private string t3dAnimTab = "Model Position";
-    private static readonly string[] _t3dAnimTabs = ["Model Position", "Origin", "Translation", "Scaling", "Rotation", "Orbit", "Shading Intensity", "Material", "Text 3D", "Triangles3D"];
+    private static readonly string[] _t3dAnimTabs3D = ["Model Position", "Origin", "Translation", "Scaling", "Rotation", "Orbit", "Shading Intensity", "Material", "Text 3D", "Mediatracker"];
+    private static readonly string[] _t3dAnimTabs2D = ["Model Position", "Origin", "Translation", "Scaling", "Rotation", "Orbit", "Shading Intensity", "Material", "Text 2D", "Mediatracker"];
+    private string[] _t3dAnimTabs => _importMode == "2D" ? _t3dAnimTabs2D : _t3dAnimTabs3D;
+    private bool _isTextTab => t3dAnimTab is "Text 3D" or "Text 2D";
 
     private async Task ToggleBlockPanel()   { bool next = !showBlockPanel;  CloseAllPanels(); showBlockPanel  = next; if (next) await JS.InvokeVoidAsync("TMNFeditorScene.showBlockView"); }
-    private async Task ToggleTriangles3D() { bool next = !showTriangles3D; CloseAllPanels(); showTriangles3D = next; if (next) _importVisible = true; await JS.InvokeVoidAsync(next ? "TMNFeditorScene.showTrianglesView" : "TMNFeditorScene.showBlockView"); }
-    private async Task ToggleTriangles2D() { bool next = !showTriangles2D; CloseAllPanels(); showTriangles2D = next; await JS.InvokeVoidAsync(next ? "TMNFeditorScene.showTrianglesView" : "TMNFeditorScene.showBlockView"); }
-    private void CloseAllPanels() { showBlockPanel = false; showTriangles3D = false; showTriangles2D = false; }
+    private async Task ToggleTriangles3D() { bool next = !showTriangles3D; CloseAllPanels(); showTriangles3D = next; _tri3dPanelCollapsed = false; if (next) { _importVisible = true; await JS.InvokeVoidAsync("TMNFeditorScene.showTrianglesView"); await SyncTriVisibilityToClipType(); } else { await JS.InvokeVoidAsync("TMNFeditorScene.showBlockView"); } }
+    private void CloseAllPanels() { showBlockPanel = false; showTriangles3D = false; _tri3dPanelCollapsed = false; }
 
+    private string _importMode = "3D";
+    private async Task SetImportMode(string mode)
+    {
+        _importMode = mode;
+        if (t3dAnimTab == "Text 3D" && mode == "2D") t3dAnimTab = "Text 2D";
+        else if (t3dAnimTab == "Text 2D" && mode == "3D") t3dAnimTab = "Text 3D";
+        await JS.InvokeVoidAsync("TMNFeditorScene.setImportTopView", mode == "2D");
+    }
     private bool   _importPreviewInited = false;
     private int    _importTabCount      = 0;
     private int    _activeImportTab     = 0;
@@ -1059,6 +1098,24 @@
 
     private async Task TriggerImportFile()
         => await JS.InvokeVoidAsync("TMNFeditorScene.triggerFileInput", "import-file-input");
+
+    private async Task DeleteActiveImport()
+    {
+        if (_importTabCount <= 0) return;
+        var idx = _activeImportTab;
+        foreach (var e in _tri3dEntries.Where(e => e.ImportIndex == idx))
+        {
+            e.ImportIndex = -1;
+            e.Name = e.TrackName;
+        }
+        if (_perImportAnim.ContainsKey(idx)) _perImportAnim.Remove(idx);
+        var newCount = await JS.InvokeAsync<int>("TMNFeditorScene.removeImportModel", idx);
+        _importTabCount = newCount;
+        _activeImportTab = newCount > 0 ? Math.Min(idx, newCount - 1) : 0;
+        _activeTabInScene = newCount > 0 && _activeImportTab >= 0;
+        _importMaterials = new();
+        if (newCount == 0) _activeTabInScene = false;
+    }
 
     [JSInvokable]
     public void OnModelImported(int count, int activeIdx)
@@ -1074,6 +1131,16 @@
         _activeImportTab = idx;
         _selectedTri3DTrack = null;
         StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task OnSwitchImportMode(string mode)
+    {
+        if (_importMode != mode)
+        {
+            await SetImportMode(mode);
+            StateHasChanged();
+        }
     }
 
     [JSInvokable]
@@ -1188,6 +1255,7 @@
         public int Vertices { get; set; }
         public int Triangles { get; set; }
         public bool HasMesh { get; set; }
+        public bool Is2D { get; set; }
         public bool Visible { get; set; } = true;
         public int ImportIndex { get; set; } = -1;
         public bool IsImported => ImportIndex >= 0;
@@ -1223,10 +1291,32 @@
 
     private static bool HasClipsPanel(string type) => type is "In Game" or "End Race";
 
-    private void SelectClipType(string type)
+    private async Task SelectClipType(string type)
     {
         _selectedClipType = type;
         _selectedClipIdx = 0;
+        await SyncTriVisibilityToClipType();
+    }
+
+    private async Task SyncTriVisibilityToClipType()
+    {
+        string? clipName = null;
+        if (HasClipsPanel(_selectedClipType))
+        {
+            var clips = GetClipsForSelectedType();
+            if (_selectedClipIdx >= 0 && _selectedClipIdx < clips.Count)
+                clipName = clips[_selectedClipIdx].ClipName;
+        }
+        foreach (var e in _tri3dEntries)
+        {
+            if (!e.HasMesh && !e.IsImported) continue;
+            bool show = e.ClipType == _selectedClipType && e.Visible
+                && (clipName == null || e.ClipName == clipName);
+            if (e.IsImported)
+                await JS.InvokeVoidAsync("TMNFeditorScene.setImportVisibleByIndex", e.ImportIndex, show);
+            else if (e.HasMesh)
+                await JS.InvokeVoidAsync("TMNFeditorScene.setTri3DVisible", e.MeshIndex, show);
+        }
     }
 
     private List<Tri3DEntry> GetSelectedClipTracks()
@@ -1252,14 +1342,22 @@
         _selectedClipIdx = GetClipsForSelectedType().Count - 1;
     }
 
-    private void RemoveSelectedClip()
+    private async Task RemoveSelectedClip()
     {
         var clips = GetClipsForSelectedType();
         if (_selectedClipIdx < 0 || _selectedClipIdx >= clips.Count) return;
         var sel = clips[_selectedClipIdx];
+        foreach (var e in _tri3dEntries.Where(e => e.ClipType == sel.ClipType && e.ClipName == sel.ClipName))
+        {
+            if (e.HasMesh)
+                await JS.InvokeVoidAsync("TMNFeditorScene.setTri3DVisible", e.MeshIndex, false);
+            else if (e.IsImported)
+                await JS.InvokeVoidAsync("TMNFeditorScene.setImportVisibleByIndex", e.ImportIndex, false);
+        }
         _tri3dEntries.RemoveAll(e => e.ClipType == sel.ClipType && e.ClipName == sel.ClipName);
         _customClips.Remove($"{sel.ClipType}|{sel.ClipName}");
         if (_selectedTri3DTrack?.ClipName == sel.ClipName) _selectedTri3DTrack = null;
+        await JS.InvokeVoidAsync("TMNFeditorScene.selectTri3DMesh", -1);
         _selectedClipIdx = Math.Clamp(_selectedClipIdx, 0, Math.Max(0, GetClipsForSelectedType().Count - 1));
     }
 
@@ -1289,9 +1387,14 @@
         });
     }
 
-    private void RemoveSelectedTrack()
+    private async Task RemoveSelectedTrack()
     {
         if (_selectedTri3DTrack == null || _selectedTri3DTrack.ClipType != _selectedClipType) return;
+        if (_selectedTri3DTrack.HasMesh)
+            await JS.InvokeVoidAsync("TMNFeditorScene.setTri3DVisible", _selectedTri3DTrack.MeshIndex, false);
+        else if (_selectedTri3DTrack.IsImported)
+            await JS.InvokeVoidAsync("TMNFeditorScene.setImportVisibleByIndex", _selectedTri3DTrack.ImportIndex, false);
+        await JS.InvokeVoidAsync("TMNFeditorScene.selectTri3DMesh", -1);
         _tri3dEntries.Remove(_selectedTri3DTrack);
         _selectedTri3DTrack = null;
     }
@@ -1300,9 +1403,11 @@
     {
         if (_importTabCount == 0) return;
         track.ImportIndex = _activeImportTab;
-        var isText3D = _text3dEntries.Any(e => e.SceneIdx == _activeImportTab);
-        track.Name = isText3D ? $"Text3D #{_activeImportTab + 1}" : $"Model3D #{_activeImportTab + 1}";
-        await JS.InvokeVoidAsync("TMNFeditorScene.sendImportToMainScene", _activeImportTab);
+        track.Is2D = _importMode == "2D";
+        var isText = _text3dEntries.Any(e => e.SceneIdx == _activeImportTab);
+        var suffix = _importMode == "2D" ? "2D" : "3D";
+        track.Name = isText ? $"Text{suffix} #{_activeImportTab + 1}" : $"Model{suffix} #{_activeImportTab + 1}";
+        await JS.InvokeVoidAsync("TMNFeditorScene.sendImportToMainScene", _activeImportTab, _importMode == "2D");
     }
 
     private void RemoveImportFromTrack(Tri3DEntry track)
@@ -1393,7 +1498,7 @@
 
     private async Task SetAllTri3DVisible(bool visible)
     {
-        foreach (var e in _tri3dEntries)
+        foreach (var e in _tri3dEntries.Where(e => e.ClipType == _selectedClipType))
         {
             if (!e.HasMesh && !e.IsImported) continue;
             e.Visible = visible;
@@ -1567,7 +1672,7 @@
                 data.PosX, data.PosY, data.PosZ,
                 data.RotX, data.RotY, data.RotZ,
                 data.ScaleX, data.ScaleY, data.ScaleZ,
-                name, matOverrides, (float)impAnim.Shading);
+                name, matOverrides, (float)impAnim.Shading, impTrack.Is2D);
             if (bytes.Length == 0) return;
             await JS.InvokeVoidAsync("TMNFeditorScene.downloadFileBytes", $"{name}.Clip.Gbx", Convert.ToBase64String(bytes));
             return;
@@ -1595,7 +1700,7 @@
                 data.PosX, data.PosY, data.PosZ,
                 data.RotX, data.RotY, data.RotZ,
                 data.ScaleX, data.ScaleY, data.ScaleZ,
-                name, matOverrides, (float)_shadingIntensity);
+                name, matOverrides, (float)_shadingIntensity, _importMode == "2D");
             if (bytes2.Length == 0) return;
             await JS.InvokeVoidAsync("TMNFeditorScene.downloadFileBytes", $"{name}.Clip.Gbx", Convert.ToBase64String(bytes2));
         }
@@ -1627,13 +1732,15 @@
         public float ScaleZ { get; set; } = 1;
         [System.Text.Json.Serialization.JsonPropertyName("colorHex")]
         public string? ColorHex { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("scale2D")]
+        public float Scale2D { get; set; } = 1;
     }
 
     private async Task ExportChallengeGbx()
     {
         if (_challengeBytes == null) return;
 
-        var newBlocks = new List<(string clipType, string clipName, string clipDisplayName, string trackName, GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles3D block)>();
+        var newBlocks = new List<(string clipType, string clipName, string clipDisplayName, string trackName, GBX.NET.Engines.Game.CGameCtnMediaBlock block)>();
 
         foreach (var entry in _tri3dEntries)
         {
@@ -1646,14 +1753,30 @@
 
                 var anim = GetOrCreateAnim(entry.ImportIndex);
 
-                var transKfs = anim.Trans.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime, k.X, k.Y, k.Z)).ToList();
-                var scaleKfs = anim.Scale.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime, k.X, k.Y, k.Z)).ToList();
-                var rotKfs = anim.Rot.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime,
-                    k.X * Math.PI / 180.0, k.Y * Math.PI / 180.0, k.Z * Math.PI / 180.0, (int)k.Steps)).ToList();
+                List<ClipGbxExporter.AnimKf> transKfs, scaleKfs, rotKfs;
+                List<ClipGbxExporter.OrbitKf> orbitKfs;
+                if (entry.Is2D)
+                {
+                    float sc = data.Scale2D;
+                    transKfs = anim.Trans.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime, k.X * sc, k.Z * sc, 0)).ToList();
+                    scaleKfs = anim.Scale.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime, k.X, k.Z, 1)).ToList();
+                    rotKfs = anim.Rot.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime,
+                        0, 0, k.X * Math.PI / 180.0, (int)k.Steps)).ToList();
+                    orbitKfs = anim.Orbit.Select(k => new ClipGbxExporter.OrbitKf(k.Time, k.EndTime, k.Radius * sc, (int)k.Steps, k.Degrees)).ToList();
+                }
+                else
+                {
+                    transKfs = anim.Trans.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime, k.X, k.Y, k.Z)).ToList();
+                    scaleKfs = anim.Scale.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime, k.X, k.Y, k.Z)).ToList();
+                    rotKfs = anim.Rot.Select(k => new ClipGbxExporter.AnimKf(k.Time, k.EndTime,
+                        k.X * Math.PI / 180.0, k.Y * Math.PI / 180.0, k.Z * Math.PI / 180.0, (int)k.Steps)).ToList();
+                    orbitKfs = anim.Orbit.Select(k => new ClipGbxExporter.OrbitKf(k.Time, k.EndTime, k.Radius, (int)k.Steps, k.Degrees)).ToList();
+                }
 
                 bool hasAnim = transKfs.Any(k => k.X != 0 || k.Y != 0 || k.Z != 0)
                             || scaleKfs.Any(k => k.X != 1 || k.Y != 1 || k.Z != 1)
-                            || rotKfs.Any(k => k.X != 0 || k.Y != 0 || k.Z != 0);
+                            || rotKfs.Any(k => k.X != 0 || k.Y != 0 || k.Z != 0)
+                            || orbitKfs.Any(k => k.Radius != 0);
 
                 var mats = await JS.InvokeAsync<ImportMatDto[]>("TMNFeditorScene.getImportMaterialsByIndex", entry.ImportIndex);
                 Dictionary<string, string>? matOverrides = null;
@@ -1665,17 +1788,40 @@
                             matOverrides[mat.Name] = mat.Hex;
                 }
 
-                var rotOrigin = new GBX.NET.Vec3((float)anim.OriginX, (float)anim.OriginY, (float)anim.OriginZ);
-                var tri3dBlock = ClipGbxExporter.BuildObjTri3DBlock(
-                    data.ObjText, data.MtlText,
-                    data.PosX, data.PosY, data.PosZ,
-                    hasAnim ? transKfs : null,
-                    hasAnim ? scaleKfs : null,
-                    hasAnim ? rotKfs : null,
-                    matOverrides, (float)anim.Shading,
-                    rotationOrigin: rotOrigin);
-
-                newBlocks.Add((entry.ClipType, entry.ClipName, entry.ClipDisplayName, entry.Name, tri3dBlock));
+                GBX.NET.Vec3 rotOrigin;
+                if (entry.Is2D)
+                {
+                    float sc = data.Scale2D;
+                    rotOrigin = new GBX.NET.Vec3((float)(anim.OriginX * sc), (float)(anim.OriginZ * sc), 0);
+                }
+                else
+                    rotOrigin = new GBX.NET.Vec3((float)anim.OriginX, (float)anim.OriginY, (float)anim.OriginZ);
+                if (entry.Is2D)
+                {
+                    var tri2dBlock = ClipGbxExporter.BuildObjTri2DBlock(
+                        data.ObjText, data.MtlText,
+                        data.PosX, data.PosY, data.PosZ,
+                        hasAnim ? transKfs : null,
+                        hasAnim ? scaleKfs : null,
+                        hasAnim ? rotKfs : null,
+                        matOverrides, (float)anim.Shading,
+                        rotationOrigin: rotOrigin,
+                        orbitKfs: hasAnim ? orbitKfs : null);
+                    newBlocks.Add((entry.ClipType, entry.ClipName, entry.ClipDisplayName, entry.Name, tri2dBlock));
+                }
+                else
+                {
+                    var tri3dBlock = ClipGbxExporter.BuildObjTri3DBlock(
+                        data.ObjText, data.MtlText,
+                        data.PosX, data.PosY, data.PosZ,
+                        hasAnim ? transKfs : null,
+                        hasAnim ? scaleKfs : null,
+                        hasAnim ? rotKfs : null,
+                        matOverrides, (float)anim.Shading,
+                        rotationOrigin: rotOrigin,
+                        orbitKfs: hasAnim ? orbitKfs : null);
+                    newBlocks.Add((entry.ClipType, entry.ClipName, entry.ClipDisplayName, entry.Name, tri3dBlock));
+                }
             }
             else if (entry.HasMesh && isCustom && entry.MeshIndex >= 0 && entry.MeshIndex < _tri3dBlocks.Count)
             {
@@ -1755,7 +1901,7 @@
     {
         public double Time    { get; set; }
         public double EndTime { get; set; }
-        public double Radius  { get; set; } = 2;
+        public double Radius  { get; set; } = 0;
         public double Steps   { get; set; } = 60;
         public double Degrees { get; set; } = 360;
     }
@@ -1867,18 +2013,26 @@
             if (data.Trans.Count > 0) t = Math.Max(t, data.Trans[^1].EndTime);
             if (data.Scale.Count > 0) t = Math.Max(t, data.Scale[^1].EndTime);
             if (data.Rot.Count > 0) t = Math.Max(t, data.Rot[^1].EndTime);
+            if (data.Orbit.Count > 0) t = Math.Max(t, data.Orbit[^1].EndTime);
         }
         return t;
     }
 
     private async Task PlaybackPlay()
     {
-        var allAnims = _perImportAnim.Select(kvp => (object)new
+        var allAnims = _perImportAnim.Select(kvp =>
         {
-            idx = kvp.Key,
-            transKf = kvp.Value.Trans.Select(kf => new { time = kf.Time, endTime = kf.EndTime, x = kf.X, y = kf.Y, z = kf.Z }).ToArray(),
-            scaleKf = kvp.Value.Scale.Select(kf => new { time = kf.Time, endTime = kf.EndTime, x = kf.X, y = kf.Y, z = kf.Z }).ToArray(),
-            rotKf = kvp.Value.Rot.Select(kf => new { time = kf.Time, endTime = kf.EndTime, x = kf.X * Math.PI / 180.0, y = kf.Y * Math.PI / 180.0, z = kf.Z * Math.PI / 180.0 }).ToArray()
+            var entry = _tri3dEntries.FirstOrDefault(e => e.IsImported && e.ImportIndex == kvp.Key);
+            bool entryIs2D = entry?.Is2D ?? (_importMode == "2D");
+            return (object)new
+            {
+                idx = kvp.Key,
+                is2D = entryIs2D,
+                transKf = kvp.Value.Trans.Select(kf => new { time = kf.Time, endTime = kf.EndTime, x = kf.X, y = kf.Y, z = kf.Z }).ToArray(),
+                scaleKf = kvp.Value.Scale.Select(kf => new { time = kf.Time, endTime = kf.EndTime, x = kf.X, y = kf.Y, z = kf.Z }).ToArray(),
+                rotKf = kvp.Value.Rot.Select(kf => new { time = kf.Time, endTime = kf.EndTime, x = kf.X * Math.PI / 180.0, y = kf.Y * Math.PI / 180.0, z = kf.Z * Math.PI / 180.0 }).ToArray(),
+                orbitKf = kvp.Value.Orbit.Select(kf => new { time = kf.Time, endTime = kf.EndTime, radius = kf.Radius, steps = kf.Steps, degrees = kf.Degrees }).ToArray()
+            };
         }).ToArray();
         await JS.InvokeVoidAsync("TMNFeditorScene.playbackStartAll", allAnims, _playbackRepeat);
     }
@@ -1978,11 +2132,11 @@
     private async Task SwitchImportTab(int idx)
     {
         _activeImportTab = idx;
-        await JS.InvokeVoidAsync("TMNFeditorScene.switchImportTab", idx);
+        await JS.InvokeVoidAsync("TMNFeditorScene.switchImportTab", idx, _importMode == "2D");
     }
 
     private async Task SendImportToMainScene()
-        => await JS.InvokeVoidAsync("TMNFeditorScene.sendImportToMainScene", _activeImportTab);
+        => await JS.InvokeVoidAsync("TMNFeditorScene.sendImportToMainScene", _activeImportTab, _importMode == "2D");
 
     // ── Toolbar Triangles3D ──────────────────────────────────────────────────
     private string _t3dTool      = "none";
@@ -2079,7 +2233,6 @@
     {
         var folderName = await FS.SelectGameFolderAsync();
         if (folderName == null) return;
-
         gameFolderStatus = $"✅ {folderName}";
         _gameFolderKey = folderName;
         _jsModelCacheKeys.Clear();
@@ -2092,9 +2245,21 @@
                        .OrderBy(p => p.Equals("Stadium", StringComparison.OrdinalIgnoreCase) ? 0 : 1)
                        .ToList();
 
+        if (pakNames.Count == 0)
+        {
+            _nadeoError = true;
+            _gameFolderKey = "";
+            gameFolderStatus = "";
+            solids.Clear();
+            filteredSolids.Clear();
+            statsText = "";
+            return;
+        }
+        _nadeoError = false;
+
         solids.Clear();
         filteredSolids.Clear();
-        statsText = pakNames.Count > 0 ? $"{pakNames.Count} paks disponibles" : "Aucun pak reconnu";
+        statsText = $"{pakNames.Count} paks disponibles";
         activeModelIndex = -1;
 
         if (pakNames.Count > 0)
@@ -2338,6 +2503,7 @@
         var file = await FS.PickChallengeFileAsync();
         if (file == null) return;
 
+        _rejectedEnv = null;
         mapStatus = $"Lecture de {file.Name}…";
         mapIsLoading = true;
         mapProgress = 0;
@@ -2352,6 +2518,17 @@
         catch (Exception ex) { mapStatus = $"❌ Parse: {ex.Message}"; mapIsLoading = false; StateHasChanged(); return; }
 
         if (data == null) { mapStatus = "❌ Fichier non reconnu (pas un Challenge.Gbx)"; mapIsLoading = false; StateHasChanged(); return; }
+
+        if (!string.Equals(data.Environment, "Stadium", StringComparison.OrdinalIgnoreCase))
+        {
+            _rejectedEnv = data.Environment;
+            mapIsLoading = false;
+            _challengeBytes = null;
+            _challengeFileName = null;
+            StateHasChanged();
+            _ = Task.Delay(10000).ContinueWith(_ => { _rejectedEnv = null; InvokeAsync(StateHasChanged); });
+            return;
+        }
 
         // ── Étape 1 : collecter les paks uniques requis par les blocs ──────────
         var neededPaks = data.Blocks
@@ -2538,7 +2715,8 @@
             {
                 vertices = t.Vertices.Select(v => new { r = v.R, g = v.G, b = v.B, a = v.A }).ToArray(),
                 indices = t.Indices,
-                keyframes = t.Keyframes.Select(k => new { time = k.Time, positions = k.Positions }).ToArray()
+                keyframes = t.Keyframes.Select(k => new { time = k.Time, positions = k.Positions }).ToArray(),
+                is2D = t.Is2D
             }).ToArray();
             await JS.InvokeVoidAsync("TMNFeditorScene.addTriangles3D", (object)tri3dData);
 
@@ -2553,6 +2731,7 @@
                     ClipDisplayName = t.ClipDisplayName,
                     TrackName = t.TrackName,
                     HasMesh = t.Tri3DIndex >= 0,
+                    Is2D = t.Tri3DIndex >= 0 && data.Triangles3D[t.Tri3DIndex].Is2D,
                 };
                 if (entry.HasMesh)
                 {
@@ -2564,6 +2743,7 @@
             }).ToList();
             _selectedClipType = _tri3dEntries.FirstOrDefault()?.ClipType ?? "";
             _selectedClipIdx = 0;
+            await SyncTriVisibilityToClipType();
         }
         else
         {

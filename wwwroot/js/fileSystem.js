@@ -48,15 +48,16 @@ window.TMNFeditorFS = (function () {
         // Fallback: <input webkitdirectory>
         const files = await _pickViaInput({ webkitdirectory: '', multiple: '' });
         if (!files || files.length === 0) return null;
-        fallbackFiles = new Map();
-        dirHandle = null;
+        const tempMap = new Map();
         let rootName = null;
         for (const f of files) {
             const rel = f.webkitRelativePath;
             if (!rootName) rootName = rel.split('/')[0];
             const sub = rel.substring(rootName.length + 1);
-            if (sub) fallbackFiles.set(sub.toLowerCase(), f);
+            if (sub) tempMap.set(sub.toLowerCase(), f);
         }
+        fallbackFiles = tempMap;
+        dirHandle = null;
         fallbackFolderName = rootName;
         return rootName;
     }

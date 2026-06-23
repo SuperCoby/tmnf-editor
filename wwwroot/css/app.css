@@ -60,13 +60,15 @@ body {
     border-color: #252545;
 }
 .hdr-btn-folder:hover { background: #1a1a38; border-color: #4a4a88; color: #aabbee; }
+.hdr-btn-error { border-color: #882222 !important; color: #ff6666 !important; }
 
 .hdr-btn-map {
     background: #111128;
     color: #8899cc;
     border-color: #252545;
 }
-.hdr-btn-map:hover { background: #1a1a38; border-color: #4a4a88; color: #aabbee; }
+.hdr-btn-map:hover:not(:disabled) { background: #1a1a38; border-color: #4a4a88; color: #aabbee; }
+.hdr-btn-map:disabled { opacity: 0.4; cursor: default; }
 
 .hdr-btn-clear {
     padding: 5px 9px;
@@ -371,7 +373,7 @@ body {
 #triangles3d-panel {
     position: fixed;
     top: 49px;
-    left: -360px;
+    left: -350px;
     width: 350px;
     height: calc(100vh - 49px);
     background: rgba(20, 20, 30, 0.97);
@@ -382,6 +384,28 @@ body {
     z-index: 15;
 }
 #triangles3d-panel.open { left: 0; }
+
+.tri3d-toggle-btn {
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 48px;
+    background: rgba(20, 20, 30, 0.97);
+    border: 2px solid #444;
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.tri3d-toggle-btn:hover { background: #333; color: #fff; }
 
 .side-section {
     flex: 1;
@@ -423,6 +447,19 @@ body {
     justify-content: space-between;
     padding-right: 8px;
 }
+.import-type-toggle { display: flex; gap: 4px; }
+.import-type-btn {
+    padding: 2px 10px;
+    font-size: 11px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.import-type-btn:hover { border-color: #888; color: #ddd; }
+.import-type-btn.active { background: #3a6ea5; border-color: #5a9fd4; color: #fff; }
 
 .import-icon-btn {
     width: 22px;
@@ -453,6 +490,32 @@ body {
     width: 100%;
     height: 100%;
     display: block;
+}
+
+.import-delete-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 10;
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 60, 60, 0.7);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    opacity: 0.6;
+    transition: opacity .15s, background .15s;
+}
+.import-delete-btn:hover {
+    opacity: 1;
+    background: rgba(255, 40, 40, 0.95);
 }
 
 .import-drop-hint {
@@ -545,21 +608,6 @@ body {
 .tab-content::-webkit-scrollbar-thumb { background: #445; border-radius: 3px; }
 
 /* ── Triangles2D panel ───────────────────────────────────────────────────── */
-#triangles2d-panel {
-    position: fixed;
-    top: 49px;
-    left: -360px;
-    width: 350px;
-    height: calc(100vh - 49px);
-    background: rgba(20, 20, 30, 0.97);
-    border-right: 2px solid #444;
-    display: flex;
-    flex-direction: column;
-    transition: left 0.2s ease;
-    z-index: 15;
-}
-#triangles2d-panel.open { left: 0; }
-
 /* ── Canvas ──────────────────────────────────────────────────────────────── */
 #three-container { flex: 1; position: relative; min-height: 0; }
 

@@ -660,25 +660,39 @@ public void LoadBlockCoordSizes(string pakName, string json)
             {
                 if (track?.Blocks == null) continue;
                 var trackName = track.Name ?? "";
-                bool hasTri3D = false;
+                bool hasTriangles = false;
                 foreach (var block in track.Blocks)
                 {
-                    if (block is not CGameCtnMediaBlockTriangles3D tri) continue;
-                    if (tri.Vertices.Length == 0 || tri.Keys.Count == 0) continue;
+                    if (block is CGameCtnMediaBlockTriangles3D tri && tri.Vertices.Length > 0 && tri.Keys.Count > 0)
+                    {
+                        int meshIndex = tri3dBlocks.Count;
+                        var verts = tri.Vertices.Select(v => new Tri3DVertex(v.X, v.Y, v.Z, v.W)).ToArray();
+                        var indices = tri.Triangles.SelectMany(t => new[] { t.X, t.Y, t.Z }).ToArray();
+                        var keyframes = tri.Keys.Select(k => new Tri3DKeyframe(
+                            k.Time.TotalSeconds,
+                            k.Positions.SelectMany(p => new[] { p.X, p.Y, p.Z }).ToArray()
+                        )).ToArray();
 
-                    int meshIndex = tri3dBlocks.Count;
-                    var verts = tri.Vertices.Select(v => new Tri3DVertex(v.X, v.Y, v.Z, v.W)).ToArray();
-                    var indices = tri.Triangles.SelectMany(t => new[] { t.X, t.Y, t.Z }).ToArray();
-                    var keyframes = tri.Keys.Select(k => new Tri3DKeyframe(
-                        k.Time.TotalSeconds,
-                        k.Positions.SelectMany(p => new[] { p.X, p.Y, p.Z }).ToArray()
-                    )).ToArray();
+                        tri3dBlocks.Add(new Tri3DBlock(clipType, clipName, trackName, verts, indices, keyframes));
+                        allTracks.Add(new TrackInfo(clipType, clipName, clipDisplayName, trackName, meshIndex));
+                        hasTriangles = true;
+                    }
+                    else if (block is CGameCtnMediaBlockTriangles2D tri2d && tri2d.Vertices.Length > 0 && tri2d.Keys.Count > 0)
+                    {
+                        int meshIndex = tri3dBlocks.Count;
+                        var verts = tri2d.Vertices.Select(v => new Tri3DVertex(v.X, v.Y, v.Z, v.W)).ToArray();
+                        var indices = tri2d.Triangles.SelectMany(t => new[] { t.X, t.Y, t.Z }).ToArray();
+                        var keyframes = tri2d.Keys.Select(k => new Tri3DKeyframe(
+                            k.Time.TotalSeconds,
+                            k.Positions.SelectMany(p => new[] { p.X, p.Y, p.Z }).ToArray()
+                        )).ToArray();
 
-                    tri3dBlocks.Add(new Tri3DBlock(clipType, clipName, trackName, verts, indices, keyframes));
-                    allTracks.Add(new TrackInfo(clipType, clipName, clipDisplayName, trackName, meshIndex));
-                    hasTri3D = true;
+                        tri3dBlocks.Add(new Tri3DBlock(clipType, clipName, trackName, verts, indices, keyframes, Is2D: true));
+                        allTracks.Add(new TrackInfo(clipType, clipName, clipDisplayName, trackName, meshIndex));
+                        hasTriangles = true;
+                    }
                 }
-                if (!hasTri3D)
+                if (!hasTriangles)
                     allTracks.Add(new TrackInfo(clipType, clipName, clipDisplayName, trackName, -1));
             }
         }
@@ -713,6 +727,7 @@ public void LoadBlockCoordSizes(string pakName, string json)
 
         return new ChallengeData(
             MapName: challenge.MapName ?? "Carte",
+            Environment: challenge.Collection?.ToString() ?? "",
             SizeX: challenge.Size.X,
             SizeZ: challenge.Size.Z,
             Blocks: blocks,
@@ -877,9 +892,9 @@ public record CachedPak(Pak Pak, List<SolidEntry> Solids, MemoryStream Stream);
 public record ChallengeBlock(string Name, int X, int Y, int Z, int Dir, bool IsGround, byte Variant, byte SubVariant);
 public record Tri3DVertex(float R, float G, float B, float A);
 public record Tri3DKeyframe(float Time, float[] Positions);
-public record Tri3DBlock(string ClipType, string ClipName, string TrackName, Tri3DVertex[] Vertices, int[] Indices, Tri3DKeyframe[] Keyframes);
+public record Tri3DBlock(string ClipType, string ClipName, string TrackName, Tri3DVertex[] Vertices, int[] Indices, Tri3DKeyframe[] Keyframes, bool Is2D = false);
 public record TrackInfo(string ClipType, string ClipName, string ClipDisplayName, string TrackName, int Tri3DIndex);
-public record ChallengeData(string MapName, int SizeX, int SizeZ, List<ChallengeBlock> Blocks, List<Tri3DBlock> Triangles3D, List<TrackInfo> AllTracks);
+public record ChallengeData(string MapName, string Environment, int SizeX, int SizeZ, List<ChallengeBlock> Blocks, List<Tri3DBlock> Triangles3D, List<TrackInfo> AllTracks);
 
 public static class ClipGbxExporter
 {
@@ -975,7 +990,8 @@ public static class ClipGbxExporter
         float scaleX, float scaleY, float scaleZ,
         string trackName,
         Dictionary<string, string>? materialColorOverrides = null,
-        float shadingIntensity = 0f)
+        float shadingIntensity = 0f,
+        bool is2D = false)
     {
         var mtlColors = ParseMtlColors(mtlText);
         if (materialColorOverrides != null)
@@ -1076,29 +1092,32 @@ public static class ClipGbxExporter
             positions[i] = new Vec3(x3 + posX, y3 + posY, z2 + posZ);
         }
 
-        var tri3d = new CGameCtnMediaBlockTriangles3D
+        CGameCtnMediaBlockTriangles triBlock;
+        if (is2D)
         {
-            Vertices = vertices,
-            Triangles = outTris.ToArray()
-        };
+            var pos2d = positions.Select(p => new Vec3(-p.X, p.Y, 0)).ToArray();
+            var tri2d = new CGameCtnMediaBlockTriangles2D { Vertices = vertices, Triangles = outTris.ToArray() };
+            tri2d.Keys = [
+                new CGameCtnMediaBlockTriangles.Key(tri2d) { Time = TimeSingle.FromSeconds(0f), Positions = pos2d },
+                new CGameCtnMediaBlockTriangles.Key(tri2d) { Time = TimeSingle.FromSeconds(3f), Positions = pos2d }
+            ];
+            triBlock = tri2d;
+        }
+        else
+        {
+            var tri3d = new CGameCtnMediaBlockTriangles3D { Vertices = vertices, Triangles = outTris.ToArray() };
+            tri3d.Keys = [
+                new CGameCtnMediaBlockTriangles.Key(tri3d) { Time = TimeSingle.FromSeconds(0f), Positions = positions },
+                new CGameCtnMediaBlockTriangles.Key(tri3d) { Time = TimeSingle.FromSeconds(3f), Positions = positions }
+            ];
+            triBlock = tri3d;
+        }
 
-        var key0 = new CGameCtnMediaBlockTriangles.Key(tri3d)
-        {
-            Time = TimeSingle.FromSeconds(0f),
-            Positions = positions
-        };
-        var key1 = new CGameCtnMediaBlockTriangles.Key(tri3d)
-        {
-            Time = TimeSingle.FromSeconds(3f),
-            Positions = positions
-        };
-        tri3d.Keys = [key0, key1];
-
-        var chunk = tri3d.CreateChunk<CGameCtnMediaBlockTriangles.Chunk03029001>();
+        var chunk = triBlock.CreateChunk<CGameCtnMediaBlockTriangles.Chunk03029001>();
         chunk.U01 = 1;
         chunk.U04 = 1;
 
-        return BuildClipBytes(tri3d, trackName);
+        return BuildClipBytes(triBlock, trackName);
     }
 
     private static (float r, float g, float b) ParseHexColor(string hex)
@@ -1136,13 +1155,16 @@ public static class ClipGbxExporter
     }
 
     public record AnimKf(double Time, double EndTime, double X, double Y, double Z, int Steps = 1);
+    public record OrbitKf(double Time, double EndTime, double Radius, int Steps, double Degrees);
 
     public static CGameCtnMediaBlockTriangles3D BuildAnimatedTri3DBlock(
         Tri3DBlock block,
         List<AnimKf>? transKfs, List<AnimKf>? scaleKfs, List<AnimKf>? rotKfs,
         string? colorOverrideHex = null,
         Vec3? origin = null,
-        Vec3? rotationOrigin = null)
+        Vec3? rotationOrigin = null,
+        List<OrbitKf>? orbitKfs = null,
+        bool is2D = false)
     {
         Vec4[] vertColors;
         if (!string.IsNullOrEmpty(colorOverrideHex))
@@ -1192,6 +1214,16 @@ public static class ClipGbxExporter
         CollectTimes(transKfs);
         CollectTimes(scaleKfs);
         CollectTimes(rotKfs, subdivide: true);
+        if (orbitKfs != null)
+            foreach (var okf in orbitKfs)
+            {
+                if (okf.Radius == 0) continue;
+                allTimes.Add(okf.Time);
+                allTimes.Add(okf.EndTime);
+                var dur = okf.EndTime - okf.Time;
+                for (int s = 1; s < okf.Steps; s++)
+                    allTimes.Add(okf.Time + dur * s / okf.Steps);
+            }
         if (allTimes.Count == 0) { allTimes.Add(0); allTimes.Add(3); }
 
         float cx, cy, cz;
@@ -1223,6 +1255,21 @@ public static class ClipGbxExporter
                     if (dur <= 0) { ox += (float)kf.X; oy += (float)kf.Y; oz += (float)kf.Z; continue; }
                     var p = Math.Min(1.0, (t - kf.Time) / dur);
                     ox += (float)(kf.X * p); oy += (float)(kf.Y * p); oz += (float)(kf.Z * p);
+                }
+
+            if (orbitKfs != null)
+                foreach (var okf in orbitKfs)
+                {
+                    if (okf.Radius == 0 || t < okf.Time) continue;
+                    var dur = okf.EndTime - okf.Time;
+                    if (dur <= 0) continue;
+                    var p = Math.Min(1.0, (t - okf.Time) / dur);
+                    var angle = okf.Degrees * Math.PI / 180.0 * p;
+                    ox += (float)(okf.Radius * (Math.Cos(angle) - 1));
+                    if (is2D)
+                        oy += (float)(okf.Radius * Math.Sin(angle));
+                    else
+                        oz += (float)(okf.Radius * Math.Sin(angle));
                 }
 
             float sx = 1, sy = 1, sz = 1;
@@ -1300,13 +1347,40 @@ public static class ClipGbxExporter
         return tri3d;
     }
 
+    public static CGameCtnMediaBlockTriangles2D BuildObjTri2DBlock(
+        string objText, string mtlText,
+        float posX, float posY, float posZ,
+        List<AnimKf>? transKfs, List<AnimKf>? scaleKfs, List<AnimKf>? rotKfs,
+        Dictionary<string, string>? materialColorOverrides = null,
+        float shadingIntensity = 0f,
+        Vec3? rotationOrigin = null,
+        List<OrbitKf>? orbitKfs = null)
+    {
+        var block3d = BuildObjTri3DBlock(objText, mtlText, posX, posY, posZ, transKfs, scaleKfs, rotKfs, materialColorOverrides, shadingIntensity, rotationOrigin, orbitKfs, is2D: true);
+        var tri2d = new CGameCtnMediaBlockTriangles2D
+        {
+            Vertices = block3d.Vertices,
+            Triangles = block3d.Triangles
+        };
+        tri2d.Keys = block3d.Keys.Select(k => new CGameCtnMediaBlockTriangles.Key(tri2d)
+        {
+            Time = k.Time,
+            Positions = k.Positions.Select(p => new Vec3(-p.X, p.Y, 0)).ToArray()
+        }).ToList();
+        var chunk = tri2d.CreateChunk<CGameCtnMediaBlockTriangles.Chunk03029001>();
+        chunk.U01 = 1; chunk.U04 = 1;
+        return tri2d;
+    }
+
     public static CGameCtnMediaBlockTriangles3D BuildObjTri3DBlock(
         string objText, string mtlText,
         float posX, float posY, float posZ,
         List<AnimKf>? transKfs, List<AnimKf>? scaleKfs, List<AnimKf>? rotKfs,
         Dictionary<string, string>? materialColorOverrides = null,
         float shadingIntensity = 0f,
-        Vec3? rotationOrigin = null)
+        Vec3? rotationOrigin = null,
+        List<OrbitKf>? orbitKfs = null,
+        bool is2D = false)
     {
         var mtlColors = ParseMtlColors(mtlText);
         if (materialColorOverrides != null)
@@ -1384,11 +1458,11 @@ public static class ClipGbxExporter
             new[] { new Tri3DKeyframe(0, outVerts.Select(v => new[] { v.x, v.y, v.z }).SelectMany(a => a).ToArray()) }
         );
 
-        return BuildAnimatedTri3DBlock(tri3dBlock, transKfs, scaleKfs, rotKfs, origin: new Vec3(posX, posY, posZ), rotationOrigin: rotationOrigin);
+        return BuildAnimatedTri3DBlock(tri3dBlock, transKfs, scaleKfs, rotKfs, origin: new Vec3(posX, posY, posZ), rotationOrigin: rotationOrigin, orbitKfs: orbitKfs, is2D: is2D);
     }
 
     public static byte[] ExportChallengeBytes(byte[] originalBytes,
-        List<(string clipType, string clipName, string clipDisplayName, string trackName, CGameCtnMediaBlockTriangles3D block)> newBlocks)
+        List<(string clipType, string clipName, string clipDisplayName, string trackName, CGameCtnMediaBlock block)> newBlocks)
     {
         var gbx = Gbx.Parse(new MemoryStream(originalBytes));
         if (gbx.Node is not CGameCtnChallenge challenge) return Array.Empty<byte>();
@@ -1458,13 +1532,13 @@ public static class ClipGbxExporter
         return track;
     }
 
-    private static byte[] BuildClipBytes(CGameCtnMediaBlockTriangles3D tri3d, string trackName)
+    private static byte[] BuildClipBytes(CGameCtnMediaBlock block, string trackName)
     {
         var track = new CGameCtnMediaTrack();
         track.CreateChunk<CGameCtnMediaTrack.Chunk03078001>().U01 = 2;
         track.CreateChunk<CGameCtnMediaTrack.Chunk03078004>();
         track.Name = trackName;
-        track.Blocks.Add(tri3d);
+        track.Blocks.Add(block);
 
         var clip = new CGameCtnMediaClip();
         clip.CreateChunk<CGameCtnMediaClip.Chunk03079004>();

@@ -55,13 +55,34 @@ let _originDotVisible = false;
 let _currentTransformMode = 'none'; // mode actif ('translate'|'rotate'|'scale'|'none')
 let importOriginOffsets = new Map(); // tabIdx → THREE.Vector3 (offset pivot courant)
 let tri3dMeshes = [];                // tableau de THREE.Mesh pour les Triangles3D MediaTracker
+let _tri3dIs2D = [];                 // true/false par index: est-ce un Triangles2D (overlay)
+const overlayScene = new THREE.Scene();
+const overlayCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10);
+overlayCam.position.set(0, 0, 2);
+function _updateOverlayCam() {
+    if (!renderer) return;
+    const s = renderer.getSize(new THREE.Vector2());
+    const aspect = s.x / s.y;
+    overlayCam.left = -aspect;
+    overlayCam.right = aspect;
+    overlayCam.top = 1;
+    overlayCam.bottom = -1;
+    overlayCam.updateProjectionMatrix();
+}
 const _fontLoader = new FontLoader();
 const _fontCache = new Map();
 const _text3dIndices = new Set();
 let _activeTri3DIdx = -1;            // index du tri3d sélectionné (-1 = aucun)
 let transformCtrl   = null;      // TransformControls pour Rotate/Scale de l'import
+let transformCtrl2D = null;      // TransformControls pour overlay 2D
 let selectionOutline = null;
 let selectedMesh = null;
+
+function _apply2DGizmoMode(mode) {
+    if (!transformCtrl2D) return;
+    transformCtrl2D.setMode(mode);
+    transformCtrl2D.showZ = (mode === 'rotate');
+}
 
 const _typefaceMap = {
     'helvetiker':          'helvetiker_regular.typeface.json',
@@ -171,41 +192,71 @@ function _buildTextGroup(text, font, thickness, letterSpacing, italic, underline
 function _groupToObjMtl(group) {
     let obj = '', mtl = '';
     const matNames = new Map();
+    const usedNames = new Set();
     let vOff = 1;
+
+    function ensureMat(m) {
+        if (!m) return 'default';
+        let name = matNames.get(m.uuid);
+        if (name) return name;
+        name = m.name || 'mat_' + matNames.size;
+        let base = name, n = 1;
+        while (usedNames.has(name)) name = base + '_' + n++;
+        matNames.set(m.uuid, name);
+        usedNames.add(name);
+        const c = m.color || new THREE.Color(0.5, 0.5, 0.5);
+        mtl += `newmtl ${name}\nKd ${c.r.toFixed(4)} ${c.g.toFixed(4)} ${c.b.toFixed(4)}\n\n`;
+        return name;
+    }
+
+    const grpMat = new THREE.Matrix4();
+    grpMat.makeRotationFromEuler(group.rotation);
+    grpMat.scale(new THREE.Vector3(group.scale.x, group.scale.y, group.scale.z));
+    const nrmMat = new THREE.Matrix3().getNormalMatrix(grpMat);
+
     group.traverse(child => {
         if (!child.isMesh) return;
         const geom = child.geometry;
         const pos = geom.attributes.position;
         const norm = geom.attributes.normal;
-        const m = child.material;
-        let matName = matNames.get(m.uuid);
-        if (!matName) {
-            matName = 'mat_' + matNames.size;
-            matNames.set(m.uuid, matName);
-            const c = m.color;
-            mtl += `newmtl ${matName}\nKd ${c.r.toFixed(4)} ${c.g.toFixed(4)} ${c.b.toFixed(4)}\n\n`;
-        }
-        obj += `usemtl ${matName}\n`;
+        if (!pos) return;
+        const mats = Array.isArray(child.material) ? child.material : [child.material];
+
         for (let i = 0; i < pos.count; i++) {
-            const x = pos.getX(i) + child.position.x;
-            const y = pos.getY(i) + child.position.y;
-            const z = pos.getZ(i) + child.position.z;
-            obj += `v ${x.toFixed(6)} ${y.toFixed(6)} ${z.toFixed(6)}\n`;
+            const v = new THREE.Vector3(
+                pos.getX(i) + child.position.x,
+                pos.getY(i) + child.position.y,
+                pos.getZ(i) + child.position.z
+            );
+            v.applyMatrix4(grpMat);
+            obj += `v ${v.x.toFixed(6)} ${v.y.toFixed(6)} ${v.z.toFixed(6)}\n`;
         }
         if (norm) {
-            for (let i = 0; i < norm.count; i++)
-                obj += `vn ${norm.getX(i).toFixed(6)} ${norm.getY(i).toFixed(6)} ${norm.getZ(i).toFixed(6)}\n`;
-        }
-        const idx = geom.index;
-        if (idx) {
-            for (let i = 0; i < idx.count; i += 3) {
-                const a = idx.getX(i) + vOff, b = idx.getX(i+1) + vOff, c2 = idx.getX(i+2) + vOff;
-                obj += norm ? `f ${a}//${a} ${b}//${b} ${c2}//${c2}\n` : `f ${a} ${b} ${c2}\n`;
+            for (let i = 0; i < norm.count; i++) {
+                const n = new THREE.Vector3(norm.getX(i), norm.getY(i), norm.getZ(i));
+                n.applyMatrix3(nrmMat).normalize();
+                obj += `vn ${n.x.toFixed(6)} ${n.y.toFixed(6)} ${n.z.toFixed(6)}\n`;
             }
-        } else {
-            for (let i = 0; i < pos.count; i += 3) {
-                const a = i + vOff, b = i+1 + vOff, c2 = i+2 + vOff;
-                obj += norm ? `f ${a}//${a} ${b}//${b} ${c2}//${c2}\n` : `f ${a} ${b} ${c2}\n`;
+        }
+
+        const idx = geom.index;
+        const groups = geom.groups.length > 0
+            ? geom.groups
+            : [{ start: 0, count: idx ? idx.count : pos.count, materialIndex: 0 }];
+
+        for (const g of groups) {
+            const mat = mats[g.materialIndex] || mats[0];
+            obj += `usemtl ${ensureMat(mat)}\n`;
+            if (idx) {
+                for (let i = g.start; i < g.start + g.count; i += 3) {
+                    const a = idx.getX(i) + vOff, b = idx.getX(i+1) + vOff, c2 = idx.getX(i+2) + vOff;
+                    obj += norm ? `f ${a}//${a} ${b}//${b} ${c2}//${c2}\n` : `f ${a} ${b} ${c2}\n`;
+                }
+            } else {
+                for (let i = g.start; i < g.start + g.count; i += 3) {
+                    const a = i + vOff, b = i+1 + vOff, c2 = i+2 + vOff;
+                    obj += norm ? `f ${a}//${a} ${b}//${b} ${c2}//${c2}\n` : `f ${a} ${b} ${c2}\n`;
+                }
             }
         }
         vOff += pos.count;
@@ -214,7 +265,7 @@ function _groupToObjMtl(group) {
 }
 
 // ─── Playback ────────────────────────────────────────────────────────────────
-let _pbTargets = [];   // [{obj, transKf, scaleKf, rotKf, startPos, startScale, startRot}]
+let _pbTargets = [];   // [{obj, transKf, scaleKf, rotKf, orbitKf, startPos, startScale, startRot}]
 let _pbPlaying = false;
 let _pbRepeat = false;
 let _pbTime = 0;
@@ -222,11 +273,11 @@ let _pbLastTs = 0;
 
 function _pbApplyTime(t) {
     for (const tgt of _pbTargets) {
-        const { obj, transKf, scaleKf, rotKf, startPos, startScale, startRot } = tgt;
+        const { obj, is2D, sc2D, transKf, scaleKf, rotKf, orbitKf, startPos, startScale, startRot } = tgt;
         if (!obj || !startPos) continue;
 
+        let ox = 0, oy = 0, oz = 0;
         if (transKf.length > 0) {
-            let ox = 0, oy = 0, oz = 0;
             for (const kf of transKf) {
                 if (t < kf.time) break;
                 const dur = kf.endTime - kf.time;
@@ -234,7 +285,28 @@ function _pbApplyTime(t) {
                 const p = Math.min(1, (t - kf.time) / dur);
                 ox += kf.x * p; oy += kf.y * p; oz += kf.z * p;
             }
-            obj.position.set(startPos.x + ox, startPos.y + oy, startPos.z + oz);
+        }
+
+        if (orbitKf && orbitKf.length > 0) {
+            for (const kf of orbitKf) {
+                if (kf.radius === 0 || t < kf.time) continue;
+                const dur = kf.endTime - kf.time;
+                if (dur <= 0) continue;
+                const p = Math.min(1, (t - kf.time) / dur);
+                const angle = kf.degrees * Math.PI / 180 * p;
+                ox += kf.radius * (Math.cos(angle) - 1);
+                if (is2D)
+                    oz += kf.radius * Math.sin(angle);
+                else
+                    oz += kf.radius * Math.sin(angle);
+            }
+        }
+
+        if (transKf.length > 0 || (orbitKf && orbitKf.length > 0)) {
+            if (is2D)
+                obj.position.set(startPos.x + ox * sc2D, startPos.y + oz * sc2D, startPos.z);
+            else
+                obj.position.set(startPos.x + ox, startPos.y + oy, startPos.z + oz);
         }
 
         if (scaleKf.length > 0 && startScale) {
@@ -250,7 +322,10 @@ function _pbApplyTime(t) {
                 sy = prev.y + (kf.y - prev.y) * p;
                 sz = prev.z + (kf.z - prev.z) * p;
             }
-            obj.scale.set(startScale.x * sx, startScale.y * sy, startScale.z * sz);
+            if (is2D)
+                obj.scale.set(startScale.x * sx, startScale.y * sz, startScale.z);
+            else
+                obj.scale.set(startScale.x * sx, startScale.y * sy, startScale.z * sz);
         }
 
         if (rotKf.length > 0 && startRot) {
@@ -262,10 +337,20 @@ function _pbApplyTime(t) {
                 const p = Math.min(1, (t - kf.time) / dur);
                 rx += kf.x * p; ry += kf.y * p; rz += kf.z * p;
             }
-            obj.rotation.set(startRot.x + rx, startRot.y + ry, startRot.z + rz);
+            if (is2D)
+                obj.rotation.set(0, 0, startRot.z + rx);
+            else
+                obj.rotation.set(startRot.x + rx, startRot.y + ry, startRot.z + rz);
         }
     }
     _tri3dApplyTime(t);
+}
+
+function _removeSelectionBox() {
+    if (!selectionBox) return;
+    (selectionBox.userData._overlay ? overlayScene : scene).remove(selectionBox);
+    selectionBox.dispose?.();
+    selectionBox = null;
 }
 
 function _tri3dApplyTime(t) {
@@ -273,7 +358,6 @@ function _tri3dApplyTime(t) {
         const kfs = mesh.userData.tri3dKeyframes;
         if (!kfs || kfs.length < 2) continue;
         const vertCount = mesh.userData.tri3dVertCount;
-        const initPos = mesh.userData.tri3dInitPos;
 
         let kfA = kfs[0], kfB = kfs[0];
         for (let i = 0; i < kfs.length - 1; i++) {
@@ -288,22 +372,33 @@ function _tri3dApplyTime(t) {
         const posAttr = mesh.geometry.getAttribute('position');
         const posA = kfA.positions, posB = kfB.positions;
 
-        let cx = 0, cy = 0, cz = 0;
-        for (let i = 0; i < vertCount; i++) {
-            const i3 = i * 3;
-            const x = posA[i3]     + (posB[i3]     - posA[i3])     * p;
-            const y = posA[i3 + 1] + (posB[i3 + 1] - posA[i3 + 1]) * p;
-            const z = posA[i3 + 2] + (posB[i3 + 2] - posA[i3 + 2]) * p;
-            cx += x; cy += y; cz += z;
-            posAttr.setXYZ(i, x - initPos.x, y - initPos.y, z - initPos.z);
+        if (mesh.userData.is2D) {
+            for (let i = 0; i < vertCount; i++) {
+                const i3 = i * 3;
+                const x = posA[i3]     + (posB[i3]     - posA[i3])     * p;
+                const y = posA[i3 + 1] + (posB[i3 + 1] - posA[i3 + 1]) * p;
+                posAttr.setXYZ(i, -x, y, 0);
+            }
+            posAttr.needsUpdate = true;
+        } else {
+            const initPos = mesh.userData.tri3dInitPos;
+            let cx = 0, cy = 0, cz = 0;
+            for (let i = 0; i < vertCount; i++) {
+                const i3 = i * 3;
+                const x = posA[i3]     + (posB[i3]     - posA[i3])     * p;
+                const y = posA[i3 + 1] + (posB[i3 + 1] - posA[i3 + 1]) * p;
+                const z = posA[i3 + 2] + (posB[i3 + 2] - posA[i3 + 2]) * p;
+                cx += x; cy += y; cz += z;
+                posAttr.setXYZ(i, x - initPos.x, y - initPos.y, z - initPos.z);
+            }
+            cx /= vertCount; cy /= vertCount; cz /= vertCount;
+            mesh.position.set(cx, cy, cz);
+            for (let i = 0; i < vertCount; i++) {
+                posAttr.setXYZ(i, posAttr.getX(i) - cx + initPos.x, posAttr.getY(i) - cy + initPos.y, posAttr.getZ(i) - cz + initPos.z);
+            }
+            posAttr.needsUpdate = true;
+            mesh.geometry.computeVertexNormals();
         }
-        cx /= vertCount; cy /= vertCount; cz /= vertCount;
-        mesh.position.set(cx, cy, cz);
-        for (let i = 0; i < vertCount; i++) {
-            posAttr.setXYZ(i, posAttr.getX(i) - cx + initPos.x, posAttr.getY(i) - cy + initPos.y, posAttr.getZ(i) - cz + initPos.z);
-        }
-        posAttr.needsUpdate = true;
-        mesh.geometry.computeVertexNormals();
     }
 }
 
@@ -322,6 +417,7 @@ function _pbTotalDur() {
         if (tgt.transKf.length > 0) d = Math.max(d, tgt.transKf[tgt.transKf.length - 1].endTime);
         if (tgt.scaleKf.length > 0) d = Math.max(d, tgt.scaleKf[tgt.scaleKf.length - 1].endTime);
         if (tgt.rotKf.length > 0) d = Math.max(d, tgt.rotKf[tgt.rotKf.length - 1].endTime);
+        if (tgt.orbitKf && tgt.orbitKf.length > 0) d = Math.max(d, tgt.orbitKf[tgt.orbitKf.length - 1].endTime);
     }
     return d;
 }
@@ -356,10 +452,15 @@ function _pbTick(ts) {
     if (_pbPlaying) requestAnimationFrame(_pbTick);
 }
 
+function _getImportGroup(idx) {
+    if (idx === undefined) idx = activeImportIdx;
+    return importMeshGroups.get(idx) ?? importMeshGroups.get(`2d_${idx}`) ?? null;
+}
+
 function _getActiveObject() {
     if (_activeTri3DIdx >= 0 && _activeTri3DIdx < tri3dMeshes.length)
         return tri3dMeshes[_activeTri3DIdx];
-    return importMeshGroups.get(activeImportIdx) ?? null;
+    return _getImportGroup() ?? null;
 }
 
 function _getTri3DAvgColor(mesh) {
@@ -591,9 +692,10 @@ const importPrev = (() => {
     }
 
     function setActive(idx) {
-        models.forEach((m, i) => { m.group.visible = (i === idx); });
+        models.forEach((m, i) => { m.group.visible = (i === idx && m.is2D === _topView); });
         activeIdx = idx;
         if (idx < 0 || idx >= models.length) return;
+        if (models[idx].is2D !== _topView) return;
         const { camPos, camTarget, camNear, camFar } = models[idx];
         cam2.near = camNear; cam2.far = camFar;
         cam2.position.copy(camPos);
@@ -602,7 +704,64 @@ const importPrev = (() => {
         ctrl2.update();
     }
 
-    function switchTab(idx) { if (scene2) setActive(idx); }
+    let _topView = false;
+    function setTopView(on) {
+        _topView = on;
+        if (!cam2 || !ctrl2) return;
+        models.forEach(m => { m.group.visible = false; });
+        if (on) {
+            cam2.up.set(0, 0, -1);
+            ctrl2.enableRotate = false;
+            const idx2d = models.findIndex(m => m.is2D);
+            if (idx2d >= 0) {
+                activeIdx = idx2d;
+                models[idx2d].group.visible = true;
+                const t = models[idx2d].camTarget;
+                const d = models[idx2d].camFar * 0.01 || 20;
+                cam2.position.set(t.x, t.y + d, t.z);
+                cam2.near = models[idx2d].camNear;
+                cam2.far = models[idx2d].camFar;
+                ctrl2.target.copy(t);
+            } else {
+                cam2.position.set(0, 20, 0);
+                ctrl2.target.set(0, 0, 0);
+            }
+            cam2.updateProjectionMatrix();
+            ctrl2.update();
+        } else {
+            cam2.up.set(0, 1, 0);
+            ctrl2.enableRotate = true;
+            const idx3d = models.findIndex(m => !m.is2D);
+            if (idx3d >= 0) {
+                setActive(idx3d);
+            } else {
+                cam2.position.set(14, 10, 14);
+                ctrl2.target.set(0, 0, 0);
+                cam2.updateProjectionMatrix();
+                ctrl2.update();
+            }
+        }
+        const modeModels = models.filter(m => m.is2D === _topView);
+        const modeActive = modeModels.length > 0 ? modeModels.length - 1 : 0;
+        if (dotNetRef) dotNetRef.invokeMethodAsync('OnModelImported', modeModels.length, modeActive);
+    }
+
+    function switchTab(idx) {
+        if (!scene2) return;
+        const filtered = models.map((m, i) => ({ m, i })).filter(x => x.m.is2D === _topView);
+        if (idx >= 0 && idx < filtered.length) {
+            setActive(filtered[idx].i);
+            if (_topView) {
+                const t = models[filtered[idx].i].camTarget;
+                const d = cam2.position.distanceTo(ctrl2.target) || 20;
+                cam2.position.set(t.x, t.y + d, t.z);
+                cam2.up.set(0, 0, -1);
+                ctrl2.target.copy(t);
+                ctrl2.enableRotate = false;
+                ctrl2.update();
+            }
+        }
+    }
 
     async function addModel(objText, mtlText) {
         if (!scene2) return;
@@ -647,6 +806,7 @@ const importPrev = (() => {
             group,
             objText,
             mtlText: mtlText ?? '',
+            is2D: _topView,
             camPos:    new THREE.Vector3(dist * 0.8, dist * 0.5, dist),
             camTarget: new THREE.Vector3(0, 0, 0),
             camNear:   TARGET * 0.001,
@@ -654,11 +814,13 @@ const importPrev = (() => {
         });
 
         setActive(models.length - 1);
+        if (_topView) setTopView(true);
 
         const hint = document.getElementById('import-drop-hint');
         if (hint) hint.style.display = 'none';
 
-        if (dotNetRef) await dotNetRef.invokeMethodAsync('OnModelImported', models.length, models.length - 1);
+        const modeCount = models.filter(m => m.is2D === _topView).length;
+        if (dotNetRef) await dotNetRef.invokeMethodAsync('OnModelImported', modeCount, modeCount - 1);
     }
 
     const readText = f => new Promise((res, rej) => {
@@ -702,11 +864,59 @@ const importPrev = (() => {
         input.addEventListener('change', async e => { await handleFiles(e.target.files); e.target.value = ''; });
     }
 
-    function getModelData(idx) {
-        return (idx >= 0 && idx < models.length) ? { objText: models[idx].objText, mtlText: models[idx].mtlText } : null;
+    function _toGlobalIdx(idx) {
+        const filtered = models.map((m, i) => ({ m, i })).filter(x => x.m.is2D === _topView);
+        return (idx >= 0 && idx < filtered.length) ? filtered[idx].i : -1;
     }
 
-    return { init, initDropZone, initFileInput, switchTab, getModelData };
+    function getModelData(idx) {
+        const gi = _toGlobalIdx(idx);
+        if (gi >= 0) return { objText: models[gi].objText, mtlText: models[gi].mtlText };
+        const otherFiltered = models.map((m, i) => ({ m, i })).filter(x => x.m.is2D !== _topView);
+        if (idx >= 0 && idx < otherFiltered.length)
+            return { objText: models[otherFiltered[idx].i].objText, mtlText: models[otherFiltered[idx].i].mtlText };
+        return null;
+    }
+
+    function removeModel(idx) {
+        const gi = _toGlobalIdx(idx);
+        if (gi < 0) return;
+        const m = models[gi];
+        if (m.group) {
+            m.group.traverse(c => {
+                if (c instanceof THREE.Mesh) {
+                    c.geometry?.dispose();
+                    if (Array.isArray(c.material)) c.material.forEach(mt => mt.dispose());
+                    else c.material?.dispose();
+                }
+            });
+            scene2.remove(m.group);
+        }
+        models.splice(gi, 1);
+        const modeModels = models.filter(mm => mm.is2D === _topView);
+        const newCount = modeModels.length;
+        if (newCount > 0) {
+            const nextGi = models.findIndex(mm => mm.is2D === _topView);
+            setActive(nextGi);
+            if (_topView) setTopView(true);
+        } else {
+            activeIdx = -1;
+            models.forEach(mm => { mm.group.visible = false; });
+            const hint = document.getElementById('import-drop-hint');
+            if (hint) hint.style.display = '';
+        }
+        return newCount;
+    }
+
+    function getModeActiveIdx() {
+        const filtered = models.filter(m => m.is2D === _topView);
+        const gi = activeIdx >= 0 && activeIdx < models.length ? activeIdx : -1;
+        if (gi < 0) return 0;
+        const fi = filtered.findIndex(m => m === models[gi]);
+        return fi >= 0 ? fi : 0;
+    }
+
+    return { init, initDropZone, initFileInput, switchTab, getModelData, setTopView, addModel, removeModel, getModeActiveIdx };
 })();
 
 // ─── Init — attaché au conteneur DOM passé par Blazor ────────────────────────
@@ -718,6 +928,7 @@ window.TMNFeditorScene = {
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h);
+        _updateOverlayCam();
         container.appendChild(renderer.domElement);
 
         window.addEventListener('resize', () => {
@@ -726,18 +937,33 @@ window.TMNFeditorScene = {
             camera.aspect = nw / nh;
             camera.updateProjectionMatrix();
             renderer.setSize(nw, nh);
+            _updateOverlayCam();
         });
 
         transformCtrl = new TransformControls(camera, renderer.domElement);
         transformCtrl.addEventListener('dragging-changed', e => { controls.enabled = !e.value; });
         scene.add(transformCtrl);
 
+        transformCtrl2D = new TransformControls(overlayCam, renderer.domElement);
+        transformCtrl2D.addEventListener('dragging-changed', e => { controls.enabled = !e.value; });
+        transformCtrl2D.showX = true;
+        transformCtrl2D.showY = true;
+        transformCtrl2D.showZ = false;
+        transformCtrl2D.size = 0.4;
+        transformCtrl2D.enabled = false;
+        overlayScene.add(transformCtrl2D);
+
         // Push position en direct (throttle 50 ms pour limiter les appels interop)
         let _posTimer = null;
         function _pushPosition() {
-            const g = importMeshGroups.get(activeImportIdx);
+            const g = _getImportGroup();
             if (!g || !mainDotNetRef) return;
-            mainDotNetRef.invokeMethodAsync('OnImportPositionChanged', g.position.x, g.position.y, g.position.z);
+            const is2D = importMeshGroups.has(`2d_${activeImportIdx}`);
+            if (is2D) {
+                const sc = g.userData._2dScale || 1;
+                mainDotNetRef.invokeMethodAsync('OnImportPositionChanged', g.position.x / sc, 0, g.position.y / sc);
+            } else
+                mainDotNetRef.invokeMethodAsync('OnImportPositionChanged', g.position.x, g.position.y, g.position.z);
         }
         function _pushTri3DPosition() {
             const obj = transformCtrl?.object;
@@ -758,23 +984,35 @@ window.TMNFeditorScene = {
                 else _pushPosition();
             }, 50);
         });
+        transformCtrl2D.addEventListener('objectChange', () => {
+            if (_posTimer) return;
+            _posTimer = setTimeout(() => {
+                _posTimer = null;
+                _pushPosition();
+            }, 50);
+        });
         window._pushImportPosition = _pushPosition;
 
         // Push liste de matériaux du modèle actif vers Blazor
         function _pushMaterials() {
-            const active = importMeshGroups.get(activeImportIdx);
+            const active = _getImportGroup();
             if (!active || !mainDotNetRef) return;
             const seen = new Set();
             const result = [];
-            active.traverse(child => {
-                if (!child.isMesh) return;
-                const mats = Array.isArray(child.material) ? child.material : [child.material];
+            const pushMesh = (mesh) => {
+                const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
                 mats.forEach(m => {
                     if (!m || seen.has(m.uuid)) return;
                     seen.add(m.uuid);
-                    result.push({ key: m.uuid, name: m.name || '(sans nom)', hex: '#' + (m.color?.getHexString() ?? 'ffffff') });
+                    const hex = m.vertexColors ? _getTri3DAvgColor(mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
+                    result.push({ key: m.uuid, name: m.vertexColors ? 'Vertex Colors' : (m.name || '(sans nom)'), hex });
                 });
-            });
+            };
+            if (active.isMesh) {
+                pushMesh(active);
+            } else {
+                active.traverse(child => { if (child.isMesh) pushMesh(child); });
+            }
             mainDotNetRef.invokeMethodAsync('OnImportMaterialsChanged', result);
         }
         window._pushImportMaterials = _pushMaterials;
@@ -792,7 +1030,7 @@ window.TMNFeditorScene = {
         let _rdx = 0, _rdy = 0;
 
         function _setSelectionBox(group) {
-            if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+            _removeSelectionBox();
             if (!group) return;
             selectionBox = new THREE.BoxHelper(group, 0x4488ff);
             selectionBox.material.transparent = true;
@@ -803,13 +1041,87 @@ window.TMNFeditorScene = {
 
         renderer.domElement.addEventListener('pointerdown', e => { _rdx = e.clientX; _rdy = e.clientY; });
         renderer.domElement.addEventListener('pointerup', e => {
-            if (transformCtrl?.dragging) return;
+            if (transformCtrl?.dragging || transformCtrl2D?.dragging) return;
             const dx = e.clientX - _rdx, dy = e.clientY - _rdy;
             if (dx * dx + dy * dy > 25) return;
 
             const rect = renderer.domElement.getBoundingClientRect();
             _rm.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
             _rm.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+
+            // Raycast overlay (Triangles2D + imports 2D) first — they render on top
+            const tri2dTargets = [];
+            tri3dMeshes.forEach((mesh, idx) => {
+                if (mesh.visible && mesh.userData.is2D) tri2dTargets.push({ mesh, idx, type: 'tri' });
+            });
+            const import2dTargets = [];
+            importMeshGroups.forEach((mesh, key) => {
+                if (typeof key === 'string' && key.startsWith('2d_') && mesh.visible) {
+                    import2dTargets.push({ mesh, key, type: 'import2d' });
+                }
+            });
+            const allOverlay = [...tri2dTargets, ...import2dTargets];
+            if (allOverlay.length) {
+                _ray.setFromCamera(_rm, overlayCam);
+                const hits2d = _ray.intersectObjects(allOverlay.map(t => t.mesh), true);
+                if (hits2d.length) {
+                    const hitObj2d = hits2d[0].object;
+                    const foundTri2d = tri2dTargets.find(t => t.mesh === hitObj2d);
+                    if (foundTri2d) {
+                        activeImportIdx = -1;
+                        _activeTri3DIdx = foundTri2d.idx;
+                        _removeSelectionBox();
+                        selectionBox = new THREE.BoxHelper(foundTri2d.mesh, 0x4488ff);
+                        selectionBox.material.transparent = true;
+                        selectionBox.material.opacity = 0.35;
+                        selectionBox.material.depthTest = false;
+                        selectionBox.userData._overlay = true;
+                        overlayScene.add(selectionBox);
+                        if (transformCtrl?.object) transformCtrl.detach();
+                        const m = foundTri2d.mesh.material;
+                        const hex = m.vertexColors ? _getTri3DAvgColor(foundTri2d.mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
+                        mainDotNetRef?.invokeMethodAsync('OnImportMaterialsChanged', [
+                            { key: m.uuid, name: m.vertexColors ? 'Vertex Colors' : (m.name || 'Material'), hex }
+                        ]);
+                        mainDotNetRef?.invokeMethodAsync('OnTri3DSelected', foundTri2d.idx);
+                        return;
+                    }
+                    let foundImp2d = import2dTargets.find(t => t.mesh === hitObj2d);
+                    if (!foundImp2d) {
+                        let p = hitObj2d.parent;
+                        while (p) {
+                            foundImp2d = import2dTargets.find(t => t.mesh === p);
+                            if (foundImp2d) break;
+                            p = p.parent;
+                        }
+                    }
+                    if (foundImp2d) {
+                        _activeTri3DIdx = -1;
+                        const impIdx = parseInt(foundImp2d.key.substring(3));
+                        activeImportIdx = impIdx;
+                        importPrev.switchTab(impIdx);
+                        _removeSelectionBox();
+                        selectionBox = new THREE.BoxHelper(foundImp2d.mesh, 0x4488ff);
+                        selectionBox.material.transparent = true;
+                        selectionBox.material.opacity = 0.35;
+                        selectionBox.material.depthTest = false;
+                        selectionBox.userData._overlay = true;
+                        overlayScene.add(selectionBox);
+                        if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = false; }
+                        if (_currentTransformMode !== 'none' && transformCtrl2D) {
+                            transformCtrl2D.enabled = true;
+                            transformCtrl2D.attach(foundImp2d.mesh);
+                            _apply2DGizmoMode(_currentTransformMode);
+                        }
+                        mainDotNetRef?.invokeMethodAsync('OnSwitchImportMode', '2D');
+                        mainDotNetRef?.invokeMethodAsync('OnImportSelected', impIdx);
+                        window._pushImportMaterials?.();
+                        return;
+                    }
+                }
+            }
+
+            // Raycast main scene
             _ray.setFromCamera(_rm, camera);
 
             // Imports
@@ -819,10 +1131,10 @@ window.TMNFeditorScene = {
                 group.traverse(c => { if (c.isMesh) targets.push({ mesh: c, idx }); });
             });
 
-            // Triangles3D
+            // Triangles3D (not 2D)
             const tri3dTargets = [];
             tri3dMeshes.forEach((mesh, idx) => {
-                if (mesh.visible) tri3dTargets.push({ mesh, idx });
+                if (mesh.visible && !mesh.userData.is2D) tri3dTargets.push({ mesh, idx });
             });
 
             const allMeshes = [...targets.map(t => t.mesh), ...tri3dTargets.map(t => t.mesh)];
@@ -831,8 +1143,9 @@ window.TMNFeditorScene = {
             if (!hits.length) {
                 activeImportIdx = -1;
                 _activeTri3DIdx = -1;
-                if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
-                if (transformCtrl) transformCtrl.detach();
+                _removeSelectionBox();
+                if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = true; }
+                if (transformCtrl2D) { transformCtrl2D.detach(); transformCtrl2D.enabled = false; }
                 mainDotNetRef?.invokeMethodAsync('OnSceneDeselected');
                 return;
             }
@@ -844,9 +1157,11 @@ window.TMNFeditorScene = {
             if (foundImport) {
                 _activeTri3DIdx = -1;
                 activeImportIdx = foundImport.idx;
-                _setSelectionBox(importMeshGroups.get(activeImportIdx));
+                _setSelectionBox(_getImportGroup());
                 importPrev.switchTab(foundImport.idx);
-                if (_currentTransformMode !== 'none' && transformCtrl) { transformCtrl.attach(importMeshGroups.get(activeImportIdx)); transformCtrl.setMode(_currentTransformMode); }
+                if (transformCtrl2D) { transformCtrl2D.detach(); transformCtrl2D.enabled = false; }
+                if (_currentTransformMode !== 'none' && transformCtrl) { transformCtrl.enabled = true; transformCtrl.attach(_getImportGroup()); transformCtrl.setMode(_currentTransformMode); }
+                mainDotNetRef?.invokeMethodAsync('OnSwitchImportMode', '3D');
                 mainDotNetRef?.invokeMethodAsync('OnImportSelected', foundImport.idx);
                 if (_text3dIndices.has(foundImport.idx)) {
                     mainDotNetRef?.invokeMethodAsync('OnText3DSelected', foundImport.idx);
@@ -862,16 +1177,18 @@ window.TMNFeditorScene = {
             if (foundTri) {
                 _activeTri3DIdx = foundTri.idx;
                 _setSelectionBox(foundTri.mesh);
+                if (transformCtrl2D) { transformCtrl2D.detach(); transformCtrl2D.enabled = false; }
                 if (_currentTransformMode !== 'none' && transformCtrl) {
+                    transformCtrl.enabled = true;
                     transformCtrl.attach(foundTri.mesh);
                     transformCtrl.setMode(_currentTransformMode);
                 }
-                // Push material info
                 const m = foundTri.mesh.material;
                 const hex = m.vertexColors ? _getTri3DAvgColor(foundTri.mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
                 mainDotNetRef?.invokeMethodAsync('OnImportMaterialsChanged', [
                     { key: m.uuid, name: m.vertexColors ? 'Vertex Colors' : (m.name || 'Material'), hex }
                 ]);
+                mainDotNetRef?.invokeMethodAsync('OnSwitchImportMode', '3D');
                 mainDotNetRef?.invokeMethodAsync('OnTri3DSelected', foundTri.idx);
             }
         });
@@ -885,11 +1202,22 @@ window.TMNFeditorScene = {
                 const _og = _getActiveObject();
                 if (_og) {
                     _og.getWorldPosition(originDot.position);
-                    const _d = camera.position.distanceTo(originDot.position);
-                    originDot.scale.setScalar(_d * 0.02);
+                    const is2D = _og.userData?.is2D || importMeshGroups.has(`2d_${activeImportIdx}`);
+                    if (is2D) {
+                        originDot.scale.setScalar(0.02);
+                    } else {
+                        const _d = camera.position.distanceTo(originDot.position);
+                        originDot.scale.setScalar(_d * 0.02);
+                    }
                 }
             }
             renderer.render(scene, camera);
+            if (overlayScene.children.some(c => c.visible)) {
+                renderer.autoClear = false;
+                renderer.clearDepth();
+                renderer.render(overlayScene, overlayCam);
+                renderer.autoClear = true;
+            }
         })();
     },
 
@@ -911,7 +1239,7 @@ window.TMNFeditorScene = {
     async loadModel(objText, mtlText, pakName, cacheKey, geomKey) {
         clearMesh();
         importMeshGroups.forEach(g => { g.visible = false; });
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+        if (selectionBox) { _removeSelectionBox(); }
 
         // 1. Cache mémoire session (instantané)
         let rawObj = cacheKey ? rawModelCache.get(cacheKey) : null;
@@ -1139,7 +1467,13 @@ window.TMNFeditorScene = {
             mapGroup = null;
         }
         mapOffset = { ...MAP_OFFSET_DEFAULT };
+        for (const m of tri3dMeshes) {
+            if (m.userData.is2D) overlayScene.remove(m);
+            m.geometry?.dispose();
+            m.material?.dispose();
+        }
         tri3dMeshes = [];
+        _tri3dIs2D = [];
     },
 
     beginMap() {
@@ -1339,26 +1673,63 @@ window.TMNFeditorScene = {
     initImportPreview(canvasId)        { importPrev.init(canvasId); },
     initImportDropZone(zoneId, ref)    { mainDotNetRef = ref; importPrev.initDropZone(zoneId, ref); },
     initImportFileInput(inputId)       { importPrev.initFileInput(inputId); },
+    setImportTopView(on) {
+        importPrev.setTopView(on);
+        const modeActive = importPrev.getModeActiveIdx?.() ?? 0;
+        this.switchImportTab(modeActive, on);
+    },
     triggerFileInput(inputId) { document.getElementById(inputId)?.click(); },
-    switchImportTab(idx) {
-        activeImportIdx = idx;
+    switchImportTab(idx, is2DMode = false) {
         importPrev.switchTab(idx);
-        const group = importMeshGroups.get(idx);
+        let group = null;
+        if (is2DMode) {
+            const keys2d = [...importMeshGroups.keys()].filter(k => typeof k === 'string' && k.startsWith('2d_'));
+            if (idx >= 0 && idx < keys2d.length) {
+                group = importMeshGroups.get(keys2d[idx]);
+                activeImportIdx = parseInt(keys2d[idx].replace('2d_', ''), 10);
+            }
+        } else {
+            const keys3d = [...importMeshGroups.keys()].filter(k => typeof k === 'number');
+            if (idx >= 0 && idx < keys3d.length) {
+                group = importMeshGroups.get(keys3d[idx]);
+                activeImportIdx = keys3d[idx];
+            }
+        }
+        const is2D = is2DMode;
         // Met à jour le BoxHelper de sélection
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+        if (selectionBox) { _removeSelectionBox(); }
         if (group) {
             selectionBox = new THREE.BoxHelper(group, 0x4488ff);
             selectionBox.material.transparent = true;
             selectionBox.material.opacity = 0.35;
-            scene.add(selectionBox);
-        }
-        // Re-attache le gizmo si un mode transform est actif
-        if (transformCtrl) {
-            if (_currentTransformMode !== 'none' && group) {
-                transformCtrl.attach(group);
-                transformCtrl.setMode(_currentTransformMode);
+            if (is2D) {
+                selectionBox.material.depthTest = false;
+                selectionBox.userData._overlay = true;
+                overlayScene.add(selectionBox);
             } else {
-                transformCtrl.detach();
+                scene.add(selectionBox);
+            }
+        }
+        // Re-attache le bon gizmo
+        if (is2D) {
+            if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = false; }
+            if (_currentTransformMode !== 'none' && group && transformCtrl2D) {
+                transformCtrl2D.enabled = true;
+                transformCtrl2D.attach(group);
+                _apply2DGizmoMode(_currentTransformMode);
+            } else if (transformCtrl2D) {
+                transformCtrl2D.detach();
+            }
+        } else {
+            if (transformCtrl2D) { transformCtrl2D.detach(); transformCtrl2D.enabled = false; }
+            if (transformCtrl) {
+                if (_currentTransformMode !== 'none' && group) {
+                    transformCtrl.enabled = true;
+                    transformCtrl.attach(group);
+                    transformCtrl.setMode(_currentTransformMode);
+                } else {
+                    transformCtrl.detach();
+                }
             }
         }
         mainDotNetRef?.invokeMethodAsync('OnImportTabInScene', !!group);
@@ -1375,6 +1746,7 @@ window.TMNFeditorScene = {
         if (currentMesh) currentMesh.visible = true;
         if (mapGroup) mapGroup.visible = false;
         importMeshGroups.forEach(g => { g.visible = false; });
+        tri3dMeshes.forEach(m => { m.visible = false; });
         if (selectionBox) selectionBox.visible = false;
         if (originDot)    originDot.visible    = false;
         transformCtrl?.detach();
@@ -1384,6 +1756,7 @@ window.TMNFeditorScene = {
         if (currentMesh) currentMesh.visible = false;
         if (mapGroup) mapGroup.visible = true;
         importMeshGroups.forEach(g => { g.visible = true; });
+        tri3dMeshes.forEach(m => { m.visible = true; });
         if (selectionBox) selectionBox.visible = true;
         if (originDot)    originDot.visible    = _originDotVisible;
         if (_currentTransformMode !== 'none' && transformCtrl) {
@@ -1393,16 +1766,25 @@ window.TMNFeditorScene = {
     },
 
     setTransformMode(mode) {
-        if (!transformCtrl) return;
         _currentTransformMode = mode;
         const active = _getActiveObject();
-        if (mode === 'none' || !active) { transformCtrl.detach(); return; }
-        transformCtrl.attach(active);
-        transformCtrl.setMode(mode);
+        if (mode === 'none' || !active) {
+            if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = true; }
+            if (transformCtrl2D) { transformCtrl2D.detach(); transformCtrl2D.enabled = false; }
+            return;
+        }
+        const is2D = active.userData?.is2D || importMeshGroups.has(`2d_${activeImportIdx}`);
+        if (is2D) {
+            if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = false; }
+            if (transformCtrl2D) { transformCtrl2D.enabled = true; transformCtrl2D.attach(active); _apply2DGizmoMode(mode); }
+        } else {
+            if (transformCtrl2D) { transformCtrl2D.detach(); transformCtrl2D.enabled = false; }
+            if (transformCtrl) { transformCtrl.enabled = true; transformCtrl.attach(active); transformCtrl.setMode(mode); }
+        }
     },
 
     mirrorImport() {
-        const active = importMeshGroups.get(activeImportIdx);
+        const active = _getImportGroup();
         if (active) active.scale.x *= -1;
     },
 
@@ -1411,11 +1793,18 @@ window.TMNFeditorScene = {
         if (!visible) { if (originDot) originDot.visible = false; return; }
         const obj = _getActiveObject();
         if (!obj) return;
+        const is2D = obj.userData?.is2D || importMeshGroups.has(`2d_${activeImportIdx}`);
         if (!originDot) {
             const geo = new THREE.SphereGeometry(1, 16, 10);
             const mat = new THREE.MeshBasicMaterial({ color: 0xffee00, transparent: true, opacity: 0.65, depthTest: false });
             originDot = new THREE.Mesh(geo, mat);
             originDot.renderOrder = 999;
+        }
+        if (originDot.parent) originDot.parent.remove(originDot);
+        if (is2D) {
+            originDot.scale.setScalar(0.02);
+            overlayScene.add(originDot);
+        } else {
             scene.add(originDot);
         }
         obj.getWorldPosition(originDot.position);
@@ -1482,17 +1871,31 @@ window.TMNFeditorScene = {
         }
         // Import group
         const group = obj;
+        const is2D = importMeshGroups.has(`2d_${activeImportIdx}`);
         const cur = importOriginOffsets.get(activeImportIdx) ?? new THREE.Vector3();
         const delta = new THREE.Vector3(x - cur.x, y - cur.y, z - cur.z);
-        group.traverse(child => {
-            if (!child.isMesh) return;
-            child.geometry.translate(-delta.x, -delta.y, -delta.z);
-            child.geometry.computeBoundingBox?.();
-            child.geometry.computeBoundingSphere?.();
-        });
-        group.position.x += delta.x;
-        group.position.y += delta.y;
-        group.position.z += delta.z;
+        if (is2D) {
+            const sc = group.userData._2dScale || 1;
+            const d2d = new THREE.Vector3(delta.x * sc, delta.z * sc, 0);
+            group.traverse(child => {
+                if (!child.isMesh) return;
+                child.geometry.translate(-d2d.x, -d2d.y, -d2d.z);
+                child.geometry.computeBoundingBox?.();
+                child.geometry.computeBoundingSphere?.();
+            });
+            group.position.x += d2d.x;
+            group.position.y += d2d.y;
+        } else {
+            group.traverse(child => {
+                if (!child.isMesh) return;
+                child.geometry.translate(-delta.x, -delta.y, -delta.z);
+                child.geometry.computeBoundingBox?.();
+                child.geometry.computeBoundingSphere?.();
+            });
+            group.position.x += delta.x;
+            group.position.y += delta.y;
+            group.position.z += delta.z;
+        }
         importOriginOffsets.set(activeImportIdx, new THREE.Vector3(x, y, z));
         if (selectionBox) selectionBox.update();
         window._pushImportPosition?.();
@@ -1519,7 +1922,7 @@ window.TMNFeditorScene = {
     },
 
     resetImportMaterials() {
-        const active = importMeshGroups.get(activeImportIdx);
+        const active = _getImportGroup();
         if (!active) return;
         const data = importPrev.getModelData(activeImportIdx);
         if (!data?.mtlText?.trim()) return;
@@ -1539,14 +1942,19 @@ window.TMNFeditorScene = {
     },
 
     setImportPosition(x, y, z) {
-        const active = importMeshGroups.get(activeImportIdx);
+        const active = _getImportGroup();
         if (!active) return;
-        active.position.set(x, y, z);
+        const is2D = importMeshGroups.has(`2d_${activeImportIdx}`);
+        if (is2D) {
+            const sc = active.userData._2dScale || 1;
+            active.position.set(x * sc, z * sc, 0);
+        } else
+            active.position.set(x, y, z);
         if (selectionBox) selectionBox.update();
     },
 
     setImportVisible(visible) {
-        const active = importMeshGroups.get(activeImportIdx);
+        const active = _getImportGroup();
         if (active) active.visible = visible;
     },
 
@@ -1555,14 +1963,19 @@ window.TMNFeditorScene = {
         if (g) g.visible = visible;
     },
 
-    async sendImportToMainScene(idx) {
+    async sendImportToMainScene(idx, is2D = false) {
+        if (is2D) {
+            await this._sendImport2D(idx);
+            return;
+        }
+
         // Si le mesh existe déjà, le réutiliser sans re-parser
         if (importMeshGroups.has(idx)) {
             const group = importMeshGroups.get(idx);
             group.visible = true;
             if (currentMesh) currentMesh.visible = false;
             activeImportIdx = idx;
-            if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); }
+            if (selectionBox) { _removeSelectionBox(); }
             selectionBox = new THREE.BoxHelper(group, 0x4488ff);
             selectionBox.material.transparent = true;
             selectionBox.material.opacity = 0.35;
@@ -1604,7 +2017,7 @@ window.TMNFeditorScene = {
         scene.add(group);
         importMeshGroups.set(idx, group);
         activeImportIdx = idx;
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); }
+        if (selectionBox) { _removeSelectionBox(); }
         selectionBox = new THREE.BoxHelper(group, 0x4488ff);
         selectionBox.material.transparent = true;
         selectionBox.material.opacity = 0.35;
@@ -1630,11 +2043,126 @@ window.TMNFeditorScene = {
         }
     },
 
+    async _sendImport2D(idx) {
+        const key = `2d_${idx}`;
+        if (importMeshGroups.has(key)) {
+            const group = importMeshGroups.get(key);
+            group.visible = true;
+            activeImportIdx = idx;
+            if (selectionBox) { _removeSelectionBox(); }
+            selectionBox = new THREE.BoxHelper(group, 0x4488ff);
+            selectionBox.material.transparent = true;
+            selectionBox.material.opacity = 0.35;
+            selectionBox.material.depthTest = false;
+            selectionBox.userData._overlay = true;
+            overlayScene.add(selectionBox);
+            mainDotNetRef?.invokeMethodAsync('OnImportTabInScene', true);
+            window._pushImportMaterials?.();
+            return;
+        }
+
+        const data = importPrev.getModelData(idx);
+        if (!data?.objText) return;
+
+        let materials = null;
+        if (data.mtlText?.trim()) {
+            const ml = new MTLLoader();
+            materials = ml.parse(data.mtlText, '');
+            materials.preload();
+        }
+        const ol = new OBJLoader();
+        if (materials) ol.setMaterials(materials);
+        const parsed = ol.parse(data.objText);
+
+        let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+        let cx = 0, cyObj = 0, cz = 0, totalVerts = 0;
+        parsed.traverse(child => {
+            if (!child.isMesh) return;
+            const posAttr = child.geometry.getAttribute('position');
+            if (!posAttr) return;
+            for (let i = 0; i < posAttr.count; i++) {
+                const x = posAttr.getX(i), y = posAttr.getY(i), z = posAttr.getZ(i);
+                cx += x; cyObj += y; cz += z;
+                if (x < minX) minX = x; if (x > maxX) maxX = x;
+                if (z < minZ) minZ = z; if (z > maxZ) maxZ = z;
+                totalVerts++;
+            }
+        });
+        if (!totalVerts) return;
+        cx /= totalVerts; cyObj /= totalVerts; cz /= totalVerts;
+        const maxDim = Math.max(maxX - minX, maxZ - minZ, 0.001);
+        const sc = 0.5 / maxDim;
+
+        const group = new THREE.Group();
+        group.userData.is2D = true;
+        group.userData._importIdx2D = idx;
+        group.userData._2dScale = sc;
+
+        parsed.traverse(child => {
+            if (!child.isMesh) return;
+            const posAttr = child.geometry.getAttribute('position');
+            if (!posAttr) return;
+
+            const newPos = new Float32Array(posAttr.count * 3);
+            for (let i = 0; i < posAttr.count; i++) {
+                newPos[i * 3]     = (posAttr.getX(i) - cx) * sc;
+                newPos[i * 3 + 1] = (posAttr.getZ(i) - cz) * sc;
+                newPos[i * 3 + 2] = (posAttr.getY(i) - cyObj) * sc;
+            }
+
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.Float32BufferAttribute(newPos, 3));
+            const idx2 = child.geometry.getIndex();
+            if (idx2) geo.setIndex(idx2);
+            if (child.geometry.groups.length) {
+                for (const g of child.geometry.groups) geo.addGroup(g.start, g.count, g.materialIndex);
+            }
+
+            const origMats = Array.isArray(child.material) ? child.material : [child.material];
+            const newMats = origMats.map(m => {
+                const nm = new THREE.MeshBasicMaterial({
+                    color: m.color ? m.color.clone() : new THREE.Color(0.6, 0.6, 0.6),
+                    side: THREE.DoubleSide,
+                    transparent: true,
+                    opacity: m.opacity ?? 0.95,
+                    depthTest: true,
+                    depthWrite: true,
+                });
+                nm.name = m.name || '';
+                return nm;
+            });
+
+            const mesh = new THREE.Mesh(geo, newMats.length === 1 ? newMats[0] : newMats);
+            group.add(mesh);
+        });
+
+        overlayScene.add(group);
+        importMeshGroups.set(key, group);
+        activeImportIdx = idx;
+
+        if (selectionBox) { _removeSelectionBox(); }
+        selectionBox = new THREE.BoxHelper(group, 0x4488ff);
+        selectionBox.material.transparent = true;
+        selectionBox.material.opacity = 0.35;
+        selectionBox.material.depthTest = false;
+        selectionBox.userData._overlay = true;
+        overlayScene.add(selectionBox);
+
+        if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = false; }
+        if (_currentTransformMode !== 'none' && transformCtrl2D) {
+            transformCtrl2D.enabled = true;
+            transformCtrl2D.attach(group);
+            _apply2DGizmoMode(_currentTransformMode);
+        }
+        mainDotNetRef?.invokeMethodAsync('OnImportTabInScene', true);
+        window._pushImportMaterials?.();
+    },
+
     // ─── Triangles3D MediaTracker ───────────────────────────────────────────
     addTriangles3D(blocks) {
         if (!blocks?.length) return;
         for (const block of blocks) {
-            const { vertices, indices, keyframes } = block;
+            const { vertices, indices, keyframes, is2D } = block;
             if (!vertices?.length || !indices?.length || !keyframes?.length) continue;
 
             const vertCount = vertices.length;
@@ -1648,44 +2176,77 @@ window.TMNFeditorScene = {
             const firstKf = keyframes[0];
             const positions = new Float32Array(firstKf.positions);
 
-            // Centrer la géométrie pour que le pivot soit au centre
-            let cx = 0, cy = 0, cz = 0;
-            for (let i = 0; i < vertCount; i++) {
-                cx += positions[i * 3];
-                cy += positions[i * 3 + 1];
-                cz += positions[i * 3 + 2];
+            if (is2D) {
+                for (let i = 0; i < vertCount; i++) {
+                    positions[i * 3] = -positions[i * 3];
+                    positions[i * 3 + 2] = 0;
+                }
+
+                const geo = new THREE.BufferGeometry();
+                geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+                geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+                geo.setIndex(new THREE.Uint32BufferAttribute(new Uint32Array(indices), 1));
+
+                const mat = new THREE.MeshBasicMaterial({
+                    vertexColors: true,
+                    side: THREE.DoubleSide,
+                    transparent: true,
+                    opacity: 0.95,
+                    depthTest: false,
+                    depthWrite: false,
+                });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.userData.is2D = true;
+
+                if (keyframes.length > 1) {
+                    mesh.userData.tri3dKeyframes = keyframes;
+                    mesh.userData.tri3dVertCount = vertCount;
+                }
+
+                tri3dMeshes.push(mesh);
+                _tri3dIs2D.push(true);
+                overlayScene.add(mesh);
+            } else {
+                // Triangles3D: world-space, centré au pivot
+                let cx = 0, cy = 0, cz = 0;
+                for (let i = 0; i < vertCount; i++) {
+                    cx += positions[i * 3];
+                    cy += positions[i * 3 + 1];
+                    cz += positions[i * 3 + 2];
+                }
+                cx /= vertCount; cy /= vertCount; cz /= vertCount;
+                for (let i = 0; i < vertCount; i++) {
+                    positions[i * 3]     -= cx;
+                    positions[i * 3 + 1] -= cy;
+                    positions[i * 3 + 2] -= cz;
+                }
+
+                const geo = new THREE.BufferGeometry();
+                geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+                geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+                geo.setIndex(new THREE.Uint32BufferAttribute(new Uint32Array(indices), 1));
+                geo.computeVertexNormals();
+
+                const mat = new THREE.MeshBasicMaterial({
+                    vertexColors: true,
+                    side: THREE.DoubleSide,
+                    transparent: true,
+                    opacity: 0.95,
+                });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.set(cx, cy, cz);
+                mesh.userData.tri3dInitPos = { x: cx, y: cy, z: cz };
+
+                if (keyframes.length > 1) {
+                    mesh.userData.tri3dKeyframes = keyframes;
+                    mesh.userData.tri3dVertCount = vertCount;
+                }
+
+                tri3dMeshes.push(mesh);
+                _tri3dIs2D.push(false);
+                if (mapGroup) mapGroup.add(mesh);
+                else scene.add(mesh);
             }
-            cx /= vertCount; cy /= vertCount; cz /= vertCount;
-            for (let i = 0; i < vertCount; i++) {
-                positions[i * 3]     -= cx;
-                positions[i * 3 + 1] -= cy;
-                positions[i * 3 + 2] -= cz;
-            }
-
-            const geo = new THREE.BufferGeometry();
-            geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-            geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-            geo.setIndex(new THREE.Uint32BufferAttribute(new Uint32Array(indices), 1));
-            geo.computeVertexNormals();
-
-            const mat = new THREE.MeshBasicMaterial({
-                vertexColors: true,
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.95,
-            });
-            const mesh = new THREE.Mesh(geo, mat);
-            mesh.position.set(cx, cy, cz);
-            mesh.userData.tri3dInitPos = { x: cx, y: cy, z: cz };
-
-            if (keyframes.length > 1) {
-                mesh.userData.tri3dKeyframes = keyframes;
-                mesh.userData.tri3dVertCount = vertCount;
-            }
-
-            tri3dMeshes.push(mesh);
-            if (mapGroup) mapGroup.add(mesh);
-            else scene.add(mesh);
         }
     },
 
@@ -1707,9 +2268,8 @@ window.TMNFeditorScene = {
 
     selectTri3DMesh(index) {
         if (index < 0 || index >= tri3dMeshes.length) {
-            // Deselect
             _activeTri3DIdx = -1;
-            if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+            if (selectionBox) { _removeSelectionBox(); }
             if (transformCtrl?.object) transformCtrl.detach();
             if (originDot) originDot.visible = false;
             return;
@@ -1717,18 +2277,28 @@ window.TMNFeditorScene = {
         _activeTri3DIdx = index;
         const mesh = tri3dMeshes[index];
 
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
-        selectionBox = new THREE.BoxHelper(mesh, 0x4488ff);
-        selectionBox.material.transparent = true;
-        selectionBox.material.opacity = 0.35;
-        scene.add(selectionBox);
+        if (selectionBox) { _removeSelectionBox(); }
 
-        if (_currentTransformMode !== 'none' && transformCtrl) {
-            transformCtrl.attach(mesh);
-            transformCtrl.setMode(_currentTransformMode);
+        if (mesh.userData.is2D) {
+            if (transformCtrl?.object) transformCtrl.detach();
+            selectionBox = new THREE.BoxHelper(mesh, 0x4488ff);
+            selectionBox.material.transparent = true;
+            selectionBox.material.opacity = 0.35;
+            selectionBox.material.depthTest = false;
+            selectionBox.userData._overlay = true;
+            overlayScene.add(selectionBox);
+        } else {
+            selectionBox = new THREE.BoxHelper(mesh, 0x4488ff);
+            selectionBox.material.transparent = true;
+            selectionBox.material.opacity = 0.35;
+            scene.add(selectionBox);
+
+            if (_currentTransformMode !== 'none' && transformCtrl) {
+                transformCtrl.attach(mesh);
+                transformCtrl.setMode(_currentTransformMode);
+            }
         }
 
-        // Push material info
         if (mainDotNetRef) {
             const m = mesh.material;
             const hex = m.vertexColors ? _getTri3DAvgColor(mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
@@ -1746,13 +2316,13 @@ window.TMNFeditorScene = {
     selectImportMesh(idx) {
         const group = importMeshGroups.get(idx);
         if (!group) {
-            if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+            if (selectionBox) { _removeSelectionBox(); }
             if (transformCtrl?.object) transformCtrl.detach();
             if (originDot) originDot.visible = false;
             return;
         }
         activeImportIdx = idx;
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+        if (selectionBox) { _removeSelectionBox(); }
         selectionBox = new THREE.BoxHelper(group, 0x4488ff);
         selectionBox.material.transparent = true;
         selectionBox.material.opacity = 0.35;
@@ -1771,13 +2341,18 @@ window.TMNFeditorScene = {
         _pbPlaying = false;
         _pbTargets = [];
         for (const a of (allAnims || [])) {
-            const obj = importMeshGroups.get(a.idx);
+            const key2D = `2d_${a.idx}`;
+            const obj = importMeshGroups.get(key2D) || importMeshGroups.get(a.idx);
             if (!obj) continue;
+            const is2D = importMeshGroups.has(key2D);
             _pbTargets.push({
                 obj,
+                is2D,
+                sc2D: obj.userData?._2dScale || 1,
                 transKf: a.transKf || [],
                 scaleKf: a.scaleKf || [],
                 rotKf: a.rotKf || [],
+                orbitKf: a.orbitKf || [],
                 startPos: obj.position.clone(),
                 startScale: obj.scale.clone(),
                 startRot: { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }
@@ -1821,7 +2396,7 @@ window.TMNFeditorScene = {
         importMeshGroups.set(idx, group);
         activeImportIdx = idx;
 
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); }
+        if (selectionBox) { _removeSelectionBox(); }
         selectionBox = new THREE.BoxHelper(group, 0x4488ff);
         selectionBox.material.transparent = true;
         selectionBox.material.opacity = 0.35;
@@ -1834,6 +2409,100 @@ window.TMNFeditorScene = {
 
         _text3dIndices.add(idx);
         mainDotNetRef?.invokeMethodAsync('OnModelImported', idx + 1, idx);
+        mainDotNetRef?.invokeMethodAsync('OnImportTabInScene', true);
+        window._pushImportMaterials?.();
+        return idx;
+    },
+
+    async createText2D(text, fontName, thickness, letterSpacing, bold, italic, underline, strike) {
+        const actualFont = bold ? fontName + '_bold' : fontName;
+        const font = await _loadFont(actualFont);
+        const srcGroup = _buildTextGroup(text, font, thickness, letterSpacing, italic, underline, strike);
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        let cx = 0, cy = 0, totalVerts = 0;
+        srcGroup.traverse(child => {
+            if (!child.isMesh) return;
+            const posAttr = child.geometry.getAttribute('position');
+            if (!posAttr) return;
+            for (let i = 0; i < posAttr.count; i++) {
+                const x = posAttr.getX(i) + child.position.x;
+                const y = posAttr.getY(i) + child.position.y;
+                cx += x; cy += y;
+                if (x < minX) minX = x; if (x > maxX) maxX = x;
+                if (y < minY) minY = y; if (y > maxY) maxY = y;
+                totalVerts++;
+            }
+        });
+        if (!totalVerts) return -1;
+        cx /= totalVerts; cy /= totalVerts;
+        const maxDim = Math.max(maxX - minX, maxY - minY, 0.001);
+        const sc = 0.5 / maxDim;
+
+        const group = new THREE.Group();
+        group.userData.is2D = true;
+        group.userData._2dScale = sc;
+
+        srcGroup.traverse(child => {
+            if (!child.isMesh) return;
+            const posAttr = child.geometry.getAttribute('position');
+            if (!posAttr) return;
+            const newPos = new Float32Array(posAttr.count * 3);
+            for (let i = 0; i < posAttr.count; i++) {
+                newPos[i * 3]     = (posAttr.getX(i) + child.position.x - cx) * sc;
+                newPos[i * 3 + 1] = (posAttr.getY(i) + child.position.y - cy) * sc;
+                newPos[i * 3 + 2] = 0;
+            }
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.Float32BufferAttribute(newPos, 3));
+            const idx2 = child.geometry.getIndex();
+            if (idx2) geo.setIndex(idx2);
+            const mat = new THREE.MeshBasicMaterial({
+                color: child.material.color ? child.material.color.clone() : new THREE.Color(1, 1, 1),
+                side: THREE.DoubleSide,
+                transparent: true,
+                depthTest: true,
+                depthWrite: true,
+                name: child.material.name || ''
+            });
+            group.add(new THREE.Mesh(geo, mat));
+        });
+
+        const rotMat = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
+        srcGroup.traverse(child => {
+            if (!child.isMesh) return;
+            child.geometry.applyMatrix4(rotMat);
+            const p = child.position.clone().applyMatrix4(rotMat);
+            child.position.copy(p);
+        });
+        const { objText, mtlText } = _groupToObjMtl(srcGroup);
+        srcGroup.traverse(c => { if (c.geometry) c.geometry.dispose(); if (c.material) c.material.dispose(); });
+
+        await importPrev.addModel(objText, mtlText);
+
+        const idx = importMeshGroups.size;
+        const key = `2d_${idx}`;
+        group.userData._importIdx2D = idx;
+        importMeshGroups.set(key, group);
+        overlayScene.add(group);
+        activeImportIdx = idx;
+
+        if (selectionBox) { _removeSelectionBox(); }
+        selectionBox = new THREE.BoxHelper(group, 0x4488ff);
+        selectionBox.material.transparent = true;
+        selectionBox.material.opacity = 0.35;
+        selectionBox.material.depthTest = false;
+        selectionBox.userData._overlay = true;
+        overlayScene.add(selectionBox);
+
+        if (_currentTransformMode !== 'none' && transformCtrl2D) {
+            transformCtrl2D.enabled = true;
+            transformCtrl2D.attach(group);
+            _apply2DGizmoMode(_currentTransformMode);
+        }
+        if (transformCtrl) { transformCtrl.detach(); transformCtrl.enabled = false; }
+
+        _text3dIndices.add(idx);
         mainDotNetRef?.invokeMethodAsync('OnImportTabInScene', true);
         window._pushImportMaterials?.();
         return idx;
@@ -1881,7 +2550,7 @@ window.TMNFeditorScene = {
         const group = importMeshGroups.get(idx);
         if (!group) return;
         activeImportIdx = idx;
-        if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); }
+        if (selectionBox) { _removeSelectionBox(); }
         selectionBox = new THREE.BoxHelper(group, 0x4488ff);
         selectionBox.material.transparent = true;
         selectionBox.material.opacity = 0.35;
@@ -1906,9 +2575,37 @@ window.TMNFeditorScene = {
         importMeshGroups.delete(idx);
         _text3dIndices.delete(idx);
         if (activeImportIdx === idx) {
-            if (selectionBox) { scene.remove(selectionBox); selectionBox.dispose?.(); selectionBox = null; }
+            if (selectionBox) { _removeSelectionBox(); }
             if (transformCtrl) transformCtrl.detach();
         }
+    },
+
+    removeImportModel(idx) {
+        const key2D = `2d_${idx}`;
+        const is2D = importMeshGroups.has(key2D);
+        const key = is2D ? key2D : idx;
+        const group = importMeshGroups.get(key);
+        if (group) {
+            group.traverse(c => {
+                if (c instanceof THREE.Mesh) {
+                    c.geometry?.dispose();
+                    if (Array.isArray(c.material)) c.material.forEach(m => m.dispose());
+                    else c.material?.dispose();
+                }
+            });
+            if (is2D) overlayScene.remove(group);
+            else scene.remove(group);
+            importMeshGroups.delete(key);
+        }
+        _text3dIndices.delete(idx);
+        if (selectionBox) { _removeSelectionBox(); }
+        if (transformCtrl?.object) transformCtrl.detach();
+        if (transformCtrl2D?.object) transformCtrl2D.detach();
+        if (originDot) originDot.visible = false;
+        activeImportIdx = -1;
+
+        const newCount = importPrev.removeModel(idx);
+        return newCount ?? 0;
     },
 
     // Vide le cache d'objets THREE.js (à appeler au changement de dossier de jeu)
@@ -1957,10 +2654,26 @@ window.TMNFeditorScene = {
     },
 
     getImportExportDataByIndex(idx) {
-        const obj = importMeshGroups.get(idx);
+        const is2D = importMeshGroups.has(`2d_${idx}`);
+        const obj = is2D ? importMeshGroups.get(`2d_${idx}`) : importMeshGroups.get(idx);
         if (!obj) return null;
+        if (is2D) {
+            const data = _groupToObjMtl(obj);
+            if (!data?.objText) return null;
+            return {
+                objText: data.objText,
+                mtlText: data.mtlText || '',
+                posX: obj.position.x,
+                posY: obj.position.y,
+                posZ: 0,
+                rotX: 0, rotY: 0, rotZ: 0,
+                scaleX: 1, scaleY: 1, scaleZ: 1,
+                scale2D: obj.userData._2dScale || 1
+            };
+        }
         let data = importPrev.getModelData(idx);
-        if (!data?.objText && _text3dIndices.has(idx)) data = _groupToObjMtl(obj);
+        const baked = !data?.objText;
+        if (baked) data = _groupToObjMtl(obj);
         if (!data?.objText) return null;
         return {
             objText: data.objText,
@@ -1968,13 +2681,17 @@ window.TMNFeditorScene = {
             posX: obj.position.x - mapOffset.x,
             posY: obj.position.y - mapOffset.y,
             posZ: obj.position.z - mapOffset.z,
-            rotX: obj.rotation.x, rotY: obj.rotation.y, rotZ: obj.rotation.z,
-            scaleX: obj.scale.x, scaleY: obj.scale.y, scaleZ: obj.scale.z
+            rotX: baked ? 0 : obj.rotation.x,
+            rotY: baked ? 0 : obj.rotation.y,
+            rotZ: baked ? 0 : obj.rotation.z,
+            scaleX: baked ? 1 : obj.scale.x,
+            scaleY: baked ? 1 : obj.scale.y,
+            scaleZ: baked ? 1 : obj.scale.z
         };
     },
 
     getImportMaterialsByIndex(idx) {
-        const group = importMeshGroups.get(idx);
+        const group = importMeshGroups.get(idx) ?? importMeshGroups.get(`2d_${idx}`);
         if (!group) return [];
         const seen = new Set();
         const result = [];
