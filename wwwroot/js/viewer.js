@@ -69,6 +69,32 @@ function _updateOverlayCam() {
     overlayCam.bottom = -1;
     overlayCam.updateProjectionMatrix();
 }
+let _gridCross = null;
+let _gridCursorEl = null;
+let _gridVisible = false;
+function _createGridCross() {
+    const mat = new THREE.LineBasicMaterial({ color: 0x888888, depthTest: false });
+    const group = new THREE.Group();
+    const hGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-10, 0, 0), new THREE.Vector3(10, 0, 0)]);
+    group.add(new THREE.Line(hGeo, mat));
+    const vGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -10, 0), new THREE.Vector3(0, 10, 0)]);
+    group.add(new THREE.Line(vGeo, mat));
+    const tick = 0.015;
+    for (let i = -10; i <= 10; i++) {
+        const v = i * 0.1;
+        if (Math.abs(v) < 0.001) continue;
+        const thGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(v, -tick, 0), new THREE.Vector3(v, tick, 0)]);
+        group.add(new THREE.Line(thGeo, mat));
+        const tvGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-tick, v, 0), new THREE.Vector3(tick, v, 0)]);
+        group.add(new THREE.Line(tvGeo, mat));
+    }
+    group.position.z = 0.001;
+    group.visible = false;
+    group.userData._overlay = true;
+    overlayScene.add(group);
+    return group;
+}
+
 const _fontLoader = new FontLoader();
 const _fontCache = new Map();
 const _text3dIndices = new Set();
@@ -475,6 +501,24 @@ function _getTri3DAvgColor(mesh) {
     g = Math.round((g / count) * 255);
     b = Math.round((b / count) * 255);
     return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+}
+
+function _getTri3DUniqueColors(mesh) {
+    const colors = mesh.geometry?.getAttribute('color');
+    if (!colors) return [{ key: 'vc_0', name: 'Vertex Colors', hex: '#ffffff' }];
+    const seen = new Map();
+    for (let i = 0; i < colors.count; i++) {
+        const r = Math.round(colors.getX(i) * 255);
+        const g = Math.round(colors.getY(i) * 255);
+        const b = Math.round(colors.getZ(i) * 255);
+        const hex = '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+        if (!seen.has(hex)) seen.set(hex, seen.size);
+    }
+    return [...seen.entries()].map(([hex, idx]) => ({
+        key: 'vc_' + idx,
+        name: 'Color ' + (idx + 1),
+        hex
+    }));
 }
 let mapGroup = null;
 const rawModelCache = new Map();  // cacheKey → rawObj THREE.js parsé (template pour clones)
@@ -931,6 +975,21 @@ window.TMNFeditorScene = {
         _updateOverlayCam();
         container.appendChild(renderer.domElement);
 
+        _gridCursorEl = document.createElement('div');
+        _gridCursorEl.id = 'grid-cursor-pos';
+        _gridCursorEl.style.cssText = 'position:absolute;top:8px;right:8px;color:#4c4;font-size:12px;font-family:monospace;pointer-events:none;display:none;z-index:5;text-shadow:0 0 3px #000;';
+        container.appendChild(_gridCursorEl);
+
+        renderer.domElement.addEventListener('mousemove', e => {
+            if (!_gridVisible || !_gridCursorEl) return;
+            const rect = renderer.domElement.getBoundingClientRect();
+            const ndcX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+            const ndcY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+            const gx = ndcX * overlayCam.right;
+            const gy = ndcY;
+            _gridCursorEl.textContent = `X: ${gx.toFixed(2)}  Y: ${gy.toFixed(2)}`;
+        });
+
         window.addEventListener('resize', () => {
             const nw = container.clientWidth;
             const nh = container.clientHeight;
@@ -1079,10 +1138,10 @@ window.TMNFeditorScene = {
                         overlayScene.add(selectionBox);
                         if (transformCtrl?.object) transformCtrl.detach();
                         const m = foundTri2d.mesh.material;
-                        const hex = m.vertexColors ? _getTri3DAvgColor(foundTri2d.mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
-                        mainDotNetRef?.invokeMethodAsync('OnImportMaterialsChanged', [
-                            { key: m.uuid, name: m.vertexColors ? 'Vertex Colors' : (m.name || 'Material'), hex }
-                        ]);
+                        const mats = m.vertexColors ? _getTri3DUniqueColors(foundTri2d.mesh) : [
+                            { key: m.uuid, name: m.name || 'Material', hex: '#' + (m.color?.getHexString() ?? 'ffffff') }
+                        ];
+                        mainDotNetRef?.invokeMethodAsync('OnImportMaterialsChanged', mats);
                         mainDotNetRef?.invokeMethodAsync('OnTri3DSelected', foundTri2d.idx);
                         return;
                     }
@@ -1184,10 +1243,10 @@ window.TMNFeditorScene = {
                     transformCtrl.setMode(_currentTransformMode);
                 }
                 const m = foundTri.mesh.material;
-                const hex = m.vertexColors ? _getTri3DAvgColor(foundTri.mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
-                mainDotNetRef?.invokeMethodAsync('OnImportMaterialsChanged', [
-                    { key: m.uuid, name: m.vertexColors ? 'Vertex Colors' : (m.name || 'Material'), hex }
-                ]);
+                const mats = m.vertexColors ? _getTri3DUniqueColors(foundTri.mesh) : [
+                    { key: m.uuid, name: m.name || 'Material', hex: '#' + (m.color?.getHexString() ?? 'ffffff') }
+                ];
+                mainDotNetRef?.invokeMethodAsync('OnImportMaterialsChanged', mats);
                 mainDotNetRef?.invokeMethodAsync('OnSwitchImportMode', '3D');
                 mainDotNetRef?.invokeMethodAsync('OnTri3DSelected', foundTri.idx);
             }
@@ -1673,10 +1732,22 @@ window.TMNFeditorScene = {
     initImportPreview(canvasId)        { importPrev.init(canvasId); },
     initImportDropZone(zoneId, ref)    { mainDotNetRef = ref; importPrev.initDropZone(zoneId, ref); },
     initImportFileInput(inputId)       { importPrev.initFileInput(inputId); },
+    toggleGridOverlay(visible) {
+        if (!_gridCross) _gridCross = _createGridCross();
+        _gridCross.visible = visible;
+        _gridVisible = visible;
+        if (_gridCursorEl) _gridCursorEl.style.display = visible ? '' : 'none';
+    },
+
     setImportTopView(on) {
         importPrev.setTopView(on);
         const modeActive = importPrev.getModeActiveIdx?.() ?? 0;
         this.switchImportTab(modeActive, on);
+        if (!on) {
+            if (_gridCross) _gridCross.visible = false;
+            _gridVisible = false;
+            if (_gridCursorEl) _gridCursorEl.style.display = 'none';
+        }
     },
     triggerFileInput(inputId) { document.getElementById(inputId)?.click(); },
     switchImportTab(idx, is2DMode = false) {
@@ -1748,6 +1819,9 @@ window.TMNFeditorScene = {
         importMeshGroups.forEach(g => { g.visible = false; });
         tri3dMeshes.forEach(m => { m.visible = false; });
         if (selectionBox) selectionBox.visible = false;
+        if (_gridCross) _gridCross.visible = false;
+        _gridVisible = false;
+        if (_gridCursorEl) _gridCursorEl.style.display = 'none';
         if (originDot)    originDot.visible    = false;
         transformCtrl?.detach();
     },
@@ -2159,6 +2233,26 @@ window.TMNFeditorScene = {
     },
 
     // ─── Triangles3D MediaTracker ───────────────────────────────────────────
+    clearTri3DKeyframes(index) {
+        if (index >= 0 && index < tri3dMeshes.length) {
+            delete tri3dMeshes[index].userData.tri3dKeyframes;
+        }
+    },
+
+    clearTriangles3D() {
+        for (const m of tri3dMeshes) {
+            m.geometry?.dispose();
+            if (Array.isArray(m.material)) m.material.forEach(mt => mt.dispose());
+            else m.material?.dispose();
+            if (m.userData.is2D) overlayScene.remove(m);
+            else scene.remove(m);
+        }
+        tri3dMeshes = [];
+        _tri3dIs2D = [];
+        _activeTri3DIdx = -1;
+        if (selectionBox) { _removeSelectionBox(); }
+    },
+
     addTriangles3D(blocks) {
         if (!blocks?.length) return;
         for (const block of blocks) {
@@ -2301,10 +2395,10 @@ window.TMNFeditorScene = {
 
         if (mainDotNetRef) {
             const m = mesh.material;
-            const hex = m.vertexColors ? _getTri3DAvgColor(mesh) : '#' + (m.color?.getHexString() ?? 'ffffff');
-            mainDotNetRef.invokeMethodAsync('OnImportMaterialsChanged', [
-                { key: m.uuid, name: m.vertexColors ? 'Vertex Colors' : (m.name || 'Material'), hex }
-            ]);
+            const mats = m.vertexColors ? _getTri3DUniqueColors(mesh) : [
+                { key: m.uuid, name: m.name || 'Material', hex: '#' + (m.color?.getHexString() ?? 'ffffff') }
+            ];
+            mainDotNetRef.invokeMethodAsync('OnImportMaterialsChanged', mats);
         }
 
         if (originDot && _originDotVisible) {
@@ -2339,12 +2433,23 @@ window.TMNFeditorScene = {
 
     playbackStartAll(allAnims, repeat) {
         _pbPlaying = false;
+        if (_pbTargets.length > 0 && _pbTime > 0) {
+            for (const tgt of _pbTargets) {
+                if (tgt.startPos) tgt.obj.position.copy(tgt.startPos);
+                if (tgt.startScale) tgt.obj.scale.copy(tgt.startScale);
+                if (tgt.startRot) tgt.obj.rotation.set(tgt.startRot.x, tgt.startRot.y, tgt.startRot.z);
+            }
+        }
         _pbTargets = [];
         for (const a of (allAnims || [])) {
             const key2D = `2d_${a.idx}`;
-            const obj = importMeshGroups.get(key2D) || importMeshGroups.get(a.idx);
+            let obj = importMeshGroups.get(key2D) || importMeshGroups.get(a.idx);
+            let is2D = importMeshGroups.has(key2D);
+            if (!obj && a.idx >= 0 && a.idx < tri3dMeshes.length) {
+                obj = tri3dMeshes[a.idx];
+                is2D = _tri3dIs2D[a.idx] || false;
+            }
             if (!obj) continue;
-            const is2D = importMeshGroups.has(key2D);
             _pbTargets.push({
                 obj,
                 is2D,

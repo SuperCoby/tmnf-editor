@@ -1354,7 +1354,8 @@ public static class ClipGbxExporter
         Dictionary<string, string>? materialColorOverrides = null,
         float shadingIntensity = 0f,
         Vec3? rotationOrigin = null,
-        List<OrbitKf>? orbitKfs = null)
+        List<OrbitKf>? orbitKfs = null,
+        float scale2D = 1f)
     {
         var block3d = BuildObjTri3DBlock(objText, mtlText, posX, posY, posZ, transKfs, scaleKfs, rotKfs, materialColorOverrides, shadingIntensity, rotationOrigin, orbitKfs, is2D: true);
         var tri2d = new CGameCtnMediaBlockTriangles2D
@@ -1467,7 +1468,44 @@ public static class ClipGbxExporter
         var gbx = Gbx.Parse(new MemoryStream(originalBytes));
         if (gbx.Node is not CGameCtnChallenge challenge) return Array.Empty<byte>();
 
+        void RemoveTriangleTracks(IList<CGameCtnMediaTrack>? tracks)
+        {
+            if (tracks == null) return;
+            for (int i = tracks.Count - 1; i >= 0; i--)
+            {
+                var t = tracks[i];
+                if (t?.Blocks == null) continue;
+                t.Blocks.RemoveAll(b => b is CGameCtnMediaBlockTriangles3D or CGameCtnMediaBlockTriangles2D);
+                if (t.Blocks.Count == 0) tracks.RemoveAt(i);
+            }
+        }
+
+        void RemoveTrianglesFromClip(CGameCtnMediaClip? clip)
+        {
+            if (clip?.Tracks == null) return;
+            RemoveTriangleTracks(clip.Tracks);
+        }
+
+        RemoveTrianglesFromClip(challenge.ClipIntro);
+        RemoveTrianglesFromClip(challenge.ClipGlobal);
+
+        void RemoveEmptyClips(CGameCtnMediaClipGroup? group)
+        {
+            if (group?.Clips == null) return;
+            for (int i = group.Clips.Count - 1; i >= 0; i--)
+            {
+                var clip = group.Clips[i].Clip;
+                if (clip != null) RemoveTrianglesFromClip(clip);
+                if (clip?.Tracks == null || clip.Tracks.Count == 0)
+                    group.Clips.RemoveAt(i);
+            }
+        }
+
+        RemoveEmptyClips(challenge.ClipGroupInGame);
+        RemoveEmptyClips(challenge.ClipGroupEndRace);
+
         var clipCache = new Dictionary<string, CGameCtnMediaClip>();
+        var usedClips = new HashSet<CGameCtnMediaClip>();
 
         CGameCtnMediaClip GetOrCreateClip(string clipType, string clipName, string clipDisplayName)
         {
@@ -1485,8 +1523,18 @@ public static class ClipGbxExporter
                     ? (challenge.ClipGroupEndRace ??= CreateMediaClipGroup())
                     : (challenge.ClipGroupInGame ??= CreateMediaClipGroup());
 
-                clip = CreateMediaClip(clipDisplayName);
-                clipGroup.Clips.Add(new() { Clip = clip });
+                var existing = clipGroup.Clips.FirstOrDefault(c => c.Clip != null && c.Clip.Name == clipDisplayName && !usedClips.Contains(c.Clip));
+                if (existing.Clip != null)
+                {
+                    clip = existing.Clip;
+                    usedClips.Add(clip);
+                }
+                else
+                {
+                    clip = CreateMediaClip(clipDisplayName);
+                    clipGroup.Clips.Add(new() { Clip = clip });
+                    usedClips.Add(clip);
+                }
             }
 
             clipCache[key] = clip;
