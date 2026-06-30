@@ -1,0 +1,398 @@
+{
+  "baycardetails": {
+    "Diffuse": "BayCarDetails.dds",
+    "Specular": "SpecularCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BayCarDetailsSelfIllum.dds",
+    "Diffuse_Gloss": "BayCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "DefaultRGB.dds"
+  },
+  "baycarskin": {
+    "Diffuse": "BayCarSkin.dds",
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "SpecularCube.dds",
+    "Fresnel": "EnvFresnelPC3.dds",
+    "Diffuse_Gloss": "BayCarSkin.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds",
+    "FresnelPC2": "EnvFresnel.dds"
+  },
+  "baycarglass": {
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "Diffuse": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "EnvFresnelGlassPC3.dds",
+    "Specular": "SpecularCube.dds",
+    "Translucent": "BayCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "FresnelRefrac": "EnvFresnelGlassPC2.dds",
+    "EnvCube": "DefaultEnvCubic.dds",
+    "FresnelReflec": "EnvFresnelGlassPC2.dds"
+  },
+  "baycarrearlights": {
+    "Diffuse": "SportCarDetails.dds",
+    "EnvCubic": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "SpecularCube.dds"
+  },
+  "baybridgeroad": {
+    "Diffuse": "BayBridgeRoad.dds"
+  },
+  "baybridgeredmetal": {
+    "Diffuse": "BayBridgeRedMetal.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "bayconcrete2shiny": {
+    "Diffuse": "BayConcrete2.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "bayitemsalpha": {
+    "Diffuse": "BayItemsAlpha.dds"
+  },
+  "baybridgealpha": {
+    "Diffuse": "BayBridgeAlpha.dds"
+  },
+  "baysigns2": {
+    "Diffuse": "BaySigns2.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BaySigns2SelfIllum.dds"
+  },
+  "baylightvolume": {
+    "Diffuse": "BayLightVolume.dds"
+  },
+  "baysea": {
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds",
+    "Reflect": "SeaRenderReflection.dds"
+  },
+  "bayseaground": {
+    "Blend1PC0": "BayUnderSea1.dds",
+    "Blend1": "BayUnderSea1.dds",
+    "Blend2": "BayUnderSea2.dds",
+    "BlendI": "BayFXBlendingClouds.dds"
+  },
+  "bayconcrete": {
+    "Diffuse": "BayConcrete.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baytoll": {
+    "Diffuse": "BayToll.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baybridgepillar": {
+    "Diffuse": "BayBridgePillar.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "bayconcrete2undersea": {
+    "Diffuse": "BayConcrete2.dds"
+  },
+  "baysigns": {
+    "Diffuse": "BaySigns.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BaySignsSelfIllum.dds"
+  },
+  "bayracesigns": {
+    "Diffuse": "BayRaceSigns.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BayRaceSignsSelfIllum.dds"
+  },
+  "bayeditorhelpers": {
+    "Specular": "SpecEnv.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayconcrete2": {
+    "Diffuse": "BayConcrete2.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayroad": {
+    "Diffuse": "BayRoad.dds"
+  },
+  "baydocks": {
+    "Diffuse": "BayDocks.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baydocksundersea": {
+    "Diffuse": "BayDocks.dds"
+  },
+  "bayharborground": {
+    "Diffuse": "BayHarborGround.dds"
+  },
+  "baybridgeturbo": {
+    "Diffuse": "BayBridgeTurbo.dds"
+  },
+  "baybridgeturboroulette": {
+    "Diffuse": "BayBridgeTurbo.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "BayBridgeTurboRoulette.dds"
+  },
+  "baywindows1": {
+    "Diffuse": "BayBuilding1.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Specular": "SpecularCube.dds",
+    "SelfIllum": "BayBuilding1Trans.dds",
+    "Fresnel": "EnvFresnelPC3.dds",
+    "ParaSCube": "LobbyCube.dds",
+    "TransluRGB": "BayBuilding1Trans.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds"
+  },
+  "bayadvertisement": {
+    "Diffuse": "Advertisement.dds"
+  },
+  "baybuilding": {
+    "Diffuse": "BayBuilding.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BayBuildingSelfIllum.dds"
+  },
+  "baybuildingbase": {
+    "Diffuse": "BayBuildingBase.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baybuildingconcrete": {
+    "Diffuse": "BayBuildingConcrete.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baywindows2": {
+    "Diffuse": "BayBuilding2.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Specular": "SpecularCube.dds",
+    "Fresnel": "EnvFresnelPC3.dds",
+    "SelfIllum": "BayBuilding2Trans.dds",
+    "ParaSCube": "LobbyCube.dds",
+    "TransluRGB": "BayBuilding2Trans.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds"
+  },
+  "baybuildingroof": {
+    "Diffuse": "BayBuildingRoof.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baytrees": {
+    "Diffuse": "BayTrees.dds"
+  },
+  "baywindowstrans": {
+    "Diffuse": "BayWindowsTrans.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Specular": "SpecularCube.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "baydecorbase": {
+    "Diffuse": "BayDecorBase.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baybuildingnotcollidable": {
+    "Diffuse": "BayBuilding.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BayBuildingSelfIllum.dds"
+  },
+  "baycargoskin": {
+    "Diffuse": "BayCargoSkin.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baydocksalpha": {
+    "Diffuse": "BayDocksAlpha.dds"
+  },
+  "baydecoralpha": {
+    "Diffuse": "BayDecorAlpha.dds"
+  },
+  "baycargoundersea": {
+    "Diffuse": "BayCargoSkin.dds"
+  },
+  "baycontainer": {
+    "Diffuse": "BayContainer.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baydocksroad": {
+    "Diffuse": "BayDocksRoad.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baydocksharbor": {
+    "Diffuse": "BayDocksHarbor.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baydocksharborundersea": {
+    "Diffuse": "BayDocksHarbor.dds"
+  },
+  "baydocksdecor": {
+    "Diffuse": "BayDocksDecor.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayflatdetails": {
+    "Diffuse": "BayFlatDetails.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayflat": {
+    "Diffuse": "BayFlat.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Specular": "SpecularCube.dds",
+    "SelfIllum": "BayFlatTrans.dds",
+    "Fresnel": "EnvFresnelPC3.dds",
+    "ParaSCube": "BayFlatEnvmapCubic.dds",
+    "TransluRGB": "BayFlatTrans.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds"
+  },
+  "baywarpsea": {
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds",
+    "Reflect": "SeaRenderReflection.dds"
+  },
+  "baywarpseaground": {
+    "Blend1PC0": "IslandUnderSea1.dds",
+    "Blend1": "IslandUnderSea1.dds",
+    "Blend2": "IslandUnderSea2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "baywarpgrass": {
+    "Blend1PC0": "BayWarpGrass0.dds",
+    "Blend1": "BayWarpGrass1.dds",
+    "Blend2": "BayWarpGrass2.dds",
+    "BlendI": "BayWarpGrassBlendingClouds.dds"
+  },
+  "baywarproad": {
+    "Blend1PC0": "BayWarpGrass0.dds",
+    "Blend3": "BayWarpRoad.dds",
+    "Blend1": "BayWarpGrass1.dds",
+    "Blend2": "BayWarpGrass2.dds",
+    "BlendI": "BayWarpGrassBlendingClouds.dds"
+  },
+  "baywarpbeach": {
+    "Blend1PC0": "BayWarpGrass0.dds",
+    "Blend3": "BayWarpBeach.dds",
+    "Blend1": "BayWarpGrass1.dds",
+    "Blend2": "BayWarpGrass2.dds",
+    "BlendI": "BayWarpGrassBlendingClouds.dds"
+  },
+  "baywarpcityground": {
+    "Diffuse": "BayWarpCityGround.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baywarpcliff": {
+    "Blend1PC0": "BayWarpGrass0.dds",
+    "Blend3": "BayWarpCliff.dds",
+    "Blend1": "BayWarpGrass1.dds",
+    "Blend2": "BayWarpGrass2.dds",
+    "BlendI": "BayWarpGrassBlendingClouds.dds"
+  },
+  "baywarprocks": {
+    "Blend1PC0": "BayWarpGrass0.dds",
+    "Blend3": "BayWarpRocks.dds",
+    "Blend1": "BayWarpGrass1.dds",
+    "Blend2": "BayWarpGrass2.dds",
+    "BlendI": "BayWarpGrassBlendingClouds.dds"
+  },
+  "baywarpdocks": {
+    "Diffuse": "BayDocks.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baywarpbuildings": {
+    "Diffuse": "BayWarpBuildings.dds",
+    "SelfIllum": "BayWarpBuildingsSelfIllum.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "baywarpflats": {
+    "Diffuse": "BayWarpFlats.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baywarpalphahouses": {
+    "Diffuse": "BayWarpAlphaHouses.dds"
+  },
+  "baydecor": {
+    "Diffuse": "BayDecor.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "BayDecorSelfIllum.dds"
+  },
+  "bayvegetation": {
+    "Diffuse": "BayVegetation.dds"
+  },
+  "bayplatformfloor": {
+    "Diffuse": "BayPlatformFloor.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayitemsalphacollidable": {
+    "Diffuse": "BayItemsAlpha.dds"
+  },
+  "bayroadsigns": {
+    "Diffuse": "BayRoadSigns.dds"
+  },
+  "bayplatformfloornc": {
+    "Diffuse": "BayPlatformFloor.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayshops": {
+    "Diffuse": "BayShops.dds",
+    "Luminance": "BayShops.dds"
+  },
+  "bayplatformturbo": {
+    "Diffuse": "BayPlatformTurbo.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "baytunnelroad": {
+    "Diffuse": "BayRoad.dds"
+  },
+  "baytunnel": {
+    "Diffuse": "BayTunnel.dds"
+  },
+  "baytunnelracesigns": {
+    "Diffuse": "BayRaceSigns.dds"
+  },
+  "baytunnelturbo": {
+    "Diffuse": "BayTurbo.dds"
+  },
+  "bayturbo": {
+    "Diffuse": "BayTurbo.dds"
+  },
+  "bayturboroulette": {
+    "Diffuse": "BayTurbo.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "BayTurboRoulette.dds"
+  },
+  "bayshopssignsfast": {
+    "Diffuse": "BayShopsSigns.dds"
+  },
+  "bayshopssignsmedium": {
+    "Diffuse": "BayShopsSigns.dds"
+  },
+  "bayshopssignsslow": {
+    "Diffuse": "BayShopsSigns.dds"
+  },
+  "bayshopssignsslowb": {
+    "Diffuse": "BayShopsSigns.dds"
+  },
+  "bayshopssignsfastb": {
+    "Diffuse": "BayShopsSigns.dds"
+  },
+  "baybridgeturbo2": {
+    "Diffuse": "BayBridgeTurbo2.dds"
+  },
+  "bayplatformturbo2": {
+    "Diffuse": "BayPlatformTurbo2.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "bayturbo2": {
+    "Diffuse": "BayTurbo2.dds"
+  },
+  "baytunnelturbo2": {
+    "Diffuse": "BayTurbo2.dds"
+  }
+}

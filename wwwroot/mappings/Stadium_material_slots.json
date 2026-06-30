@@ -1,0 +1,1507 @@
+{
+  "stadiumfabricinterior": {
+    "Normal": "StadiumControlInteriorN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumControlInteriorD.dds",
+    "Specular": "StadiumControlInteriorS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricauvent2": {
+    "Normal": "StadiumWarpAuvent2N.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumWarpAuvent2D.dds",
+    "Specular": "StadiumWarpAuvent2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricborderrubber": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricstands2": {
+    "Normal": "StadiumWarpStands2N.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumWarpStands2D.dds",
+    "Specular": "StadiumWarpStands2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadcircuitborder": {
+    "Normal": "StadiumRoadCircuitBorderN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumRoadCircuitBorderD.dds",
+    "Specular": "StadiumRoadCircuitBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcircuitlogo": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumCircuitLogoD.dds",
+    "Specular": "StadiumCircuitLogoS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricroaddetails": {
+    "Normal": "StadiumRoadDetailsN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumRoadDetailsD.dds",
+    "Specular": "StadiumRoadDetailsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcircuitscreen": {
+    "Advert": "StadiumCircuitScreen.dds",
+    "Mask": "StadiumCircuitScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumplatform": {
+    "Normal": "StadiumPlatformN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumPlatformD.dds",
+    "Specular": "StadiumPlatformS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcircuit": {
+    "Normal": "StadiumCircuitN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumCircuitD.dds",
+    "Specular": "StadiumCircuitS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcircuitnotcollidable": {
+    "Normal": "StadiumCircuitN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumCircuitD.dds",
+    "Specular": "StadiumCircuitS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumgrass": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "Fresnel": "GrassFresnel.dds"
+  },
+  "stadiumgrassfence": {
+    "FenceA": "StadiumGrassFenceD.dds"
+  },
+  "stadiumroadbordermetal": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadborder": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformfloor": {
+    "Normal": "StadiumPlatformFloorN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumPlatformFloorD.dds",
+    "Specular": "StadiumPlatformFloorS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadgrid": {
+    "Diffuse": "StadiumRoadGridD.dds",
+    "Specular": "StadiumRoadGridS.dds",
+    "Normal": "StadiumRoadGridN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroaddetails": {
+    "Normal": "StadiumRoadDetailsN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadDetailsD.dds",
+    "Specular": "StadiumRoadDetailsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumpillar": {
+    "Normal": "StadiumPillarN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumPillarD.dds",
+    "Specular": "StadiumPillarS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumgrassocc": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "Lighting": "StadiumGrassL.dds"
+  },
+  "stadiumfabricplatformfloor": {
+    "Normal": "StadiumPlatformFloorN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumPlatformFloorD.dds",
+    "Specular": "StadiumPlatformFloorS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadborderrubber": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumpubnvidiaworldcup": {
+    "Normal": "StadiumWarpLogosN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumPubNvidiaWorldcup.dds",
+    "Specular": "StadiumWarpLogosS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadturbo": {
+    "Normal": "StadiumRoadTurboN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadTurboD.dds",
+    "Specular": "StadiumRoadTurboS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "clouds2": {
+    "Clouds": "Cumulus02.dds"
+  },
+  "stadiumcontrolstands": {
+    "Normal": "StadiumWarpStandsN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpStandsD.dds",
+    "Specular": "StadiumWarpStandsS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolauventalpha": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolspots": {
+    "Normal": "StadiumWarpSpotsN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpSpotsD.dds",
+    "Specular": "StadiumWarpSpotsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolstands2": {
+    "Normal": "StadiumWarpStands2N.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpStands2D.dds",
+    "Specular": "StadiumWarpStands2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolauvent": {
+    "Normal": "StadiumWarpAuventN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpAuventD.dds",
+    "Specular": "StadiumWarpAuventS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumwarpspotsglowback": {
+    "Diffuse": "StadiumWarpSpotsGlow.dds"
+  },
+  "stadiumwarpspotsglow": {
+    "Diffuse": "StadiumWarpSpotsGlow.dds"
+  },
+  "stadiumcontrolauvent2": {
+    "Normal": "StadiumWarpAuvent2N.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpAuvent2D.dds",
+    "Specular": "StadiumControlAuvent2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolinterior": {
+    "Normal": "StadiumControlInteriorN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumControlInteriorD.dds",
+    "Specular": "StadiumControlInteriorS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolscreen2x1": {
+    "Advert": "Advertisement.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumcontrollogos": {
+    "Normal": "StadiumWarpLogosN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpLogosD.dds",
+    "Specular": "StadiumWarpLogosS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolglass": {
+    "Diffuse": "StadiumControlGlassD.dds",
+    "Specular": "StadiumControlGlassS.dds",
+    "Normal": "StadiumControlGlassN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpecGlass.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcontrolstands3": {
+    "Normal": "StadiumWarpStands2N.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumWarpStands3D.dds",
+    "Specular": "StadiumWarpStands2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumstructurealpha": {
+    "Diffuse": "StadiumStructureAlphaD.dds",
+    "Specular": "StadiumStructureAlphaS.dds",
+    "Normal": "StadiumStructureAlphaN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpecMatte.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricstructure": {
+    "Normal": "StadiumFabricStructureN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumFabricStructureD.dds",
+    "Specular": "StadiumFabricStructureS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabric": {
+    "Normal": "StadiumFabricN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumFabricD.dds",
+    "Specular": "StadiumFabricS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds"
+  },
+  "stadiumfabricauventalpha": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricstands": {
+    "Normal": "StadiumWarpStandsN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumWarpStandsD.dds",
+    "Specular": "StadiumWarpStandsS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricfloornoocc": {
+    "Fresnel": "GrassFresnel.dds",
+    "Diffuse": "StadiumFabricFloorD.dds",
+    "Specular": "StadiumFabricFloorS.dds",
+    "Normal": "StadiumFabricFloorN.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds"
+  },
+  "stadiumscreen8x1a": {
+    "Advert": "Ad8x1A.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarpspots": {
+    "Normal": "StadiumWarpSpotsN.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpSpotsD.dds",
+    "Specular": "StadiumWarpSpotsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumstructuregeneric": {
+    "Diffuse": "StadiumStructureGenericD.dds",
+    "Specular": "StadiumStructureGenericS.dds",
+    "Normal": "StadiumStructureGenericN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpecMatte.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumscreen8x1b": {
+    "Advert": "Ad8x1B.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumfabricspots": {
+    "Normal": "StadiumWarpSpotsN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumWarpSpotsD.dds",
+    "Specular": "StadiumWarpSpotsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumFabricL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricauvent": {
+    "Normal": "StadiumWarpAuventN.dds",
+    "Occlusion": "StadiumFabricO.dds",
+    "Diffuse": "StadiumWarpAuventD.dds",
+    "Specular": "StadiumWarpAuventS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumscreen2x1": {
+    "Advert": "Advertisement.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumdirtpubnvidiaworldcup": {
+    "Normal": "StadiumWarpLogosN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumPubNvidiaWorldcup.dds",
+    "Specular": "StadiumWarpLogosS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtpub2x1": {
+    "Normal": "StadiumFabricN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StaticAd2x1A.dds",
+    "Specular": "StadiumDirtPub2x1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumstartlogo": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumStartLogoD.dds",
+    "Specular": "StadiumStartLogoS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumracesignsrubber": {
+    "Normal": "StadiumRaceSignsRubberN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRaceSignsRubberD.dds",
+    "Specular": "StadiumRaceSignsRubberS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumturbostands2": {
+    "Normal": "StadiumWarpStands2N.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumWarpStands2D.dds",
+    "Specular": "StadiumWarpStands2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumracepub8x1b": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "RaceAd8x1B.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumturboalpha": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumturbospots": {
+    "Normal": "StadiumWarpSpotsN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumWarpSpotsD.dds",
+    "Specular": "StadiumWarpSpotsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumsculptgrassocc": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "Fresnel": "GrassFresnel.dds"
+  },
+  "stadiumplatformroaddetails": {
+    "Normal": "StadiumRoadDetailsN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumRoadDetailsD.dds",
+    "Specular": "StadiumRoadDetailsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiuminflatable": {
+    "Normal": "StadiumInflatableN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumInflatableD.dds",
+    "Specular": "StadiumInflatableS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiuminflatable2": {
+    "Normal": "StadiumInflatable2N.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "Diffuse": "StadiumInflatable2D.dds",
+    "Specular": "StadiumInflatable2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiuminflatablecactus": {
+    "Normal": "StadiumInflatableN.dds",
+    "Occlusion": "StadiumInflatableCactusO.dds",
+    "Diffuse": "StadiumInflatableCactusD.dds",
+    "Specular": "StadiumAirshipS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumInflatableCactusL.dds"
+  },
+  "stadiuminflatable2occ": {
+    "Normal": "StadiumInflatable2N.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumInflatable2D.dds",
+    "Specular": "StadiumInflatable2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiuminflatablecastle": {
+    "Normal": "StadiumInflatableN.dds",
+    "Occlusion": "StadiumInflatableCactusO.dds",
+    "Diffuse": "StadiumInflatableCastleD.dds",
+    "Specular": "StadiumAirshipS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumInflatableCactusL.dds"
+  },
+  "stadiuminflatablepalmtree": {
+    "Normal": "StadiumInflatableN.dds",
+    "Occlusion": "StadiumInflatablePalmTreeO.dds",
+    "Diffuse": "StadiumInflatablePalmTreeD.dds",
+    "Specular": "StadiumAirshipS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumInflatableCactusL.dds"
+  },
+  "stadiuminflatablesnowtree": {
+    "Normal": "StadiumInflatableN.dds",
+    "Occlusion": "StadiumInflatableCactusO.dds",
+    "Diffuse": "StadiumInflatableSnowTreeD.dds",
+    "Specular": "StadiumAirshipS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumInflatableCactusL.dds"
+  },
+  "stadiumlooproadbordermetal": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumLoopO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumLoopL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumlooproadborderrubber": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumLoopO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumLoopL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroad": {
+    "Normal": "StadiumRoadN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadD.dds",
+    "Specular": "StadiumRoadS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumlooproaddetails": {
+    "Normal": "StadiumRoadDetailsN.dds",
+    "Occlusion": "StadiumLoopO.dds",
+    "Diffuse": "StadiumRoadDetailsD.dds",
+    "Specular": "StadiumRoadDetailsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumLoopL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumlooproadgrid": {
+    "Diffuse": "StadiumRoadGridD.dds",
+    "Specular": "StadiumRoadGridS.dds",
+    "Normal": "StadiumRoadGridN.dds",
+    "Occlusion": "StadiumLoopO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumLoopL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumlooppillar": {
+    "Normal": "StadiumPillarN.dds",
+    "Occlusion": "StadiumLoopO.dds",
+    "Diffuse": "StadiumPillarD.dds",
+    "Specular": "StadiumPillarS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumLoopL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumgrassoccnofence": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumairship": {
+    "Normal": "StadiumAirshipN.dds",
+    "Occlusion": "StadiumAirshipO.dds",
+    "Diffuse": "StadiumAirshipD.dds",
+    "Specular": "StadiumAirshipS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumAirshipL.dds"
+  },
+  "stadiumwarpflaga": {
+    "Diffuse": "StadiumWarpFlagA.dds",
+    "Specular": "StadiumWarpFlagA.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagb": {
+    "Diffuse": "StadiumWarpFlagB.dds",
+    "Specular": "StadiumWarpFlagB.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagc": {
+    "Diffuse": "StadiumWarpFlagC.dds",
+    "Specular": "StadiumWarpFlagC.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagd": {
+    "Diffuse": "StadiumWarpFlagD.dds",
+    "Specular": "StadiumWarpFlagD.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflage": {
+    "Diffuse": "StadiumWarpFlagE.dds",
+    "Specular": "StadiumWarpFlagE.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagf": {
+    "Diffuse": "StadiumWarpFlagF.dds",
+    "Specular": "StadiumWarpFlagF.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagg": {
+    "Diffuse": "StadiumWarpFlagG.dds",
+    "Specular": "StadiumWarpFlagG.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagh": {
+    "Diffuse": "StadiumWarpFlagH.dds",
+    "Specular": "StadiumWarpFlagH.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagi": {
+    "Diffuse": "StadiumWarpFlagI.dds",
+    "Specular": "StadiumWarpFlagI.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagj": {
+    "Diffuse": "StadiumWarpFlagJ.dds",
+    "Specular": "StadiumWarpFlagJ.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagk": {
+    "Diffuse": "StadiumWarpFlagK.dds",
+    "Specular": "StadiumWarpFlagK.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagl": {
+    "Diffuse": "StadiumWarpFlagL.dds",
+    "Specular": "StadiumWarpFlagL.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagm": {
+    "Diffuse": "StadiumWarpFlagM.dds",
+    "Specular": "StadiumWarpFlagM.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagn": {
+    "Diffuse": "StadiumWarpFlagN.dds",
+    "Specular": "StadiumWarpFlagN.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflago": {
+    "Diffuse": "StadiumWarpFlagO.dds",
+    "Specular": "StadiumWarpFlagO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagp": {
+    "Diffuse": "StadiumWarpFlagP.dds",
+    "Specular": "StadiumWarpFlagP.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagq": {
+    "Diffuse": "StadiumWarpFlagQ.dds",
+    "Specular": "StadiumWarpFlagQ.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagr": {
+    "Diffuse": "StadiumWarpFlagR.dds",
+    "Specular": "StadiumWarpFlagR.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflags": {
+    "Diffuse": "StadiumWarpFlagS.dds",
+    "Specular": "StadiumWarpFlagS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagt": {
+    "Diffuse": "StadiumWarpFlagT.dds",
+    "Specular": "StadiumWarpFlagT.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagu": {
+    "Diffuse": "StadiumWarpFlagU.dds",
+    "Specular": "StadiumWarpFlagU.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagv": {
+    "Diffuse": "StadiumWarpFlagV.dds",
+    "Specular": "StadiumWarpFlagV.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagw": {
+    "Diffuse": "StadiumWarpFlagW.dds",
+    "Specular": "StadiumWarpFlagW.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumwarpflagx": {
+    "Diffuse": "StadiumWarpFlagX.dds",
+    "Specular": "StadiumWarpFlagX.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds"
+  },
+  "stadiumplatformroadborder": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformfabric": {
+    "Normal": "StadiumFabricN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumFabricD.dds",
+    "Specular": "StadiumFabricS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformstands2": {
+    "Normal": "StadiumWarpStands2N.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumWarpStands2D.dds",
+    "Specular": "StadiumWarpStands2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformauventalpha": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformracesigns": {
+    "Normal": "StadiumRaceSignsRubberN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumRaceSignsRubberD.dds",
+    "Specular": "StadiumRaceSignsRubberS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformpub8x1b": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "RaceAd8x1B.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformspots": {
+    "Normal": "StadiumWarpSpotsN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumWarpSpotsD.dds",
+    "Specular": "StadiumWarpSpotsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirt": {
+    "Blend1": "StadiumDirt1.dds",
+    "Blend2": "StadiumDirt2.dds",
+    "BlendI": "StadiumDirtMask.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "SoilGenPC0": "StadiumDirt1.dds"
+  },
+  "stadiumdirttoroad": {
+    "Occlusion": "StadiumGrassO.dds",
+    "Blend1": "StadiumDirt1.dds",
+    "Blend2": "StadiumDirt2.dds",
+    "BlendI": "StadiumDirtMask.dds",
+    "SoilFix": "StadiumDirtRoad.dds",
+    "SoilGenPC0": "StadiumDirt1.dds"
+  },
+  "stadiumdirtroad": {
+    "Occlusion": "StadiumGrassO.dds",
+    "Soil": "StadiumDirtRoad.dds"
+  },
+  "stadiumdirtborder": {
+    "Occlusion": "StadiumGrassO.dds",
+    "Blend1": "StadiumDirt1.dds",
+    "Blend2": "StadiumDirt2.dds",
+    "BlendI": "StadiumDirtMask.dds",
+    "SoilFix": "StadiumDirtRoadBorderD.dds",
+    "SoilGenPC0": "StadiumDirt1.dds"
+  },
+  "stadiumdirtauvent2": {
+    "Normal": "StadiumWarpAuvent2N.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumWarpAuvent2D.dds",
+    "Specular": "StadiumWarpAuvent2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtroadborder": {
+    "Normal": "StadiumRoadBorderN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumRoadBorderD.dds",
+    "Specular": "StadiumRoadBorderS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtroaddetails": {
+    "Normal": "StadiumRoadDetailsN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumRoadDetailsD.dds",
+    "Specular": "StadiumRoadDetailsS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtracesignsrubber": {
+    "Normal": "StadiumRaceSignsRubberN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumRaceSignsRubberD.dds",
+    "Specular": "StadiumRaceSignsRubberS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtlogos": {
+    "Normal": "StadiumWarpLogosN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumWarpLogosD.dds",
+    "Specular": "StadiumWarpLogosS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtfabric": {
+    "Normal": "StadiumFabricN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumFabricD.dds",
+    "Specular": "StadiumFabricS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtstructuregeneric": {
+    "Diffuse": "StadiumStructureGenericD.dds",
+    "Specular": "StadiumStructureGenericS.dds",
+    "Normal": "StadiumStructureGenericN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpecMatte.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumdirtracepub8x1a": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StaticRaceAd8x1A.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadtodirt": {
+    "Occlusion": "StadiumGrassO.dds",
+    "Diffuse": "StadiumRoadToDirtD.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Specular": "StadiumRoadToDirtS.dds",
+    "Normal": "StadiumRoadToDirtN.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroaddirttoroadflat": {
+    "Occlusion": "StadiumGrassO.dds",
+    "Blend1": "StadiumDirt1.dds",
+    "Blend2": "StadiumDirt2.dds",
+    "BlendI": "StadiumDirtMask.dds",
+    "SoilFix": "StadiumRoadDirtToRoadD.dds",
+    "SoilGenPC0": "StadiumDirt1.dds"
+  },
+  "stadiumscreenarrow2x1": {
+    "Advert": "SignRight.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumdirtgrid": {
+    "Diffuse": "StadiumDirtGrid.dds",
+    "Specular": "StadiumStructureGenericS.dds",
+    "Normal": "StadiumStructureGenericN.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpecMatte.dds",
+    "Lighting": "StadiumGrassL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroaddirtturbo": {
+    "Normal": "StadiumRoadDirtTurboN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadDirtTurboD.dds",
+    "Specular": "StadiumRoadDirtTurboS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadrace": {
+    "Normal": "StadiumRoadRaceN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadRaceD.dds",
+    "Specular": "StadiumRoadRaceS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumracepub8x1c": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "RaceAd8x1C.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadfreewheeling": {
+    "Normal": "StadiumRoadTurboN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadFreeWheelingD.dds",
+    "Specular": "StadiumRoadFreeWheelingS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumracepub8x1d": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "RaceAd8x1D.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumstartsign": {
+    "Normal": "StadiumStartSignN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumStartSignD.dds",
+    "Specular": "StadiumStartSignS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpecGlass.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumstartsignglow": {
+    "Glow": "StadiumStartSignGlow.dds"
+  },
+  "stadiumracepub8x1a": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "RaceAd8x1A.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumroadturboroulette": {
+    "Normal": "StadiumRoadTurboN.dds",
+    "Occlusion": "StadiumRoadO.dds",
+    "Diffuse": "StadiumRoadTurboRouletteD.dds",
+    "Specular": "StadiumRoadTurboRouletteS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumsculpt": {
+    "Normal": "StadiumSculptN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumSculptD.dds",
+    "Specular": "StadiumSculptS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformstructuregeneric": {
+    "Diffuse": "StadiumStructureGenericD.dds",
+    "Specular": "StadiumStructureGenericS.dds",
+    "Normal": "StadiumStructureGenericN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpecMatte.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumplatformpillar": {
+    "Normal": "StadiumPillarN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumPillarD.dds",
+    "Specular": "StadiumPillarS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumsculpt2": {
+    "Normal": "StadiumSculpt2N.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumSculpt2D.dds",
+    "Specular": "StadiumSculpt2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumsculptauvent2": {
+    "Normal": "StadiumWarpAuvent2N.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumWarpAuvent2D.dds",
+    "Specular": "StadiumWarpAuvent2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumsculptstructurealpha": {
+    "Diffuse": "StadiumStructureAlphaD.dds",
+    "Specular": "StadiumStructureAlphaS.dds",
+    "Normal": "StadiumStructureAlphaN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpecMatte.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumcardetails": {
+    "Diffuse": "StadiumCarDetails.dds",
+    "Specular": "SpecularCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "StadiumCarDetailsSelfIllum.dds",
+    "Diffuse_Gloss": "StadiumCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "StadiumCarDetailsDirty.dds"
+  },
+  "stadiumcarskin": {
+    "Diffuse": "StadiumCarSkin.dds",
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "EnvFresnelPC3.dds",
+    "Diffuse_Gloss": "StadiumCarSkin.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds",
+    "FresnelPC2": "EnvFresnel.dds",
+    "CubeReflectHardSpecA": "DefaultCubeReflectHardSpecA.dds",
+    "DirtMarks": "StadiumCarSkinDirty.dds"
+  },
+  "stadiumcarpilot": {
+    "Diffuse": "StadiumCarPilot.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "SpecularCubicPC1.dds",
+    "Diffuse_Gloss": "StadiumCarPilot.dds",
+    "SelfIllum": "SportCarDetailsSelfIllum.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "StadiumCarPilotDirty.dds"
+  },
+  "stadiumcarglass": {
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "Diffuse": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "EnvFresnelGlassPC3.dds",
+    "Specular": "SpecularCube.dds",
+    "Translucent": "StadiumCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "FresnelRefrac": "EnvFresnelGlassPC2.dds",
+    "EnvCube": "DefaultEnvCubic.dds",
+    "FresnelReflec": "EnvFresnelGlassPC2.dds"
+  },
+  "stadiumplatformsoundsystem": {
+    "Normal": "StadiumSoundSystemN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumSoundSystemD.dds",
+    "Specular": "StadiumSoundSystemS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumgrassocc9m": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "Occlusion": "StadiumGrassO.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumscreen8x1c": {
+    "Advert": "Ad8x1C.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumscreen8x1d": {
+    "Advert": "Ad8x1D.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumgrass9m": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "Fresnel": "GrassFresnel.dds"
+  },
+  "stadiumplatformfabricunderwater": {
+    "Normal": "StadiumFabricN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumFabricD.dds",
+    "Specular": "StadiumFabricS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumfabricpool": {
+    "Normal": "StadiumFabricN.dds",
+    "Occlusion": "StadiumRoadO2.dds",
+    "Diffuse": "StadiumFabricPoolD.dds",
+    "Specular": "StadiumFabricS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumRoadL2.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "stadiumwater": {
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds",
+    "Reflect": "SeaRenderReflection.dds"
+  },
+  "stadiumwarpgrassprelightgen": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "Occlusion": "StadiumWarpO2.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "Fresnel": "GrassFresnel.dds"
+  },
+  "stadiumwarpparvis": {
+    "Normal": "StadiumWarpParvisN.dds",
+    "Occlusion": "StadiumWarpO2.dds",
+    "Diffuse": "StadiumWarpParvisD.dds",
+    "Specular": "StadiumWarpParvisS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL2.dds"
+  },
+  "stadiumwarproute": {
+    "Normal": "StadiumWarpRouteN.dds",
+    "Occlusion": "StadiumWarpO2.dds",
+    "Diffuse": "StadiumWarpRouteD.dds",
+    "Specular": "StadiumWarpRouteS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL2.dds"
+  },
+  "stadiumwarpstands": {
+    "Normal": "StadiumWarpStandsN.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpStandsD.dds",
+    "Specular": "StadiumWarpStandsS.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarpgrass": {
+    "Blend1": "StadiumGrass1.dds",
+    "Blend2": "StadiumGrass2.dds",
+    "BlendI": "StadiumGrassMask.dds",
+    "Stripe": "StadiumGrassStripe.dds",
+    "Occlusion": "StadiumWarpO2.dds",
+    "GrassPC0": "StadiumGrass1.dds",
+    "GrassPC2": "StadiumGrass1.dds",
+    "Lighting": "StadiumWarpL2.dds",
+    "Fresnel": "GrassFresnel.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarpauvent2": {
+    "Normal": "StadiumWarpAuvent2N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpAuvent2D.dds",
+    "Specular": "StadiumWarpAuvent2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarpstands2": {
+    "Normal": "StadiumWarpStands2N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpStands2D.dds",
+    "Specular": "StadiumWarpStands2S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarpparking": {
+    "Normal": "StadiumWarpParkingN.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpParkingD.dds",
+    "Specular": "StadiumWarpParkingS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarpglass": {
+    "Diffuse": "StadiumWarpGlassD.dds",
+    "Specular": "StadiumWarpGlassS.dds",
+    "Normal": "StadiumWarpGlassN.dds",
+    "Occlusion": "StadiumWarpGlassO.dds",
+    "ReflectSoft": "DefaultCubeReflectHardSpecA.dds",
+    "Fresnel": "FresnelSpecGlass.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarpauvent": {
+    "Normal": "StadiumWarpAuventN.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpAuventD.dds",
+    "Specular": "StadiumWarpAuventS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarpauventalpha": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL.dds"
+  },
+  "stadiumwarppub8x1i": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "Ad8x1A.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarppub8x1h": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "Ad8x1D.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarpauventalphabis": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumWarpO2.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarpscreen8x1a": {
+    "Advert": "Ad8x1A.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarpscreen8x1b": {
+    "Advert": "Ad8x1B.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarpscreen8x1c": {
+    "Advert": "Ad8x1C.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarpscreen8x1d": {
+    "Advert": "Ad8x1D.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarppub8x1f": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "Ad8x1B.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarppub8x1g": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "Ad8x1C.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarplogos": {
+    "Normal": "StadiumWarpLogosN.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "StadiumWarpLogosD.dds",
+    "Specular": "StadiumWarpLogosS.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarppub8x1e": {
+    "Normal": "StadiumWarpPub8X1N.dds",
+    "Occlusion": "StadiumWarpO.dds",
+    "Diffuse": "Ad8x1A.dds",
+    "Specular": "StadiumWarpPub8X1S.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumWarpL3.dds"
+  },
+  "stadiumwarpscreen2x1west": {
+    "Advert": "Ad2x1B.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumwarpscreen2x1east": {
+    "Advert": "Ad2x1A.dds",
+    "Mask": "StadiumWarpScreenMask.dds",
+    "Clouds": "DefaultClouds.dds"
+  }
+}

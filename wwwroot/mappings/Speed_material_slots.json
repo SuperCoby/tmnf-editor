@@ -1,0 +1,242 @@
+{
+  "speedcardetails": {
+    "Diffuse": "SpeedCarDetails.dds",
+    "Specular": "SpecularCube.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "SpeedCarDetailsSelfIllum.dds",
+    "Diffuse_Gloss": "SpeedCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "DefaultRGB.dds"
+  },
+  "speedcarskin": {
+    "Diffuse": "SpeedCarSkin.dds",
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "IslandSpecularCube.dds",
+    "FresnelPC2": "EnvFresnel.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Diffuse_Gloss": "SpeedCarSkin.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "speedcarglass": {
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "Diffuse": "DefaultEnvCubicPC1.dds",
+    "FresnelRefrac": "EnvFresnelGlassPC2.dds",
+    "Translucent": "SpeedCarDetails.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCube": "DefaultEnvCubic.dds",
+    "FresnelReflec": "EnvFresnelGlassPC2.dds",
+    "Specular": "SpecularCube.dds",
+    "Fresnel": "EnvFresnelGlassPC3.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "LightFromMap": "RenderLightFromMap.dds"
+  },
+  "speedcanyonwarp": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend3": "SpeedCanyonWarp.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedcanyonwarp2": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend3": "SpeedCanyonWarp2.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedsandwarp": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedsand": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedbridgealphanotcollidable": {
+    "Diffuse": "SpeedBridgeAlpha.dds"
+  },
+  "speedbridgealpha": {
+    "Diffuse": "SpeedBridgeAlpha.dds"
+  },
+  "speedasphalt": {
+    "Diffuse": "SpeedAsphalt.dds"
+  },
+  "speedcrashbarrier": {
+    "Diffuse": "SpeedCrashBarrier.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedconcrete": {
+    "Diffuse": "SpeedConcrete.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedconcreteborder": {
+    "Diffuse": "SpeedConcreteBorder.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedroadsigns": {
+    "Diffuse": "SpeedRoadSigns.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "SpeedRoadSignsSelfIllum.dds"
+  },
+  "bayeditorhelpers": {
+    "Specular": "SpecEnv.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedcliff2rock": {
+    "Blend1PC0": "SpeedCliff2Rock.dds",
+    "Blend1": "SpeedCliff2Rock.dds",
+    "Blend2": "SpeedCliff2Rock2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedcliff2plant": {
+    "Diffuse": "SpeedCliff2Plant.dds"
+  },
+  "speedwater": {
+    "DuDv1": "WaterDuDvPC2_4.dds",
+    "Reflection": "WaterRenderReflection.dds",
+    "Reflec": "WaterRenderReflection.dds",
+    "Refrac": "WaterRenderRefraction.dds",
+    "DuDv0": "WaterDuDvPC2_4.dds",
+    "Normal": "WaterSxSySzPC3.dds",
+    "Reflect": "WaterRenderReflection.dds"
+  },
+  "speedconcreteunderwater": {
+    "Diffuse": "SpeedConcrete.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedriverbeachunderwater": {
+    "Blend1PC0": "SpeedRiverGround1.dds",
+    "Blend3": "SpeedRiverBeach.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedRiverGround2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedriver": {
+    "Blend1PC0": "SpeedRiverGround1.dds",
+    "Blend1": "SpeedRiverGround1.dds",
+    "Blend2": "SpeedRiverGround2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedwoodplanks": {
+    "Diffuse": "SpeedWoodPlanks.dds"
+  },
+  "speedbrushedmetal": {
+    "Diffuse": "SpeedBrushedMetal.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedcliff2": {
+    "Blend1PC0": "SpeedCliff2Rock.dds",
+    "Blend3": "SpeedCliff2.dds",
+    "Blend1": "SpeedCliff2Rock.dds",
+    "Blend2": "SpeedCliff2Rock2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedturbo": {
+    "Diffuse": "SpeedTurbo.dds",
+    "SelfIllum": "SpeedTurboSelfIllum.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedturboroulette": {
+    "Diffuse": "SpeedTurbo.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "SpeedTurboRouletteMask.dds"
+  },
+  "speedfreewheeling": {
+    "Diffuse": "SpeedFreeWeeling.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speeddecors": {
+    "Diffuse": "SpeedDecors.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedsandborder": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend3": "SpeedSandBorder.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedparkingasphalt": {
+    "Grass": "SpeedParkingAsphalt.dds",
+    "Borders": "SpeedParkingMarks.dds"
+  },
+  "speedparkingturbo": {
+    "Grass": "SpeedParkingAsphalt.dds",
+    "Borders": "SpeedParkingTurbo.dds"
+  },
+  "speedcliff2sand": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend3": "SpeedCliff2.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "speedriverbeach": {
+    "Blend1PC0": "SpeedSand.dds",
+    "Blend3": "SpeedRiverBeach.dds",
+    "Blend1": "SpeedSand.dds",
+    "Blend2": "SpeedSand2.dds",
+    "BlendI": "SpeedSandBlendingClouds.dds"
+  },
+  "editorhelpers": {
+    "Specular": "SpecEnv.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedsky": {
+    "Clouds": "SpeedSkyClouds.dds",
+    "Panorama": "SpeedSky.dds"
+  },
+  "speedadvertising": {
+    "Diffuse": "Advertisement.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedrock": {
+    "Diffuse": "SpeedRock.dds"
+  },
+  "speedsaguaro": {
+    "Diffuse": "SpeedSaguaro.dds"
+  },
+  "speedderrickalphas": {
+    "Diffuse": "SpeedDerrickAlphasPC0.dds"
+  },
+  "speedmetalalphas": {
+    "Diffuse": "SpeedMetalAlphas.dds"
+  },
+  "speedmetalgrid": {
+    "Diffuse": "SpeedMetalGrid.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "speedtunneldecors": {
+    "Diffuse": "SpeedDecors.dds",
+    "PreLight": "SpeedTunnelRadiosity.dds",
+    "FakeSpec": "SpecEnv.dds"
+  },
+  "speedtunnelconcrete": {
+    "Diffuse": "SpeedConcrete.dds",
+    "PreLight": "SpeedTunnelRadiosity.dds"
+  },
+  "speedtunnelasphalt": {
+    "Diffuse": "SpeedAsphalt.dds",
+    "PreLight": "SpeedTunnelRadiosity.dds",
+    "FakeSpec": "SpecEnv.dds"
+  },
+  "speedtunnelroadsigns": {
+    "Diffuse": "SpeedRoadSigns.dds",
+    "PreLight": "SpeedTunnelRadiosity.dds",
+    "FakeSpec": "SpecEnv.dds"
+  },
+  "speedtunnelturbo": {
+    "Diffuse": "SpeedTurbo.dds",
+    "PreLight": "SpeedTunnelRadiosity.dds",
+    "FakeSpec": "SpecEnv.dds"
+  }
+}

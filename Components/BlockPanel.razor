@@ -1,0 +1,49 @@
+@implements IDisposable
+@inject AppState State
+
+<div id="block-panel" class="@(State.ShowBlockPanel ? "open" : "")">
+    <div id="block-panel-header">
+        <select id="pak-selector" @onchange="OnPakChanged" disabled="@(State.PakNames.Count == 0)">
+            @if (State.PakNames.Count == 0)
+            {
+                <option value="">@State.T("Sélectionnez un dossier de jeu…")</option>
+            }
+            else
+            {
+                @foreach (var pak in State.PakNames)
+                {
+                    <option value="@pak">@pak</option>
+                }
+            }
+        </select>
+        <input type="text" id="search" placeholder="@State.T("Rechercher un bloc…")" @oninput="OnSearch" />
+        <div class="stats">@State.StatsText</div>
+    </div>
+    <div id="model-list">
+        @if (State.IsLoadingPak)
+        {
+            <div class="loading-msg"><span class="loading">⏳ @State.T("Ouverture de") @State.CurrentPak</span></div>
+        }
+        else
+        {
+            @for (int i = 0; i < State.FilteredSolids.Count; i++)
+            {
+                var solid = State.FilteredSolids[i];
+                var isActive = solid.OriginalIndex == State.ActiveModelIndex;
+                <div class="model-item @(isActive ? "active" : "")"
+                     @onclick="() => OnLoadModel.InvokeAsync(solid.OriginalIndex)">
+                    [@(solid.OriginalIndex + 1)] @solid.DisplayName
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback<ChangeEventArgs> OnPakChanged { get; set; }
+    [Parameter] public EventCallback<ChangeEventArgs> OnSearch { get; set; }
+    [Parameter] public EventCallback<int> OnLoadModel { get; set; }
+
+    protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
+    public void Dispose() => State.OnStateChanged -= StateHasChanged;
+}

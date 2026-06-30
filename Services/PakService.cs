@@ -42,12 +42,59 @@ public class PakService
     // Cache des textures par matériau — évite de ré-ouvrir les GBX partagés entre blocs
     private readonly Dictionary<string, Dictionary<string, string>> _materialTextureCache
         = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, Dictionary<string, string>> _materialSlotsCache
+        = new(StringComparer.OrdinalIgnoreCase);
 
     // Index inverse FileHashes : fileName → hashKey (O(1) au lieu de O(N))
     private Dictionary<string, string>? _fileNameIndex;
 
     // Mapping hash → vrai nom de fichier, chargé depuis FileHashes_TMUF.txt
     public Dictionary<string, string> FileHashes { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+    // Block units avec clips : blockName → [{offset, clips: [{dir, id}]}]
+    public record BlockUnitClip(int Dir, string Id);
+    public record BlockUnit(int X, int Y, int Z, List<BlockUnitClip>? Clips, string? TerrainModifier);
+    private readonly Dictionary<string, List<BlockUnit>> _blockUnitsGround = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, List<BlockUnit>> _blockUnitsAir = new(StringComparer.OrdinalIgnoreCase);
+
+    public void LoadBlockUnits(string json)
+    {
+        try
+        {
+            using var doc = System.Text.Json.JsonDocument.Parse(json);
+            foreach (var block in doc.RootElement.EnumerateObject())
+            {
+                void ParseUnits(string key, Dictionary<string, List<BlockUnit>> target)
+                {
+                    if (!block.Value.TryGetProperty(key, out var arr)) return;
+                    var units = new List<BlockUnit>();
+                    foreach (var unit in arr.EnumerateArray())
+                    {
+                        var offset = unit.GetProperty("offset");
+                        List<BlockUnitClip>? clipsList = null;
+                        if (unit.TryGetProperty("clips", out var clips) && clips.ValueKind == System.Text.Json.JsonValueKind.Array)
+                        {
+                            clipsList = new List<BlockUnitClip>();
+                            foreach (var c in clips.EnumerateArray())
+                                clipsList.Add(new BlockUnitClip(c.GetProperty("dir").GetInt32(), c.GetProperty("id").GetString() ?? ""));
+                        }
+                        string? terrainMod = null;
+                        if (unit.TryGetProperty("terrainModifier", out var tm) && tm.ValueKind == System.Text.Json.JsonValueKind.String)
+                            terrainMod = tm.GetString();
+                        units.Add(new BlockUnit(offset.GetProperty("x").GetInt32(), offset.GetProperty("y").GetInt32(), offset.GetProperty("z").GetInt32(), clipsList, terrainMod));
+                    }
+                    if (units.Count > 0)
+                        target[block.Name] = units;
+                }
+                ParseUnits("ground", _blockUnitsGround);
+                ParseUnits("air", _blockUnitsAir);
+            }
+        }
+        catch { }
+    }
+
+    public List<BlockUnit>? GetBlockUnits(string blockName, bool isGround) =>
+        (isGround ? _blockUnitsGround : _blockUnitsAir).TryGetValue(blockName, out var units) ? units : null;
 
     // Mappings de variants : pakName → { "BlockName|IsGround|Variant|SubVariant" → "SolidPath.Solid.Gbx" }
     private readonly Dictionary<string, Dictionary<string, string>> _blockVariantMaps
@@ -366,12 +413,82 @@ public void LoadBlockCoordSizes(string pakName, string json)
         _textureCache.Clear();
         _modelCache.Clear();
         _materialTextureCache.Clear();
+        _materialSlotsCache.Clear();
+        _reenrichedModels.Clear();
         _editorHelperCache.Clear();
         _fileNameIndex = null;
     }
 
     public CachedPak? GetCached(string pakName)
         => _cache.TryGetValue(pakName, out var v) ? v : null;
+
+    public bool LastMtlChanged { get; private set; }
+    private readonly HashSet<(string, int)> _reenrichedModels = new();
+
+    public void ClearModelCache() => _modelCache.Clear();
+
+    public string FixMtlPublic(string mtl) => _materialSlotsCache.Count > 0 ? FixMtlWithSlots(mtl) : mtl;
+
+    private string FixMtlWithSlots(string mtl)
+    {
+        string[] diffuseSlots = ["Diffuse", "Blend1", "D", "Soil", "Grass", "GDiffuse", "Panorama", "Advert", "Glow", "BaseColor"];
+        string[] specSlots = ["Specular", "S", "PxzSpecular"];
+        string[] normalSlots = ["Normal", "N", "Bump", "PxzNormal"];
+        var lines = mtl.Split('\n').ToList();
+        string? curMat = null;
+        bool changed = false;
+        bool hasMapKd = false;
+        int lastMatLine = -1;
+
+        for (int i = 0; i < lines.Count; i++)
+        {
+            var t = lines[i].Trim();
+            if (t.StartsWith("newmtl "))
+            {
+                if (curMat != null && !hasMapKd)
+                {
+                    var shortName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(curMat)).ToLowerInvariant();
+                    if (_materialSlotsCache.TryGetValue(shortName, out var sl2))
+                    {
+                        foreach (var d in diffuseSlots)
+                            if (sl2.TryGetValue(d, out var v)) { lines.Insert(lastMatLine + 1, $"map_Kd {v}"); changed = true; break; }
+                    }
+                }
+                curMat = t.Substring(7).Trim();
+                hasMapKd = false;
+                lastMatLine = i;
+            }
+            else if (curMat != null)
+            {
+                lastMatLine = i;
+                var shortName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(curMat)).ToLowerInvariant();
+                if (_materialSlotsCache.TryGetValue(shortName, out var sl))
+                {
+                    string? rep = null;
+                    if (t.StartsWith("map_Kd "))
+                    {
+                        hasMapKd = true;
+                        foreach (var d in diffuseSlots) { if (sl.TryGetValue(d, out var v)) { rep = $"map_Kd {v}"; break; } }
+                    }
+                    else if (t.StartsWith("map_Ks "))
+                        foreach (var s in specSlots) { if (sl.TryGetValue(s, out var v)) { rep = $"map_Ks {v}"; break; } }
+                    else if (t.StartsWith("bump "))
+                        foreach (var n in normalSlots) { if (sl.TryGetValue(n, out var v)) { rep = $"bump {v}"; break; } }
+                    if (rep != null && rep != t) { lines[i] = rep; changed = true; }
+                }
+            }
+        }
+        if (curMat != null && !hasMapKd)
+        {
+            var shortName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(curMat)).ToLowerInvariant();
+            if (_materialSlotsCache.TryGetValue(shortName, out var sl2))
+            {
+                foreach (var d in diffuseSlots)
+                    if (sl2.TryGetValue(d, out var v)) { lines.Add($"map_Kd {v}"); changed = true; break; }
+            }
+        }
+        return changed ? string.Join("\n", lines) : mtl;
+    }
 
     public bool IsModelCached(string pakName, int index)
         => _modelCache.ContainsKey((pakName, index));
@@ -400,13 +517,27 @@ public void LoadBlockCoordSizes(string pakName, string json)
         if (index < 0 || index >= cached.Solids.Count) return null;
 
         var modelKey = (pakName, index);
-        if (_modelCache.TryGetValue(modelKey, out var cachedModel)) return cachedModel;
+        LastMtlChanged = false;
+        if (_modelCache.TryGetValue(modelKey, out var cachedModel))
+        {
+            if (_materialSlotsCache.Count > 0)
+            {
+                var fixedMtl = FixMtlWithSlots(cachedModel.Mtl);
+                if (fixedMtl != cachedModel.Mtl)
+                {
+                    cachedModel = (cachedModel.Obj, fixedMtl, cachedModel.Item3);
+                    _modelCache[modelKey] = cachedModel;
+                    LastMtlChanged = true;
+                }
+            }
+            return cachedModel;
+        }
 
         var (name, file) = cached.Solids[index];
         var gbx = await cached.Pak.OpenGbxFileAsync(file, importExternalNodesFromRefTable: true);
         if (gbx.Node is not CPlugSolid solid) return null;
 
-        await Task.Yield(); // libère le thread avant ExportToObj (synchrone, potentiellement lent)
+        await Task.Yield();
         using var objWriter = new StringWriter();
         using var mtlWriter = new StringWriter();
         solid.ExportToObj(objWriter, mtlWriter);
@@ -420,6 +551,39 @@ public void LoadBlockCoordSizes(string pakName, string json)
         return result;
     }
 
+    private async Task<string> ReenrichMtlAsync(string mtl, Pak pak, string pakName)
+    {
+        await EnsureMaterialSlotsAsync(pakName, mtl);
+        string[] diffuseSlots = ["Diffuse", "Blend1", "D", "Soil", "Grass", "GDiffuse", "Panorama", "Advert", "Glow", "Foam 1", "PxzDiffuse", "PyDiffuse", "BaseColor", "PxzBaseColor"];
+        string[] specSlots = ["Specular", "S", "PxzSpecular"];
+        string[] normalSlots = ["Normal", "N", "Bump", "PxzNormal"];
+
+        var lines = mtl.Split('\n').ToList();
+        string? curMat = null;
+        bool changed = false;
+        for (int i = 0; i < lines.Count; i++)
+        {
+            var t = lines[i].Trim();
+            if (t.StartsWith("newmtl ")) curMat = t.Substring(7).Trim();
+            else if (curMat != null && (t.StartsWith("map_Kd ") || t.StartsWith("map_Ks ") || t.StartsWith("bump ")))
+            {
+                var shortName = curMat.Replace(".Material", "").Replace(".material", "").ToLowerInvariant();
+                if (_materialSlotsCache.TryGetValue(shortName, out var sl))
+                {
+                    string? replacement = null;
+                    if (t.StartsWith("map_Kd "))
+                        foreach (var ds in diffuseSlots) { if (sl.TryGetValue(ds, out var v)) { replacement = $"map_Kd {v}"; break; } }
+                    else if (t.StartsWith("map_Ks "))
+                        foreach (var ss in specSlots) { if (sl.TryGetValue(ss, out var v)) { replacement = $"map_Ks {v}"; break; } }
+                    else if (t.StartsWith("bump "))
+                        foreach (var ns in normalSlots) { if (sl.TryGetValue(ns, out var v)) { replacement = $"bump {v}"; break; } }
+                    if (replacement != null && replacement != lines[i].Trim()) { lines[i] = replacement; changed = true; }
+                }
+            }
+        }
+        return changed ? string.Join("\n", lines) : mtl;
+    }
+
     // Enrichit le MTL avec les noms de fichiers de textures (async pour éviter deadlock en WASM)
     private async Task<string> EnrichMtlWithTexturesAsync(CPlugSolid solid, string mtlContent, Pak pak, string pakName)
     {
@@ -427,6 +591,7 @@ public void LoadBlockCoordSizes(string pakName, string json)
         if (tree == null) return mtlContent;
 
         var materialTextures = new Dictionary<string, string>();
+        var materialAllSlots = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
 
         var paksToSearch = new List<Pak> { pak };
         foreach (var (pk, c) in _cache)
@@ -434,9 +599,12 @@ public void LoadBlockCoordSizes(string pakName, string json)
 
         async Task LoadMatAsync(string matName)
         {
+            var shortName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(matName)).ToLowerInvariant();
             if (_materialTextureCache.TryGetValue(matName, out var cached))
             {
                 foreach (var kv in cached) materialTextures[kv.Key] = kv.Value;
+                if (_materialSlotsCache.TryGetValue(shortName, out var cachedSlots))
+                    materialAllSlots[shortName] = cachedSlots;
                 return;
             }
 
@@ -444,7 +612,7 @@ public void LoadBlockCoordSizes(string pakName, string json)
             var baseKey = matName.Replace(".Material", "");
             foreach (var p in paksToSearch)
             {
-                await LoadMaterialFromPak(matName, matResult, p);
+                await LoadMaterialFromPak(matName, matResult, p, materialAllSlots);
                 if (matResult.ContainsKey($"{baseKey}_diffuse") ||
                     matResult.ContainsKey($"{matName}_diffuse"))
                     break;
@@ -475,9 +643,19 @@ public void LoadBlockCoordSizes(string pakName, string json)
                 currentMaterial = line.Substring(7).Trim();
             else if (line.StartsWith("Kd ") && currentMaterial != null)
             {
+                var matKeyShort = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(currentMaterial)).ToLowerInvariant();
                 var diff   = FindTextureName(currentMaterial, "_diffuse",  ["", "_D", "1", "2"], materialTextures);
                 var spec   = FindTextureName(currentMaterial, "_specular", ["_S", "2"],           materialTextures);
                 var normal = FindTextureName(currentMaterial, "_normal",   ["_N", "N"],           materialTextures);
+                if (_materialSlotsCache.TryGetValue(matKeyShort, out var slotsOverride))
+                {
+                    string[] ds = ["Diffuse", "Blend1", "D", "Soil", "Grass", "GDiffuse", "Panorama", "Advert", "Glow", "BaseColor"];
+                    string[] ss = ["Specular", "S", "PxzSpecular"];
+                    string[] ns = ["Normal", "N", "Bump", "PxzNormal"];
+                    foreach (var d in ds) if (slotsOverride.TryGetValue(d, out var v)) { diff = v; break; }
+                    foreach (var s in ss) if (slotsOverride.TryGetValue(s, out var v)) { spec = v; break; }
+                    foreach (var n in ns) if (slotsOverride.TryGetValue(n, out var v)) { normal = v; break; }
+                }
                 if (diff   != null) enriched.Add($"map_Kd {diff}");
                 if (spec   != null) enriched.Add($"map_Ks {spec}");
                 if (normal != null) enriched.Add($"bump {normal}");
@@ -490,10 +668,17 @@ public void LoadBlockCoordSizes(string pakName, string json)
     private static string? FindTextureName(string matName, string kind, string[] suffixes, Dictionary<string, string> materialTextures)
     {
         if (materialTextures.TryGetValue($"{matName}{kind}", out var path)) return path;
+        var shortKey = $"{matName}{kind}";
+        foreach (var (k, v) in materialTextures)
+        {
+            if (Path.GetFileNameWithoutExtension(k).Equals(shortKey, StringComparison.OrdinalIgnoreCase))
+                return v;
+        }
         return null;
     }
 
-    private async Task LoadMaterialFromPak(string materialName, Dictionary<string, string> result, Pak pak)
+    private async Task LoadMaterialFromPak(string materialName, Dictionary<string, string> result, Pak pak,
+        Dictionary<string, Dictionary<string, string>>? allSlots = null)
     {
         var materialFileName = $"{materialName}.Gbx";
         var hashKey = FindHashKey(materialFileName);
@@ -507,7 +692,45 @@ public void LoadBlockCoordSizes(string pakName, string json)
             var matFile = pak.Files[pakFileKey];
             var gbx = await pak.OpenGbxFileAsync(matFile, importExternalNodesFromRefTable: true);
             if (gbx.Node is CPlugMaterial material)
+            {
                 ExtractTextureFromMaterial(materialName, material, result);
+                if (allSlots != null)
+                {
+                    var shortName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(materialName)).ToLowerInvariant();
+                    var slots = new Dictionary<string, string>();
+                    void CollectSlots(CPlugMaterialCustom? cm)
+                    {
+                        if (cm?.Textures == null) return;
+                        foreach (var bmp in cm.Textures)
+                        {
+                            if (bmp.TextureFile == null || string.IsNullOrEmpty(bmp.Name)) continue;
+                            var texPath = Path.GetFileName(bmp.TextureFile.GetFullPath())
+                                ?.Replace(".Texture.gbx", ".dds", StringComparison.OrdinalIgnoreCase);
+                            if (texPath != null) slots[bmp.Name] = texPath;
+                        }
+                    }
+                    CollectSlots(material.CustomMaterial);
+                    var bf = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
+                    foreach (var f in material.GetType().GetFields(bf))
+                        try { if (f.GetValue(material) is CPlugMaterial sm) CollectSlots(sm.CustomMaterial); } catch { }
+                    foreach (var p in material.GetType().GetProperties(bf))
+                        try { if (p.GetValue(material) is CPlugMaterial sm) CollectSlots(sm.CustomMaterial); } catch { }
+                    if (slots.Count > 0)
+                    {
+                        if (_materialSlotsCache.TryGetValue(shortName, out var existing))
+                        {
+                            foreach (var (sk, sv) in slots)
+                                existing[sk] = sv;
+                            allSlots[shortName] = existing;
+                        }
+                        else
+                        {
+                            _materialSlotsCache[shortName] = slots;
+                            allSlots[shortName] = slots;
+                        }
+                    }
+                }
+            }
         }
         catch { }
     }
@@ -515,35 +738,245 @@ public void LoadBlockCoordSizes(string pakName, string json)
     private static void ExtractTextureFromMaterial(string materialName, CPlugMaterial material, Dictionary<string, string> result)
     {
         var baseName = materialName.Replace(".Material", "");
-        if (material.CustomMaterial?.Textures == null) return;
+        var customMat = material.CustomMaterial;
+        if (customMat?.Textures == null) return;
 
-        foreach (var bitmap in material.CustomMaterial.Textures)
+        foreach (var bitmap in customMat.Textures)
         {
             if (bitmap.TextureFile == null) continue;
             var texPath = Path.GetFileName(bitmap.TextureFile.GetFullPath())
                 ?.Replace(".Texture.gbx", ".dds", StringComparison.OrdinalIgnoreCase);
             if (texPath == null) continue;
 
-            switch (bitmap.Name?.ToLowerInvariant() ?? "")
+            var texType = bitmap.Name?.ToLowerInvariant() ?? "";
+            switch (texType)
             {
                 case "diffuse": case "blend1": case "d":
-                    result[$"{baseName}_diffuse"]  = texPath; break;
-                case "specular": case "s":
-                    result[$"{baseName}_specular"] = texPath; break;
-                case "normal": case "n": case "bump":
-                    result[$"{baseName}_normal"]   = texPath; break;
-                default:
+                case "soil": case "grass": case "gdiffuse": case "panorama":
+                case "advert": case "glow": case "foam 1":
+                case "pxzdiffuse": case "pydiffuse":
+                case "basecolor": case "pxzbasecolor":
                     result.TryAdd($"{baseName}_diffuse", texPath); break;
+                case "specular": case "s": case "pxzspecular":
+                    result.TryAdd($"{baseName}_specular", texPath); break;
+                case "normal": case "n": case "bump": case "pxznormal":
+                    result.TryAdd($"{baseName}_normal", texPath); break;
+                default:
+                    if (string.IsNullOrEmpty(texType))
+                        result.TryAdd($"{baseName}_diffuse", texPath);
+                    else
+                        result[$"{baseName}_{texType}"] = texPath;
+                    break;
             }
+        }
+    }
+
+    private Dictionary<string, Dictionary<string, string>> _materialFullTextures = new(StringComparer.OrdinalIgnoreCase);
+
+    public Dictionary<string, Dictionary<string, string>> GetAllMaterialSlots() => _materialSlotsCache;
+
+    public void LoadMaterialSlotsJson(string json)
+    {
+        try
+        {
+            var data = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json);
+            if (data != null)
+                foreach (var (k, v) in data)
+                    _materialSlotsCache.TryAdd(k, v);
+        }
+        catch { }
+    }
+
+    public async Task EnsureMaterialSlotsAsync(string pakName, string mtlText)
+    {
+        var matNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var line in mtlText.Split('\n'))
+        {
+            var t = line.Trim();
+            if (t.StartsWith("newmtl "))
+                matNames.Add(t.Substring(7).Trim());
+        }
+
+        var paksToSearch = new List<Pak>();
+        foreach (var (_, c) in _cache) paksToSearch.Add(c.Pak);
+
+        foreach (var matName in matNames)
+        {
+            var shortName = matName.Replace(".Material", "").Replace(".material", "").ToLowerInvariant();
+
+            var matSuffix = $"{matName}.Material.Gbx";
+            var hashEntry = FileHashes.FirstOrDefault(kvp =>
+                kvp.Value.EndsWith(matSuffix, StringComparison.OrdinalIgnoreCase));
+            if (hashEntry.Key == null)
+            {
+                matSuffix = $"{matName}.Gbx";
+                hashEntry = FileHashes.FirstOrDefault(kvp =>
+                    kvp.Value.EndsWith(matSuffix, StringComparison.OrdinalIgnoreCase));
+            }
+            if (hashEntry.Key == null) continue;
+
+            foreach (var pak in paksToSearch)
+            {
+                var pakFileKey = pak.Files.Keys.FirstOrDefault(k => k.Contains(hashEntry.Key));
+                if (pakFileKey == null) continue;
+                try
+                {
+                    var matFile = pak.Files[pakFileKey];
+                    var gbx = await pak.OpenGbxFileAsync(matFile, importExternalNodesFromRefTable: true);
+                    if (gbx.Node is CPlugMaterial material)
+                    {
+                        var slots = new Dictionary<string, string>();
+                        void CollectSlots(CPlugMaterialCustom? cm)
+                        {
+                            if (cm?.Textures == null) return;
+                            foreach (var bmp in cm.Textures)
+                            {
+                                if (bmp.TextureFile == null || string.IsNullOrEmpty(bmp.Name)) continue;
+                                var texPath = Path.GetFileName(bmp.TextureFile.GetFullPath())
+                                    ?.Replace(".Texture.gbx", ".dds", StringComparison.OrdinalIgnoreCase);
+                                if (texPath != null) slots.TryAdd(bmp.Name, texPath);
+                            }
+                        }
+
+                        var bf = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
+                        foreach (var f in material.GetType().GetFields(bf))
+                            try { if (f.GetValue(material) is CPlugMaterial sm) CollectSlots(sm.CustomMaterial); } catch { }
+                        foreach (var p in material.GetType().GetProperties(bf))
+                            try { if (p.GetValue(material) is CPlugMaterial sm) CollectSlots(sm.CustomMaterial); } catch { }
+                        CollectSlots(material.CustomMaterial);
+
+                        if (slots.Count > 0)
+                        {
+                            if (_materialSlotsCache.TryGetValue(shortName, out var existingSlots))
+                                foreach (var (sk, sv) in slots) existingSlots.TryAdd(sk, sv);
+                            else
+                                _materialSlotsCache[shortName] = slots;
+                            break;
+                        }
+                    }
+                }
+                catch { }
+            }
+        }
+    }
+
+    public async Task<Dictionary<string, string>?> GetMaterialTexturesAsync(string matName)
+    {
+        var key = matName.ToLowerInvariant();
+        if (_materialFullTextures.TryGetValue(key, out var texMap))
+            return texMap;
+
+        var matSuffix = $"{matName}.Material.Gbx";
+        var hashEntry = FileHashes.FirstOrDefault(kvp =>
+            kvp.Value.EndsWith(matSuffix, StringComparison.OrdinalIgnoreCase));
+        if (hashEntry.Key == null) return null;
+
+        foreach (var (_, c) in _cache)
+        {
+            var pakFileKey = c.Pak.Files.Keys.FirstOrDefault(k => k.Contains(hashEntry.Key));
+            if (pakFileKey == null) continue;
+            try
+            {
+                var matFile = c.Pak.Files[pakFileKey];
+                var gbx = await c.Pak.OpenGbxFileAsync(matFile, importExternalNodesFromRefTable: true);
+                if (gbx.Node is CPlugMaterial material)
+                {
+                    ExtractAllTexturesFromMaterial(matName, material);
+                    if (_materialFullTextures.TryGetValue(key, out var result))
+                        return result;
+                }
+            }
+            catch { }
+        }
+        return null;
+    }
+
+    private async Task PopulateMaterialFullTextures(CachedPak cached, string pakName)
+    {
+        var paksToSearch = new List<Pak> { cached.Pak };
+        foreach (var (pk, c) in _cache)
+            if (!pk.Equals(pakName, StringComparison.OrdinalIgnoreCase)) paksToSearch.Add(c.Pak);
+
+        foreach (var (matName, _) in _materialTextureCache)
+        {
+            var shortName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(matName)).ToLowerInvariant();
+            if (_materialFullTextures.ContainsKey(shortName)) continue;
+            foreach (var p in paksToSearch)
+            {
+                var materialFileName = $"{matName}.Gbx";
+                var hashKey = FindHashKey(materialFileName);
+                if (hashKey == null) continue;
+                var pakFileKey = p.Files.Keys.FirstOrDefault(k => k.Contains(hashKey));
+                if (pakFileKey == null) continue;
+                try
+                {
+                    var matFile = p.Files[pakFileKey];
+                    var gbx = await p.OpenGbxFileAsync(matFile, importExternalNodesFromRefTable: true);
+                    if (gbx.Node is CPlugMaterial material)
+                        ExtractAllTexturesFromMaterial(matName, material);
+                }
+                catch { }
+                if (_materialFullTextures.ContainsKey(shortName)) break;
+            }
+        }
+    }
+
+    private void ExtractAllTexturesFromMaterial(string materialName, CPlugMaterial material)
+    {
+        var texMap = new Dictionary<string, string>();
+        void ExtractFrom(CPlugMaterialCustom custom)
+        {
+            if (custom?.Textures == null) return;
+            foreach (var bitmap in custom.Textures)
+            {
+                if (bitmap.TextureFile == null) continue;
+                var texPath = Path.GetFileName(bitmap.TextureFile.GetFullPath())
+                    ?.Replace(".Texture.gbx", ".dds", StringComparison.OrdinalIgnoreCase);
+                if (texPath == null) continue;
+                var texType = !string.IsNullOrEmpty(bitmap.Name) ? bitmap.Name : $"tex{texMap.Count}";
+                texMap[texType] = texPath;
+            }
+        }
+
+        if (material.CustomMaterial != null) ExtractFrom(material.CustomMaterial);
+
+        var bf = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
+        foreach (var field in material.GetType().GetFields(bf))
+        {
+            try
+            {
+                var val = field.GetValue(material);
+                if (val is CPlugMaterialCustom custom)
+                    ExtractFrom(custom);
+                else if (val is CPlugMaterial shaderMat && shaderMat.CustomMaterial != null)
+                    ExtractFrom(shaderMat.CustomMaterial);
+            }
+            catch { }
+        }
+        foreach (var prop in material.GetType().GetProperties(bf))
+        {
+            try
+            {
+                var val = prop.GetValue(material);
+                if (val is CPlugMaterialCustom custom)
+                    ExtractFrom(custom);
+                else if (val is CPlugMaterial shaderMat && shaderMat.CustomMaterial != null)
+                    ExtractFrom(shaderMat.CustomMaterial);
+            }
+            catch { }
+        }
+
+        if (texMap.Count > 0)
+        {
+            var key = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(materialName)).ToLowerInvariant();
+            _materialFullTextures[key] = texMap;
         }
     }
 
     // Extrait les octets DDS des textures référencées dans un MTL, depuis les paks en cache
     public async Task<Dictionary<string, byte[]>> ExtractTexturesFromPakAsync(string mtlContent)
     {
-        var result = new Dictionary<string, byte[]>(StringComparer.OrdinalIgnoreCase);
         var textureNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
         foreach (var line in mtlContent.Split('\n'))
         {
             var t = line.Trim();
@@ -554,28 +987,32 @@ public void LoadBlockCoordSizes(string pakName, string json)
                 if (!string.IsNullOrEmpty(fname)) textureNames.Add(fname);
             }
         }
+        return await ExtractTexturesByNamesAsync(textureNames);
+    }
 
-        foreach (var ddsName in textureNames)
+    // Comme ExtractTexturesFromPakAsync mais reçoit directement les noms (évite de re-parser le MTL par bloc).
+    public async Task<Dictionary<string, byte[]>> ExtractTexturesByNamesAsync(IEnumerable<string> textureNames)
+    {
+        var result = new Dictionary<string, byte[]>(StringComparer.OrdinalIgnoreCase);
+        foreach (var texName in textureNames)
         {
-            var bytes = await TryExtractTextureBytesAsync(ddsName);
-            if (bytes != null) result[ddsName] = bytes;
+            var bytes = await TryExtractTextureBytesAsync(texName);
+            if (bytes != null) result[texName] = bytes;
         }
-
         return result;
     }
 
-    private async Task<byte[]?> TryExtractTextureBytesAsync(string ddsFilename)
+    public async Task<byte[]?> TryExtractTextureBytesAsync(string ddsFilename)
     {
         if (_textureCache.TryGetValue(ddsFilename, out var cached)) return cached;
 
         var textureGbxName = Path.GetFileNameWithoutExtension(ddsFilename) + ".Texture.gbx";
-        var hashEntry = FileHashes.FirstOrDefault(kvp =>
-            Path.GetFileName(kvp.Value).Equals(textureGbxName, StringComparison.OrdinalIgnoreCase));
-        if (hashEntry.Key == null) return null;
+        var hashKey = FindHashKey(textureGbxName);
+        if (hashKey == null) return null;
 
         foreach (var (_, c) in _cache)
         {
-            var fileKey = c.Pak.Files.Keys.FirstOrDefault(k => k.Contains(hashEntry.Key));
+            var fileKey = c.Pak.Files.Keys.FirstOrDefault(k => k.Contains(hashKey));
             if (fileKey == null) continue;
 
             try
@@ -645,7 +1082,9 @@ public void LoadBlockCoordSizes(string pakName, string json)
                 Dir: (int)block.Direction,
                 IsGround: block.IsGround,
                 Variant: block.Variant,
-                SubVariant: block.SubVariant
+                SubVariant: block.SubVariant,
+                IsClipFlag: block.IsClip,
+                IsGhost: block.IsGhost
             ));
         }
 
@@ -729,6 +1168,7 @@ public void LoadBlockCoordSizes(string pakName, string json)
             MapName: challenge.MapName ?? "Carte",
             Environment: challenge.Collection?.ToString() ?? "",
             SizeX: challenge.Size.X,
+            SizeY: challenge.Size.Y,
             SizeZ: challenge.Size.Z,
             Blocks: blocks,
             Triangles3D: tri3dBlocks,
@@ -889,12 +1329,172 @@ public void LoadBlockCoordSizes(string pakName, string json)
 
 public record SolidEntry(string Name, PakFile File);
 public record CachedPak(Pak Pak, List<SolidEntry> Solids, MemoryStream Stream);
-public record ChallengeBlock(string Name, int X, int Y, int Z, int Dir, bool IsGround, byte Variant, byte SubVariant);
+public record ChallengeBlock(string Name, int X, int Y, int Z, int Dir, bool IsGround, byte Variant, byte SubVariant, bool IsClipFlag = false, bool IsGhost = false);
+
+public static class ClipBlockHelper
+{
+    public static List<ChallengeBlock> CreateClipBlocks(List<ChallengeBlock> blocks, PakService pakSvc)
+    {
+        var clipBlockDict = new Dictionary<string, ChallengeBlock>();
+        foreach (var b in blocks)
+            if (b.IsClipFlag)
+                clipBlockDict.TryAdd($"{b.X}|{b.Y}|{b.Z}", b);
+
+        var alreadyPlaced = new HashSet<string>();
+        var clipBlocks = new List<ChallengeBlock>();
+
+        foreach (var block in blocks)
+        {
+            if (block.IsClipFlag) continue;
+            var units = pakSvc.GetBlockUnits(block.Name, block.IsGround);
+            if (units == null) continue;
+
+            int minX = int.MaxValue, minZ = int.MaxValue;
+            var rotated = new (int X, int Y, int Z)[units.Count];
+            for (int i = 0; i < units.Count; i++)
+            {
+                var u = units[i];
+                var (rx, rz) = block.Dir switch
+                {
+                    1 => (-u.Z, u.X),
+                    2 => (-u.X, -u.Z),
+                    3 => (u.Z, -u.X),
+                    _ => (u.X, u.Z)
+                };
+                rotated[i] = (rx, u.Y, rz);
+                if (rx < minX) minX = rx;
+                if (rz < minZ) minZ = rz;
+            }
+
+            for (int i = 0; i < units.Count; i++)
+            {
+                var unit = units[i];
+                var r = rotated[i];
+                int unitX = block.X + r.X - minX;
+                int unitY = block.Y + r.Y;
+                int unitZ = block.Z + r.Z - minZ;
+
+                foreach (var clip in unit.Clips ?? [])
+                {
+                    int clipDir = (block.Dir + clip.Dir) % 4;
+                    var (dx, dz) = clipDir switch
+                    {
+                        0 => (0, 1),
+                        1 => (-1, 0),
+                        2 => (0, -1),
+                        3 => (1, 0),
+                        _ => (0, 0)
+                    };
+
+                    int clipX = unitX + dx;
+                    int clipY = unitY;
+                    int clipZ = unitZ + dz;
+                    int clipFinalDir = (clipDir + 2) % 4;
+
+                    var coordKey = $"{clipX}|{clipY}|{clipZ}";
+                    if (!clipBlockDict.TryGetValue(coordKey, out var existingClip))
+                        continue;
+
+                    var placeKey = $"{coordKey}|{clipFinalDir}";
+                    if (!alreadyPlaced.Add(placeKey)) continue;
+                    bool isGround = existingClip.IsGround;
+
+                    clipBlocks.Add(new ChallengeBlock(
+                        clip.Id, clipX, clipY, clipZ, clipFinalDir,
+                        isGround, 0, 0));
+                }
+            }
+        }
+
+        return clipBlocks;
+    }
+
+    private static readonly Dictionary<string, string> TerrainModifierToBlock = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["TerrainModifierDirt"] = "StadiumDirt",
+    };
+
+    private static readonly HashSet<string> DirtBlocks = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "StadiumDirt"
+    };
+
+    public static List<ChallengeBlock> CreateBaseZoneBlocks(ChallengeData data, PakService pakSvc)
+    {
+        int baseHeight = 9;
+        int groundHeight = baseHeight + 1;
+
+        var occupied = new HashSet<(int, int)>();
+        var terrainMods = new Dictionary<(int, int), string>();
+
+        foreach (var block in data.Blocks)
+        {
+            if (block.IsClipFlag) continue;
+
+            var units = pakSvc.GetBlockUnits(block.Name, block.IsGround);
+            if (units == null)
+            {
+                if (block.Y == groundHeight)
+                    occupied.Add((block.X, block.Z));
+                continue;
+            }
+
+            int minX = int.MaxValue, minZ = int.MaxValue;
+            var rotated = new (int X, int Y, int Z)[units.Count];
+            for (int i = 0; i < units.Count; i++)
+            {
+                var u = units[i];
+                var (rx, rz) = block.Dir switch
+                {
+                    1 => (-u.Z, u.X),
+                    2 => (-u.X, -u.Z),
+                    3 => (u.Z, -u.X),
+                    _ => (u.X, u.Z)
+                };
+                rotated[i] = (rx, u.Y, rz);
+                if (rx < minX) minX = rx;
+                if (rz < minZ) minZ = rz;
+            }
+
+            for (int i = 0; i < units.Count; i++)
+            {
+                var r = rotated[i];
+                int ux = block.X + r.X - minX;
+                int uy = block.Y + r.Y;
+                int uz = block.Z + r.Z - minZ;
+
+                if (uy == groundHeight)
+                    occupied.Add((ux, uz));
+
+                var tm = units[i].TerrainModifier;
+                if (tm != null)
+                    terrainMods[(ux, uz)] = tm;
+            }
+
+            if (DirtBlocks.Contains(block.Name))
+                terrainMods[(block.X, block.Z)] = "TerrainModifierDirt";
+        }
+
+        var result = new List<ChallengeBlock>();
+        for (int x = 0; x < data.SizeX; x++)
+        {
+            for (int z = 0; z < data.SizeZ; z++)
+            {
+                if (occupied.Contains((x, z))) continue;
+                string blockName = "StadiumGrass";
+                if (terrainMods.TryGetValue((x, z), out var mod) && TerrainModifierToBlock.TryGetValue(mod, out var modBlock))
+                    blockName = modBlock;
+                result.Add(new ChallengeBlock(blockName, x, groundHeight - 1, z, 0, true, 0, 0));
+            }
+        }
+        return result;
+    }
+}
 public record Tri3DVertex(float R, float G, float B, float A);
 public record Tri3DKeyframe(float Time, float[] Positions);
 public record Tri3DBlock(string ClipType, string ClipName, string TrackName, Tri3DVertex[] Vertices, int[] Indices, Tri3DKeyframe[] Keyframes, bool Is2D = false);
 public record TrackInfo(string ClipType, string ClipName, string ClipDisplayName, string TrackName, int Tri3DIndex);
-public record ChallengeData(string MapName, string Environment, int SizeX, int SizeZ, List<ChallengeBlock> Blocks, List<Tri3DBlock> Triangles3D, List<TrackInfo> AllTracks);
+public record ChallengeData(string MapName, string Environment, int SizeX, int SizeY, int SizeZ, List<ChallengeBlock> Blocks, List<Tri3DBlock> Triangles3D, List<TrackInfo> AllTracks);
 
 public static class ClipGbxExporter
 {

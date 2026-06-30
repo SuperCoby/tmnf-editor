@@ -1,0 +1,157 @@
+/* ── Triangles3D toolbar ─────────────────────────────────────────────────── */
+.t3d-toolbar {
+    position: fixed;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: rgba(10, 10, 20, 0.88);
+    backdrop-filter: blur(6px);
+    border: 1px solid #2a2a44;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.t3d-tool {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #556;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.t3d-tool:hover  { background: rgba(40,40,80,0.6); color: #aac; border-color: #3a3a66; }
+.t3d-tool.active { background: rgba(40,40,110,0.85); color: #ccd4ff; border-color: #6666cc; }
+.t3d-tool.inactive { color: #2a2a40; }
+
+.t3d-sep {
+    height: 1px;
+    background: #2a2a3a;
+    margin: 2px 0;
+}
+
+/* ── Model Position ──────────────────────────────────────────────────────── */
+.pos-empty {
+    color: #445;
+    font-size: 11px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.pos-grid {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 6px 8px;
+    padding: 10px 8px;
+    align-items: center;
+}
+
+.pos-axis {
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 3px;
+    padding: 2px 0;
+}
+.ax-x { color: #ff5555; }
+.ax-y { color: #55cc55; }
+.ax-z { color: #5599ff; }
+
+.pos-val {
+    font-size: 12px;
+    font-family: 'Consolas', monospace;
+    color: #ccd;
+    background: #0d0d1a;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: 0.5px;
+}
+
+.pos-input {
+    font-size: 12px;
+    font-family: 'Consolas', monospace;
+    color: #ccd;
+    background: #0d0d1a;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: 0.5px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+    -moz-appearance: textfield;
+}
+.pos-input::-webkit-inner-spin-button,
+.pos-input::-webkit-outer-spin-button { opacity: 0.3; }
+.pos-input:hover { border-color: #3a3a66; }
+.pos-input:focus { border-color: #6666cc; color: #fff; }
+
+/* ── Shading Intensity ──────────────────────────────────────────────────── */
+.shading-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 10px;
+}
+
+.shading-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #1a1a2e;
+    border-radius: 3px;
+    outline: none;
+}
+.shading-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #6666cc;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #8888ee;
+    transition: background 0.12s;
+}
+.shading-slider::-webkit-slider-thumb:hover { background: #8888ee; }
+.shading-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #6666cc;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #8888ee;
+}
+.shading-slider::-moz-range-track {
+    height: 6px;
+    background: #1a1a2e;
+    border-radius: 3px;
+}
+
+.shading-value {
+    width: 52px;
+    font-size: 12px;
+    font-family: 'Consolas', monospace;
+    color: #ccd;
+    background: #0d0d1a;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    padding: 3px 6px;
+    text-align: center;
+    outline: none;
+    -moz-appearance: textfield;
+}
+.shading-value::-webkit-inner-spin-button,
+.shading-value::-webkit-outer-spin-button { display: none; }
+.shading-value:hover { border-color: #3a3a66; }
+.shading-value:focus { border-color: #6666cc; color: #fff; }

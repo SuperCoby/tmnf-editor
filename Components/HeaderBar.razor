@@ -1,0 +1,54 @@
+@implements IDisposable
+@inject AppState State
+
+<div id="app-header">
+    <div id="header-left">
+        <button class="hdr-btn hdr-btn-folder @(State.NadeoError ? "hdr-btn-error" : "")" @onclick="OnSelectGameFolder">@(!string.IsNullOrEmpty(State.GameFolderKey) ? "Nadeo.ini " + State.T("chargé") : State.NadeoError ? "❌ Nadeo.ini " + State.T("non trouvé") : State.T("Sélectionner le dossier du jeu"))</button>
+        <div class="hdr-sep"></div>
+        <button class="hdr-btn hdr-btn-map" @onclick="OnLoadChallenge" disabled="@(string.IsNullOrEmpty(State.GameFolderKey))">@(string.IsNullOrEmpty(State.ChallengeFileName) ? State.T("Charger une carte") : State.ChallengeFileName)</button>
+        @if (!string.IsNullOrEmpty(State.ChallengeFileName))
+        {
+            <button class="hdr-btn hdr-btn-clear" title="@State.T("Effacer la carte")" @onclick="OnClearMap">✖</button>
+        }
+        @if (State.MapIsLoading || State.Exporting)
+        {
+            <div class="header-progress">
+                <div class="header-progress-bar" style="width:@(State.MapIsLoading ? State.MapProgress : State.ExportProgress)%"></div>
+            </div>
+            <span style="font-size:10px;color:#5dda80">@(State.MapIsLoading ? State.MapStatus : State.ExportStatus)</span>
+        }
+        else if (!string.IsNullOrEmpty(State.RejectedEnv))
+        {
+            <span class="stats">❌ @State.T("Seul les cartes Stadium sont supportées") (@State.RejectedEnv)</span>
+        }
+        else if (!string.IsNullOrEmpty(State.MapStatus))
+        {
+            <span class="stats">@State.MapStatus</span>
+        }
+    </div>
+    <div id="header-nav">
+        <button class="header-nav-btn" @onclick="OnToggleHelp">@State.T("Aide")</button>
+        <div class="header-nav-sep"></div>
+        <button class="header-nav-btn @(State.ShowBlockPanel   ? "active" : "")" @onclick="OnToggleBlockPanel">Block</button>
+        <button class="header-nav-btn @(State.ShowTriangles3D  ? "active" : "")" @onclick="OnToggleTriangles3D">Triangle3D/2D</button>
+        <div class="header-nav-sep"></div>
+        <div class="lang-toggle">
+            <button class="lang-btn @(State.Lang == "FR" ? "active" : "")" @onclick='() => SetLang("FR")'>FR</button>
+            <button class="lang-btn @(State.Lang == "EN" ? "active" : "")" @onclick='() => SetLang("EN")'>EN</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnSelectGameFolder { get; set; }
+    [Parameter] public EventCallback OnLoadChallenge { get; set; }
+    [Parameter] public EventCallback OnClearMap { get; set; }
+
+    protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
+    public void Dispose() => State.OnStateChanged -= StateHasChanged;
+
+    private void OnToggleHelp() { State.ToggleHelp(); State.NotifyStateChanged(); }
+    private async Task OnToggleBlockPanel() { await State.ToggleBlockPanel(); State.NotifyStateChanged(); }
+    private async Task OnToggleTriangles3D() { await State.ToggleTriangles3D(); State.NotifyStateChanged(); }
+    private void SetLang(string lang) { State.Lang = lang; State.NotifyStateChanged(); }
+}

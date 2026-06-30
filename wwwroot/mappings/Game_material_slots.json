@@ -1,0 +1,35 @@
+{
+  "garageground2": {
+    "Diffuse": "GarageGround2.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "garageground": {
+    "Diffuse": "GarageGround.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "garagebackground": {
+    "Diffuse": "GarageBackground.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "garagenumber": {
+    "Diffuse": "GarageNumber.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "stadiumcontrolauventalpha": {
+    "Diffuse": "StadiumWarpAuventAlphaD.dds",
+    "Specular": "StadiumWarpAuventAlphaS.dds",
+    "Normal": "StadiumWarpAuventAlphaN.dds",
+    "Occlusion": "StadiumControlO.dds",
+    "ReflectSoft": "DefaultCubeReflectSoft.dds",
+    "Fresnel": "FresnelSpec.dds",
+    "Lighting": "StadiumControlL.dds",
+    "PreLightGen": "DefaultPreLightGen.dds"
+  },
+  "ui2buttons": {
+    "Diffuse": "EditorButtonsOff.dds"
+  },
+  "ui2background": {
+    "BlendOverBack": "EditorBackground.dds",
+    "BlendOverBlur": "EditorBackground.dds"
+  }
+}

@@ -23,6 +23,10 @@ public class FileSystemService(IJSRuntime js)
     public async Task<Dictionary<string, string>> BuildTextureBlobUrlMapAsync(string mtlText, string pakName)
         => await js.InvokeAsync<Dictionary<string, string>>("TMNFeditorFS.buildTextureBlobUrlMap", mtlText, pakName);
 
+    // Comme BuildTextureBlobUrlMapAsync mais reçoit directement les noms de fichiers (un seul appel pour N blocks).
+    public async Task<Dictionary<string, string>> BuildTextureBlobUrlMapForNamesAsync(string[] filenames, string pakName)
+        => await js.InvokeAsync<Dictionary<string, string>>("TMNFeditorFS.buildTextureBlobUrlMapForNames", filenames, pakName);
+
     // Crée des blob URLs depuis des octets bruts (extraits du pak) — fallback si GameData vide
     public async Task<Dictionary<string, string>> CreateTextureBlobUrlsFromBytesAsync(Dictionary<string, byte[]> textures, string pakName)
         => await js.InvokeAsync<Dictionary<string, string>>("TMNFeditorFS.createTextureBlobUrlsFromBytes", textures, pakName);
@@ -83,8 +87,8 @@ public class FileSystemService(IJSRuntime js)
     public async Task AppendModelToSceneAsync(string objText, string mtlText, string pakName, string cacheKey = "", string geomKey = "", string color = "")
         => await js.InvokeVoidAsync("TMNFeditorScene.appendModelToCurrentBlock", objText, mtlText, pakName, cacheKey, geomKey, color);
 
-    public async Task FinalizeMapAsync(int mapSizeX, int mapSizeZ, object[] groundBlocks)
-        => await js.InvokeVoidAsync("TMNFeditorScene.finalizeMap", mapSizeX, mapSizeZ, groundBlocks);
+    public async Task FinalizeMapAsync(int mapSizeX, int mapSizeZ, object[] groundBlocks, object[]? dirtCells = null, object[]? zoneFaces = null, object[]? clipColumns = null)
+        => await js.InvokeVoidAsync("TMNFeditorScene.finalizeMap", mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFaces, clipColumns);
 
     public async Task SetMapOffsetAsync(int x, int y, int z)
         => await js.InvokeVoidAsync("TMNFeditorScene.setMapOffset", x, y, z);

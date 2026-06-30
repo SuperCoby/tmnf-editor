@@ -1,0 +1,70 @@
+/* ── Matériaux ───────────────────────────────────────────────────────────── */
+.origin-center-btn {
+    display: block;
+    width: calc(100% - 16px);
+    margin: 4px 8px 8px;
+    padding: 5px 0;
+    background: #111128;
+    color: #8899cc;
+    border: 1px solid #2a2a44;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.origin-center-btn:hover { background: #1a1a38; border-color: #4a4a88; color: #ccd4ff; }
+
+/* ── Matériaux ───────────────────────────────────────────────────────────── */
+.mat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+}
+
+.mat-item {
+    background: #0d0d1a;
+    border: 1px solid #2a2a44;
+    border-radius: 6px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mat-name {
+    font-size: 11px;
+    color: #99b;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mat-color-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.mat-color-picker {
+    width: 38px;
+    height: 26px;
+    border: 1px solid #3a3a66;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    padding: 2px;
+    flex-shrink: 0;
+}
+.mat-color-picker:hover { border-color: #6666cc; }
+
+.mat-hex {
+    font-size: 11px;
+    font-family: 'Consolas', monospace;
+    color: #556;
+    letter-spacing: 0.5px;
+}

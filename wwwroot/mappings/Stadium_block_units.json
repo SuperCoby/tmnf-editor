@@ -1,0 +1,6734 @@
+{
+  "StadiumBump1": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumBump1Slope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumBump1Tilt": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumControlCameraPub": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumControlLight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumFabricCornerIn": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ]
+  },
+  "StadiumFabricCornerOut": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ]
+  },
+  "StadiumFabricCross1x1": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ]
+  },
+  "StadiumFabricCross3x3": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 2
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": null,
+        "terrainModifier": "fabric"
+      }
+    ]
+  },
+  "StadiumFabricCross3x3Screen": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 2
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 5,
+          "z": 2
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 5,
+          "z": 1
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 5,
+          "z": 2
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ]
+  },
+  "StadiumFabricStraight1x1": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ]
+  },
+  "StadiumFabricStraight1x1Air": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": null,
+        "terrainModifier": "Fabric"
+      }
+    ]
+  },
+  "StadiumHole": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHolePillar": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHolePillar2Front": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHolePillar2Line": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHolePillar3": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHolePillarSlope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHolePillarTilt": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHoleSlope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumHoleTilt": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumLoopLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumLoopRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumPlatformToRoad": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumPlatformToRoad2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumPlatformToRoad2Mirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumPlatformToRoadMain": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRamp": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRampLow": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtCheckpoint": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtDiagonaleLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtDiagonaleRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtFenceCorner": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtFenceStraight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtGTCurve2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtGTCurve3": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHighCheckpoint": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHighFenceCorner": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHighFenceStraight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHighGTCurve3": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHighToRoad": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillSlope": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillSlope2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillSlopeGT2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillSlopeGT2Bis": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltCornerIn": {
+    "ground": [
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHillTiltClipLeft"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHillTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltCornerLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHillTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltCornerOut": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtHillTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHillTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltCornerRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHillTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltStraight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHillTiltClipLeft"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHillTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltToRoadLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHillTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillTiltToRoadRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHillTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHillWave": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtToRoad": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtToRoadDirtHigh": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtToRoadDirtHigh2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtToRoadDirtHighBridge": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtToRoadDirtHighCross": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtToRoadGrass": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtTurbo": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtWave_x1": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtWave_x2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainBiSlopeEnd": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainBiSlopeStart": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainCheckpoint": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainCheckpointDown": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainCheckpointLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainCheckpointRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainCheckpointUp": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainFW": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainFinishLine": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTCurve2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTCurve3": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTCurve4": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 3,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 3,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTCurve5": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 4,
+          "y": 0,
+          "z": 4
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 4,
+          "y": 0,
+          "z": 4
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag2x2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag2x2Mirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag2x2Slope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag2x2SlopeMirror": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag2x2Tilt": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag2x2TiltMirror": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag3x2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag3x2Mirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag3x2Slope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 3,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag3x2SlopeMirror": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 3,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag3x2Tilt": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag3x2TiltMirror": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag4x3": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag4x3Mirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag4x3Slope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 4,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainGTDiag4x3SlopeMirror": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainStartFinishLine": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainSlopeBase": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainSlopeBase2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainSlopeStraight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainSlopeUBottom": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainSlopeUTop": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainStartLine": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurbo": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboDown": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboRoulette": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboRouletteDown": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboRouletteLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboRouletteRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboRouletteUp": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainTurboUp": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainYShapedCurve2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainYShapedDiag2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainYShapedDiag2SlopeDown": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMainYShapedDiag2SlopeUp": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadStretch": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadStretchSlope": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltCorner": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltCornerDownLeft": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltCornerDownRight": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltCornerUpLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltCornerUpRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve2DownLeft": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve2DownRight": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve2UpLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve2UpRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 2,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve3": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltGTCurve4": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 3,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 3,
+          "y": 0,
+          "z": 3
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltStraight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition1Left": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition1Right": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition2CurveLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition2CurveRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition2DiagLeft": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition2DiagRight": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition2Left": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadTiltTransition2Right": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgePillar": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgePillarMirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 2,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 5,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSlopeEnd": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 3,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSlopeEndMirror": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 3,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSlopeStart": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSlopeStartMirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeStraight": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeStraightSmall": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSuspendSlope2": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 12,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 15,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 23,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSuspendSlope2Mirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 12,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 15,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 23,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSuspendSlopeEnd": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 12,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 17,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumSculptBridgeSuspendSlopeEndMirror": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 1,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 4,
+          "z": 2
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 12,
+          "z": 1
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      },
+      {
+        "offset": {
+          "x": 0,
+          "y": 17,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumStretchTilt": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadTiltClipRight"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadTiltClipLeft"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumInflatableTube": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumCheckpointRingHRoad": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumControlRoadCamera": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumControlRoadGlass": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumControlRoadPub": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumPlatformRoad": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirt": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadDirtHigh": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadDirtHighClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadDirtHighClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumRoadMain": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumRoadMainClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumRoadMainClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumTubeRoad": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumTubeRoadCross": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumTubeRoadDown": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumTubeRoadLightSystem": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumTubeRoadSoundSystem": {
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  },
+  "StadiumTubeRoadUp": {
+    "ground": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ],
+    "air": [
+      {
+        "offset": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "clips": [
+          {
+            "dir": 0,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 1,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 2,
+            "id": "StadiumTubeRoadClip"
+          },
+          {
+            "dir": 3,
+            "id": "StadiumTubeRoadClip"
+          }
+        ],
+        "terrainModifier": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "islandspacelaunch": {
+    "Diffuse": "IslandSpacelaunch.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandspace": {
+    "Diffuse": "IslandSpace.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandfloor": {
+    "Diffuse": "IslandFloor.dds"
+  },
+  "islandspacealpha": {
+    "Diffuse": "IslandSpaceAlpha.dds"
+  },
+  "islandhighway": {
+    "Diffuse": "IslandHighWayDiffuse.dds"
+  },
+  "islandairporttarmac": {
+    "Diffuse": "IslandTarmac.dds"
+  },
+  "islandroadsigns": {
+    "Diffuse": "IslandRoadSigns.dds",
+    "SelfIllum": "IslandRoadSignsSelfIllum.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandplateform": {
+    "Diffuse": "IslandPlateform.dds",
+    "SelfIllum": "IslandPlateformSelfIllum.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandeditorhelpers": {
+    "Specular": "SpecEnv.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandhighwayborders": {
+    "Diffuse": "IslandHighWayDiffuse.dds"
+  },
+  "islandplanedetail": {
+    "Diffuse": "IslandPlaneDetail.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "islandplanedetailalpha": {
+    "Diffuse": "IslandPlaneDetailAlpha.dds"
+  },
+  "islandplaneskin": {
+    "Diffuse": "IslandPlaneSkin.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "islandairporttarmacborder": {
+    "Diffuse": "IslandTarmac.dds"
+  },
+  "islandtarmacgrass": {
+    "Blend1": "IslandTarmacGrass1.dds",
+    "Blend2": "IslandTarmacGrass2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds",
+    "Blend1PC0": "IslandTarmacGrass1.dds"
+  },
+  "islandairporttarmactransition": {
+    "Blend1": "IslandTarmacGrass1.dds",
+    "Blend2": "IslandTarmacGrass2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds",
+    "Blend3": "IslandTarmac.dds",
+    "Blend1PC0": "IslandTarmacGrass1.dds"
+  },
+  "islandlightvolume": {
+    "Diffuse": "IslandLightVolume.dds"
+  },
+  "islanditemalpha1sided": {
+    "Diffuse": "IslandItemsAlpha.dds"
+  },
+  "islandhighwaytransitions": {
+    "Blend1": "IslandGrass1Diffuse.dds",
+    "Blend2": "IslandGrass2Diffuse.dds",
+    "BlendI": "IslandFXBlendingClouds.dds",
+    "Blend3": "IslandHighWayDiffuse.dds",
+    "Blend1PC0": "IslandGrassDiffuse.dds"
+  },
+  "islandcroisetteconcrete": {
+    "Diffuse": "IslandCroisette.dds"
+  },
+  "islandbuilding": {
+    "Diffuse": "IslandBuilding.dds",
+    "SelfIllum": "IslandBuildingSelfIllum.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandvegetation": {
+    "Diffuse": "IslandVegetation.dds"
+  },
+  "islanddecorplantes": {
+    "Diffuse": "IslandDecorPlantes.dds"
+  },
+  "islandtrees": {
+    "Diffuse": "IslandTrees.dds"
+  },
+  "islandcroisettetransition": {
+    "Blend1": "IslandGrass1Diffuse.dds",
+    "Blend1PC0": "IslandGrassDiffuse.dds",
+    "Blend3": "IslandCroisette.dds",
+    "Blend2": "IslandGrass2Diffuse.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "islandconcrete": {
+    "Diffuse": "IslandConcrete.dds"
+  },
+  "islandplateformspecial": {
+    "Diffuse": "IslandPlateformSpecial.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandroadsigns2": {
+    "Diffuse": "IslandRoadSigns2.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandcrashbarrier": {
+    "Diffuse": "IslandCrashBarrier.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandvegetationmip": {
+    "Diffuse": "IslandVegetation.dds"
+  },
+  "islanddecorplantesmip": {
+    "Diffuse": "IslandDecorPlantes.dds"
+  },
+  "islandtreesmip": {
+    "Diffuse": "IslandTrees.dds"
+  },
+  "islandgrass": {
+    "Blend1": "IslandGrass1Diffuse.dds",
+    "Blend2": "IslandGrass2Diffuse.dds",
+    "Blend1PC0": "IslandGrassDiffuse.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "islandsigns": {
+    "Diffuse": "IslandSigns.dds"
+  },
+  "islandplateformalpha": {
+    "Diffuse": "IslandPlateformAlpha.dds"
+  },
+  "islanditemsalpha": {
+    "Diffuse": "IslandItemsAlpha.dds"
+  },
+  "islanddecorbase": {
+    "Blend1": "IslandGrass1Diffuse.dds",
+    "Blend1PC0": "IslandGrassDiffuse.dds",
+    "Blend3": "IslandDecorBase.dds",
+    "Blend2": "IslandGrass2Diffuse.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "islandbeachundersea": {
+    "Blend1PC0": "IslandUnderSea1.dds",
+    "Blend3": "IslandTransition.dds",
+    "Blend2": "IslandUnderSea2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds",
+    "Blend1": "IslandUnderSea1.dds"
+  },
+  "islandsea": {
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Reflect": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds"
+  },
+  "islandboatsundersea": {
+    "Diffuse": "IslandBoats.dds"
+  },
+  "islandboats": {
+    "Diffuse": "IslandBoats.dds",
+    "SelfIllum": "IslandBoatsSelfIllum.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandclub": {
+    "Diffuse": "IslandClub.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandclubskin": {
+    "Diffuse": "IslandClubSkin.dds",
+    "SelfIllum": "IslandClubSkinSelfIllum.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandclubundersea": {
+    "Diffuse": "IslandClub.dds"
+  },
+  "islandbeach": {
+    "Diffuse": "IslandBeach.dds"
+  },
+  "islandtransitiongrass": {
+    "Blend1": "IslandGrass1Diffuse.dds",
+    "Blend1PC0": "IslandGrassDiffuse.dds",
+    "Blend3": "IslandTransition.dds",
+    "Blend2": "IslandGrass2Diffuse.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "islandtransitionbeach": {
+    "Grass": "IslandBeach.dds",
+    "Borders": "IslandTransition.dds"
+  },
+  "islanddecorcliff": {
+    "Diffuse": "IslandDecorCliff.dds"
+  },
+  "islandadvertisement": {
+    "Diffuse": "Advertisement.dds"
+  },
+  "islandhotelbase": {
+    "Blend1": "IslandGrass1Diffuse.dds",
+    "Blend1PC0": "IslandGrassDiffuse.dds",
+    "Blend3": "IslandHotelBase.dds",
+    "Blend2": "IslandGrass2Diffuse.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "islandseaground": {
+    "Blend1PC0": "IslandUnderSea1.dds",
+    "Blend1": "IslandUnderSea1.dds",
+    "Blend2": "IslandUnderSea2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds"
+  },
+  "islandconcreteundersea": {
+    "Diffuse": "IslandConcrete.dds"
+  },
+  "islandhighwayundersea": {
+    "Diffuse": "IslandHighWayDiffuse.dds"
+  },
+  "islandplateformfloor": {
+    "Diffuse": "IslandPlateformFloor.dds"
+  },
+  "islandhighwayturbo2": {
+    "Diffuse": "IslandHighWayTurbo2.dds"
+  },
+  "islandplatformturbo2": {
+    "Diffuse": "IslandPlateformTurbo2.dds"
+  },
+  "islandhighwaytunnel": {
+    "Diffuse": "IslandHighwayTunnel.dds"
+  },
+  "islandhighwaytunnelturbo2": {
+    "Diffuse": "IslandHighWayTurbo2.dds"
+  },
+  "islandtunnelroadsigns2": {
+    "Diffuse": "IslandRoadSigns2.dds"
+  },
+  "islandwarpseaground": {
+    "Blend1PC0": "IslandUnderSea1.dds",
+    "Blend2": "IslandUnderSea2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds",
+    "Blend1": "IslandUnderSea1.dds"
+  },
+  "islandwarpsea": {
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds",
+    "Reflect": "SeaRenderReflection.dds"
+  },
+  "islandwarpisleundersea": {
+    "Blend1PC0": "IslandUnderSea1.dds",
+    "Blend3": "IslandWarpIsle.dds",
+    "Blend2": "IslandUnderSea2.dds",
+    "BlendI": "IslandFXBlendingClouds.dds",
+    "Blend1": "IslandUnderSea1.dds"
+  },
+  "islandwarpisle": {
+    "Blend1": "IslandWarpGrass1.dds",
+    "Blend1PC0": "IslandWarpGrass1.dds",
+    "Blend3": "IslandWarpIsle.dds",
+    "Blend2": "IslandWarpGrass2.dds",
+    "BlendI": "IslandWarpGrassBlendingClouds.dds"
+  },
+  "islandwarpshore": {
+    "Blend1": "IslandWarpGrass1.dds",
+    "Blend1PC0": "IslandWarpGrass1.dds",
+    "Blend3": "IslandWarpShore.dds",
+    "Blend2": "IslandWarpGrass2.dds",
+    "BlendI": "IslandWarpGrassBlendingClouds.dds"
+  },
+  "islandwarpgrass": {
+    "Blend1": "IslandWarpGrass1.dds",
+    "Blend2": "IslandWarpGrass2.dds",
+    "Blend1PC0": "IslandWarpGrass1.dds",
+    "BlendI": "IslandWarpGrassBlendingClouds.dds"
+  },
+  "islandwarpmountains": {
+    "Blend1": "IslandWarpGrass1.dds",
+    "Blend1PC0": "IslandWarpGrass1.dds",
+    "Blend3": "IslandWarpMountains.dds",
+    "Blend2": "IslandWarpGrass2.dds",
+    "BlendI": "IslandWarpGrassBlendingClouds.dds"
+  },
+  "islandwarpalpha": {
+    "Diffuse": "IslandWarpAlpha.dds"
+  },
+  "islandcroisetteasphalte": {
+    "Diffuse": "IslandCroisette.dds"
+  },
+  "islandroadmarks": {
+    "Diffuse": "IslandRoadmarks.dds"
+  },
+  "islandhighwayturbo": {
+    "Diffuse": "IslandHighWayTurbo.dds"
+  },
+  "islandhighwaytunnelroad": {
+    "Diffuse": "IslandHighWayDiffuse.dds"
+  },
+  "islandtunnelroadsigns": {
+    "Diffuse": "IslandRoadSigns.dds"
+  },
+  "islandconcretetunnel": {
+    "Diffuse": "IslandConcrete.dds"
+  },
+  "islandhighwaytunnelturbo": {
+    "Diffuse": "IslandHighWayTurbo.dds"
+  },
+  "islandhighwayturboroulette": {
+    "Diffuse": "IslandHighWayTurbo.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "IslandHighWayTurboRoulette.dds"
+  },
+  "islandplatformturbo": {
+    "Diffuse": "IslandPlateformTurbo.dds"
+  },
+  "islandplatformturboroulette": {
+    "Diffuse": "IslandPlateformTurbo.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "IslandPlateformTurboRoulette.dds"
+  },
+  "islandmetal": {
+    "Diffuse": "IslandMetal.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "islandhighwaytunnelsigns": {
+    "Diffuse": "IslandSigns.dds"
+  }
+}

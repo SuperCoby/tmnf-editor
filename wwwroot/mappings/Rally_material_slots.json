@@ -1,0 +1,236 @@
+{
+  "rallywarpgrass": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "DispH01": "GrassHH1Height.dds"
+  },
+  "rallywarpcliff": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "Borders": "RallyCliffDiffuse.dds",
+    "DispH01": "GrassHH1Height.dds"
+  },
+  "rallywarptrees": {
+    "Diffuse": "RallyWarpTrees.dds"
+  },
+  "rallyroadmediumfreewheeling": {
+    "Diffuse": "RallyRoadMediumFreeWheeling.dds"
+  },
+  "rallycastle": {
+    "Diffuse": "RallyCastle.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallygrass2": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "DispH01": "GrassHH1Height.dds"
+  },
+  "rallygrass2borders": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "Borders": "RallyGrassBorders.dds",
+    "DispH01": "GrassHH1Height.dds"
+  },
+  "rallywindmill": {
+    "Diffuse": "RallyWindMillDiffuse.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallywindmillwings": {
+    "Diffuse": "RallyWindMillDiffuse.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallycliff": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "Borders": "RallyCliffDiffuse.dds",
+    "DispH01": "GrassHH1Height.dds"
+  },
+  "rallycastlearrow": {
+    "Diffuse": "RallyCastleHarrows.dds"
+  },
+  "rallywoodbridge": {
+    "Diffuse": "RallyWoodBridge.dds"
+  },
+  "rallywhitewood": {
+    "Diffuse": "RallyWhiteWood.dds"
+  },
+  "rallylakewaterborders": {
+    "Diffuse": "RallyLakeBorderDiff.dds"
+  },
+  "dirtyroad": {
+    "Diffuse": "DirtyRoadDiffuse.dds"
+  },
+  "rallylakeground": {
+    "Blend1PC0": "RallyRockyGrass1.dds",
+    "Blend1": "RallyRockyGrass1.dds",
+    "Blend2": "RallyRockyGrass2.dds",
+    "BlendI": "RallyRockyGrassMask.dds"
+  },
+  "rallywater": {
+    "DuDv1": "WaterDuDvPC2_4.dds",
+    "Reflection": "WaterRenderReflection.dds",
+    "Reflec": "WaterRenderReflection.dds",
+    "Refrac": "WaterRenderRefraction.dds",
+    "DuDv0": "WaterDuDvPC2_4.dds",
+    "Normal": "WaterSxSySzPC3.dds",
+    "Reflect": "WaterRenderReflection.dds"
+  },
+  "rallystonebridge": {
+    "Diffuse": "RallyStoneBridge.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallyroadmedium": {
+    "Diffuse": "RallyRoadMediumDiffuse.dds"
+  },
+  "rallystonebridgeunderwater": {
+    "Diffuse": "RallyStoneBridge.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallycardetails": {
+    "Diffuse": "RallyCarDetails.dds",
+    "Specular": "SpecularCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "RallyCarDetailsSelfIllum.dds",
+    "Diffuse_Gloss": "RallyCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "DefaultRGB.dds"
+  },
+  "rallycarskin": {
+    "Diffuse": "RallyCarSkin.dds",
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "IslandSpecularCube.dds",
+    "FresnelPC2": "EnvFresnel.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Diffuse_Gloss": "RallyCarSkin.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "rallycarglass": {
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "Diffuse": "DefaultEnvCubicPC1.dds",
+    "FresnelRefrac": "EnvFresnelGlassPC2.dds",
+    "Translucent": "RallyCarDetails.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCube": "DefaultEnvCubic.dds",
+    "FresnelReflec": "EnvFresnelGlassPC2.dds",
+    "Specular": "SpecularCube.dds",
+    "Fresnel": "EnvFresnelGlassPC3.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "LightFromMap": "RenderLightFromMap.dds"
+  },
+  "rallycarrearlights": {
+    "Diffuse": "RallyCarDetails.dds",
+    "EnvCubic": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "IslandSpecularCube.dds"
+  },
+  "rallycastlebridge": {
+    "Diffuse": "RallyCastleBridge.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallyflags": {
+    "Diffuse": "RallyFlagDiffuse.dds"
+  },
+  "rallyfield": {
+    "Diffuse": "RallyField.dds"
+  },
+  "rallyfieldvegetation": {
+    "Diffuse": "RallyFieldVegetation.dds"
+  },
+  "rallyfieldborders": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "Borders": "RallyFieldBorders.dds",
+    "DispH01": "GrassHH1Height.dds"
+  },
+  "rallyvegetation": {
+    "Diffuse": "RallyVegetation.dds"
+  },
+  "rallyfieldrouleau": {
+    "Diffuse": "RallyFieldRouleau.dds"
+  },
+  "rallyroadsigns": {
+    "Diffuse": "RallyRoadSigns.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallytreespritealpha": {
+    "Diffuse": "RallyTreeSpriteAlpha.dds"
+  },
+  "rallytreebranchalpha": {
+    "Diffuse": "RallyTreeBranchAlpha.dds"
+  },
+  "rallyadvertising": {
+    "Diffuse": "Advertisement.dds"
+  },
+  "rallytreespritealphalowq": {
+    "Diffuse": "RallyTreeSpriteAlpha.dds"
+  },
+  "rallytreespritealpha2": {
+    "Diffuse": "RallyTreeSpriteAlpha2.dds"
+  },
+  "rallytreespritealpha2lowq": {
+    "Diffuse": "RallyTreeSpriteAlpha2.dds"
+  },
+  "rallyhouse": {
+    "Diffuse": "RallyHouse.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "RallyHouseSelfIllum.dds"
+  },
+  "rallyroadmediumtolow": {
+    "Diffuse": "RallyRoadLowtoMediumDiffuse.dds"
+  },
+  "rallyroadlowtomedium": {
+    "Diffuse": "RallyRoadLowtoMediumDiffuse.dds"
+  },
+  "rallyroadmediumturbo": {
+    "Diffuse": "RallyRoadMediumTurboDiffuse.dds"
+  },
+  "rallyturboroulette": {
+    "Diffuse": "RallyRoadMediumTurboDiffuse.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "RallyRoadMediumTurboRouletteDiffuse.dds"
+  },
+  "rallycastleunderwater": {
+    "Diffuse": "RallyCastle.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "rallytrunk": {
+    "Diffuse": "Trunk.dds"
+  },
+  "rallytunnelcastle": {
+    "Diffuse": "RallyCastle.dds",
+    "PreLight": "RallyTunnelRadiosity.dds"
+  },
+  "rallytunnelroadmedium": {
+    "Diffuse": "RallyRoadMediumDiffuse.dds",
+    "PreLight": "RallyTunnelRadiosity.dds"
+  },
+  "rallytunnelflags": {
+    "Diffuse": "RallyFlagDiffuse.dds",
+    "PreLight": "RallyTunnelRadiosity.dds"
+  },
+  "rallytunnelturbo": {
+    "Diffuse": "RallyRoadMediumTurboDiffuse.dds",
+    "PreLight": "RallyTunnelRadiosity.dds"
+  },
+  "speedsky": {
+    "Clouds": "SpeedSkyClouds.dds",
+    "Panorama": "SpeedSky.dds"
+  },
+  "rallyrockygrasscliff": {
+    "Blend1PC0": "RallyRockyGrass1.dds",
+    "Blend3": "RallyRockyGrassCliff.dds",
+    "Blend1": "RallyRockyGrass1.dds",
+    "Blend2": "RallyRockyGrass2.dds",
+    "BlendI": "RallyRockyGrassMask.dds"
+  },
+  "rallyrockygrass": {
+    "Blend1PC0": "RallyRockyGrass1.dds",
+    "Blend1": "RallyRockyGrass1.dds",
+    "Blend2": "RallyRockyGrass2.dds",
+    "BlendI": "RallyRockyGrassMask.dds"
+  },
+  "rallygrasscliff": {
+    "Diffuse": "GrassHH1Diff.dds",
+    "Borders": "RallyRockyGrassCliff.dds",
+    "DispH01": "GrassHH1Height.dds"
+  }
+}

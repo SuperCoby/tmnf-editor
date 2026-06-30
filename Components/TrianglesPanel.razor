@@ -1,0 +1,628 @@
+@implements IDisposable
+@inject AppState State
+@inject IJSRuntime JS
+
+<div id="triangles3d-panel" class="@(State.ShowTriangles3D && !State.Tri3DPanelCollapsed ? "open" : "")">
+    @if (State.ShowTriangles3D)
+    {
+        <button class="tri3d-toggle-btn" @onclick="() => { State.Tri3DPanelCollapsed = !State.Tri3DPanelCollapsed; }"
+                title="@(State.Tri3DPanelCollapsed ? "Ouvrir" : "Fermer")">
+            @(State.Tri3DPanelCollapsed ? ">" : "<")
+        </button>
+    }
+    <div class="side-section">
+        <div class="side-section-header import-header">
+            <div class="import-type-toggle">
+                <button class="import-type-btn @(State.ImportMode == "3D" ? "active" : "")" @onclick='() => SetImportMode("3D")'>Triangles3D</button>
+                <button class="import-type-btn @(State.ImportMode == "2D" ? "active" : "")" @onclick='() => SetImportMode("2D")'>Triangles2D</button>
+            </div>
+            @if (State.ImportTabCount > 0)
+            {
+                <button class="import-icon-btn" style="margin-left:auto;margin-right:4px;color:#5d8a5d;border-color:#2a442a"
+                        @onclick="State.SendImportToMainScene" title="@State.T(State.ImportMode == "2D" ? "Envoyer vers le rendu 2D" : "Envoyer vers le rendu 3D")">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
+            }
+            <button class="import-icon-btn" @onclick="State.TriggerImportFile" title="@State.T("Importer un .obj")">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+            </button>
+            <input type="file" id="import-file-input" accept=".obj,.mtl" multiple style="display:none">
+        </div>
+        <div class="side-section-content import-section-content" id="import-drop-zone">
+            @if (State.ImportTabCount > 0)
+            {
+                <div class="import-tab-bar">
+                    @for (int i = 0; i < State.ImportTabCount; i++)
+                    {
+                        int idx = i;
+                        <button class="import-tab-btn @(State.ActiveImportTab == idx ? "active" : "")"
+                                @onclick="() => State.SwitchImportTab(idx)">@(idx + 1)</button>
+                    }
+                </div>
+            }
+            <canvas id="import-preview-canvas"></canvas>
+            @if (State.ImportTabCount > 0)
+            {
+                <button class="import-delete-btn" @onclick="State.DeleteActiveImport" title="@State.T("Supprimer ce modèle")">✕</button>
+            }
+            <div class="import-drop-hint" id="import-drop-hint" style="@(State.ImportTabCount > 0 ? "display:none" : "")">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3a3a55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <div>@State.T("Déposez un .obj ici")</div>
+                <div class="drop-sub">@State.T(".mtl optionnel")</div>
+            </div>
+        </div>
+    </div>
+    <div class="side-section-divider"></div>
+    <div class="side-section">
+        <div class="side-section-header">Animation</div>
+        <div class="side-section-content" style="display:flex;flex-direction:column">
+            <div class="tab-bar">
+                @foreach (var tab in State.T3dAnimTabs)
+                {
+                    <button class="tab-btn @(State.T3dAnimTab == tab ? "active" : "")"
+                            @onclick="() => SelectAnimTab(tab)">@tab</button>
+                }
+            </div>
+            <div class="tab-content">
+                @if (State.T3dAnimTab == "Mediatracker")
+                {
+                    @if (string.IsNullOrEmpty(State.ChallengeFileName))
+                    {
+                        <div class="pos-empty">@State.T("Carte non chargée")</div>
+                    }
+                    else
+                    {
+                        var clips = State.GetClipsForSelectedType();
+                        <div class="tri3d-type-bar">
+                            @foreach (var ct in AppState.AllClipTypes)
+                            {
+                                var t = ct;
+                                int count = State.Tri3dEntries.Count(e => e.ClipType == t);
+                                <button class="tri3d-type-btn @(State.SelectedClipType == t ? "active" : "")"
+                                        @onclick="() => State.SelectClipType(t)">@t <span class="tri3d-type-count">@count</span></button>
+                            }
+                            <div style="flex:1"></div>
+                            <button class="tri3d-vis-btn" @onclick="() => State.SetAllTri3DVisible(true)" title="@State.T("Tout afficher")">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                            <button class="tri3d-vis-btn" @onclick="() => State.SetAllTri3DVisible(false)" title="@State.T("Tout cacher")">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="tri3d-split">
+                            @if (AppState.HasClipsPanel(State.SelectedClipType))
+                            {
+                                <div class="tri3d-clips-panel">
+                                    <div class="tri3d-panel-header">
+                                        <span>Clips</span>
+                                        <button class="tri3d-pm-btn" @onclick="State.AddClip" title="@State.T("Ajouter un clip")">+</button>
+                                        <button class="tri3d-pm-btn" @onclick="State.RemoveSelectedClip" title="@State.T("Supprimer le clip")"
+                                                disabled="@(clips.Count == 0)">-</button>
+                                    </div>
+                                    @for (int ci = 0; ci < clips.Count; ci++)
+                                    {
+                                        var idx = ci;
+                                        var clip = clips[ci];
+                                        <div class="tri3d-clip-row @(State.SelectedClipIdx == idx ? "active" : "")" @onclick="async () => { State.SelectedClipIdx = idx; await State.SyncTriVisibilityToClipType(); }">
+                                            <span class="tri3d-clip-label">@(AppState.ParseTmColors(clip.DisplayName))</span>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            <div class="tri3d-tracks-panel">
+                                <div class="tri3d-panel-header">
+                                    <span>Tracks</span>
+                                    <button class="tri3d-pm-btn" @onclick="State.AddTrack" title="@State.T("Ajouter un track")">+</button>
+                                    <button class="tri3d-pm-btn" @onclick="State.RemoveSelectedTrack" title="@State.T("Supprimer le track")"
+                                            disabled="@(State.SelectedTri3DTrack == null || State.SelectedTri3DTrack.ClipType != State.SelectedClipType)">-</button>
+                                </div>
+                                @foreach (var entry in State.GetSelectedClipTracks())
+                                {
+                                    var e = entry;
+                                    <div @key="e" class="tri3d-track-row @(State.SelectedTri3DTrack == e ? "selected" : "")" @onclick="() => State.SelectTri3DTrack(e)">
+                                        @if (e.HasMesh || e.IsImported)
+                                        {
+                                            <button class="tri3d-eye @(!e.Visible ? "hidden" : "")" @onclick="() => State.ToggleTri3DVisible(e)" title="@(e.Visible ? State.T("Cacher") : State.T("Afficher"))">
+                                                @if (e.Visible)
+                                                {
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                                                    </svg>
+                                                }
+                                                else
+                                                {
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                                                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                                                        <line x1="1" y1="1" x2="23" y2="23"/>
+                                                    </svg>
+                                                }
+                                            </button>
+                                        }
+                                        <span class="tri3d-track-name">@(AppState.ParseTmColors(e.Name))</span>
+                                        @if (!e.HasMesh && !e.IsImported)
+                                        {
+                                            <button class="tri3d-import-btn" @onclick="() => State.AssignImportToTrack(e)"
+                                                    disabled="@(State.ImportTabCount == 0 || !State.ActiveTabInScene)"
+                                                    title="@State.T("Importer le modèle actif dans ce track")">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                    <polyline points="17 8 12 3 7 8"/>
+                                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                                </svg>
+                                            </button>
+                                        }
+                                        @if (e.IsImported)
+                                        {
+                                            <button class="tri3d-remove-btn" @onclick="async () => { await State.RemoveImportFromTrack(e); State.NotifyStateChanged(); }"
+                                                    title="@State.T("Retirer l'import de ce track")">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <line x1="18" y1="6" x2="6" y2="18"/>
+                                                    <line x1="6" y1="6" x2="18" y2="18"/>
+                                                </svg>
+                                            </button>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+                else if (State.T3dAnimTab == "Translation")
+                {
+                    @if (State.IsLoadedTrackWithAnim)
+                    {
+                        <div class="pos-empty" style="opacity:.7">@State.T("Animation existante")</div>
+                        <button class="origin-center-btn" @onclick="State.ResetLoadedTrackAnim">Reset</button>
+                    }
+                    else if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                    <div class="anim-table-wrap">
+                        <table class="anim-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>EndTime</th>
+                                    <th>X</th>
+                                    @if (State.ImportMode != "2D") { <th>Y</th> }
+                                    <th>@(State.ImportMode == "2D" ? "Y" : "Z")</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < State.AnimKeyframes.Count; i++)
+                                {
+                                    int row = i;
+                                    var kf = State.AnimKeyframes[row];
+                                    <tr>
+                                        <td><input class="anim-input" type="number" step="0.1"
+                                                   value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   @onchange="e => State.OnAnimChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1"
+                                                   value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   @onchange="e => State.OnAnimChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input ax-x-bg" type="number" step="0.001"
+                                                   value="@kf.X.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   @onchange="e => State.OnAnimChange(e, row, 'x')" /></td>
+                                        @if (State.ImportMode != "2D")
+                                        {
+                                            <td><input class="anim-input ax-y-bg" type="number" step="0.001"
+                                                       value="@kf.Y.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                                       @onchange="e => State.OnAnimChange(e, row, 'y')" /></td>
+                                        }
+                                        <td><input class="anim-input @(State.ImportMode == "2D" ? "ax-y-bg" : "ax-z-bg")" type="number" step="0.001"
+                                                   value="@kf.Z.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                                   @onchange="e => State.OnAnimChange(e, row, 'z')" /></td>
+                                        <td>
+                                            <div class="anim-row-actions">
+                                                <button type="button" class="anim-row-btn anim-row-btn-add" @onclick="() => State.AddAnimKeyframe(row)" @onclick:stopPropagation title="@State.T("Ajouter")">+</button>
+                                                @if (row == 0)
+                                                {
+                                                    <button class="anim-row-btn anim-row-btn-reset" @onclick="State.ResetAnimKeyframes" title="Reset">R</button>
+                                                }
+                                                @if (row > 0)
+                                                {
+                                                    <button class="anim-row-btn anim-row-btn-del" @onclick="() => State.RemoveAnimKeyframe(row)" title="@State.T("Supprimer")">-</button>
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+                }
+                else if (State.T3dAnimTab == "Scaling")
+                {
+                    @if (State.IsLoadedTrackWithAnim)
+                    {
+                        <div class="pos-empty" style="opacity:.7">@State.T("Animation existante")</div>
+                        <button class="origin-center-btn" @onclick="State.ResetLoadedTrackAnim">Reset</button>
+                    }
+                    else if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                    <div class="anim-table-wrap">
+                        <table class="anim-table">
+                            <thead><tr><th>Time</th><th>EndTime</th><th>X</th>@if (State.ImportMode != "2D") { <th>Y</th> }<th>@(State.ImportMode == "2D" ? "Y" : "Z")</th><th></th></tr></thead>
+                            <tbody>
+                                @for (int i = 0; i < State.ScalingKeyframes.Count; i++)
+                                {
+                                    int row = i;
+                                    var kf = State.ScalingKeyframes[row];
+                                    <tr>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnScalingChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnScalingChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input ax-x-bg" type="number" step="0.1" value="@kf.X.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnScalingChange(e, row, 'x')" /></td>
+                                        @if (State.ImportMode != "2D")
+                                        {
+                                            <td><input class="anim-input ax-y-bg" type="number" step="0.1" value="@kf.Y.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnScalingChange(e, row, 'y')" /></td>
+                                        }
+                                        <td><input class="anim-input @(State.ImportMode == "2D" ? "ax-y-bg" : "ax-z-bg")" type="number" step="0.1" value="@kf.Z.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnScalingChange(e, row, 'z')" /></td>
+                                        <td><div class="anim-row-actions">
+                                            <button type="button" class="anim-row-btn anim-row-btn-add" @onclick="() => State.AddScalingKeyframe(row)" @onclick:stopPropagation title="@State.T("Ajouter")">+</button>
+                                            @if (row == 0) { <button class="anim-row-btn anim-row-btn-reset" @onclick="State.ResetScalingKeyframes" title="Reset">R</button> }
+                                            @if (row > 0) { <button class="anim-row-btn anim-row-btn-del" @onclick="() => State.RemoveScalingKeyframe(row)" title="@State.T("Supprimer")">-</button> }
+                                        </div></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+                }
+                else if (State.T3dAnimTab == "Rotation")
+                {
+                    @if (State.IsLoadedTrackWithAnim)
+                    {
+                        <div class="pos-empty" style="opacity:.7">@State.T("Animation existante")</div>
+                        <button class="origin-center-btn" @onclick="State.ResetLoadedTrackAnim">Reset</button>
+                    }
+                    else if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                    <div class="anim-table-wrap">
+                        <table class="anim-table">
+                            <thead><tr><th>Time</th><th>EndTime</th><th>X</th>@if (State.ImportMode != "2D") { <th>Y</th><th>Z</th> }<th>Steps</th><th></th></tr></thead>
+                            <tbody>
+                                @for (int i = 0; i < State.RotationKeyframes.Count; i++)
+                                {
+                                    int row = i;
+                                    var kf = State.RotationKeyframes[row];
+                                    <tr>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnRotationChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnRotationChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input ax-x-bg" type="number" step="0.1" value="@kf.X.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnRotationChange(e, row, 'x')" /></td>
+                                        @if (State.ImportMode != "2D")
+                                        {
+                                            <td><input class="anim-input ax-y-bg" type="number" step="0.1" value="@kf.Y.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnRotationChange(e, row, 'y')" /></td>
+                                            <td><input class="anim-input ax-z-bg" type="number" step="0.1" value="@kf.Z.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnRotationChange(e, row, 'z')" /></td>
+                                        }
+                                        <td><input class="anim-input" type="number" step="1" value="@kf.Steps.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnRotationChange(e, row, 's')" /></td>
+                                        <td><div class="anim-row-actions">
+                                            <button type="button" class="anim-row-btn anim-row-btn-add" @onclick="() => State.AddRotationKeyframe(row)" @onclick:stopPropagation title="@State.T("Ajouter")">+</button>
+                                            @if (row == 0) { <button class="anim-row-btn anim-row-btn-reset" @onclick="State.ResetRotationKeyframes" title="Reset">R</button> }
+                                            @if (row > 0) { <button class="anim-row-btn anim-row-btn-del" @onclick="() => State.RemoveRotationKeyframe(row)" title="@State.T("Supprimer")">-</button> }
+                                        </div></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+                }
+                else if (State.T3dAnimTab == "Orbit")
+                {
+                    @if (State.IsLoadedTrackWithAnim)
+                    {
+                        <div class="pos-empty" style="opacity:.7">@State.T("Animation existante")</div>
+                        <button class="origin-center-btn" @onclick="State.ResetLoadedTrackAnim">Reset</button>
+                    }
+                    else if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                    <div class="anim-table-wrap">
+                        <table class="anim-table">
+                            <thead><tr><th>Time</th><th>EndTime</th><th>Radius</th><th>Steps</th><th>Degrees(°)</th><th></th></tr></thead>
+                            <tbody>
+                                @for (int i = 0; i < State.OrbitKeyframes.Count; i++)
+                                {
+                                    int row = i;
+                                    var kf = State.OrbitKeyframes[row];
+                                    <tr>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Time.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnOrbitChange(e, row, 't')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.EndTime.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnOrbitChange(e, row, 'e')" /></td>
+                                        <td><input class="anim-input" type="number" step="0.1" value="@kf.Radius.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnOrbitChange(e, row, 'r')" /></td>
+                                        <td><input class="anim-input" type="number" step="1" value="@kf.Steps.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnOrbitChange(e, row, 's')" /></td>
+                                        <td><input class="anim-input" type="number" step="1" value="@kf.Degrees.ToString("F0", System.Globalization.CultureInfo.InvariantCulture)" @onchange="e => State.OnOrbitChange(e, row, 'd')" /></td>
+                                        <td><div class="anim-row-actions">
+                                            <button type="button" class="anim-row-btn anim-row-btn-add" @onclick="() => State.AddOrbitKeyframe(row)" @onclick:stopPropagation title="@State.T("Ajouter")">+</button>
+                                            @if (row == 0) { <button class="anim-row-btn anim-row-btn-reset" @onclick="State.ResetOrbitKeyframes" title="Reset">R</button> }
+                                            @if (row > 0) { <button class="anim-row-btn anim-row-btn-del" @onclick="() => State.RemoveOrbitKeyframe(row)" title="@State.T("Supprimer")">-</button> }
+                                        </div></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+                }
+                else if (State.T3dAnimTab == "Shading Intensity")
+                {
+                    @if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                        <div class="shading-wrap">
+                            <input id="shading-range" type="range" class="shading-slider" min="0" max="1" step="0.01"
+                                   value="@State.ShadingIntensity.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)"
+                                   @oninput="State.OnShadingSlider" />
+                            <input id="shading-number" type="number" class="shading-value" min="0" max="1" step="0.01"
+                                   value="@State.ShadingIntensity.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)"
+                                   @onchange="State.OnShadingInput" />
+                        </div>
+                        <button class="origin-center-btn" @onclick="State.ResetShading">Reset</button>
+                    }
+                }
+                else if (State.T3dAnimTab == "Material")
+                {
+                    @if (State.ImportMaterials.Count == 0)
+                    {
+                        <div class="pos-empty">@State.T("Aucun matériau")</div>
+                    }
+                    else
+                    {
+                        <div class="mat-list">
+                            @foreach (var mat in State.ImportMaterials)
+                            {
+                                var m = mat;
+                                <div class="mat-item">
+                                    <label class="mat-name" for="mat-@(State.ImportMaterials.IndexOf(m))" title="@m.Name">@m.Name</label>
+                                    <div class="mat-color-row">
+                                        <input id="mat-@(State.ImportMaterials.IndexOf(m))" type="color" class="mat-color-picker"
+                                               value="@m.Hex"
+                                               @onchange="async e => await State.SetMaterialColor(m, e.Value?.ToString() ?? m.Hex)" />
+                                        <span class="mat-hex">@m.Hex</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <button class="origin-center-btn" @onclick="State.ResetMaterials">Reset</button>
+                    }
+                }
+                else if (State.T3dAnimTab == "Origin")
+                {
+                    @if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                        <div class="pos-grid">
+                            <span class="pos-axis ax-x">X</span>
+                            <input class="pos-input" type="number" step="1"
+                                   value="@State.ImportOriginX.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                   @onchange="e => State.OnOriginChange(e, 'x')" />
+                            @if (State.ImportMode != "2D")
+                            {
+                                <span class="pos-axis ax-y">Y</span>
+                                <input class="pos-input" type="number" step="1"
+                                       value="@State.ImportOriginY.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                       @onchange="e => State.OnOriginChange(e, 'y')" />
+                            }
+                            <span class="pos-axis @(State.ImportMode == "2D" ? "ax-y" : "ax-z")">@(State.ImportMode == "2D" ? "Y" : "Z")</span>
+                            <input class="pos-input" type="number" step="1"
+                                   value="@State.ImportOriginZ.ToString("F3", System.Globalization.CultureInfo.InvariantCulture)"
+                                   @onchange="e => State.OnOriginChange(e, 'z')" />
+                        </div>
+                        <button class="origin-center-btn" @onclick="State.CenterImportOrigin">
+                            @State.T("Centrer à la mesh")
+                        </button>
+                    }
+                }
+                else if (State.IsTextTab)
+                {
+                    <div class="text3d-panel" @onclick="State.DeselectText3D">
+                        <div class="text3d-row" @onclick:stopPropagation>
+                            <label class="text3d-label" for="text3d-text">@State.T("Texte")</label>
+                            <input id="text3d-text" class="text3d-input" type="text" placeholder="@State.T("Entrez votre texte…")"
+                                   value="@State.Text3dValue"
+                                   @oninput="State.OnText3DTextChanged" />
+                        </div>
+                        <div class="text3d-row" @onclick:stopPropagation>
+                            <label class="text3d-label" for="text3d-font">@State.T("Police")</label>
+                            <select id="text3d-font" class="text3d-select" value="@State.Text3dFont"
+                                    @onchange="State.OnText3DFontChanged">
+                                @foreach (var f in AppState.Text3dFonts)
+                                {
+                                    <option value="@f">@AppState.FormatFontName(f)</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="text3d-row text3d-style-row" @onclick:stopPropagation>
+                            <label class="text3d-label">@State.T("Style")</label>
+                            <button class="text3d-style-btn @(State.Text3dBold ? "active" : "")" title="@State.T("Gras")" @onclick="State.OnText3DBoldToggle"><b>B</b></button>
+                            <button class="text3d-style-btn @(State.Text3dItalic ? "active" : "")" title="@State.T("Italique")" @onclick="State.OnText3DItalicToggle"><i>I</i></button>
+                            <button class="text3d-style-btn @(State.Text3dUnderline ? "active" : "")" title="@State.T("Souligné")" @onclick="State.OnText3DUnderlineToggle"><u>U</u></button>
+                            <button class="text3d-style-btn @(State.Text3dStrike ? "active" : "")" title="@State.T("Barré")" @onclick="State.OnText3DStrikeToggle"><s>S</s></button>
+                        </div>
+                        @if (State.ImportMode != "2D")
+                        {
+                            <div class="text3d-row" @onclick:stopPropagation>
+                                <label class="text3d-label" for="text3d-thickness">@State.T("Épaisseur")</label>
+                                <input id="text3d-thickness" class="text3d-range" type="range" min="0" max="20" step="0.1"
+                                       value="@State.Text3dThickness.ToString(System.Globalization.CultureInfo.InvariantCulture)"
+                                       @oninput="State.OnText3DThicknessChanged" />
+                                <span class="text3d-val">@State.Text3dThickness.ToString("F1")</span>
+                            </div>
+                        }
+                        <div class="text3d-row" @onclick:stopPropagation>
+                            <label class="text3d-label" for="text3d-spacing">@State.T("Espacement")</label>
+                            <input id="text3d-spacing" class="text3d-range" type="range" min="-2" max="10" step="0.1"
+                                   value="@State.Text3dLetterSpacing.ToString(System.Globalization.CultureInfo.InvariantCulture)"
+                                   @oninput="State.OnText3DSpacingChanged" />
+                            <span class="text3d-val">@State.Text3dLetterSpacing.ToString("F1")</span>
+                        </div>
+                        @if (State.Text3dActiveIdx >= 0)
+                        {
+                            <button class="export-clip-btn" style="margin-top:8px"
+                                    disabled="@(string.IsNullOrWhiteSpace(State.Text3dValue) || State.IsText3DUnchanged())"
+                                    @onclick="State.ConfirmText3DEdit" @onclick:stopPropagation>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                @State.T("Confirmer")
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="export-clip-btn" style="margin-top:8px"
+                                    disabled="@(string.IsNullOrWhiteSpace(State.Text3dValue))"
+                                    @onclick="@(State.ImportMode == "2D" ? State.SendText2DToScene : State.SendText3DToScene)" @onclick:stopPropagation>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                                @State.T(State.ImportMode == "2D" ? "Envoyer vers le rendu 2D" : "Envoyer vers le rendu 3D")
+                            </button>
+                        }
+                        @if (State.Text3dEntries.Count > 0)
+                        {
+                            <div class="text3d-list" @onclick:stopPropagation>
+                                @foreach (var entry in State.Text3dEntries)
+                                {
+                                    var e = entry;
+                                    <div class="text3d-entry @(State.Text3dActiveIdx == e.SceneIdx ? "selected" : "")"
+                                         @onclick="() => State.SelectText3DEntry(e)">
+                                        <span class="text3d-entry-name">@e.Text</span>
+                                        <button class="tri3d-remove-btn" @onclick="() => State.RemoveText3DEntry(e)" @onclick:stopPropagation
+                                                title="@State.T("Supprimer")">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                                <line x1="6" y1="6" x2="18" y2="18"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else if (State.T3dAnimTab == "Model Position")
+                {
+                    @if (!State.HasActiveObject)
+                    {
+                        <div class="pos-empty">@(State.ImportTabCount == 0 ? State.T("Aucun modèle importé") : State.T("Modèle non transféré ou non sélectionné"))</div>
+                    }
+                    else
+                    {
+                        <div class="pos-grid">
+                            <span class="pos-axis ax-x">X</span>
+                            <input class="pos-input" type="number" step="1"
+                                   value="@((State.SelectedTri3DTrack is { HasMesh: true } ? State.Tri3dPosX : State.ImportPosX).ToString("F3", System.Globalization.CultureInfo.InvariantCulture))"
+                                   @onchange="e => State.OnPosChange(e, 'x')" />
+                            @if (State.ImportMode != "2D")
+                            {
+                                <span class="pos-axis ax-y">Y</span>
+                                <input class="pos-input" type="number" step="1"
+                                       value="@((State.SelectedTri3DTrack is { HasMesh: true } ? State.Tri3dPosY : State.ImportPosY).ToString("F3", System.Globalization.CultureInfo.InvariantCulture))"
+                                       @onchange="e => State.OnPosChange(e, 'y')" />
+                            }
+                            <span class="pos-axis @(State.ImportMode == "2D" ? "ax-y" : "ax-z")">@(State.ImportMode == "2D" ? "Y" : "Z")</span>
+                            <input class="pos-input" type="number" step="1"
+                                   value="@((State.SelectedTri3DTrack is { HasMesh: true } ? State.Tri3dPosZ : State.ImportPosZ).ToString("F3", System.Globalization.CultureInfo.InvariantCulture))"
+                                   @onchange="e => State.OnPosChange(e, 'z')" />
+                        </div>
+                        <button class="origin-center-btn" @onclick="State.ResetModelPosition">Reset</button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="side-section-divider" style="margin-top:8px"></div>
+    <div class="side-section" style="flex:none">
+        <div class="side-section-header">Export</div>
+        <div class="side-section-content" style="padding:8px">
+            <button class="export-clip-btn" disabled="@(!State.HasActiveObject)" @onclick="State.ExportSelectedAsClipGbx">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                .Clip.Gbx
+            </button>
+            <button class="export-clip-btn" style="margin-top:4px"
+                    disabled="@(State.SelectedTri3DTrack == null || (!State.SelectedTri3DTrack.HasMesh && !State.SelectedTri3DTrack.IsImported))"
+                    @onclick="() => State.ExportTri3DObj(State.SelectedTri3DTrack!)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                .obj + .mtl
+            </button>
+            <button class="export-clip-btn" style="margin-top:4px"
+                    disabled="@(State.ChallengeBytes == null)"
+                    @onclick="State.ExportChallengeGbx">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                .Challenge.Gbx
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public object? DotNetRef { get; set; }
+
+    protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
+    public void Dispose() => State.OnStateChanged -= StateHasChanged;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (State.ShowTriangles3D && !State.ImportPreviewInited && DotNetRef != null)
+        {
+            State.ImportPreviewInited = true;
+            await JS.InvokeVoidAsync("TMNFeditorScene.initImportPreview", "import-preview-canvas");
+            await JS.InvokeVoidAsync("TMNFeditorScene.initImportDropZone", "import-drop-zone", DotNetRef);
+            await JS.InvokeVoidAsync("TMNFeditorScene.initImportFileInput", "import-file-input");
+        }
+    }
+
+    private async Task SetImportMode(string mode) { await State.SetImportMode(mode); State.NotifyStateChanged(); }
+    private async Task SelectAnimTab(string tab) { await State.SelectAnimTab(tab); State.NotifyStateChanged(); }
+}

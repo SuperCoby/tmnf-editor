@@ -1,0 +1,393 @@
+/* ── Triangles3D panel ───────────────────────────────────────────────────── */
+#triangles3d-panel {
+    position: fixed;
+    top: 49px;
+    left: -350px;
+    width: 350px;
+    height: calc(100vh - 49px);
+    background: rgba(20, 20, 30, 0.97);
+    border-right: 2px solid #444;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.2s ease;
+    z-index: 15;
+}
+#triangles3d-panel.open { left: 0; }
+
+.tri3d-toggle-btn {
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 48px;
+    background: rgba(20, 20, 30, 0.97);
+    border: 2px solid #444;
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.tri3d-toggle-btn:hover { background: #333; color: #fff; }
+
+.side-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+.side-section-header {
+    padding: 7px 14px;
+    background: rgba(10, 10, 20, 0.9);
+    color: #aaf;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+.side-section-content {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #445 #111;
+}
+.side-section-content::-webkit-scrollbar { width: 6px; }
+.side-section-content::-webkit-scrollbar-track { background: #111; }
+.side-section-content::-webkit-scrollbar-thumb { background: #445; border-radius: 3px; }
+.side-section-content::-webkit-scrollbar-thumb:hover { background: #667; }
+
+.side-section-divider {
+    height: 2px;
+    background: #333;
+    flex-shrink: 0;
+}
+
+/* ── Import 3D Model section ─────────────────────────────────────────────── */
+.import-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 8px;
+}
+.import-type-toggle { display: flex; gap: 4px; }
+.import-type-btn {
+    padding: 2px 10px;
+    font-size: 11px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.import-type-btn:hover { border-color: #888; color: #ddd; }
+.import-type-btn.active { background: #3a6ea5; border-color: #5a9fd4; color: #fff; }
+
+.import-icon-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #556;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.import-icon-btn:hover { color: #aac; background: #1a1a3a; border-color: #4a4a88; }
+
+.import-section-content {
+    position: relative;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+
+.drop-sub { font-size: 9px; color: #2a2a44; }
+
+.import-section-content { cursor: pointer; }
+.import-section-content.drag-over { outline: 2px dashed #5566ff; outline-offset: -3px; cursor: copy; }
+
+/* ── Import model tabs ────────────────────────────────────────────────────── */
+.import-tab-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    padding: 4px 6px;
+    background: rgba(8, 8, 18, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.import-tab-btn {
+    padding: 2px 9px;
+    background: rgba(22, 22, 44, 0.85);
+    color: #667;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.import-tab-btn:hover { background: rgba(35, 35, 70, 0.9); color: #99b; border-color: #3a3a66; }
+.import-tab-btn.active { background: rgba(40, 40, 100, 0.95); color: #ccd4ff; border-color: #6666cc; }
+
+/* ── Triangles3D list ───────────────────────────────────────────────────── */
+.tri3d-type-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+}
+.tri3d-type-btn {
+    padding: 3px 10px;
+    background: #1a1a2e;
+    color: #7a8aaa;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.tri3d-type-btn:hover { background: #222240; border-color: #4a4a70; color: #b0c0e0; }
+.tri3d-type-btn.active { background: #2a3a5a; border-color: #4a6a9a; color: #c0d8ff; }
+.tri3d-type-count {
+    font-size: 9px;
+    color: #5a6a8a;
+    margin-left: 2px;
+}
+.tri3d-type-btn.active .tri3d-type-count { color: #8aa0cc; }
+.tri3d-vis-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #6a7a9a;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.tri3d-vis-btn:hover { background: #1a1a38; color: #a0b0d0; }
+
+/* ── Triangles3D split layout ─────────────────────────────────────────────── */
+.tri3d-split {
+    display: flex;
+    gap: 0;
+    height: 220px;
+    border: 1px solid #2a2a44;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 6px 8px;
+}
+
+.tri3d-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 6px;
+    background: #1e1e34;
+    border-bottom: 1px solid #3a3a50;
+    font-size: 10px;
+    color: #6a7a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.tri3d-panel-header span { flex: 1; }
+.tri3d-pm-btn {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #7a8aaa;
+    border: 1px solid #3a3a55;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0;
+    transition: background 0.15s, color 0.15s;
+}
+.tri3d-pm-btn:hover { background: #2a2a48; color: #b0c0e0; }
+.tri3d-pm-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* Left panel — clips */
+.tri3d-clips-panel {
+    width: 45%;
+    min-width: 0;
+    background: #2a2a3a;
+    overflow-y: auto;
+    border-right: 1px solid #3a3a50;
+}
+.tri3d-clip-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #3a3a4e;
+    transition: background 0.1s;
+    min-height: 24px;
+}
+.tri3d-clip-row:hover { background: #353548; }
+.tri3d-clip-row.active { background: #3e3e55; }
+.tri3d-clip-idx {
+    font-size: 11px;
+    font-family: 'Consolas', monospace;
+    color: #6a6a8a;
+    flex-shrink: 0;
+}
+.tri3d-clip-label {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+/* Right panel — tracks */
+.tri3d-tracks-panel {
+    flex: 1;
+    min-width: 0;
+    background: #303042;
+    overflow-y: auto;
+}
+.tri3d-tracks-header {
+    font-size: 10px;
+    font-weight: 700;
+    color: #7aa2f7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 8px 4px;
+    border-bottom: 1px solid #3a3a50;
+    background: #282838;
+}
+.tri3d-track-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-bottom: 1px solid #3a3a4e;
+    min-height: 24px;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+.tri3d-track-row:hover { background: #3a3a52; }
+.tri3d-track-row.selected { background: #2a3a5a; border-left: 3px solid #7aa2f7; }
+.tri3d-track-name {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 1;
+}
+
+.tri3d-export-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #7a9ec2;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+.tri3d-export-btn:hover { background: #1a2a3a; border-color: #3a5a76; color: #a0d0ff; }
+.tri3d-import-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #7ac27a;
+    border: 1px solid #2a442a;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+.tri3d-import-btn:hover { background: #1a2a1a; border-color: #3a763a; color: #a0ffa0; }
+.tri3d-import-btn:disabled { opacity: 0.3; cursor: default; }
+.tri3d-remove-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #cc6666;
+    border: 1px solid #442a2a;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 2px;
+    flex-shrink: 0;
+}
+.tri3d-remove-btn:hover { background: #2a1a1a; border-color: #763a3a; color: #ffa0a0; }
+.export-clip-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 6px 12px;
+    background: #1a1a2e;
+    color: #a0b0d0;
+    border: 1px solid #2a2a44;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.export-clip-btn:hover:not(:disabled) { background: #222240; border-color: #4a6a9a; color: #c0d8ff; }
+.export-clip-btn:disabled { opacity: 0.35; cursor: default; }
+
+.tri3d-eye {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #6a8;
+    border: 1px solid #2a2a44;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+.tri3d-eye:hover { background: #1a1a3a; border-color: #3a3a66; }
+.tri3d-eye.hidden { color: #444; }

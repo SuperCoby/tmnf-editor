@@ -1,0 +1,37 @@
+@implements IDisposable
+@inject AppState State
+
+@if (State.ShowHelp)
+{
+    <div class="help-overlay" @onclick="Toggle">
+        <div class="help-popup" @onclick:stopPropagation>
+            <div class="help-popup-header">
+                <span>@State.T("Aide")</span>
+                <button class="help-close-btn" @onclick="Toggle">✕</button>
+            </div>
+            <div class="help-popup-body">
+                @foreach (var section in State.HelpSections)
+                {
+                    <div class="help-section">
+                        <button class="help-section-title" @onclick="() => section.Open = !section.Open">
+                            <span class="help-chevron @(section.Open ? "open" : "")">⏷</span>
+                            @State.T(section.Title)
+                        </button>
+                        @if (section.Open)
+                        {
+                            <div class="help-section-content">
+                                @State.T(section.Content)
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
+    private void Toggle() { State.ToggleHelp(); State.NotifyStateChanged(); }
+    public void Dispose() => State.OnStateChanged -= StateHasChanged;
+}

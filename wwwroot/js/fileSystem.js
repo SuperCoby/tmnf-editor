@@ -194,6 +194,12 @@ window.TMNFeditorFS = (function () {
                 if (filename && !seen.has(filename)) { seen.add(filename); filenames.push(filename); }
             }
         }
+        return buildTextureBlobUrlMapForNames(filenames, pakName);
+    }
+
+    // Comme buildTextureBlobUrlMap mais reçoit directement la liste de noms de fichiers
+    // (évite de re-parser le MTL pour chaque block — un seul appel pour tous les blocks d'un pak).
+    async function buildTextureBlobUrlMapForNames(filenames, pakName) {
         const urls = await Promise.all(filenames.map(f => getTextureBlobUrl(pakName, f)));
         const map = {};
         for (let i = 0; i < filenames.length; i++)
@@ -250,5 +256,5 @@ window.TMNFeditorFS = (function () {
         return { name: file.name, bytes: new Uint8Array(buffer) };
     }
 
-    return { selectGameFolder, getGameFolderName, listPakFiles, readPakBytes, buildTextureBlobUrlMap, createTextureBlobUrlsFromBytes, revokeBlobUrls, pickChallengeFile };
+    return { selectGameFolder, getGameFolderName, listPakFiles, readPakBytes, buildTextureBlobUrlMap, buildTextureBlobUrlMapForNames, createTextureBlobUrlsFromBytes, revokeBlobUrls, pickChallengeFile };
 })();

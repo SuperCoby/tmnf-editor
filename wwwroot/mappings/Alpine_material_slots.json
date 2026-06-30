@@ -1,0 +1,269 @@
+{
+  "alpinetunneloutside": {
+    "Diffuse": "AlpineTunnelDiffuse.dds"
+  },
+  "alpineadvertising": {
+    "Diffuse": "Advertisement.dds"
+  },
+  "alpinesnow": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinerocks": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineRocksDiffuse.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpineroadwood": {
+    "Diffuse": "AlpineRoadWoodDiffuse.dds"
+  },
+  "alpinepylonswood": {
+    "Diffuse": "AlpinePylonsWood.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "alpinetemplerocks": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineTempleDiffuse.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpineasphalt": {
+    "Diffuse": "AlpineAsphaltDiffuse.dds"
+  },
+  "alpinesnowwarp": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpineice": {
+    "Diffuse": "AlpineIceDiffuse.dds",
+    "Fresnel": "AlpineIceFresnelPC1.dds"
+  },
+  "alpineicecanyon": {
+    "Fresnel": "AlpineIceFresnelPC1.dds",
+    "Grass": "AlpineIceDiffuse.dds",
+    "Borders": "AlpineIceCanyonDiffuse.dds"
+  },
+  "alpineiceborders": {
+    "Fresnel": "AlpineIceFresnelPC1.dds",
+    "Grass": "AlpineIceDiffuse.dds",
+    "Borders": "AlpineSnowBorders.dds"
+  },
+  "alpinesnowborders": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineSnowBorders.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinetemple": {
+    "Diffuse": "AlpineTempleDiffuse.dds"
+  },
+  "alpinemetalgrid": {
+    "Diffuse": "AlpineMetalGrid.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "alpineracesigns": {
+    "Diffuse": "AlpineRaceSigns.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "alpineraceflags": {
+    "Diffuse": "AlpineRaceFlags.dds"
+  },
+  "alpineroadchalet": {
+    "Diffuse": "AlpineRoadChaletDiffuse.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "AlpineRoadChaletSelfIllum.dds"
+  },
+  "alpineroadwoodnotcollidable": {
+    "Diffuse": "AlpineRoadWoodDiffuse.dds"
+  },
+  "alpineroadwoodturbo": {
+    "Diffuse": "AlpineRoadWoodTurboDiffuse.dds"
+  },
+  "alpineroadwoodturboroulette": {
+    "Diffuse": "AlpineRoadWoodTurboDiffuse.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "AlpineRoadWoodTurboRouletteDiffuse.dds"
+  },
+  "alpinetemplealpha": {
+    "Diffuse": "AlpineTempleDiffuse.dds"
+  },
+  "alpineasphaltturbo": {
+    "Diffuse": "AlpineAsphaltTurboDiffuse.dds"
+  },
+  "alpineasphaltturboroulette": {
+    "Diffuse": "AlpineAsphaltTurboDiffuse.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "AlpineAsphaltTurboRouletteDiffuse.dds"
+  },
+  "alpinemountainwarp2": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineMountainWarp2.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinemountainwarp": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineMountainWarp.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinebark": {
+    "Diffuse": "AlpineBark.dds"
+  },
+  "alpinetrees": {
+    "Diffuse": "AlpineTrees.dds"
+  },
+  "alpinesnowtreesshadows": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinetunnelrock": {
+    "Diffuse": "AlpineTunnelDiffuse.dds",
+    "PreLight": "AlpineTunnelRadiosity.dds"
+  },
+  "alpinetunnelwood": {
+    "Diffuse": "AlpineTunnelDiffuse.dds",
+    "PreLight": "AlpineTunnelRadiosity.dds"
+  },
+  "alpinetunnelasphalt": {
+    "Diffuse": "AlpineAsphaltDiffuse.dds",
+    "PreLight": "AlpineTunnelRadiosity.dds"
+  },
+  "alpinetunnelturbo": {
+    "Diffuse": "AlpineAsphaltTurboDiffuse.dds",
+    "PreLight": "AlpineTunnelRadiosity.dds"
+  },
+  "alpineroadwoodfreewheeling": {
+    "Diffuse": "AlpineRoadWoodFreeWheeling.dds"
+  },
+  "alpinelamp": {
+    "Diffuse": "AlpineLamp.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "AlpineLampSelfI.dds"
+  },
+  "alpineasphaltfreewheeling": {
+    "Diffuse": "AlpineAsphaltFreeWheeling.dds"
+  },
+  "alpinegreatwallcastle": {
+    "Diffuse": "AlpineGreatWallCastle.dds"
+  },
+  "alpinegreatwallroad": {
+    "Diffuse": "AlpineGreatWallRoad.dds"
+  },
+  "alpinegreatwall": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineGreatWall.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "apinegreatwallhillsnow": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineGreatWallHill.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "apinegreatwallhilltoundra": {
+    "Blend1PC0": "AlpineToundra.dds",
+    "Blend3": "AlpineGreatWallHill.dds",
+    "Blend1": "AlpineToundra.dds",
+    "Blend2": "AlpineToundra2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinegreatwalltoundra": {
+    "Blend1PC0": "AlpineToundra.dds",
+    "Blend3": "AlpineGreatWall.dds",
+    "Blend1": "AlpineToundra.dds",
+    "Blend2": "AlpineToundra2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinetoundra": {
+    "Blend1PC0": "AlpineToundra2.dds",
+    "Blend1": "AlpineToundra.dds",
+    "Blend2": "AlpineToundra2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinehill": {
+    "Blend1PC0": "AlpineSnow1.dds",
+    "Blend3": "AlpineHill.dds",
+    "Blend1": "AlpineSnow1.dds",
+    "Blend2": "AlpineSnow2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinehilltoundra": {
+    "Blend1PC0": "AlpineToundra.dds",
+    "Blend3": "AlpineHill.dds",
+    "Blend1": "AlpineToundra.dds",
+    "Blend2": "AlpineToundra2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  },
+  "alpinehilltree": {
+    "Diffuse": "AlpineHillTree.dds"
+  },
+  "speedsky": {
+    "Clouds": "SpeedSkyClouds.dds",
+    "Panorama": "SpeedSky.dds"
+  },
+  "snowcarskin": {
+    "Diffuse": "SnowCarSkin.dds",
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "IslandSpecularCube.dds",
+    "FresnelPC2": "EnvFresnel.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Diffuse_Gloss": "SnowCarSkin.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "snowcardetails": {
+    "Diffuse": "SnowCarDetail.dds",
+    "Specular": "SpecularCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "SnowCarDetailSelfIllum.dds",
+    "Diffuse_Gloss": "SnowCarDetail.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "DefaultRGB.dds"
+  },
+  "snowcarglass": {
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "Diffuse": "DefaultEnvCubicPC1.dds",
+    "FresnelRefrac": "EnvFresnelGlassPC2.dds",
+    "Translucent": "SnowCarDetail.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCube": "DefaultEnvCubic.dds",
+    "FresnelReflec": "EnvFresnelGlassPC2.dds",
+    "Specular": "SpecularCube.dds",
+    "Fresnel": "EnvFresnelGlassPC3.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "LightFromMap": "RenderLightFromMap.dds"
+  },
+  "snowcarrearlights": {
+    "Diffuse": "SnowCarDetail.dds",
+    "EnvCubic": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "IslandSpecularCube.dds"
+  },
+  "alpinetoundraborders": {
+    "Blend1PC0": "AlpineToundra2.dds",
+    "Blend3": "AlpineSnowBorders.dds",
+    "Blend1": "AlpineToundra.dds",
+    "Blend2": "AlpineToundra2.dds",
+    "BlendI": "AlpineSnowBlendingClouds.dds"
+  }
+}

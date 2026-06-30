@@ -1,0 +1,142 @@
+/* ── Triangles2D panel ───────────────────────────────────────────────────── */
+/* ── Canvas ──────────────────────────────────────────────────────────────── */
+#three-container { flex: 1; position: relative; min-height: 0; }
+
+.playback-bar {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+    pointer-events: auto;
+}
+.playback-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.7;
+    border-radius: 6px;
+    transition: opacity 0.15s, background 0.15s;
+}
+.playback-btn:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+.playback-btn.playback-active { opacity: 1; color: #7aa2f7; }
+.playback-timer {
+    color: #fff;
+    font-size: 28px;
+    font-family: monospace;
+    opacity: 0.85;
+    margin-left: 6px;
+    align-self: center;
+    user-select: none;
+}
+
+#info {
+    position: absolute; top: 10px; right: 10px; color: white;
+    background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px;
+    font-size: 13px; max-width: 300px;
+    pointer-events: none;
+}
+#info h3 { margin: 0 0 10px 0; font-size: 16px; pointer-events: auto; }
+
+@keyframes dots { 0%,20%{content:'.'} 40%{content:'..'} 60%,100%{content:'...'} }
+.loading::after { content: '.'; animation: dots 1.2s steps(1) infinite; }
+.loading-msg { padding: 20px; color: #4a9eff; font-size: 13px; }
+
+.map-move-btn { padding:4px;background:#2a3a2a;color:#8f8;border:1px solid #484;border-radius:3px;cursor:pointer;font-size:13px; }
+.map-move-btn:hover { background:#3a5a3a; }
+
+#import-preview-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.import-delete-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 10;
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 60, 60, 0.7);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    opacity: 0.6;
+    transition: opacity .15s, background .15s;
+}
+.import-delete-btn:hover {
+    opacity: 1;
+    background: rgba(255, 40, 40, 0.95);
+}
+
+.import-drop-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #3a3a55;
+    font-size: 11px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.select-mode-btns {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+}
+.select-mode-btn {
+    padding: 5px 10px;
+    background: rgba(30, 30, 50, 0.8);
+    border: 1px solid #3a3a66;
+    border-radius: 5px;
+    color: #aab;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.select-mode-btn:hover { background: rgba(50, 50, 80, 0.9); color: #dde; }
+.select-mode-btn.active { background: rgba(60, 80, 140, 0.9); color: #fff; border-color: #5577cc; }
+
+.block-mat-info {
+    position: absolute;
+    bottom: 40px;
+    right: 8px;
+    z-index: 5;
+    background: rgba(10, 10, 30, 0.85);
+    border: 1px solid #3a3a66;
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #ccd;
+    font-size: 11px;
+    font-family: monospace;
+    pointer-events: none;
+    line-height: 1.5;
+}

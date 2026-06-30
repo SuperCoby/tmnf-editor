@@ -1,0 +1,22 @@
+@implements IDisposable
+@inject AppState State
+
+<div class="playback-bar">
+    <button class="playback-btn" title="@State.T("Retour au début")" @onclick="State.PlaybackGoToStart">⏮</button>
+    <button class="playback-btn" title="Play" @onclick="State.PlaybackPlay">▶</button>
+    <button class="playback-btn" title="Pause" @onclick="State.PlaybackPause">⏸</button>
+    <button class="playback-btn" title="@State.T("Aller à la fin")" @onclick="State.PlaybackGoToEnd">⏭</button>
+    <button class="playback-btn @(State.PlaybackRepeat ? "playback-active" : "")" title="Repeat" @onclick="OnToggleRepeat">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+            <polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+    </button>
+    <span class="playback-timer" id="playback-timer">00:00:00</span>
+</div>
+
+@code {
+    protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
+    public void Dispose() => State.OnStateChanged -= StateHasChanged;
+    private void OnToggleRepeat() { State.PlaybackToggleRepeat(); State.NotifyStateChanged(); }
+}

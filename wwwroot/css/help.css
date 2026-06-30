@@ -1,0 +1,73 @@
+/* ── Help popup ────────────────────────────────────────────────────────── */
+.help-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.help-popup {
+    background: #141428;
+    border: 1px solid #333366;
+    border-radius: 10px;
+    width: 520px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.help-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid #252545;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ccd4ff;
+}
+.help-close-btn {
+    background: none;
+    border: none;
+    color: #667;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.help-close-btn:hover { color: #ff6666; background: #1a1a2e; }
+.help-popup-body {
+    padding: 8px 0;
+    overflow-y: auto;
+}
+.help-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 18px;
+    background: none;
+    border: none;
+    color: #aabbee;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+.help-section-title:hover { background: #1a1a38; }
+.help-chevron {
+    display: inline-block;
+    transition: transform 0.2s;
+    transform: rotate(-90deg);
+    font-size: 10px;
+}
+.help-chevron.open { transform: rotate(0deg); }
+.help-section-content {
+    padding: 6px 18px 12px 34px;
+    color: #8899aa;
+    font-size: 12px;
+    line-height: 1.6;
+}

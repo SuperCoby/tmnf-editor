@@ -1,0 +1,347 @@
+{
+  "coastcircuitsigns": {
+    "Diffuse": "CoastCircuitSigns.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "CoastCircuitSignsSelfIllum.dds"
+  },
+  "coastroadsigns2": {
+    "Diffuse": "CoastRoadSigns2.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastcircuittransition": {
+    "Blend1PC0": "CoastCircuit.dds",
+    "Blend3": "CoastCircuitTransition.dds",
+    "Blend1": "CoastCircuit1.dds",
+    "Blend2": "CoastCircuit2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastdirt": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastcircuittransitiongrass": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastCircuitTransitionGrass.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastcircuit": {
+    "Blend1PC0": "CoastCircuit.dds",
+    "Blend1": "CoastCircuit1.dds",
+    "Blend2": "CoastCircuit2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastcircuitrumblestrip": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastCircuitTransitionGrass.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastroadmarks": {
+    "Diffuse": "CoastRoadMarks.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastcircuitadvert": {
+    "Diffuse": "Advertisement.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastroadsigns": {
+    "Diffuse": "CoastRoadSigns.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastitemsalpha": {
+    "Diffuse": "CoastItemsAlpha.dds"
+  },
+  "coastvegetation": {
+    "Diffuse": "CoastVegetation.dds"
+  },
+  "coastgrid": {
+    "Diffuse": "CoastGrid.dds"
+  },
+  "coastvegetation2": {
+    "Diffuse": "CoastVegetation2.dds"
+  },
+  "coastcircuitturbo": {
+    "Blend1PC0": "CoastCircuit.dds",
+    "Blend3": "CoastCircuitTransition.dds",
+    "Blend1": "CoastCircuit1.dds",
+    "Blend2": "CoastCircuit2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastcliff": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastCliff.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastroadborder": {
+    "Diffuse": "CoastRoad.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastsubseatransition": {
+    "Blend1PC0": "CoastSubSea.dds",
+    "Blend3": "CoastSubSeaTransition.dds",
+    "Blend1": "CoastSubSea1.dds",
+    "Blend2": "CoastSubSea2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastsea": {
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds",
+    "Reflect": "SeaRenderReflection.dds"
+  },
+  "coastsubsea": {
+    "Blend1PC0": "CoastSubSea.dds",
+    "Blend1": "CoastSubSea1.dds",
+    "Blend2": "CoastSubSea2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastdecorbase": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastDecorBase.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastvillage": {
+    "Diffuse": "CoastVillage.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastplantes": {
+    "Diffuse": "CoastPlantes.dds"
+  },
+  "coastconcrete": {
+    "Diffuse": "CoastConcrete.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastsigns": {
+    "Diffuse": "CoastSigns.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastroad": {
+    "Diffuse": "CoastRoad.dds"
+  },
+  "coastroadtransition": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastRoad.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastcarskin": {
+    "Diffuse": "CoastCarSkin.dds",
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "SpecularCube.dds",
+    "Fresnel": "EnvFresnelPC3.dds",
+    "Diffuse_Gloss": "CoastCarSkin.dds",
+    "EnvCubicPC1": "DefaultEnvCubicPC1.dds",
+    "FresnelPC2": "EnvFresnel.dds"
+  },
+  "coastcardetails": {
+    "Diffuse": "CoastCarDetails.dds",
+    "Specular": "SpecularCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "SelfIllum": "CoastCarDetailsSelfIllum.dds",
+    "Diffuse_Gloss": "CoastCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "DirtMarks": "DefaultRGB.dds"
+  },
+  "coastcarrearlights": {
+    "Diffuse": "CoastCarDetails.dds",
+    "EnvCubic": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Specular": "SpecularCube.dds"
+  },
+  "coastcarglass": {
+    "EnvMap": "DefaultEnvmapPC0.dds",
+    "Diffuse": "DefaultEnvCubicPC1.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "EnvFresnelGlassPC3.dds",
+    "Specular": "SpecularCube.dds",
+    "Translucent": "CoastCarDetails.dds",
+    "HemiSpec": "HemiSpecPC2.dds",
+    "CubeInvHemi": "CubeInvHemiReflec.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "FresnelRefrac": "EnvFresnelGlassPC2.dds",
+    "EnvCube": "DefaultEnvCubic.dds",
+    "FresnelReflec": "EnvFresnelGlassPC2.dds"
+  },
+  "coastwarpsea": {
+    "DuDv1": "SeaDuDvPC2_4.dds",
+    "Reflection": "SeaRenderReflection.dds",
+    "Reflec": "SeaRenderReflection.dds",
+    "Refrac": "SeaRenderRefraction.dds",
+    "Bump": "SeaDuDvPC2_2.dds",
+    "DuDv0": "SeaDuDvPC2_4.dds",
+    "Normal": "SeaSxSySzPC3.dds",
+    "Reflect": "SeaRenderReflection.dds"
+  },
+  "coastwarpsubsea": {
+    "Blend1PC0": "CoastSubSea.dds",
+    "Blend1": "CoastSubSea1.dds",
+    "Blend2": "CoastSubSea2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastwarprocks": {
+    "Blend1PC0": "CoastWarpGrass.dds",
+    "Blend3": "CoastWarpRocks.dds",
+    "Blend1": "CoastWarpGrass.dds",
+    "Blend2": "CoastWarpGrass2.dds",
+    "BlendI": "CoastWarpGrassBlendingClouds.dds"
+  },
+  "coastwarpgrass": {
+    "Blend1PC0": "CoastWarpGrass.dds",
+    "Blend1": "CoastWarpGrass.dds",
+    "Blend2": "CoastWarpGrass2.dds",
+    "BlendI": "CoastWarpGrassBlendingClouds.dds"
+  },
+  "coastwarpgrounddetails": {
+    "Blend1PC0": "CoastWarpGrass.dds",
+    "Blend3": "CoastWarpGroundDetails.dds",
+    "Blend1": "CoastWarpGrass.dds",
+    "Blend2": "CoastWarpGrass2.dds",
+    "BlendI": "CoastWarpGrassBlendingClouds.dds"
+  },
+  "coastwarpfoam": {
+    "Foam 1": "IslandFXFoamStatic.dds",
+    "Foam 3": "IslandFXFoam2.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Foam 2": "IslandFXFoam2.dds"
+  },
+  "coastwarpmountains": {
+    "Blend1PC0": "CoastWarpGrass.dds",
+    "Blend3": "CoastWarpMountains.dds",
+    "Blend1": "CoastWarpGrass.dds",
+    "Blend2": "CoastWarpGrass2.dds",
+    "BlendI": "CoastWarpGrassBlendingClouds.dds"
+  },
+  "coastwarpforest": {
+    "Blend1PC0": "CoastWarpGrass.dds",
+    "Blend3": "CoastWarpForest.dds",
+    "Blend1": "CoastWarpGrass.dds",
+    "Blend2": "CoastWarpGrass2.dds",
+    "BlendI": "CoastWarpGrassBlendingClouds.dds"
+  },
+  "coastcorniche": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastCorniche.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastcornicheroad": {
+    "Diffuse": "CoastCornicheRoad.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastfoam": {
+    "Foam 1": "IslandFXFoamStatic.dds",
+    "Foam 3": "IslandFXFoam2.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Foam 2": "IslandFXFoam2.dds"
+  },
+  "coastcornichetransition": {
+    "Blend1PC0": "CoastDirt.dds",
+    "Blend3": "CoastCornicheTransition.dds",
+    "Blend1": "CoastDirt1.dds",
+    "Blend2": "CoastDirt2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coasteditorhelpers": {
+    "Specular": "SpecEnv.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastcornichetransitionroad": {
+    "Diffuse": "CoastCornicheTransition.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastboats": {
+    "Diffuse": "CoastBoats.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastboatsundersea": {
+    "Diffuse": "CoastBoats.dds"
+  },
+  "coastyachtalpha": {
+    "Diffuse": "CoastYachtAlpha.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Specular": "SpecularCube.dds",
+    "Clouds": "DefaultClouds.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "coastyacht": {
+    "Diffuse": "CoastYacht.dds",
+    "Clouds": "DefaultClouds.dds",
+    "EnvCubic": "DefaultEnvCubic.dds",
+    "Fresnel": "EnvFresnelPC3.dds"
+  },
+  "coastyachtundersea": {
+    "Diffuse": "CoastYacht.dds"
+  },
+  "coastyachtfloor": {
+    "Diffuse": "CoastYachtFloor.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastroadturbo": {
+    "Diffuse": "CoastRoadTurbo.dds"
+  },
+  "coastcircuitturbo2": {
+    "Blend1PC0": "CoastCircuit.dds",
+    "Blend3": "CoastCircuitTransition.dds",
+    "Blend1": "CoastCircuit1.dds",
+    "Blend2": "CoastCircuit2.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coastroadturbo2": {
+    "Diffuse": "CoastRoadTurbo2.dds"
+  },
+  "coasttunnel": {
+    "Diffuse": "CoastTunnel.dds"
+  },
+  "coasttunnelitemsalpha": {
+    "Diffuse": "CoastItemsAlpha.dds"
+  },
+  "coasttunnelsigns": {
+    "Diffuse": "CoastTunnelSigns.dds"
+  },
+  "coasttunnelturbo2": {
+    "Diffuse": "CoastTunnelTurbo2.dds"
+  },
+  "coastroadturboroulette": {
+    "Diffuse": "CoastRoadTurbo.dds",
+    "Clouds": "DefaultClouds.dds",
+    "TurboMask": "CoastRoadTurboRoulette.dds"
+  },
+  "coasttunnelturbo": {
+    "Diffuse": "CoastTunnelTurbo.dds"
+  },
+  "coastasphalt": {
+    "Blend1PC0": "CoastAsphalt.dds",
+    "Blend3": "DefaultRGB.dds",
+    "Blend1": "CoastAsphalt.dds",
+    "Blend2": "CoastAsphalt.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  },
+  "coaststone": {
+    "Diffuse": "CoastStone.dds",
+    "Clouds": "DefaultClouds.dds"
+  },
+  "coastredcobble": {
+    "Blend1PC0": "CoastRedCobble.dds",
+    "Blend1": "CoastRedCobble.dds",
+    "Blend2": "CoastRedCobble.dds",
+    "BlendI": "CoastFXBlendingClouds.dds"
+  }
+}
