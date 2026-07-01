@@ -1,0 +1,53 @@
+@implements IDisposable
+@inject AppState State
+@inject FileSystemService FS
+
+@if (State.ShowSettings)
+{
+    <div class="help-overlay" @onclick="Toggle">
+        <div class="help-popup settings-popup-box" @onclick:stopPropagation>
+            <div class="help-popup-header">
+                <span>@State.T("Réglages")</span>
+                <button class="help-close-btn" @onclick="Toggle">✕</button>
+            </div>
+            <div class="help-popup-body" style="padding: 16px 18px;">
+                <div class="settings-group-label">@State.T("Rendu")</div>
+                <label class="settings-check-row">
+                    <input type="checkbox" checked="@State.ShowEditorHelper" @onchange="OnChangeEditorHelper" />
+                    <span>EditorHelper</span>
+                </label>
+                <label class="settings-check-row">
+                    <input type="checkbox" checked="@State.ShowEditorHelperArrow" @onchange="OnChangeEditorHelperArrow" />
+                    <span>EditorHelperArrow</span>
+                </label>
+                <label class="settings-check-row">
+                    <input type="checkbox" checked="@State.ShowGlow" @onchange="OnChangeGlow" />
+                    <span>Glow</span>
+                </label>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
+    public void Dispose() => State.OnStateChanged -= StateHasChanged;
+
+    private void Toggle() { State.ToggleSettings(); State.NotifyStateChanged(); }
+
+    private async Task OnChangeEditorHelper(ChangeEventArgs e)
+    {
+        State.ShowEditorHelper = (bool)(e.Value ?? true);
+        await FS.SetRenderSettingsAsync(State.ShowEditorHelper, State.ShowEditorHelperArrow, State.ShowGlow);
+    }
+    private async Task OnChangeEditorHelperArrow(ChangeEventArgs e)
+    {
+        State.ShowEditorHelperArrow = (bool)(e.Value ?? true);
+        await FS.SetRenderSettingsAsync(State.ShowEditorHelper, State.ShowEditorHelperArrow, State.ShowGlow);
+    }
+    private async Task OnChangeGlow(ChangeEventArgs e)
+    {
+        State.ShowGlow = (bool)(e.Value ?? true);
+        await FS.SetRenderSettingsAsync(State.ShowEditorHelper, State.ShowEditorHelperArrow, State.ShowGlow);
+    }
+}

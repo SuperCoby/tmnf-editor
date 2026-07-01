@@ -1,7 +1,7 @@
 @implements IDisposable
 @inject AppState State
 
-<div class="playback-bar">
+<div class="playback-bar" style="display: @(State.ShowTriangles3D ? "flex" : "none")">
     <button class="playback-btn" title="@State.T("Retour au début")" @onclick="State.PlaybackGoToStart">⏮</button>
     <button class="playback-btn" title="Play" @onclick="State.PlaybackPlay">▶</button>
     <button class="playback-btn" title="Pause" @onclick="State.PlaybackPause">⏸</button>

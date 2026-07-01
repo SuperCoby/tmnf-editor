@@ -12,6 +12,11 @@ public partial class Home : ComponentBase, IDisposable
     [Inject] private IJSRuntime JS { get; set; } = default!;
     [Inject] private AppState State { get; set; } = default!;
 
+    // Cache pour les BlockInfo issus de ConstructionBlockInfo/*.Gbx — chargés à la volée comme BlockLister.
+    private Dictionary<string, string>? _cbiIndex;
+    private readonly Dictionary<string, GBX.NET.Engines.Game.CGameCtnBlockInfo?> _cbiCache
+        = new(StringComparer.OrdinalIgnoreCase);
+
     private ElementReference threeContainer;
     private bool sceneInitialized = false;
     private bool _slotsSentToJs = false;
@@ -217,13 +222,14 @@ public partial class Home : ComponentBase, IDisposable
                         }
                         var terrainMod = unit.GetType().GetProperty("TerrainModifierId")?.GetValue(unit)?.ToString();
                         if (string.IsNullOrEmpty(terrainMod)) terrainMod = null;
-                        if (clips.Count > 0 || terrainMod != null)
-                            units.Add(new
-                            {
-                                offset = new { x = (int)unit.RelativeOffset.X, y = (int)unit.RelativeOffset.Y, z = (int)unit.RelativeOffset.Z },
-                                clips = clips.Count > 0 ? clips : null,
-                                terrainModifier = terrainMod
-                            });
+                        // Toutes les unités sont enregistrées (même sans clips/modifier) : nécessaire pour
+                        // reconstruire l'emprise au sol précise d'un block (logique fidèle à BlockLister).
+                        units.Add(new
+                        {
+                            offset = new { x = (int)unit.RelativeOffset.X, y = (int)unit.RelativeOffset.Y, z = (int)unit.RelativeOffset.Z },
+                            clips = clips.Count > 0 ? clips : null,
+                            terrainModifier = terrainMod
+                        });
                     }
                     return units;
                 }
@@ -247,6 +253,45 @@ public partial class Home : ComponentBase, IDisposable
     }
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
+
+    // ─── BlockLister-style : chargement à la volée des ConstructionBlockInfo ─────────────────────
+    // Fidèle à Aide/BlockLister/Program.cs (GetInfo + infoFiles).
+    // Construit l'index blockName→filePath depuis ConstructionBlockInfo/index.txt (une seule fois).
+    private async Task<Dictionary<string, string>> GetCbiIndexAsync()
+    {
+        if (_cbiIndex != null) return _cbiIndex;
+        _cbiIndex = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        try
+        {
+            var idx = await Http.GetStringAsync("ConstructionBlockInfo/index.txt");
+            foreach (var line in idx.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+                var name = System.IO.Path.GetFileName(line);
+                var dot = name.IndexOf('.');
+                if (dot > 0) name = name[..dot];
+                _cbiIndex.TryAdd(name, line);
+            }
+        }
+        catch { }
+        return _cbiIndex;
+    }
+
+    // Charge et met en cache le BlockInfo GBX d'un block (comme GetInfo() dans Program.cs).
+    private async Task<GBX.NET.Engines.Game.CGameCtnBlockInfo?> GetBlockInfoAsync(string blockName)
+    {
+        if (_cbiCache.TryGetValue(blockName, out var cached)) return cached;
+        var index = await GetCbiIndexAsync();
+        if (!index.TryGetValue(blockName, out var filePath)) { _cbiCache[blockName] = null; return null; }
+        try
+        {
+            var bytes = await Http.GetByteArrayAsync(filePath);
+            var gbx = GBX.NET.Gbx.Parse(new System.IO.MemoryStream(bytes),
+                new GBX.NET.GbxReadSettings { IgnoreExceptionsInBody = true });
+            _cbiCache[blockName] = gbx.Node as GBX.NET.Engines.Game.CGameCtnBlockInfo;
+        }
+        catch { _cbiCache[blockName] = null; }
+        return _cbiCache[blockName];
+    }
 
     private async Task SetMeshMode() { State.BlockSelectMode = false; await JS.InvokeVoidAsync("TMNFeditorScene.setBlockSelectMode", false); }
     private async Task SetBlockMode() { State.BlockSelectMode = true; await JS.InvokeVoidAsync("TMNFeditorScene.setBlockSelectMode", true); }
@@ -664,49 +709,50 @@ public partial class Home : ComponentBase, IDisposable
             }
         }
 
-        // ── Étape 3 : calculer terrain modifiers + résoudre les blocs ─────────
+        // ── Étape 3 : calculer terrain modifiers (logique fidèle à Aide/BlockLister/Program.cs) ──
+        // Le TerrainModifier vient UNIQUEMENT de unit.TerrainModifierId (jamais du nom du block) —
+        // confirmé par BlockLister : aucune map réelle ne produit de "TerrainModifier:Dirt", seulement "Fabric".
+        // Pas de renormalisation min(X,Z) : cell = block.Coord + rotate(offset), comme Rot() dans Program.cs.
+        (int X, int Z) RotOffset(int ox, int oz, int dir) => dir switch
+        {
+            1 => (-oz, ox),
+            2 => (-ox, -oz),
+            3 => (oz, -ox),
+            _ => (ox, oz),
+        };
         var terrainModMap = new Dictionary<(int, int), string>();
-        // 1er pass : fabric (depuis les units terrainModifier)
         foreach (var block in data.Blocks)
         {
             if (block.IsClipFlag) continue;
-            var tmUnits = PakSvc.GetBlockUnits(block.Name, block.IsGround);
+            var tmUnits = PakSvc.GetBlockUnits(block.Name, block.IsGround); // fallback Ground/Air inclus
             if (tmUnits == null) continue;
-            int tmMinX = int.MaxValue, tmMinZ = int.MaxValue;
-            var tmRotated = new (int X, int Y, int Z)[tmUnits.Count];
-            for (int i = 0; i < tmUnits.Count; i++)
+            foreach (var u in tmUnits)
             {
-                var u = tmUnits[i];
-                var (rx, rz) = block.Dir switch { 1 => (-u.Z, u.X), 2 => (-u.X, -u.Z), 3 => (u.Z, -u.X), _ => (u.X, u.Z) };
-                tmRotated[i] = (rx, u.Y, rz);
-                if (rx < tmMinX) tmMinX = rx;
-                if (rz < tmMinZ) tmMinZ = rz;
+                if (u.TerrainModifier == null) continue;
+                var (rx, rz) = RotOffset(u.X, u.Z, block.Dir);
+                terrainModMap[(block.X + rx, block.Z + rz)] = u.TerrainModifier.ToLowerInvariant();
             }
-            for (int i = 0; i < tmUnits.Count; i++)
-            {
-                var tm = tmUnits[i].TerrainModifier;
-                if (tm != null)
-                    terrainModMap[(block.X + tmRotated[i].X - tmMinX, block.Z + tmRotated[i].Z - tmMinZ)] = tm.ToLowerInvariant();
-            }
-        }
-        // 2ème pass : dirt (prioritaire sur fabric)
-        foreach (var block in data.Blocks)
-        {
-            if (block.IsClipFlag) continue;
-            if (block.Name.StartsWith("StadiumDirt", StringComparison.OrdinalIgnoreCase))
-                terrainModMap[(block.X, block.Z)] = "dirt";
         }
 
-        // StadiumDirtHill (et StadiumDirt*) est un block-terrain : si un AUTRE block (nom différent)
-        // occupe déjà la même colonne (X,Z), on ne rend pas le DirtHill à cet endroit (il passerait dessus).
-        var columnsWithOtherBlocks = new Dictionary<(int, int), HashSet<string>>();
+        // Colonnes (X,Z) ayant un block "StadiumDirt" (peu importe la hauteur) — sert uniquement à annoter
+        // le terrain sous chaque block dans le panneau d'info (logique fidèle à Aide/BlockLister TerrainAt).
+        var dirtColumns = new HashSet<(int, int)>();
         foreach (var block in data.Blocks)
+            if (block.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase))
+                dirtColumns.Add((block.X, block.Z));
+        string TerrainAt(int x, int z) =>
+            dirtColumns.Contains((x, z)) ? "Dirt"
+            : terrainModMap.TryGetValue((x, z), out var m) ? char.ToUpperInvariant(m[0]) + m[1..]
+            : "Grass";
+
+        // DirtCovered : StadiumDirt masqué par un autre block au-dessus (même x,z, Y strictement supérieur)
+        // Fidèle à Aide/BlockLister : ces blocks existent (occupent les cellules) mais ne sont pas rendus.
+        var aboveByXZ = new Dictionary<(int, int), List<int>>();
+        foreach (var b in data.Blocks)
         {
-            if (block.IsClipFlag) continue;
-            var col = (block.X, block.Z);
-            if (!columnsWithOtherBlocks.TryGetValue(col, out var names))
-                columnsWithOtherBlocks[col] = names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            names.Add(block.Name);
+            if (b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)) continue;
+            if (!aboveByXZ.TryGetValue((b.X, b.Z), out var aYs)) aboveByXZ[(b.X, b.Z)] = aYs = [];
+            aYs.Add(b.Y);
         }
 
         var placements = new Dictionary<(string Pak, int Idx), List<object>>();
@@ -715,12 +761,11 @@ public partial class Home : ComponentBase, IDisposable
         foreach (var block in data.Blocks)
         {
             if (block.IsClipFlag) continue;
-            if (block.Name.StartsWith("StadiumDirtHill", StringComparison.OrdinalIgnoreCase))
-            {
-                var names = columnsWithOtherBlocks[(block.X, block.Z)];
-                if (names.Any(n => !n.Equals(block.Name, StringComparison.OrdinalIgnoreCase)))
-                    continue; // un autre block occupe déjà cette colonne, ne pas rendre le DirtHill ici
-            }
+            // DirtCovered : StadiumDirt sous un autre block → ne pas rendre (fidèle à BlockLister)
+            if (block.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)
+                && aboveByXZ.TryGetValue((block.X, block.Z), out var coverYs)
+                && coverYs.Any(y => y > block.Y))
+                continue;
             var pakName = PakService.PakKeys.Keys.FirstOrDefault(p =>
                 block.Name.StartsWith(p, StringComparison.OrdinalIgnoreCase));
             if (pakName == null || PakSvc.GetCached(pakName) == null)
@@ -738,22 +783,16 @@ public partial class Home : ComponentBase, IDisposable
 
             var (sx, sz, h) = PakSvc.GetBlockCoordSize(resolved2.Value.Pak, block.Name, block.IsGround);
             bool isClip = block.Name.Contains("Clip", StringComparison.OrdinalIgnoreCase);
+            string terrainAt = TerrainAt(block.X, block.Z); // "Dirt" | "Fabric" | "Grass"
+            string terrainAtLower = terrainAt.ToLowerInvariant();
             // StadiumDirt*/StadiumGrass sont eux-mêmes la source du terrain "dirt"/"grass" : jamais touchés.
             // StadiumFabric* n'est exclu que si le terrain résolu est ENCORE "fabric" (auto-référence) —
             // si le dirt a pris la priorité à cette position, son mesh doit quand même être traité normalement.
             bool skipTerrainMesh = block.Name.StartsWith("StadiumDirt", StringComparison.OrdinalIgnoreCase)
-                || block.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase);
-            string? blockTerrainMod = null;
-            if (!skipTerrainMesh)
-            {
-                terrainModMap.TryGetValue((block.X, block.Z), out blockTerrainMod);
-                if (blockTerrainMod == "fabric" && block.Name.StartsWith("StadiumFabric", StringComparison.OrdinalIgnoreCase))
-                {
-                    blockTerrainMod = null;
-                    skipTerrainMesh = true;
-                }
-            }
-            var placement = new { x = block.X, y = block.Y, z = block.Z, dir = block.Dir, sx, sz, h, isClip, blockName = block.Name, terrainMod = blockTerrainMod, isGround = block.IsGround, skipTerrainMesh };
+                || block.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase)
+                || (terrainAtLower == "fabric" && block.Name.StartsWith("StadiumFabric", StringComparison.OrdinalIgnoreCase));
+            string? blockTerrainMod = (skipTerrainMesh || terrainAtLower == "grass") ? null : terrainAtLower;
+            var placement = new { x = block.X, y = block.Y, z = block.Z, dir = block.Dir, sx, sz, h, isClip, blockName = block.Name, terrainMod = blockTerrainMod, isGround = block.IsGround, skipTerrainMesh, terrainAt };
             list.Add(placement);
             resolved++;
 
@@ -770,7 +809,9 @@ public partial class Home : ComponentBase, IDisposable
                     var helperKey = (resolved2.Value.Pak, helperIdx);
                     if (!placements.TryGetValue(helperKey, out var helperList))
                         placements[helperKey] = helperList = [];
-                    helperList.Add(new { x = block.X, y = block.Y, z = block.Z, dir = block.Dir, sx, sz, h, color = ehColor });
+                    var solidFile = PakSvc.GetSolidFileName(resolved2.Value.Pak, helperIdx) ?? "";
+                    var helperType = solidFile.Contains("Arrow", StringComparison.OrdinalIgnoreCase) ? "arrow" : "helper";
+                    helperList.Add(new { x = block.X, y = block.Y, z = block.Z, dir = block.Dir, sx, sz, h, color = ehColor, helperType });
                 }
             }
         }
@@ -792,6 +833,7 @@ public partial class Home : ComponentBase, IDisposable
         }
 
         // ── Phase 0.5 : ajouter les clip blocks manquants ──────────
+        var clipBlockPositions = new HashSet<(int, int)>(); // pour exclure du terrain fill et des zone faces
         {
             var existingBlocks = new HashSet<string>();
             foreach (var b in data.Blocks)
@@ -813,7 +855,14 @@ public partial class Home : ComponentBase, IDisposable
                     placements[key2] = list2 = [];
 
                 var (sx2, sz2, h2) = PakSvc.GetBlockCoordSize(resolved3.Value.Pak, clip.Name, clip.IsGround);
-                list2.Add(new { x = clip.X, y = clip.Y, z = clip.Z, dir = clip.Dir, sx = sx2, sz = sz2, h = h2, isClip = true, blockName = clip.Name });
+                var clipTerrainAt = TerrainAt(clip.X, clip.Z);
+                var clipTerrainAtLower = clipTerrainAt.ToLowerInvariant();
+                var clipSkipTerrainMesh = clip.Name.StartsWith("StadiumDirt", StringComparison.OrdinalIgnoreCase)
+                    || clip.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase)
+                    || (clipTerrainAtLower == "fabric" && clip.Name.StartsWith("StadiumFabric", StringComparison.OrdinalIgnoreCase));
+                string? clipTerrainMod = (clipSkipTerrainMesh || clipTerrainAtLower == "grass") ? null : clipTerrainAtLower;
+                list2.Add(new { x = clip.X, y = clip.Y, z = clip.Z, dir = clip.Dir, sx = sx2, sz = sz2, h = h2, isClip = true, blockName = clip.Name, terrainMod = clipTerrainMod, terrainAt = clipTerrainAt, skipTerrainMesh = clipSkipTerrainMesh });
+                clipBlockPositions.Add((clip.X, clip.Z));
             }
         }
 
@@ -863,15 +912,35 @@ public partial class Home : ComponentBase, IDisposable
                     var fname = t[(t.IndexOf(' ') + 1)..].Trim();
                     if (!string.IsNullOrEmpty(fname)) { allRequestedTextures.Add(fname); pakTexNames.Add(fname); }
                 }
+                else if (t.StartsWith("# tex_") && t.Contains(' '))
+                {
+                    // Slots nommés (SoilFix, Blend1, Occlusion, etc.) — parsés par parseMtlAllTextures côté JS
+                    var rest = t[6..];
+                    var si = rest.IndexOf(' ');
+                    if (si > 0)
+                    {
+                        var fname = rest[(si + 1)..].Trim();
+                        if (!string.IsNullOrEmpty(fname)) { allRequestedTextures.Add(fname); pakTexNames.Add(fname); }
+                    }
+                }
             }
         }
 
-        // Extraire les textures terrain modifier (StadiumDirt, StadiumFabric) dans le même passage groupé
-        if (terrainModMap.Count > 0)
+        // Textures imposées pour les matériaux Stadium avec map_Kd incorrecte (MATERIAL_TEXTURE_OVERRIDES côté JS)
+        if (generated.Keys.Any(k => k.Item1.Equals("Stadium", StringComparison.OrdinalIgnoreCase)))
+        {
+            if (!texNamesByPak.TryGetValue("Stadium", out var overrideTexNames))
+                texNamesByPak["Stadium"] = overrideTexNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            overrideTexNames.Add("StadiumRoadDirtToRoadD.dds");
+        }
+
+        // Extraire les textures terrain modifier (Fabric) + zone faces explicites (StadiumDirt) dans le même passage groupé
+        bool hasExplicitDirtZone = data.Blocks.Any(b => !b.IsClipFlag && b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase));
+        if (terrainModMap.Count > 0 || hasExplicitDirtZone)
         {
             if (!texNamesByPak.TryGetValue("Stadium", out var stadiumTexNames))
                 texNamesByPak["Stadium"] = stadiumTexNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            if (terrainModMap.Values.Any(v => v == "dirt"))
+            if (hasExplicitDirtZone)
             {
                 stadiumTexNames.Add("StadiumDirt1.dds");
                 stadiumTexNames.Add("StadiumDirt2.dds");
@@ -948,28 +1017,87 @@ public partial class Home : ComponentBase, IDisposable
 
         // Herbe uniquement pour les cartes Stadium
         var isStadiumMap = neededPaks.Any(p => "Stadium".Equals(p, StringComparison.OrdinalIgnoreCase));
-        var groundBlocks = isStadiumMap
-            ? data.Blocks
-                .Where(b => b.IsGround && !b.IsClipFlag)
-                .Select(b => {
-                    var pakName = PakService.PakKeys.Keys.FirstOrDefault(p =>
-                        b.Name.StartsWith(p, StringComparison.OrdinalIgnoreCase)) ?? "";
-                    var (sx, sz, h) = PakSvc.GetBlockCoordSize(pakName, b.Name, true);
-                    bool isZone = b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)
-                               || b.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase);
-                    return (object)new { x = b.X, y = b.Y, z = b.Z, dir = b.Dir, sx, sz, h, isZone };
-                })
-                .ToArray()
-            : [];
 
-        object[]? dirtCells = null;
-        if (isStadiumMap && terrainModMap.Count > 0)
-            dirtCells = terrainModMap.Select(kv => (object)new { x = kv.Key.Item1, z = kv.Key.Item2, type = kv.Value }).ToArray();
+        // UNE SEULE boucle — fidèle à Aide/BlockLister/Program.cs (lignes 117-144) :
+        // occupied + modifiers calculés ensemble, même source (JSON puis CBI), TOUS les blocks non-clip.
+        // Air blocks → modifiers seulement (pas occupied). Ground blocks → occupied ET modifiers.
+        var occupiedTuples = new List<(int X, int Z, bool IsZone)>();
+        var terrainModMapFill = new Dictionary<(int, int), string>(); // JSON+CBI, pour la reconstitution du sol
+        if (isStadiumMap)
+        {
+            foreach (var b in data.Blocks)
+            {
+                if (b.IsClipFlag) continue; // clips se posent SUR le sol, n'occupent rien
+                bool isZone = b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)
+                           || b.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase);
+
+                // JSON pré-scanné d'abord, CBI en fallback — même ordre que BlockLister GetInfo.
+                var jsonUnits = PakSvc.GetBlockUnits(b.Name, b.IsGround);
+                if (jsonUnits != null && jsonUnits.Count > 0)
+                {
+                    foreach (var u in jsonUnits)
+                    {
+                        var (rx, rz) = RotOffset(u.X, u.Z, b.Dir);
+                        var cell = (b.X + rx, b.Z + rz);
+                        if (b.IsGround) occupiedTuples.Add((cell.Item1, cell.Item2, isZone));
+                        if (u.TerrainModifier != null)
+                            terrainModMapFill[cell] = u.TerrainModifier.ToLowerInvariant();
+                    }
+                    continue;
+                }
+                // Fallback CBI (comme BlockLister)
+                var info = await GetBlockInfoAsync(b.Name);
+                var units = (b.IsGround ? info?.GroundBlockUnitInfos : info?.AirBlockUnitInfos)
+                         ?? info?.GroundBlockUnitInfos ?? info?.AirBlockUnitInfos;
+
+                if (units == null || units.Length == 0)
+                {
+                    if (b.IsGround) occupiedTuples.Add((b.X, b.Z, isZone));
+                    continue;
+                }
+                foreach (var u in units)
+                {
+                    var off = u.RelativeOffset;
+                    var (rx, rz) = RotOffset(off.X, off.Z, b.Dir);
+                    var cell = (b.X + rx, b.Z + rz);
+                    if (b.IsGround) occupiedTuples.Add((cell.Item1, cell.Item2, isZone));
+                    if (!string.IsNullOrEmpty(u.TerrainModifierId))
+                        terrainModMapFill[cell] = u.TerrainModifierId.ToLowerInvariant();
+                }
+            }
+        }
+        // Liste explicite des cellules terrain — fidèle à la boucle floor de BlockLister (lignes 148-154).
+        // Utilise terrainModMapFill (JSON+CBI) au lieu de terrainModMap (JSON seul) → données cohérentes.
+        var occupiedForTerrain = new HashSet<(int, int)>(occupiedTuples.Select(t => (t.X, t.Z)));
+        occupiedForTerrain.UnionWith(clipBlockPositions); // clips générés absents de data.Blocks
+        var grassFill  = new List<object>();
+        var dirtFill   = new List<object>();
+        var fabricFill = new List<object>();
+        if (isStadiumMap)
+        {
+            for (int x = 0; x < data.SizeX; x++)
+                for (int z = 0; z < data.SizeZ; z++)
+                {
+                    if (occupiedForTerrain.Contains((x, z))) continue;
+                    if (terrainModMapFill.TryGetValue((x, z), out var mod2))
+                    {
+                        if      (mod2 == "fabric") fabricFill.Add(new { x, z });
+                        else if (mod2 == "dirt")   dirtFill.Add(new { x, z });
+                        else                       grassFill.Add(new { x, z });
+                    }
+                    else
+                        grassFill.Add(new { x, z });
+                }
+        }
 
         var zoneFaces = isStadiumMap
             ? data.Blocks
-                .Where(b => b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)
-                         || b.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase))
+                .Where(b => (b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)
+                          || b.Name.Equals("StadiumGrass", StringComparison.OrdinalIgnoreCase))
+                          // DirtCovered : exclure les StadiumDirt sous un autre block (même logique que placements)
+                          && !(b.Name.Equals("StadiumDirt", StringComparison.OrdinalIgnoreCase)
+                               && aboveByXZ.TryGetValue((b.X, b.Z), out var zfYs)
+                               && zfYs.Any(y => y > b.Y)))
                 .Select(b =>
                 {
                     string type = b.Name.Contains("Dirt", StringComparison.OrdinalIgnoreCase) ? "dirt" : "grass";
@@ -983,12 +1111,30 @@ public partial class Home : ComponentBase, IDisposable
                 .ToArray()
             : [];
 
-        var clipColumns = isStadiumMap
-            ? data.Blocks.Where(b => b.IsClipFlag).Select(b => (object)new { x = b.X, z = b.Z }).ToArray()
-            : [];
+        // nonZoneColumns : colonnes occupées par un bloc réel (non-zone, non-clip) → empêche les zone faces de se superposer.
+        var nonZoneSet = new HashSet<(int, int)>(occupiedTuples.Where(t => !t.IsZone).Select(t => (t.X, t.Z)));
+        foreach (var b in data.Blocks.Where(b => b.IsClipFlag))
+            nonZoneSet.Add((b.X, b.Z));
+        nonZoneSet.UnionWith(clipBlockPositions); // clips générés → pas de zone face dessus
+        var nonZoneCols = nonZoneSet.Select(c => (object)new { x = c.Item1, z = c.Item2 }).ToArray();
 
-        await FS.FinalizeMapAsync(data.SizeX, data.SizeZ, groundBlocks, dirtCells, zoneFaces, clipColumns);
+        // ── Debug : résumé par type (équivalent du rapport Aide/BlockLister) ──────
+        if (isStadiumMap)
+        {
+            var byName = data.Blocks.GroupBy(b => b.Name).OrderByDescending(g => g.Count()).ToList();
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine($"[Resume] Blocks places   : {data.Blocks.Count}");
+            sb.AppendLine($"[Resume] Sol StadiumGrass (reconstitue) : x{grassFill.Count}");
+            if (dirtFill.Count   > 0) sb.AppendLine($"[Resume] TerrainModifier:dirt   : x{dirtFill.Count}");
+            if (fabricFill.Count > 0) sb.AppendLine($"[Resume] TerrainModifier:fabric : x{fabricFill.Count}");
+            foreach (var g in byName)
+                sb.AppendLine($"[Resume] {g.Key,-42} x{g.Count()}");
+            Console.WriteLine(sb.ToString());
+        }
+
+        await FS.FinalizeMapAsync(grassFill.ToArray(), dirtFill.ToArray(), fabricFill.ToArray(), zoneFaces, nonZoneCols);
         await FS.SetMapOffsetAsync(-512, -9, -512);
+        await FS.SetRenderSettingsAsync(State.ShowEditorHelper, State.ShowEditorHelperArrow, State.ShowGlow);
 
         // Afficher les Triangles3D du MediaTracker
         State.Tri3dBlocks = data.Triangles3D;

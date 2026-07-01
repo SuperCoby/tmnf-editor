@@ -71,3 +71,175 @@
     font-size: 12px;
     line-height: 1.6;
 }
+
+/* ── Tabbed help popup ───────────────────────────────────────────────────── */
+.help-popup-wide { width: 680px; }
+
+.help-tab-bar {
+    display: flex;
+    gap: 2px;
+    padding: 10px 14px 0;
+    border-bottom: 1px solid #252545;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+.help-tab-btn {
+    padding: 6px 14px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 6px 6px 0 0;
+    color: #6677aa;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+}
+.help-tab-btn:hover { color: #aabbee; }
+.help-tab-btn.active {
+    color: #ccd4ff;
+    border-bottom-color: #6666cc;
+    background: rgba(102,102,204,0.06);
+}
+.help-tab-body {
+    padding: 16px 20px;
+    overflow-y: auto;
+    flex: 1;
+    font-size: 12px;
+}
+
+/* ── Shared content ──────────────────────────────────────────────────────── */
+.help-h2 {
+    font-size: 11px;
+    font-weight: 700;
+    color: #6677bb;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 16px 0 8px;
+}
+.help-h2:first-child { margin-top: 0; }
+.help-p {
+    color: #8899aa;
+    font-size: 12px;
+    line-height: 1.65;
+    margin-bottom: 8px;
+}
+.help-warn {
+    background: #1a1428;
+    border: 1px solid #443355;
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: #cc9955;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+/* ── Animation tab ───────────────────────────────────────────────────────── */
+.help-anim-row {
+    display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a38;
+    align-items: baseline;
+}
+.help-anim-row:last-child { border-bottom: none; }
+.help-anim-name {
+    font-weight: 700;
+    color: #aabbee;
+    font-size: 12px;
+    min-width: 136px;
+    flex-shrink: 0;
+}
+.help-anim-desc {
+    color: #7788aa;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+/* ── Steps tab ───────────────────────────────────────────────────────────── */
+.help-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a38;
+    color: #8899aa;
+    line-height: 1.6;
+    font-size: 12px;
+}
+.help-step:last-child { border-bottom: none; }
+.help-step-num {
+    width: 22px;
+    height: 22px;
+    background: #252550;
+    border: 1px solid #4444aa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #8888ee;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ── Export tab ──────────────────────────────────────────────────────────── */
+.help-export-row {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a38;
+    align-items: flex-start;
+}
+.help-export-row:last-child { border-bottom: none; }
+.help-export-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #6699dd;
+    background: #111230;
+    border: 1px solid #2a3366;
+    border-radius: 4px;
+    padding: 3px 8px;
+    white-space: nowrap;
+    min-width: 108px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ── Icons tab ───────────────────────────────────────────────────────────── */
+.help-icon-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid #1a1a38;
+}
+.help-icon-row:last-child { border-bottom: none; }
+.help-icon-cell {
+    width: 28px;
+    height: 28px;
+    background: #1a1a38;
+    border: 1px solid #2a2a55;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #8899cc;
+}
+.help-icon-info { flex: 1; }
+.help-icon-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #aabbee;
+    margin-bottom: 2px;
+}
+.help-icon-desc {
+    font-size: 11px;
+    color: #7788aa;
+    line-height: 1.5;
+}

@@ -139,3 +139,34 @@
 }
 
 .stats { color: #888; font-size: 11px; }
+
+.settings-popup-box {
+    width: 320px;
+}
+.settings-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #6677bb;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+}
+.settings-check-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 0;
+    cursor: pointer;
+    user-select: none;
+}
+.settings-check-row:hover span { color: #ccd4ff; }
+.settings-check-row input[type=checkbox] {
+    width: 14px; height: 14px;
+    accent-color: #6666cc;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.settings-check-row span {
+    font-size: 13px;
+    color: #8899cc;
+}

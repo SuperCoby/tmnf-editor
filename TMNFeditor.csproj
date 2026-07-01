@@ -14,7 +14,12 @@
     <None Remove="Aide\**" />
     <Content Remove="Aide\**" />
     <EmbeddedResource Remove="Aide\**" />
+    <!-- ConstructionBlockInfo : exclu du git (via .gitignore) et de la publication,
+         mais accessible en dev via le build output (le dev server sert bin/Debug/net9.0/wwwroot/) -->
     <Content Remove="wwwroot\ConstructionBlockInfo\**" />
+    <Content Include="wwwroot\ConstructionBlockInfo\**" Condition="Exists('wwwroot\ConstructionBlockInfo')">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

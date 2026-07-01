@@ -4,34 +4,288 @@
 @if (State.ShowHelp)
 {
     <div class="help-overlay" @onclick="Toggle">
-        <div class="help-popup" @onclick:stopPropagation>
+        <div class="help-popup help-popup-wide" @onclick:stopPropagation>
             <div class="help-popup-header">
                 <span>@State.T("Aide")</span>
                 <button class="help-close-btn" @onclick="Toggle">✕</button>
             </div>
-            <div class="help-popup-body">
-                @foreach (var section in State.HelpSections)
+            <div class="help-tab-bar">
+                <button class="help-tab-btn @(_tab==0?"active":"")" @onclick="()=>_tab=0">@State.T("Présentation")</button>
+                <button class="help-tab-btn @(_tab==1?"active":"")" @onclick="()=>_tab=1">Animation</button>
+                <button class="help-tab-btn @(_tab==2?"active":"")" @onclick="()=>_tab=2">@State.T("Comment ça marche ?")</button>
+                <button class="help-tab-btn @(_tab==3?"active":"")" @onclick="()=>_tab=3">Export</button>
+                <button class="help-tab-btn @(_tab==4?"active":"")" @onclick="()=>_tab=4">@State.T("Icônes")</button>
+            </div>
+            <div class="help-tab-body">
+
+                @* ── Présentation ──────────────────────────────────────────── *@
+                @if (_tab == 0)
                 {
-                    <div class="help-section">
-                        <button class="help-section-title" @onclick="() => section.Open = !section.Open">
-                            <span class="help-chevron @(section.Open ? "open" : "")">⏷</span>
-                            @State.T(section.Title)
-                        </button>
-                        @if (section.Open)
-                        {
-                            <div class="help-section-content">
-                                @State.T(section.Content)
-                            </div>
-                        }
+                    <div class="help-h2">@L("Pourquoi utiliser ce site ?", "Why use this tool?")</div>
+                    <p class="help-p">@L(
+                        "Dans TrackMania Nations Forever, créer des formes personnalisées dans le MediaTracker oblige à entrer chaque sommet un par un avec des coordonnées XYZ — ce qui prendrait une éternité pour n'importe quelle forme complexe.",
+                        "In TrackMania Nations Forever, creating custom shapes in MediaTracker requires entering every vertex one by one with XYZ coordinates — which takes forever for any complex shape."
+                    )</p>
+                    <p class="help-p">@L(
+                        "Ce site permet d'importer des modèles 3D au format .obj/.mtl et de les convertir automatiquement en données prêtes à être animées dans le MediaTracker.",
+                        "This tool lets you import 3D models in .obj/.mtl format and automatically convert them into data ready to animate in MediaTracker."
+                    )</p>
+                    <div class="help-h2">@L("Limitations", "Limitations")</div>
+                    <div class="help-warn">
+                        <ul style="margin:0;padding-left:16px">
+                            <li style="margin-bottom:4px">@L(
+                                "Triangles3D/2D fonctionne uniquement avec des couleurs RGB — aucune texture n'est supportée.",
+                                "Triangles3D/2D only supports RGB colors — no textures are supported."
+                            )</li>
+                            <li style="margin-bottom:4px">@L(
+                                "Pas de collision : les voitures et joueurs traversent le modèle.",
+                                "No collision: cars and players pass through the model."
+                            )</li>
+                            <li>@L("Aucune ombre n'est générée.", "No shadows are generated.")</li>
+                        </ul>
                     </div>
                 }
+
+                @* ── Animation ─────────────────────────────────────────────── *@
+                else if (_tab == 1)
+                {
+                    foreach (var (name, fr, en) in _animItems)
+                    {
+                        <div class="help-anim-row">
+                            <span class="help-anim-name">@name</span>
+                            <span class="help-anim-desc">@L(fr, en)</span>
+                        </div>
+                    }
+                }
+
+                @* ── Comment ça marche ? ───────────────────────────────────── *@
+                else if (_tab == 2)
+                {
+                    int stepN = 1;
+                    foreach (var (fr, en) in _steps)
+                    {
+                        int n = stepN++;
+                        <div class="help-step">
+                            <span class="help-step-num">@n</span>
+                            <span>@L(fr, en)</span>
+                        </div>
+                    }
+                }
+
+                @* ── Export ────────────────────────────────────────────────── *@
+                else if (_tab == 3)
+                {
+                    foreach (var (tag, fr, en) in _exports)
+                    {
+                        <div class="help-export-row">
+                            <span class="help-export-tag">@tag</span>
+                            <span class="help-p" style="margin:0">@L(fr, en)</span>
+                        </div>
+                    }
+                }
+
+                @* ── Icônes ────────────────────────────────────────────────── *@
+                else if (_tab == 4)
+                {
+                    foreach (var (svg, nameFR, nameEN, descFR, descEN) in _icons)
+                    {
+                        <div class="help-icon-row">
+                            <div class="help-icon-cell">@((MarkupString)svg)</div>
+                            <div class="help-icon-info">
+                                <div class="help-icon-name">@L(nameFR, nameEN)</div>
+                                <div class="help-icon-desc">@L(descFR, descEN)</div>
+                            </div>
+                        </div>
+                    }
+                }
+
             </div>
         </div>
     </div>
 }
 
 @code {
+    private int _tab = 0;
+    private string L(string fr, string en) => State.Lang == "FR" ? fr : en;
+
     protected override void OnInitialized() => State.OnStateChanged += StateHasChanged;
     private void Toggle() { State.ToggleHelp(); State.NotifyStateChanged(); }
     public void Dispose() => State.OnStateChanged -= StateHasChanged;
+
+    private readonly (string Name, string FR, string EN)[] _animItems =
+    {
+        ("Model Position",
+            "La position XYZ du modèle dans la scène (XY en mode 2D). Définit le point de départ, indépendamment des keyframes d'animation.",
+            "The XYZ position of the model in the scene (XY in 2D mode). Sets the starting point, independently of animation keyframes."),
+        ("Origin",
+            "Le point de pivot autour duquel les rotations, le scaling et l'orbit sont appliqués. Utilisez « Centrer à la mesh » pour le placer au centre du modèle.",
+            "The pivot point for rotations, scaling and orbit. Use 'Center to mesh' to place it at the model's center automatically."),
+        ("Translation",
+            "Déplace le modèle sur les axes X/Y/Z dans le temps. Chaque ligne est un keyframe : Time (début), EndTime (fin) et les valeurs X/Y/Z du déplacement.",
+            "Moves the model along X/Y/Z over time. Each row is a keyframe: Time (start), EndTime (end) and the X/Y/Z offset values."),
+        ("Scaling",
+            "Redimensionne le modèle dans le temps. Les valeurs sont des multiplicateurs (1 = taille originale, 2 = double, 0.5 = moitié).",
+            "Resizes the model over time. Values are multipliers (1 = original size, 2 = double, 0.5 = half)."),
+        ("Rotation",
+            "Fait tourner le modèle autour des axes X/Y/Z dans le temps. Le champ Steps contrôle le nombre d'étapes de la rotation.",
+            "Rotates the model around X/Y/Z axes over time. The Steps field controls the number of rotation steps."),
+        ("Orbit",
+            "Fait orbiter le modèle autour de son origine. Radius = rayon de l'orbite, Steps = nombre d'étapes, Degrees = degrés parcourus.",
+            "Makes the model orbit around its origin. Radius = orbit radius, Steps = number of steps, Degrees = degrees traveled."),
+        ("Shading Intensity",
+            "Contrôle l'intensité de l'ombrage appliqué au modèle (0 = aucun ombrage, 1 = ombrage complet).",
+            "Controls the shading intensity on the model (0 = no shading, 1 = full shading)."),
+        ("Material",
+            "Permet de modifier la couleur RGB de chaque matériau du modèle. La couleur s'applique à tous les triangles utilisant ce matériau.",
+            "Lets you change the RGB color of each material in the model. The color applies to all triangles using that material."),
+        ("Text3D / Text2D",
+            "Crée du texte en 3D (avec épaisseur) ou en 2D (plat). Choisissez la police, le style (gras, italique, souligné, barré) et l'espacement des lettres.",
+            "Creates 3D text (with thickness) or 2D flat text. Choose font, style (bold, italic, underline, strikethrough) and letter spacing."),
+        ("Mediatracker",
+            "Gère les Clips et Tracks du MediaTracker de TrackMania. Un clip contient un ou plusieurs tracks, chacun pouvant être lié à un modèle 3D. C'est le système qui pilote l'animation dans le jeu.",
+            "Manages MediaTracker Clips and Tracks. A clip holds one or more tracks, each linkable to a 3D model — the system that drives in-game animation."),
+    };
+
+    private readonly (string FR, string EN)[] _steps =
+    {
+        (
+            "Cliquer sur « Sélectionner le dossier du jeu » et choisir le dossier d'installation de TrackMania Nations Forever (celui contenant Nadeo.ini).",
+            "Click 'Select game folder' and choose your TrackMania Nations Forever installation folder (the one containing Nadeo.ini)."
+        ),
+        (
+            "Charger une carte .Challenge.Gbx via le bouton dans le header.",
+            "Load a .Challenge.Gbx map using the button in the header."
+        ),
+        (
+            "Ouvrir le panneau Triangle3D/2D depuis la barre de navigation.",
+            "Open the Triangle3D/2D panel from the navigation bar."
+        ),
+        (
+            "Importer un fichier .obj (avec ou sans .mtl) en cliquant sur l'icône d'import ou en glissant le fichier dans la zone d'import.",
+            "Import a .obj file (with or without .mtl) by clicking the import icon or dragging the file into the import area."
+        ),
+        (
+            "Régler la position, les matériaux et les animations dans les onglets du panneau Animation.",
+            "Adjust the position, materials and animations in the Animation panel tabs."
+        ),
+        (
+            "Cliquer sur la flèche verte (▶) en haut du panneau pour envoyer le modèle dans la scène principale.",
+            "Click the green arrow (▶) at the top of the panel to send the model into the main scene."
+        ),
+        (
+            "Dans l'onglet Mediatracker : ajouter un Clip (+), puis un Track (+). Cliquer ensuite sur l'icône ↓ à côté du track pour lier le modèle actif à ce track.",
+            "In the Mediatracker tab: add a Clip (+), then a Track (+). Then click the ↓ icon next to the track to link the active model to that track."
+        ),
+        (
+            "Exporter via le panneau Export en bas du panneau latéral (voir l'onglet Export pour les détails).",
+            "Export via the Export panel at the bottom of the side panel (see the Export tab for details)."
+        ),
+    };
+
+    private readonly (string Tag, string FR, string EN)[] _exports =
+    {
+        (
+            ".Clip.Gbx",
+            "Exporte l'animation du modèle sélectionné sous forme d'un clip MediaTracker standalone. Ce clip peut être importé directement dans TrackMania via l'éditeur de carte → MediaTracker.",
+            "Exports the selected model's animation as a standalone MediaTracker clip. This clip can be imported directly into TrackMania via the map editor → MediaTracker."
+        ),
+        (
+            ".obj + .mtl",
+            "Exporte le modèle 3D du track sélectionné au format standard .obj/.mtl. Utile pour réutiliser ou modifier le modèle dans un logiciel 3D externe.",
+            "Exports the selected track's 3D model in standard .obj/.mtl format. Useful for reusing or modifying the model in an external 3D application."
+        ),
+        (
+            ".Challenge.Gbx",
+            "Intègre tous les clips et tracks dans la carte chargée et exporte une nouvelle carte .Challenge.Gbx complète, prête à être jouée.",
+            "Integrates all clips and tracks into the loaded map and exports a complete new .Challenge.Gbx file, ready to play."
+        ),
+    };
+
+    private static readonly (string Svg, string NameFR, string NameEN, string DescFR, string DescEN)[] _icons =
+    {
+        (
+            """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>""",
+            "Envoyer vers le rendu 3D/2D", "Send to 3D/2D render",
+            "Transfère le modèle importé dans la scène principale 3D ou 2D.",
+            "Transfers the imported model into the main 3D or 2D scene."
+        ),
+        (
+            """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>""",
+            "Importer un .obj", "Import a .obj",
+            "Ouvre le sélecteur de fichiers pour importer un modèle .obj (et .mtl optionnel).",
+            "Opens the file picker to import a .obj model (with optional .mtl)."
+        ),
+        (
+            """<span style="display:flex;flex-direction:column;align-items:center;font-size:8px;font-weight:700;color:#8899cc;line-height:1.3"><span>Mesh</span><span>Block</span></span>""",
+            "Mesh / Block", "Mesh / Block",
+            "Bascule le mode de sélection dans le rendu : Mesh affiche le matériau/texture cliqué, Block affiche le nom du bloc TrackMania.",
+            "Switches the selection mode in the render: Mesh shows the clicked material/texture, Block shows the TrackMania block name."
+        ),
+        (
+            """<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>""",
+            "Lier le modèle au track", "Link model to track",
+            "Assigne le modèle actif au track sélectionné dans le Mediatracker.",
+            "Assigns the active model to the selected track in the Mediatracker."
+        ),
+        (
+            """<span style="font-size:18px;font-weight:700;line-height:1;color:#8899cc">+</span>""",
+            "Ajouter un clip / track", "Add a clip / track",
+            "Crée un nouveau clip ou un nouveau track dans le Mediatracker.",
+            "Creates a new clip or track in the Mediatracker."
+        ),
+        (
+            """<span style="font-size:18px;font-weight:700;line-height:1;color:#8899cc">-</span>""",
+            "Supprimer un clip / track", "Delete a clip / track",
+            "Supprime le clip ou le track actuellement sélectionné.",
+            "Deletes the currently selected clip or track."
+        ),
+        (
+            """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>""",
+            "Tout afficher", "Show all",
+            "Rend tous les tracks visibles dans la scène.",
+            "Makes all tracks visible in the scene."
+        ),
+        (
+            """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>""",
+            "Tout cacher", "Hide all",
+            "Cache tous les tracks de la scène.",
+            "Hides all tracks from the scene."
+        ),
+        (
+            """<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>""",
+            "Déplacer", "Move",
+            "Active le mode déplacement : déplace le modèle sur les axes X, Y, Z.",
+            "Activates move mode: drag the model along the X, Y, Z axes."
+        ),
+        (
+            """<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M21.34 15.57a10 10 0 1 1-.57-8.38"/></svg>""",
+            "Rotation", "Rotation",
+            "Active le mode rotation : tourne le modèle autour des axes X, Y, Z.",
+            "Activates rotation mode: rotate the model around the X, Y, Z axes."
+        ),
+        (
+            """<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>""",
+            "Scale", "Scale",
+            "Active le mode mise à l'échelle : redimensionne le modèle sur les axes X, Y, Z.",
+            "Activates scale mode: resize the model along the X, Y, Z axes."
+        ),
+        (
+            """<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>""",
+            "Mirror X", "Mirror X",
+            "Effectue une symétrie du modèle par rapport à l'axe X.",
+            "Applies a mirror symmetry to the model along the X axis."
+        ),
+        (
+            """<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>""",
+            "Afficher l'origine", "Show origin",
+            "Affiche ou masque le point de pivot (origine) du modèle dans la scène.",
+            "Shows or hides the model's pivot (origin) point in the scene."
+        ),
+        (
+            """<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>""",
+            "Afficher / Cacher le modèle", "Show / Hide model",
+            "Affiche ou masque le modèle actif dans la scène principale.",
+            "Shows or hides the active model in the main scene."
+        ),
+    };
 }

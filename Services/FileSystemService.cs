@@ -87,11 +87,14 @@ public class FileSystemService(IJSRuntime js)
     public async Task AppendModelToSceneAsync(string objText, string mtlText, string pakName, string cacheKey = "", string geomKey = "", string color = "")
         => await js.InvokeVoidAsync("TMNFeditorScene.appendModelToCurrentBlock", objText, mtlText, pakName, cacheKey, geomKey, color);
 
-    public async Task FinalizeMapAsync(int mapSizeX, int mapSizeZ, object[] groundBlocks, object[]? dirtCells = null, object[]? zoneFaces = null, object[]? clipColumns = null)
-        => await js.InvokeVoidAsync("TMNFeditorScene.finalizeMap", mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFaces, clipColumns);
+    public async Task FinalizeMapAsync(object[] grassCells, object[]? dirtCells = null, object[]? fabricCells = null, object[]? zoneFaces = null, object[]? nonZoneColumns = null)
+        => await js.InvokeVoidAsync("TMNFeditorScene.finalizeMap", grassCells, dirtCells, fabricCells, zoneFaces, nonZoneColumns);
 
     public async Task SetMapOffsetAsync(int x, int y, int z)
         => await js.InvokeVoidAsync("TMNFeditorScene.setMapOffset", x, y, z);
+
+    public async Task SetRenderSettingsAsync(bool showEditorHelper, bool showEditorHelperArrow, bool showGlow)
+        => await js.InvokeVoidAsync("TMNFeditorScene.setRenderSettings", showEditorHelper, showEditorHelperArrow, showGlow);
 }
 
 public record ChallengeFileResult(string Name, byte[] Bytes);

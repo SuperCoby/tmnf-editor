@@ -28,9 +28,10 @@
     </div>
     <div id="header-nav">
         <button class="header-nav-btn" @onclick="OnToggleHelp">@State.T("Aide")</button>
+        <button class="header-nav-btn @(State.ShowSettings ? "active" : "")" @onclick="OnToggleSettings">@State.T("Réglages")</button>
         <div class="header-nav-sep"></div>
         <button class="header-nav-btn @(State.ShowBlockPanel   ? "active" : "")" @onclick="OnToggleBlockPanel">Block</button>
-        <button class="header-nav-btn @(State.ShowTriangles3D  ? "active" : "")" @onclick="OnToggleTriangles3D">Triangle3D/2D</button>
+        <button class="header-nav-btn @(State.ShowTriangles3D  ? "active" : "")" @onclick="OnToggleTriangles3D">Triangles3D/2D</button>
         <div class="header-nav-sep"></div>
         <div class="lang-toggle">
             <button class="lang-btn @(State.Lang == "FR" ? "active" : "")" @onclick='() => SetLang("FR")'>FR</button>
@@ -48,6 +49,7 @@
     public void Dispose() => State.OnStateChanged -= StateHasChanged;
 
     private void OnToggleHelp() { State.ToggleHelp(); State.NotifyStateChanged(); }
+    private void OnToggleSettings() { State.ToggleSettings(); State.NotifyStateChanged(); }
     private async Task OnToggleBlockPanel() { await State.ToggleBlockPanel(); State.NotifyStateChanged(); }
     private async Task OnToggleTriangles3D() { await State.ToggleTriangles3D(); State.NotifyStateChanged(); }
     private void SetLang(string lang) { State.Lang = lang; State.NotifyStateChanged(); }

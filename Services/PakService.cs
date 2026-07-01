@@ -93,8 +93,13 @@ public class PakService
         catch { }
     }
 
-    public List<BlockUnit>? GetBlockUnits(string blockName, bool isGround) =>
-        (isGround ? _blockUnitsGround : _blockUnitsAir).TryGetValue(blockName, out var units) ? units : null;
+    public List<BlockUnit>? GetBlockUnits(string blockName, bool isGround)
+    {
+        var primary = isGround ? _blockUnitsGround : _blockUnitsAir;
+        var secondary = isGround ? _blockUnitsAir : _blockUnitsGround;
+        if (primary.TryGetValue(blockName, out var units)) return units;
+        return secondary.TryGetValue(blockName, out units) ? units : null;
+    }
 
     // Mappings de variants : pakName → { "BlockName|IsGround|Variant|SubVariant" → "SolidPath.Solid.Gbx" }
     private readonly Dictionary<string, Dictionary<string, string>> _blockVariantMaps
@@ -310,6 +315,15 @@ public class PakService
             var r = (result, false);  // dossier différent → biais Y probable
             pakCache[cacheKey] = r; return r;
         }
+    }
+
+    public string? GetSolidFileName(string pakName, int solidIndex)
+    {
+        if (!_cache.TryGetValue(pakName, out var cached)) return null;
+        if (solidIndex < 0 || solidIndex >= cached.Solids.Count) return null;
+        var path = cached.Solids[solidIndex].Name;
+        var lastSlash = Math.Max(path.LastIndexOf('/'), path.LastIndexOf('\\'));
+        return lastSlash >= 0 ? path[(lastSlash + 1)..] : path;
     }
 
     private static List<int> SearchEditorHelpers(

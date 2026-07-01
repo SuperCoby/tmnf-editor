@@ -170,12 +170,18 @@ export function handlePointerUp(e, rdx, rdy, ray, rm, camera, _setSelectionBox) 
         if (mesh.visible && !mesh.userData.is2D) tri3dTargets.push({ mesh, idx });
     });
 
+    // Vérifie que toute la chaîne de parents est visible (c.visible ne check que l'objet lui-même)
+    const isChainVisible = (obj, root) => {
+        let o = obj;
+        while (o && o !== root) { if (!o.visible) return false; o = o.parent; }
+        return true;
+    };
     const blockMeshes = [];
     if (S.currentMesh?.visible) {
-        S.currentMesh.traverse(c => { if (c.isMesh && c.visible) blockMeshes.push(c); });
+        S.currentMesh.traverse(c => { if (c.isMesh && isChainVisible(c, S.currentMesh)) blockMeshes.push(c); });
     }
     if (S.mapGroup?.visible) {
-        S.mapGroup.traverse(c => { if (c.isMesh && c.visible) blockMeshes.push(c); });
+        S.mapGroup.traverse(c => { if (c.isMesh && isChainVisible(c, S.mapGroup)) blockMeshes.push(c); });
     }
 
     const allMeshes = [...targets.map(t => t.mesh), ...tri3dTargets.map(t => t.mesh), ...blockMeshes];
@@ -275,7 +281,13 @@ export function handlePointerUp(e, rdx, rdy, ray, rm, camera, _setSelectionBox) 
                 S.selectionBox.material.opacity = 0.6;
                 scene.add(S.selectionBox);
                 if (S._blockMatInfoEl) {
-                    S._blockMatInfoEl.innerText = 'Terrain: ' + (mesh.userData.originalMaterialName || mesh.material?.name || '?');
+                    const CELL_H = 32, CELL_V = 8;
+                    const wpos = new THREE.Vector3().setFromMatrixPosition(instWorldMatrix);
+                    const ox = S.mapOffset?.x || 0, oy = S.mapOffset?.y || 0, oz = S.mapOffset?.z || 0;
+                    const tx = Math.round((wpos.x - ox - CELL_H / 2) / CELL_H);
+                    const ty = Math.round((wpos.y - oy - 9) / CELL_V);
+                    const tz = Math.round((wpos.z - oz - CELL_H / 2) / CELL_H);
+                    S._blockMatInfoEl.innerText = 'Terrain: ' + (mesh.userData.originalMaterialName || mesh.material?.name || '?') + '\nPos: (' + tx + ', ' + ty + ', ' + tz + ')';
                     S._blockMatInfoEl.style.display = '';
                 }
             } else {
@@ -283,12 +295,15 @@ export function handlePointerUp(e, rdx, rdy, ray, rm, camera, _setSelectionBox) 
                 while (blockGroup.parent && blockGroup.parent !== S.mapGroup && blockGroup.parent !== S.currentMesh)
                     blockGroup = blockGroup.parent;
                 const blockName = blockGroup.userData.blockName || '?';
-                S.selectionBox = new THREE.BoxHelper(blockGroup, 0xffaa00);
+                const terrainAt = blockGroup.userData.terrainAt || 'Grass';
+S.selectionBox = new THREE.BoxHelper(blockGroup, 0xffaa00);
                 S.selectionBox.material.transparent = true;
                 S.selectionBox.material.opacity = 0.6;
                 scene.add(S.selectionBox);
                 if (S._blockMatInfoEl) {
-                    S._blockMatInfoEl.innerText = 'Block: ' + blockName;
+                    const pos = blockGroup.userData.blockPos;
+                    const posStr = pos ? `\nPos: (${pos.x}, ${pos.y}, ${pos.z})` : '';
+                    S._blockMatInfoEl.innerText = 'Block: ' + blockName + '\nTerrain: ' + terrainAt + posStr;
                     S._blockMatInfoEl.style.display = '';
                 }
             }

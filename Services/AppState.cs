@@ -52,6 +52,8 @@ public partial class AppState
         ["Centrer à la mesh"] = "Center to mesh",
         ["paks manquants"] = "missing paks",
         ["Aide"] = "Help",
+        ["Réglages"] = "Settings",
+        ["Rendu"] = "Render",
         ["Retirer l'import de ce track"] = "Remove import from this track",
         ["Texte"] = "Text",
         ["Animation existante"] = "Existing animation",
@@ -74,26 +76,21 @@ public partial class AppState
         ["Aucun modèle importé"] = "No model imported",
         ["Modèle non transféré ou non sélectionné"] = "Model not sent or not selected",
         ["Aucun matériau"] = "No material",
-        ["Commencer"] = "Getting started",
-        ["Sélectionnez le dossier de votre jeu TrackMania, puis chargez une carte .Challenge.Gbx pour visualiser et éditer les blocs."] = "Select your TrackMania game folder, then load a .Challenge.Gbx map to view and edit blocks.",
-        ["Import 3D"] = "3D Import",
-        ["Importez un fichier .obj dans l'onglet Triangles3D. Vous pouvez modifier les matériaux, la position et l'origine du modèle."] = "Import a .obj file in the Triangles3D tab. You can edit materials, position and origin of the model.",
-        ["Ajoutez des keyframes de Translation, Scaling et Rotation pour animer votre modèle. Utilisez le bouton Play pour prévisualiser."] = "Add Translation, Scaling and Rotation keyframes to animate your model. Use the Play button to preview.",
-        ["Exportez en .Clip.Gbx pour un seul objet, ou en .Challenge.Gbx pour intégrer tous vos tracks dans la carte chargée."] = "Export as .Clip.Gbx for a single object, or as .Challenge.Gbx to integrate all your tracks into the loaded map.",
+        ["Présentation"] = "Overview",
+        ["Comment ça marche ?"] = "How does it work?",
+        ["Icônes"] = "Icons",
     };
+
+    // ─── Render settings ─────────────────────────────────────────────────────
+    public bool ShowSettings = false;
+    public bool ShowEditorHelper = true;
+    public bool ShowEditorHelperArrow = true;
+    public bool ShowGlow = true;
+    public void ToggleSettings() { ShowSettings = !ShowSettings; }
 
     // ─── Help ────────────────────────────────────────────────────────────────
     public bool ShowHelp = false;
     public void ToggleHelp() { ShowHelp = !ShowHelp; }
-
-    public class HelpSection { public string Title = ""; public string Content = ""; public bool Open; }
-    public readonly List<HelpSection> HelpSections = new()
-    {
-        new() { Title = "Commencer", Content = "Sélectionnez le dossier de votre jeu TrackMania, puis chargez une carte .Challenge.Gbx pour visualiser et éditer les blocs." },
-        new() { Title = "Import 3D", Content = "Importez un fichier .obj dans l'onglet Triangles3D. Vous pouvez modifier les matériaux, la position et l'origine du modèle." },
-        new() { Title = "Animation", Content = "Ajoutez des keyframes de Translation, Scaling et Rotation pour animer votre modèle. Utilisez le bouton Play pour prévisualiser." },
-        new() { Title = "Export", Content = "Exportez en .Clip.Gbx pour un seul objet, ou en .Challenge.Gbx pour intégrer tous vos tracks dans la carte chargée." },
-    };
 
     // ─── Block panel ──────────────────────────────────────────────────────────
     public string GameFolderStatus = "Non sélectionné";

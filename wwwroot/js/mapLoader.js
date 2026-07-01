@@ -4,11 +4,12 @@ import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 import {
     S, scene, camera, controls, overlayScene,
     loadingManager, objLoader,
-    HIDDEN_MATERIALS, CLIP_HIDDEN_MATERIALS, ALPHA_CUTOUT_MATERIALS, ADDITIVE_GLOW_MATERIALS, WATER_MATERIALS, WORLDUV_MATERIALS, getWaterMaterial,
+    HIDDEN_MATERIALS, ALPHA_CUTOUT_MATERIALS, ADDITIVE_GLOW_MATERIALS, WATER_MATERIALS, WORLDUV_MATERIALS, getWaterMaterial,
     rawModelCache, MAP_OFFSET_DEFAULT,
 } from './state.js';
 import { parseMtlTextures, parseMtlAllTextures } from './materials.js';
 import { _removeSelectionBox, findMesh, clearMesh } from './helpers.js';
+import { patchClipGroundIfNeeded } from './clipGroundPatch.js';
 
 // Fichiers DDS connus pour chaque matériau de sol — chargés directement depuis le pak
 // (le blobUrlMap les contient déjà, extraits en Phase 2 côté C#).
@@ -16,6 +17,11 @@ const GROUND_TEXTURE_FILES = {
     stadiumgrass: 'StadiumGrass1.dds',
     stadiumdirt: 'StadiumDirt1.dds',
     stadiumfabricfloornoocc: 'StadiumFabricFloorD.dds',
+};
+
+// Textures imposées pour certains matériaux dont le MTL ne déclare pas le bon map_Kd
+const MATERIAL_TEXTURE_OVERRIDES = {
+    'stadiumroaddirttoroadflat': 'StadiumRoadDirtToRoadD.dds',
 };
 
 function findGroundDonorTexture(matName) {
@@ -107,13 +113,15 @@ export function deserializeRawObj(cached) {
             mat = getWaterMaterial();
         } else {
             // Corrige la texture diffuse depuis les slots JSON si disponible
-            let texFile = m.texFilename;
-            const slots = S._matAllTextures[m.matName];
-            if (slots) {
-                const diffuseSlots = ['Diffuse','Blend1','D','Soil','Grass','GDiffuse','Panorama','Advert','Glow','BaseColor'];
-                for (const ds of diffuseSlots) { if (slots[ds]) { texFile = slots[ds]; break; } }
+            let texFile = MATERIAL_TEXTURE_OVERRIDES[m.matName] || m.texFilename;
+            if (!MATERIAL_TEXTURE_OVERRIDES[m.matName]) {
+                const slots = S._matAllTextures[m.matName];
+                if (slots) {
+                    const diffuseSlots = ['Diffuse','SoilFix','D','Soil','Grass','GDiffuse','Panorama','Advert','Glow','BaseColor','Blend1'];
+                    for (const ds of diffuseSlots) { if (slots[ds]) { texFile = slots[ds]; break; } }
+                }
             }
-            const blobUrl = texFile
+const blobUrl = texFile
                 ? (S.currentBlobUrlMap[texFile] || S.currentBlobUrlMap[texFile.toLowerCase()] || null)
                 : null;
             if (blobUrl) {
@@ -137,12 +145,13 @@ export function deserializeRawObj(cached) {
         if (ALPHA_CUTOUT_MATERIALS.has(m.matName) && mat.map) {
             mat.transparent = true; mat.alphaTest = 0.5; mat.depthWrite = true; mat.side = THREE.DoubleSide;
         }
-        if (ADDITIVE_GLOW_MATERIALS.has(m.matName) && mat.map) applyAdditiveGlow(mat);
+        if (ADDITIVE_GLOW_MATERIALS.has(m.matName) && mat.map) { applyAdditiveGlow(mat); }
         const mesh = new THREE.Mesh(geo, mat);
         mesh.name = m.name;
         mesh.visible = m.visible;
         mesh.userData.originalMaterialName = m.matName;
         mesh.userData.texFilename = m.texFilename || null;
+        if (ADDITIVE_GLOW_MATERIALS.has(m.matName)) mesh.userData.isGlowMesh = true;
         group.add(mesh);
     }
     return group;
@@ -481,7 +490,7 @@ export function addModelToMap(objText, mtlText, pakName, placements, cacheKey, g
                     child.material.depthWrite = true;
                     child.material.side = THREE.DoubleSide;
                 }
-                if (ADDITIVE_GLOW_MATERIALS.has(mn0) && child.material?.map) applyAdditiveGlow(child.material);
+                if (ADDITIVE_GLOW_MATERIALS.has(mn0) && child.material?.map) { applyAdditiveGlow(child.material); child.userData.isGlowMesh = true; }
                 if (child.geometry && totalVerts < 100000) child.geometry.computeVertexNormals();
             }
         });
@@ -506,17 +515,18 @@ export function addModelToMap(objText, mtlText, pakName, placements, cacheKey, g
         clone.position.set(p.x * CELL_H + offX, (p.y - (p.h || 0)) * CELL_V, p.z * CELL_H + offZ);
         clone.rotation.y = dirToRad[d];
         clone.userData.blockName = p.blockName || '';
-        if (p.isClip) {
-            clone.traverse(c => {
-                if (c.isMesh && CLIP_HIDDEN_MATERIALS.has((c.material?.name || '').toLowerCase()))
-                    c.visible = false;
-            });
-        }
+        clone.userData.terrainAt = p.terrainAt || 'Grass';
+        clone.userData.blockPos = { x: p.x, y: p.y, z: p.z };
+        if (p.helperType) clone.userData.helperType = p.helperType;
+        if (p.isClip) patchClipGroundIfNeeded(clone);
         if (!p.skipTerrainMesh && p.terrainMod) {
             // p.terrainMod absent = aucun terrain modifier détecté à cette position : on ne touche à RIEN,
             // quel que soit le matériau natif du mesh (certains blocks ont du StadiumDirt par défaut, pas du grass).
-            const terrain = p.terrainMod;
-            const remapTo = (c, remapMat, fallbackColor) => {
+            // "fabric" = vrai terrain modifier du jeu (unit.TerrainModifierId). "dirt" = colonne (X,Z) où un
+            // block StadiumDirt existe à n'importe quelle hauteur (logique TerrainAt fidèle à Aide/BlockLister).
+            const remapMat = p.terrainMod === 'dirt' ? 'stadiumdirt' : 'stadiumfabricfloornoocc';
+            const fallbackColor = p.terrainMod === 'dirt' ? 0x8a6a3a : 0x5a5a6a;
+            const remapTo = (c) => {
                 const tex = loadGroundTexture(remapMat);
                 c.material = c.material.clone();
                 c.material.name = remapMat;
@@ -528,25 +538,13 @@ export function addModelToMap(objText, mtlText, pakName, placements, cacheKey, g
             clone.traverse(c => {
                 if (!c.isMesh) return;
                 const mn = (c.material?.name || '').toLowerCase();
-                const isGrassMesh = mn === 'stadiumgrass' || mn === 'stadiumgrassocc';
+                const isGrassMesh = mn === 'stadiumgrass' || mn === 'stadiumgrassocc' || mn === 'stadiumsculptgrassocc';
                 const isDirtMesh = mn === 'stadiumdirt';
-                const isFabricMesh = mn === 'stadiumfabricfloornoocc' || mn === 'stadiumfabricfloor';
-                if (!isGrassMesh && !isDirtMesh && !isFabricMesh) return;
+                const needsChange = p.terrainMod === 'dirt' ? isGrassMesh : (isGrassMesh || isDirtMesh);
+                if (!needsChange) return;
 
-                // Si le mesh est déjà le bon matériau pour ce terrain, on ne touche à rien.
-                // Un block "Ground" supprime la face 32x32 du sol à sa position (sans risque de doublon) → on remplace.
-                // Un block "Air" ne la supprime pas → la face 32x32 montre déjà le bon terrain → on cache plutôt.
-                if (terrain === 'dirt') {
-                    if (isGrassMesh || isFabricMesh) {
-                        if (p.isGround) remapTo(c, 'stadiumdirt', 0x8a6a3a);
-                        else c.visible = false;
-                    }
-                } else if (terrain === 'fabric') {
-                    if (isGrassMesh || isDirtMesh) {
-                        if (p.isGround) remapTo(c, 'stadiumfabricfloornoocc', 0x5a5a6a);
-                        else c.visible = false;
-                    }
-                }
+                // Si le mesh est déjà le bon matériau pour ce terrain, on ne touche à rien. Sinon on remplace.
+                remapTo(c);
             });
         }
         if (p.color) {
@@ -563,7 +561,9 @@ export function addModelToMap(objText, mtlText, pakName, placements, cacheKey, g
     }
 }
 
-export function finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFaces, clipColumns) {
+// grassCells/dirtCells/fabricCells : listes explicites calculées côté C# (fidèle à BlockLister [Reconstitue])
+// nonZoneColumns : colonnes occupées par un bloc réel → empêche les zone faces de se superposer
+export function finalizeMap(grassCells, dirtCells, fabricCells, zoneFaces, nonZoneColumns) {
     if (!S.mapGroup) return;
     S.mapGroup.position.set(S.mapOffset.x, S.mapOffset.y, S.mapOffset.z);
     scene.add(S.mapGroup);
@@ -579,56 +579,10 @@ export function finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFac
     camera.position.set(center.x + size * 0.7, center.y + size * 0.5, center.z + size * 0.7);
     camera.lookAt(center); controls.target.copy(center); controls.update();
 
-    // ── Herbe sur les cellules vides au sol ──────────────────────────────
     const CELL_H = 32, CELL_V = 8;
-    const occupied = new Set();
-    // Colonnes (X,Z) occupées par un "vrai" block (pas StadiumDirt/StadiumGrass eux-mêmes), peu importe
-    // la hauteur — sert à éviter qu'une zone face se superpose à un block déjà présent sur cette colonne
-    // (ex: StadiumRoadDirtGround), comme pour StadiumDirtHill côté C#.
-    const nonZoneOccupiedColumns = new Set();
-    for (const b of (groundBlocks || [])) {
-        const d = (b.dir || 0) & 3;
-        const rotated = (d === 1 || d === 3);
-        const sx = rotated ? (b.sz || 1) : (b.sx || 1);
-        const sz = rotated ? (b.sx || 1) : (b.sz || 1);
-        for (let dx = 0; dx < sx; dx++)
-            for (let dz = 0; dz < sz; dz++) {
-                const colKey = `${b.x + dx},${b.z + dz}`;
-                occupied.add(colKey);
-                if (!b.isZone) nonZoneOccupiedColumns.add(colKey);
-            }
-    }
-    // Les clips (StadiumDirtClip, StadiumGrassClip...) ne sont pas dans groundBlocks (ils ne forment pas
-    // de sol plein) mais ne doivent quand même pas être recouverts par une zone face 32x32 ni par le
-    // remplissage auto (grass/dirt/fabric) des cellules vides.
-    for (const c of (clipColumns || [])) {
-        const colKey = `${c.x},${c.z}`;
-        nonZoneOccupiedColumns.add(colKey);
-        occupied.add(colKey);
-    }
-
-    const emptyCells = [];
-    for (let cx = 0; cx < (mapSizeX || 0); cx++)
-        for (let cz = 0; cz < (mapSizeZ || 0); cz++)
-            if (!occupied.has(`${cx},${cz}`))
-                emptyCells.push([cx, cz]);
-
-    const modMap = {};
-    for (const d of (dirtCells || []))
-        modMap[`${d.x},${d.z}`] = d.type || 'dirt';
-
-    const grassCells = [];
-    const dirtEmptyCells = [];
-    const fabricCells = [];
-    for (const [cx, cz] of emptyCells) {
-        const mod = modMap[`${cx},${cz}`];
-        if (mod === 'dirt') dirtEmptyCells.push([cx, cz]);
-        else if (mod === 'fabric') fabricCells.push([cx, cz]);
-        else grassCells.push([cx, cz]);
-    }
 
     function createGroundMesh(cells, matName, fallbackColor) {
-        if (cells.length === 0) return;
+        if (!cells?.length) return;
         const tex = loadGroundTexture(matName);
         const mat = new THREE.MeshPhongMaterial({
             name: matName,
@@ -643,8 +597,8 @@ export function finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFac
         mesh.userData.isTerrainTile = true;
         mesh.userData.originalMaterialName = matName;
         const dummy = new THREE.Object3D();
-        cells.forEach(([cx, cz], i) => {
-            dummy.position.set(cx * CELL_H + CELL_H / 2, 9, cz * CELL_H + CELL_H / 2);
+        cells.forEach((c, i) => {
+            dummy.position.set(c.x * CELL_H + CELL_H / 2, 9, c.z * CELL_H + CELL_H / 2);
             dummy.updateMatrix();
             mesh.setMatrixAt(i, dummy.matrix);
         });
@@ -652,15 +606,15 @@ export function finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFac
         S.mapGroup.add(mesh);
     }
 
-    createGroundMesh(grassCells, 'stadiumgrass', 0x4a7a3a);
-    createGroundMesh(dirtEmptyCells, 'stadiumdirt', 0x8a6a3a);
+    createGroundMesh(grassCells,  'stadiumgrass',            0x4a7a3a);
+    createGroundMesh(dirtCells,   'stadiumdirt',             0x8a6a3a);
     createGroundMesh(fabricCells, 'stadiumfabricfloornoocc', 0x5a5a6a);
 
     // Zone faces : StadiumDirt/StadiumGrass placés en hauteur (ex: au sommet des collines)
+    const nonZoneSet = new Set((nonZoneColumns || []).map(c => `${c.x},${c.z}`));
     const zfByType = {};
     for (const zf of (zoneFaces || [])) {
-        // Ignore si un autre vrai block (route, structure...) occupe déjà cette colonne, peu importe la hauteur.
-        if (nonZoneOccupiedColumns.has(`${zf.x},${zf.z}`)) continue;
+        if (nonZoneSet.has(`${zf.x},${zf.z}`)) continue;
         const key = zf.type || 'grass';
         if (!zfByType[key]) zfByType[key] = [];
         zfByType[key].push(zf);
@@ -691,6 +645,15 @@ export function finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFac
 export function setMapOffset(x, y, z) {
     S.mapOffset.x = x; S.mapOffset.y = y; S.mapOffset.z = z;
     if (S.mapGroup) S.mapGroup.position.set(x, y, z);
+}
+
+export function setRenderSettings(showEditorHelper, showEditorHelperArrow, showGlow) {
+    if (!S.mapGroup) return;
+    S.mapGroup.traverse(c => {
+        if (c.userData.helperType === 'helper') c.visible = showEditorHelper;
+        else if (c.userData.helperType === 'arrow') c.visible = showEditorHelperArrow;
+        if (c.userData.isGlowMesh) c.visible = showGlow;
+    });
 }
 
 // Charge en parallèle la géométrie binaire depuis IDB et peuple rawModelCache.

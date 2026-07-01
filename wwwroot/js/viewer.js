@@ -17,7 +17,7 @@ import {
 } from './playback.js';
 import {
     loadModel, addModelToMap, appendModelToCurrentBlock,
-    clearMap, beginMap, finalizeMap, setMapOffset,
+    clearMap, beginMap, finalizeMap, setMapOffset, setRenderSettings,
     populateRawModelCacheFromIDB, setBlobUrlMap, clearModelCache,
     selectMesh, toggleMesh,
 } from './mapLoader.js';
@@ -44,6 +44,24 @@ import {
 } from './viewModes.js';
 import './cache.js';
 
+// ─── Blur panels (outside tick-mark zone in 2D mode) ─────────────────────────
+function _updateBlurPanels(visible) {
+    if (!S._blurLeft || !S._blurRight) return;
+    if (!visible) {
+        S._blurLeft.style.display = 'none';
+        S._blurRight.style.display = 'none';
+        return;
+    }
+    const w = renderer.domElement.clientWidth;
+    const h = renderer.domElement.clientHeight;
+    const aspect = w / h;
+    const pct = Math.max(0, (aspect - 1) / (2 * aspect) * 100).toFixed(2) + '%';
+    S._blurLeft.style.width = pct;
+    S._blurRight.style.width = pct;
+    S._blurLeft.style.display = 'block';
+    S._blurRight.style.display = 'block';
+}
+
 // ─── Init — attaché au conteneur DOM passé par Blazor ────────────────────────
 window.TMNFeditorScene = {
     init(container, dotNetRef) {
@@ -67,6 +85,13 @@ window.TMNFeditorScene = {
         S._blockMatInfoEl.style.display = 'none';
         container.appendChild(S._blockMatInfoEl);
 
+        S._blurLeft = document.createElement('div');
+        S._blurLeft.style.cssText = 'position:absolute;top:0;bottom:0;left:0;display:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(0,0,0,0.18);pointer-events:none;z-index:4;';
+        container.appendChild(S._blurLeft);
+        S._blurRight = document.createElement('div');
+        S._blurRight.style.cssText = 'position:absolute;top:0;bottom:0;right:0;display:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(0,0,0,0.18);pointer-events:none;z-index:4;';
+        container.appendChild(S._blurRight);
+
         renderer.domElement.addEventListener('mousemove', e => {
             if (!S._gridVisible || !S._gridCursorEl) return;
             const rect = renderer.domElement.getBoundingClientRect();
@@ -84,6 +109,7 @@ window.TMNFeditorScene = {
             camera.updateProjectionMatrix();
             renderer.setSize(nw, nh);
             _updateOverlayCam();
+            if (S._gridVisible) _updateBlurPanels(true);
         });
 
         S.transformCtrl = new TransformControls(camera, renderer.domElement);
@@ -194,7 +220,7 @@ window.TMNFeditorScene = {
             requestAnimationFrame(animate);
             controls.update();
             if (S._waterMaterial) S._waterMaterial.uniforms.camPos.value.copy(camera.position);
-            if (S.selectionBox) S.selectionBox.update();
+            if (S.selectionBox?.update) S.selectionBox.update();
             if (S.originDot && S._originDotVisible) {
                 const _og = _getActiveObject();
                 if (_og) {
@@ -227,8 +253,9 @@ window.TMNFeditorScene = {
     clearMap() { clearMap(); },
     beginMap() { beginMap(); },
     addModelToMap(objText, mtlText, pakName, placements, cacheKey, geomKey) { addModelToMap(objText, mtlText, pakName, placements, cacheKey, geomKey); },
-    finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFaces, clipColumns) { finalizeMap(mapSizeX, mapSizeZ, groundBlocks, dirtCells, zoneFaces, clipColumns); },
+    finalizeMap(grassCells, dirtCells, fabricCells, zoneFaces, nonZoneColumns) { finalizeMap(grassCells, dirtCells, fabricCells, zoneFaces, nonZoneColumns); },
     setMapOffset(x, y, z) { setMapOffset(x, y, z); },
+    setRenderSettings(showEditorHelper, showEditorHelperArrow, showGlow) { setRenderSettings(showEditorHelper, showEditorHelperArrow, showGlow); },
     populateRawModelCacheFromIDB(entries) { return populateRawModelCacheFromIDB(entries); },
     clearModelCache() { clearModelCache(); },
 
@@ -243,6 +270,7 @@ window.TMNFeditorScene = {
         S._gridCross.visible = visible;
         S._gridVisible = visible;
         if (S._gridCursorEl) S._gridCursorEl.style.display = visible ? '' : 'none';
+        _updateBlurPanels(visible);
     },
 
     updateMaterialSlots(slots) {
@@ -259,6 +287,7 @@ window.TMNFeditorScene = {
             if (S._gridCross) S._gridCross.visible = false;
             S._gridVisible = false;
             if (S._gridCursorEl) S._gridCursorEl.style.display = 'none';
+            _updateBlurPanels(false);
         }
     },
     triggerFileInput(inputId) { document.getElementById(inputId)?.click(); },
