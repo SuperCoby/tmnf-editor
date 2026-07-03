@@ -110,11 +110,7 @@ export const loadingManager = new THREE.LoadingManager();
 // DDSLoader doit recevoir le même loadingManager pour que le URL modifier s'applique
 loadingManager.addHandler(/\.dds$/i, new DDSLoader(loadingManager));
 const _missingTextures = new Set();
-loadingManager.onError = url => {
-    if (_missingTextures.has(url)) return;
-    _missingTextures.add(url);
-    console.error('[TMNFeditor] Texture manquante:', url);
-};
+loadingManager.onError = url => { _missingTextures.add(url); };
 export const objLoader = new OBJLoader();
 
 THREE.Cache.enabled = true;

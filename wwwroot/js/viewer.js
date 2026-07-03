@@ -102,15 +102,18 @@ window.TMNFeditorScene = {
             S._gridCursorEl.textContent = `X: ${gx.toFixed(2)}  Y: ${gy.toFixed(2)}`;
         });
 
-        window.addEventListener('resize', () => {
+        const _doResize = () => {
             const nw = container.clientWidth;
             const nh = container.clientHeight;
+            if (nw <= 0 || nh <= 0) return;
             camera.aspect = nw / nh;
             camera.updateProjectionMatrix();
             renderer.setSize(nw, nh);
             _updateOverlayCam();
             if (S._gridVisible) _updateBlurPanels(true);
-        });
+        };
+        window.addEventListener('resize', _doResize);
+        new ResizeObserver(_doResize).observe(container);
 
         S.transformCtrl = new TransformControls(camera, renderer.domElement);
         S.transformCtrl.addEventListener('dragging-changed', e => { controls.enabled = !e.value; });

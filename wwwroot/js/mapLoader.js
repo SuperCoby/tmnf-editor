@@ -44,7 +44,7 @@ function loadGroundTexture(matName) {
     const file = GROUND_TEXTURE_FILES[matName];
     if (!file) return null;
     const handler = loadingManager.getHandler(file) || new THREE.TextureLoader(loadingManager);
-    const tex = handler.load(file);
+    const tex = handler.load(file, undefined, undefined, () => {});
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
     return tex;
 }
@@ -126,7 +126,7 @@ const blobUrl = texFile
                 : null;
             if (blobUrl) {
                 const handler = loadingManager.getHandler(texFile) || new THREE.TextureLoader(loadingManager);
-                const tex = handler.load(texFile);
+                const tex = handler.load(texFile, undefined, undefined, () => {});
                 tex.flipY = false;
                 // RepeatWrapping comme MTLLoader — sans ça les blocs avec UVs > 1 semblent étirés
                 tex.wrapS = THREE.RepeatWrapping;

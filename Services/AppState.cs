@@ -83,9 +83,9 @@ public partial class AppState
 
     // ─── Render settings ─────────────────────────────────────────────────────
     public bool ShowSettings = false;
-    public bool ShowEditorHelper = true;
-    public bool ShowEditorHelperArrow = true;
-    public bool ShowGlow = true;
+    public bool ShowEditorHelper = false;
+    public bool ShowEditorHelperArrow = false;
+    public bool ShowGlow = false;
     public void ToggleSettings() { ShowSettings = !ShowSettings; }
 
     // ─── Help ────────────────────────────────────────────────────────────────

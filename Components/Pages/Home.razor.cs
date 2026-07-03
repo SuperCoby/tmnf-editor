@@ -24,6 +24,8 @@ public partial class Home : ComponentBase, IDisposable
     private DotNetObjectReference<Home>? _dotNetRef;
     private readonly HashSet<string> _loadedSlotPaks = new(StringComparer.OrdinalIgnoreCase);
 
+    private const bool DebugResume = false;
+
     private async Task EnsurePakMappingsLoaded(string pakName)
     {
         if (_loadedSlotPaks.Contains(pakName)) return;
@@ -176,7 +178,9 @@ public partial class Home : ComponentBase, IDisposable
     [JSInvokable]
     public async Task<string> ScanBlockUnits()
     {
-        var index = await Http.GetStringAsync("ConstructionBlockInfo/index.txt");
+        string index;
+        try { index = await Http.GetStringAsync("ConstructionBlockInfo/index.txt"); }
+        catch { return "{}"; }
         var files = index.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
         var result = new Dictionary<string, object>();
         int done = 0;
@@ -1119,7 +1123,7 @@ public partial class Home : ComponentBase, IDisposable
         var nonZoneCols = nonZoneSet.Select(c => (object)new { x = c.Item1, z = c.Item2 }).ToArray();
 
         // ── Debug : résumé par type (équivalent du rapport Aide/BlockLister) ──────
-        if (isStadiumMap)
+        if (DebugResume && isStadiumMap)
         {
             var byName = data.Blocks.GroupBy(b => b.Name).OrderByDescending(g => g.Count()).ToList();
             var sb = new System.Text.StringBuilder();
