@@ -19,7 +19,7 @@ import {
     loadModel, addModelToMap, appendModelToCurrentBlock,
     clearMap, beginMap, finalizeMap, setMapOffset, setRenderSettings,
     populateRawModelCacheFromIDB, setBlobUrlMap, clearModelCache,
-    selectMesh, toggleMesh,
+    selectMesh, toggleMesh, revokeTexturesAfterLoad,
 } from './mapLoader.js';
 import {
     clearTri3DKeyframes, clearTriangles3D, addTriangles3D,
@@ -261,6 +261,7 @@ window.TMNFeditorScene = {
     setRenderSettings(showEditorHelper, showEditorHelperArrow, showGlow) { setRenderSettings(showEditorHelper, showEditorHelperArrow, showGlow); },
     populateRawModelCacheFromIDB(entries) { return populateRawModelCacheFromIDB(entries); },
     clearModelCache() { clearModelCache(); },
+    revokeTexturesAfterLoad() { revokeTexturesAfterLoad(); },
 
     clearScene() { clearMesh(); },
 

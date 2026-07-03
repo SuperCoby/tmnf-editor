@@ -404,13 +404,19 @@ export async function appendModelToCurrentBlock(objText, mtlText, pakName, cache
 }
 
 // ─── Map mode ─────────────────────────────────────────────────────────────
+const _TEX_MAPS = ['map','normalMap','specularMap','alphaMap','emissiveMap','roughnessMap','metalnessMap','aoMap','envMap'];
+function _disposeMatTextures(m) {
+    if (!m) return;
+    for (const key of _TEX_MAPS) m[key]?.dispose();
+}
+
 export function clearMap() {
     if (S.mapGroup) {
         scene.remove(S.mapGroup);
         S.mapGroup.traverse(c => {
             if (c instanceof THREE.Mesh) {
                 c.geometry?.dispose();
-                (Array.isArray(c.material) ? c.material : [c.material]).forEach(m => m?.dispose());
+                (Array.isArray(c.material) ? c.material : [c.material]).forEach(m => { _disposeMatTextures(m); m?.dispose(); });
             }
         });
         S.mapGroup = null;
@@ -419,10 +425,23 @@ export function clearMap() {
     for (const m of S.tri3dMeshes) {
         if (m.userData.is2D) overlayScene.remove(m);
         m.geometry?.dispose();
-        m.material?.dispose();
+        _disposeMatTextures(Array.isArray(m.material) ? null : m.material);
+        if (Array.isArray(m.material)) m.material.forEach(_disposeMatTextures);
+        m.material?.dispose?.();
     }
     S.tri3dMeshes = [];
     S._tri3dIs2D = [];
+}
+
+// Libère la RAM des textures après chargement complet de la map.
+// Attend 2 frames pour que WebGL ait uploadé toutes les textures sur le GPU avant de libérer les sources.
+export function revokeTexturesAfterLoad() {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        window.TMNFeditorFS?.revokeBlobUrls();
+        THREE.Cache.clear();
+        S.currentBlobUrlMap = {};
+        loadingManager.setURLModifier(null);
+    }));
 }
 
 export function beginMap() {
@@ -503,7 +522,55 @@ export function addModelToMap(objText, mtlText, pakName, placements, cacheKey, g
     const CELL_H = 32, CELL_V = 8;
     const dirToRad = [0, -Math.PI / 2, Math.PI, Math.PI / 2];
 
+    // Placements sans modification matériau par instance → InstancedMesh (1 draw call pour N instances)
+    // Placements spéciaux (isClip, color, terrainMod) → clone individuel
+    const instanced = [], special = [];
     for (const p of placements) {
+        if (!p.isClip && !p.color && (!p.terrainMod || p.skipTerrainMesh))
+            instanced.push(p);
+        else
+            special.push(p);
+    }
+
+    // ─── InstancedMesh path ───────────────────────────────────────────────────
+    if (instanced.length > 0) {
+        const meshChildren = [];
+        rawObj.traverse(c => { if (c.isMesh && c.visible !== false) meshChildren.push(c); });
+
+        if (meshChildren.length > 0) {
+            const dummy = new THREE.Object3D();
+            const matrices = instanced.map(p => {
+                const d = (p.dir || 0) & 3;
+                const sizeX = (p.sx || 1) * CELL_H;
+                const sizeZ = (p.sz || 1) * CELL_H;
+                let offX = 0, offZ = 0;
+                if      (d === 1) { offX = sizeZ; }
+                else if (d === 2) { offX = sizeX; offZ = sizeZ; }
+                else if (d === 3) { offZ = sizeX; }
+                dummy.position.set(p.x * CELL_H + offX, (p.y - (p.h || 0)) * CELL_V, p.z * CELL_H + offZ);
+                dummy.rotation.set(0, dirToRad[d], 0);
+                dummy.updateMatrix();
+                return dummy.matrix.clone();
+            });
+
+            const tempMatrix = new THREE.Matrix4();
+            for (const child of meshChildren) {
+                const iMesh = new THREE.InstancedMesh(child.geometry, child.material, instanced.length);
+                iMesh.frustumCulled = false;
+                iMesh.userData.blockName = instanced[0]?.blockName || '';
+                iMesh.userData.isInstancedBlock = true;
+                for (let i = 0; i < instanced.length; i++) {
+                    tempMatrix.multiplyMatrices(matrices[i], child.matrix);
+                    iMesh.setMatrixAt(i, tempMatrix);
+                }
+                iMesh.instanceMatrix.needsUpdate = true;
+                S.mapGroup.add(iMesh);
+            }
+        }
+    }
+
+    // ─── Clone path pour les placements spéciaux ─────────────────────────────
+    for (const p of special) {
         const d = (p.dir || 0) & 3;
         const sizeX = (p.sx || 1) * CELL_H;
         const sizeZ = (p.sz || 1) * CELL_H;

@@ -35,6 +35,10 @@ public class FileSystemService(IJSRuntime js)
     public async Task RevokeBlobUrlsAsync()
         => await js.InvokeVoidAsync("TMNFeditorFS.revokeBlobUrls");
 
+    // Libère blob URLs + THREE.Cache après chargement complet d'une map (attend 2 rAF en JS)
+    public async Task RevokeTexturesAfterLoadAsync()
+        => await js.InvokeVoidAsync("TMNFeditorScene.revokeTexturesAfterLoad");
+
     // Ouvre un sélecteur de fichier pour choisir un .Challenge.Gbx
     public async Task<ChallengeFileResult?> PickChallengeFileAsync()
         => await js.InvokeAsync<ChallengeFileResult?>("TMNFeditorFS.pickChallengeFile");

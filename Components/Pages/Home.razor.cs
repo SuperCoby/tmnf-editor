@@ -984,6 +984,7 @@ public partial class Home : ComponentBase, IDisposable
         // Fait APRÈS setBlobUrlMap pour que deserializeRawObj trouve les blob URLs.
         // Si tout est dans IDB → Phase 3 = zéro OBJLoader, zéro parsing.
         State.MapStatus = "Restauration depuis le cache…"; State.MapProgress = 55; State.NotifyStateChanged();
+        await FS.ClearModelCacheAsync(); // libère la RAM des blocs de la map précédente avant de repeupler
         var geomEntries = generated.Keys
             .Select(k => (object)new { cacheKey = $"{k.Item1}:{k.Item2}", geomKey = $"geom:{State.GameFolderKey}|{k.Item1}:{k.Item2}" })
             .ToArray();
@@ -996,6 +997,7 @@ public partial class Home : ComponentBase, IDisposable
 
         // ── Phase 3 : ajout dans Three.js — rawModelCache évite de re-parser les OBJ ──
         State.MapStatus = "Rendu…"; State.MapProgress = 60; State.NotifyStateChanged();
+        _cbiCache.Clear(); // libère les CGameCtnBlockInfo de la map précédente
         await FS.BeginMapAsync();
         int done = 0;
         foreach (var ((pakName, solidIdx), blockPlacements) in placements)
@@ -1205,5 +1207,7 @@ public partial class Home : ComponentBase, IDisposable
         State.MapStatus = pakErrors.Count > 0 ? $"❌ paks manquants: {string.Join(", ", pakErrors.Keys)}" : "";
         State.MapIsLoading = false;
         State.NotifyStateChanged();
+        await FS.RevokeTexturesAfterLoadAsync();
+        GC.Collect();
     }
 }
